@@ -36,7 +36,7 @@ sudo dpkg -i zabbix-release_4.0-3+xenial_all.deb
 
 ```
 sudo apt-get update
-sudo apt-get install zabbix-server-mysql zabbix-frontend-php zabbix-agent
+sudo apt-get install zabbix-server-mysql zabbix-frontend-php zabbix-agent zabbix-java-gateway
 ```
 
 ## Step 4 – Create Database Schema
@@ -58,10 +58,13 @@ zcat create.sql.gz | mysql -u zabbix -p zabbixdb
 ## Step 5 – Edit Zabbix Configuration File
 
 ```
- DBHost=localhost
+  DBHost=localhost
   DBName=zabbixdb
   DBUser=zabbix
   DBPassword=password
+  JavaGateway=127.0.0.1
+  JavaGatewayPort=10052
+  StartJavaPollers=5
 ```
 
 ## Step 6 – Restart Apache and Zabbix
