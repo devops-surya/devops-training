@@ -57,6 +57,7 @@ zcat create.sql.gz | mysql -u zabbix -p zabbixdb
 
 ## Step 5 – Edit Zabbix Configuration File
 
+* /etc/zabbix/zabbix_server.conf
 ```
   DBHost=localhost
   DBName=zabbixdb
@@ -71,7 +72,8 @@ zcat create.sql.gz | mysql -u zabbix -p zabbixdb
 
 ```
 sudo service apache2 restart
-sudo service apache2 restart
+sudo service zabbix-server restart
+
 ```
 
 * TO open in browser:
