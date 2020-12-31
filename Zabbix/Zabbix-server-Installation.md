@@ -78,5 +78,25 @@ sudo service zabbix-server restart
 
 * TO open in browser:
 ```
-publicip:80/zabbix
+publicip/zabbix
 ```
+
+*  Follow the below images after installation is completed:
+![preview](../images/zb4.png)
+
+![preview](../images/zb5.png)
+
+![preview](../images/zb6.png)
+
+![preview](../images/zb7.png)
+
+![preview](../images/zb8.png)
+
+
+![preview](../images/zb9.png)
+
+* Provide usernameas Admin and password as password:
+
+![preview](../images/zb10.png)
+
+![preview](../images/zb11.png)
