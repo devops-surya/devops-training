@@ -95,7 +95,7 @@ publicip/zabbix
 
 ![preview](../images/zb9.png)
 
-* Provide usernameas Admin and password as password:
+* Provide username as Admin and password as password:
 
 ![preview](../images/zb10.png)
 
