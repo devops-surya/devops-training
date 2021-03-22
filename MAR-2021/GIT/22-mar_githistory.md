@@ -22,7 +22,7 @@
            * Git
 * Git is developed by **_LINUS TORVALDS_** .
 ## Difference betwen Centralised VCS and Distibuted VCS :
-![preview](./images/CVCS_VS_DVCS.png)
+![preview](../images/CVCS_VS_DVCS.png)
 
 # Working on git 
 ```
