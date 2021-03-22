@@ -1,4 +1,4 @@
-# GIT HISTORY :
+# GIT HISTORY ::
 
 ## Below are the functionality requirements an organization is expecting :
 
