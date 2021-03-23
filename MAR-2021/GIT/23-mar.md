@@ -28,7 +28,7 @@ git commit -m "< added some changes>"
 ![preview](../images/git5.png)
 
 
-* To configure the git credentials :
+* To configure the git  :
 
 ```
 git config --global user.name <username>
