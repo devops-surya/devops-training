@@ -8,7 +8,7 @@
 
 ![preview](../images/git34.png)
 
-* To create the above scenario , follow thw below steps :
+* To create the above scenario , follow the below steps :
   * Create a folder of mergeconflicts.
   * create a two folders with names developer1 , developer2 .
   * Get into folders of developer1, developer2 and clone the repo .
