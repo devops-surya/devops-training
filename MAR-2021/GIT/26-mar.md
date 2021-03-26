@@ -1,0 +1,84 @@
+# Multiple branching :
+* If a company want to serve the code to the mutliple companies , they will create multiple branches and go for the parallel development.
+![preview](../images/git35.png)
+
+* To create a branch
+
+```
+git branch <branchname>
+```
+* To list the branches:
+```
+git branch
+```
+
+* To switch between the branches
+
+```
+git checkout <branchname>
+```
+
+* To create a branch and switch to it directly:
+
+```
+git checkout -b <branchname>
+```
+![preview](../images/git36.png)
+![preview](../images/git37.png)
+
+* To push the code from the company-x branch to the remote repo:
+
+```
+git push origin company-x
+```
+![preview](../images/git38.png)
+![preview](../images/git39.png)
+
+* To see the remote branches:
+```
+git branch -r
+```
+![preview](../images/git40.png)
+
+## MERGE :
+![preview](../images/git41.png)
+* creating a file y1.txt and do add , commit .
+![preview](../images/git42.png)
+* Switch to the company-x branch .creating a file x1.txt and do add , commit .
+![preview](../images/git43.png)
+
+## Fastforward merge:
+![preview](../images/git45.png)
+* Create branch a company-z. create afile z1.txt and do add , commit.
+![preview](../images/git44.png)
+* if u dont want to go with the fastforward merge 
+
+```
+git checkout master 
+git merge --no-ff company-z
+```
+
+## Rebase :
+![preview](../images/git47.png)
+* Create  a branch-a and create a a1.txt file in it. do git add , git commit.
+* switch to master branch and create file rebase.txt, do git add and git commit.
+![preview](../images/git46.png)
+* For rebase to be done
+
+```
+git checkout branch-a
+git rebase master
+```
+![preview](../images/git48.png)
+
+
+## cherry-pick :
+![preview](../images/git50.png)
+* Created a branch-c , added to commits  by creatinf c1.xtx and c2.txt.
+![preview](../images/git49.png)
+* Create a branch-d , add d1.txt . do add and commit.
+![preview](../images/git51.png)
+![preview](../images/git52.png)
+
+## git pull :
+* git pull = git fetch + git merge 
