@@ -30,7 +30,7 @@ The main usecase of CM tool are idempotency .
 * We also have to make sure that python is installed on the ACS , however it will be installed while installing ansible.
 
 ## what we need to do for configuration management:
-* Playbooks in ansible to do the configuration management 
+* Write Playbooks in ansible to do the configuration management 
 * YAML is all about mention all the desired states in the yaml file.
 
 ## Inventory : 
@@ -231,7 +231,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 
 
 ### SCENARIO
-* I had 5 servers in in the hosts . but i want one the playbook to the run on only one server.
+* I had 5 servers in the hosts . but i want the playbook to be run on only one server.
 ![preview](../images/ansible15.png)
 
 ```
