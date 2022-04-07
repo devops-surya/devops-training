@@ -198,19 +198,19 @@ sudo service tomcat8 status
 * To run the playbook use below command 
 
 ```
-sudo ansible-playbook -i /home/devops/hosts playbook.yml
+ ansible-playbook -i /home/devops/hosts playbook.yml
 ```
 
 * To check he playbook syntax is correct 
 
 ```
-sudo ansible-playbook -i inventory playbook.yml --syntax-check
+ ansible-playbook -i inventory playbook.yml --syntax-check
 ```
 
 * To run the playbook for he dryrun 
 
 ```
-sudo ansible-playbook -i inventory playbook.yml --check
+ ansible-playbook -i inventory playbook.yml --check
 ```
 
 ## WAYS of working with ansible:
@@ -289,7 +289,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 ## Defining variable at commandline level
 
 ```
-sudo ansible-playbook -i <hostspath> -e " package_name=tomcat8" playbook.yml
+ ansible-playbook -i <hostspath> -e " package_name=tomcat8" playbook.yml
 ```
 
 ### sample deployment of apache and php modules:
