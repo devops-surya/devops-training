@@ -86,7 +86,7 @@ ssh-copy-id devops@<nodeipadress>
 
 # LAB SETUP of ANSIBLE :
 
-![preview](../images/ansible5.png)
+![preview](../images/nansible5.png)
 
 
 
