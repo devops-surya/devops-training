@@ -91,7 +91,7 @@ ssh-copy-id devops@<nodeipadress>
 
 
 ### Ansible installation  on ACS SERVER: 
-* for link [REFER HERE](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu)
+* Ansible installation [REFER HERE](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu)
 
 ```
 sudo apt update
