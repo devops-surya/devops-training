@@ -54,6 +54,7 @@ The main usecase of CM tool are idempotency .
 * 1. Enabling the password based authentication :
 ```
 sudo su 
+cd
 vi /etc/ssh/sshd_config
 sudo service ssh restart 
 sudo service ssh status
@@ -65,6 +66,7 @@ sudo service ssh status
 
 ```
 sudo su 
+cd
 adduser devops
 visudo
 su devops   
