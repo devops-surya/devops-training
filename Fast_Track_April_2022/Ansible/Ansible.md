@@ -240,6 +240,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 
 ### SCENARIO
 * I had 5 servers in the hosts . but i want the playbook to be run on only one server.
+
 ![preview](../images/ansible15.png)
 
 ```
