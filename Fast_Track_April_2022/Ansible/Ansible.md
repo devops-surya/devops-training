@@ -49,7 +49,7 @@ The main usecase of CM tool are idempotency .
 
 ## LAB SETUP of ANSIBLE :
 
-![preview](../images/ansible5.png)
+![preview](../images/nansible5.png)
 
 * 1. Enabling the password based authentication :
 ```
