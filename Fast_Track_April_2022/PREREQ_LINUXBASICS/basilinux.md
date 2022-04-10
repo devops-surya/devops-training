@@ -80,3 +80,9 @@ clear or ctrl+l
 
 ```
 echo "devops"
+
+## Connecting to the VM :
+* Ways of connecting to a ubuntu machine .Refer below image
+* 1. password based
+* 2. Key based
+![preview](../images/ansible4.png)

@@ -52,11 +52,19 @@ The main usecase of CM tool are idempotency .
 ![preview](../images/ansible5.png)
 
 * 1. Enabling the password based authentication :
+```
+sudo su 
+vi /etc/ssh/sshd_config
+sudo service ssh restart 
+sudo service ssh status
+```
+![preview](../images/nansible1.png)
 ![preview](../images/ansible6.png)
 
 * 2. Create a user  and give sudo acess
 
 ```
+sudo su 
 adduser devops
 visudo
 su devops   
@@ -78,8 +86,6 @@ ssh-copy-id devops@<nodeipadress>
 
 ![preview](../images/ansible5.png)
 
-## MOBAXTERM 
-* To install  [REFER HERE](https://chocolatey.org/packages/MobaXTerm)
 
 
 ### Ansible installation  on ACS SERVER: 
@@ -92,7 +98,7 @@ sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible
 ```
 
-### Install python on the NODE1: 
+### Installing  python on the NODE1: 
 
 ```
 sudo apt update
