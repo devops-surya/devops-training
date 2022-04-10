@@ -156,10 +156,10 @@ sudo apt-get install openjdk-8-jdk
 java -version
 
 sudo apt-get update
-sudo apt-get install tomcat8
+sudo apt-get install 9
 
-sudo service tomcat8 restart
-sudo service tomcat8 status
+sudo service tomcat9 restart
+sudo service tomcat9 status
 ```
 ![preview](../images/ansible13.png)
 ![preview](../images/ansible14.png)
@@ -191,14 +191,14 @@ sudo service tomcat8 status
         name: openjdk-8-jdk
         state: present
         update_cache: yes
-    - name: installing tomcat8 
+    - name: installing tomcat9
       apt: 
-        name: tomcat8
+        name: tomcat9
         state: present
         update_cache: yes
-    - name: restart the tomcat8 
+    - name: restart the tomcat9
       service:
-         name: tomcat8
+         name: tomcat9
          state: restarted
     
 ```
