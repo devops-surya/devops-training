@@ -269,7 +269,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
   tasks:
     - name: using variables in ansible
       apt:
-        name: "{package_name}"
+        name: "{{package_name}}"
         state: present
         update_cache: yes
 
@@ -285,11 +285,11 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
   become: yes
   vars:
     package_name:
-      - tomcat8
+      - tomcat9
   tasks:
     - name: using variables in ansible
       apt:
-        name: "{package_name}"
+        name: "{{package_name}}"
         state: present
         update_cache: yes
 
