@@ -162,7 +162,7 @@ sudo service tomcat9 restart
 sudo service tomcat9 status
 ```
 ![preview](../images/ansible13.png)
-![preview](../images/ansible14.png)
+![preview](../images/nansible14.png)
 
 ## sample playbook:
 
