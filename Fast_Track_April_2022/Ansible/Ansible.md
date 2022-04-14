@@ -370,7 +370,7 @@ sudo systemctl restart apache2
 sudo yum update 
 sudo yum  install httpd -y 
 sudo systemctl enable httpd
-sudo yum install php libapche2-mod-php php-mysql php-cli -y 
+sudo yum install php libapache2-mod-php php-mysql php-cli -y 
 sudo vi /var/www/html/info.php
 <?php
 phpinfo();
