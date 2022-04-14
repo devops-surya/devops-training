@@ -276,7 +276,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 ```
 
 ## Host level and group level :
-![preview](../images/ansible16.png)
+![preview](../images/nansible15.png)
 
 ## For playbook level variable see below playbook:
 
