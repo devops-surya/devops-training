@@ -388,8 +388,6 @@ sudo systemctl restart httpd
 * copy
 
 
-### Exercise is to run the playbook wrote for the apache2 and php modules
-
 ## Running playbook in ubuntu server
 
 ```
@@ -554,7 +552,7 @@ ansible-playbook -i hosts apache2centos.yml --check
         update_cache: yes
 ```
 
-## If i didnt found any module / im unable to get the exact modules.
+## If you  didnt found any module /  unable to get the exact modules.
 
 * We have  modules in ansible  where we can provide the linux command as it is and run the playbook.
 * Examples : shell and command modules
