@@ -179,7 +179,7 @@ sudo service tomcat9 status
 
 * Ansible modules [REFER HERE](https://docs.ansible.com/ansible/2.8/modules/list_of_all_modules.html)
 
-## playbook to install java8 and tomcat8
+## playbook to install java8 and tomcat9
 
 ```
 ---
@@ -298,7 +298,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 ## Defining variable at commandline level
 
 ```
- ansible-playbook -i <hostspath> -e " package_name=tomcat8" playbook.yml
+ ansible-playbook -i <hostspath> -e " package_name=tomcat9" playbook.yml
 ```
 
 ### sample deployment of apache and php modules:
@@ -355,7 +355,7 @@ sudo systemctl restart apache2
           <?php
           phpinfo();
           ?>
-    - name: restart the tomcat8
+    - name: restart the apache
       service:
          name: apache2
          state: restarted
@@ -507,7 +507,7 @@ Shell and command modules there wont be any idempotency.
     - name: copying the war file
       copy:
         src: /home/devops/SampleWebApp.war
-        dest: /var/lib/tomcat8/webapps/
+        dest: /var/lib/tomcat9/webapps/
     - name: restart the tomcat9
       service:
         name: tomcat9
@@ -528,7 +528,7 @@ ansible-playbook -i hosts tomcat1.yml
 
 ### ANSIBLE:
 1. Mostly used modules are copy, apt , yum , package , service , systemd , file , blockinfile , lineinfile .
-2. Tomcat home path is /var/lib/tomcat8/webapps/ . It runs on the port 8080 . Tomcat logs will be on the folder /var/log/tomcat8/ .
+2. Tomcat home path is /var/lib/tomcat9/webapps/ . It runs on the port 8080 . Tomcat logs will be on the folder /var/log/tomcat9/ .
 
 
 ## Exercise:
@@ -536,12 +536,12 @@ ansible-playbook -i hosts tomcat1.yml
    * Install java 
    * Install tomcat9
    * Stop the tomcat9
-   * Copy the sample war to the /var/lib/tomcat8/webapps/
+   * Copy the sample war to the /var/lib/tomcat9/webapps/
    * Restart the tomcat9
 * When you are running the above playbook for he second time change the playbook as per below tasks:
    * Stop the tomcat9
-   * Take the backup of the exising code which is in /var/lib/tomcat8/webapps/
-   * Copy the sample war to the /var/lib/tomcat8/webapps/
+   * Take the backup of the exising code which is in /var/lib/tomcat9/webapps/
+   * Copy the sample war to the /var/lib/tomcat9/webapps/
    * Restart the tomcat9
 
 ## Handler in ansible
@@ -657,14 +657,14 @@ ansible-plybook -i hosts -e package_name=git  playbook.yml
 ```
 
 
-* Using the java playbook in installing tomcat8
+* Using the java playbook in installing tomcat9
 
 ```
 - import_playbook: java.yml
 - hosts: all
   become: yes 
   tasks: 
-    - name: installing tomcat8
+    - name: installing tomcat9
       apt:
         name: tomcat9
         state: present 
@@ -672,7 +672,7 @@ ansible-plybook -i hosts -e package_name=git  playbook.yml
     - name: copying the war file
       copy:
         src: /home/devops/SampleWebApp.war
-        dest: /var/lib/tomcat8/webapps/
+        dest: /var/lib/tomcat9/webapps/
     - name: restart the tomcat9
       service:
         name: tomcat9
