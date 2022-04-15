@@ -388,52 +388,6 @@ sudo systemctl restart httpd
 * copy
 
 
-## Running playbook in ubuntu server
-
-```
----
-- hosts: all
-  become: yes
-  tasks:
-    - name: installing apache2
-      apt:
-        name: apache2
-        state: present
-        update_cache: yes
-    - name: enable apache2
-      service:
-        name: apache2
-        enabled: yes
-        state: restarted
-    - name: installing php modules
-      apt:
-        name: "{{ item }}"
-        state: present  
-        update_cache: yes
-      loop:
-        - php
-        - libapache2-mod-php
-        - php-mysql
-        - php-cli
-
-    - name: creating the file info.php
-      file:
-        path: /var/www/html/info.php
-        state: touch
-
-    - name: add content to the info.php file
-      blockinfile:
-        path: /var/www/html/info.php
-        block: |
-          <?php
-          phpinfo();
-          ?>
-    - name: restart the apache2
-      service:
-         name: apache2
-         state: restarted
-```
-
 ## To check the apache and php  installed in browser do as below :
 
 ```
@@ -443,50 +397,6 @@ sudo systemctl restart httpd
 ![preview](../images/ansible18.png)
 
 
-## Running the apache2 and php modules playbook on centos :
-
-```
----
-- hosts: centos
-  become: yes
-  tasks:
-    - name: installing httpd
-      yum:
-        name: httpd
-        state: present
-        update_cache: yes
-    - name: enable httpd
-      systemd:
-        name: httpd
-        enabled: yes
-        state: restarted
-    - name: installing php modules
-      yum:
-        name: "{{ item }}"
-        state: present  
-        update_cache: yes
-      loop:
-        - php
-        - php-mysql
-        - php-cli
-
-    - name: creating the file info.php
-      file:
-        path: /var/www/html/info.php
-        state: touch
-
-    - name: add content to the info.php file
-      blockinfile:
-        path: /var/www/html/info.php
-        block: |
-          <?php
-          phpinfo();
-          ?>
-    - name: restart the httpd
-      systemd:
-         name: httpd
-         state: restarted
-```
 
 ## To check the playbook is having any syntactical errors:
 
@@ -503,7 +413,7 @@ ansible-playbook -i hosts apache2centos.yml --check
 ![preview](../images/ansible20.png)
 
 ## Ansible conditionals:
-* Full document herr [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html)
+* Full document here [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html)
 
 ```
 ---
@@ -552,7 +462,7 @@ ansible-playbook -i hosts apache2centos.yml --check
         update_cache: yes
 ```
 
-## If you  didnt found any module /  unable to get the exact modules.
+## If you  didnt find any module /  unable to get the exact modules.
 
 * We have  modules in ansible  where we can provide the linux command as it is and run the playbook.
 * Examples : shell and command modules
@@ -589,18 +499,18 @@ Shell and command modules there wont be any idempotency.
         name: openjdk-8-jdk
         state: present
         update_cache: yes
-    - name: installing tomcat8
+    - name: installing tomcat9
       apt:
-        name: tomcat8
+        name: tomcat9
         state: present 
         update_cache: yes
     - name: copying the war file
       copy:
         src: /home/devops/SampleWebApp.war
         dest: /var/lib/tomcat8/webapps/
-    - name: restart the tomcat8
+    - name: restart the tomcat9
       service:
-        name: tomcat8
+        name: tomcat9
         state: restarted
 
 ```
@@ -624,17 +534,17 @@ ansible-playbook -i hosts tomcat1.yml
 ## Exercise:
 * Write a playbbok with below tasks :
    * Install java 
-   * Install tomcat8 
-   * Stop the tomcat8
+   * Install tomcat9
+   * Stop the tomcat9
    * Copy the sample war to the /var/lib/tomcat8/webapps/
-   * Restart the tomcat8
+   * Restart the tomcat9
 * When you are running the above playbook for he second time change the playbook as per below tasks:
-   * Stop the tomcat8
+   * Stop the tomcat9
    * Take the backup of the exising code which is in /var/lib/tomcat8/webapps/
    * Copy the sample war to the /var/lib/tomcat8/webapps/
-   * Restart the tomcat8
+   * Restart the tomcat9
 
-   ## Handler in ansible
+## Handler in ansible
 * Handler also one of the module in ansible . It is mostly used to optimise the playbook.
 * For Example 
 
@@ -756,16 +666,16 @@ ansible-plybook -i hosts -e package_name=git  playbook.yml
   tasks: 
     - name: installing tomcat8
       apt:
-        name: tomcat8
+        name: tomcat9
         state: present 
         update_cache: yes
     - name: copying the war file
       copy:
         src: /home/devops/SampleWebApp.war
         dest: /var/lib/tomcat8/webapps/
-    - name: restart the tomcat8
+    - name: restart the tomcat9
       service:
-        name: tomcat8
+        name: tomcat9
         state: restarted
 ```
 
