@@ -308,7 +308,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 sudo apt-get update 
 sudo apt-get  install apache2 -y 
 sudo systemctl enable apache2
-sudo apt-get install php libapche2-mod-php php-mysql php-cli -y 
+sudo apt-get install php libapache2-mod-php php-mysql php-cli -y 
 sudo vi /var/www/html/info.php
 <?php
 phpinfo();
