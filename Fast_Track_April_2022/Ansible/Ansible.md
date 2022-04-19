@@ -828,7 +828,7 @@ ansible-playbook -i hosts tags.yml --tags "tree"
 2. Now skip the tasks which has tag of ```tree```
 
 ```
-ansible-playbook -i hosts tags.yml --tags "tree"
+ansible-playbook -i hosts tags.yml --skip-tags "tree"
 
 ```
 ![preview](../images/n7.png)
