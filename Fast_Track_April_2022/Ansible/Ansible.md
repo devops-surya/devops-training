@@ -742,15 +742,16 @@ This is of distribution "Ubuntu"
     - role: geerlingguy.java
 ```
 
-## how to create a ansible role:
+## How to create a ansible role:
 
 ```
 ansible-galaxy role init <name of role>
 ```
 ![preview](../images/ansible24.png)
 
-## Wriritng Ansible-role to install JAVA 
+## Writing Ansible-role to install JAVA 
 
+* Creating a role 
 ```
 ansible-galaxy role init javarole
 tree javarole
