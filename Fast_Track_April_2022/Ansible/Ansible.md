@@ -532,20 +532,20 @@ ansible-playbook -i hosts tomcat1.yml
 
 
 ## Exercise:
-* Write a playbbok with below tasks :
+* Run the playbbok with below tasks :
    * Install java 
    * Install tomcat9
    * Stop the tomcat9
    * Copy the sample war to the /var/lib/tomcat9/webapps/
    * Restart the tomcat9
-* When you are running the above playbook for he second time change the playbook as per below tasks:
+* When you are running the above playbook for the second time change the playbook as per below tasks:
    * Stop the tomcat9
    * Take the backup of the exising code which is in /var/lib/tomcat9/webapps/
    * Copy the sample war to the /var/lib/tomcat9/webapps/
    * Restart the tomcat9
 
 ## Handler in ansible
-* Handler also one of the module in ansible . It is mostly used to optimise the playbook.
+* Handler is  also one of the module in ansible . It is mostly used to optimise the playbook.
 * For Example 
 
 ```
@@ -680,7 +680,7 @@ ansible-plybook -i hosts -e package_name=git  playbook.yml
 ```
 
 ## 3. ANSIBLE ROLES:
-* ANsible roles are the best way of reusing the playbooks :
+* Ansible roles are the best way of reusing the playbooks :
  We need to understand about the ansible-galaxy [REFER HERE](https://galaxy.ansible.com/)
 
 ## Jinja template
@@ -694,7 +694,7 @@ This is for the os {{ ansible_os_family }}
 This is of distribution {{ ansible_distribution }}
 ```
 
-* playbook goe using jinja template
+* playbook  using jinja template
 
 ```
 ---
@@ -742,16 +742,98 @@ This is of distribution "Ubuntu"
     - role: geerlingguy.java
 ```
 
-## hot to create a ansible role:
+## how to create a ansible role:
 
 ```
 ansible-galaxy role init <name of role>
 ```
 ![preview](../images/ansible24.png)
 
+## Wriritng Ansible-role to install JAVA 
+
+```
+ansible-galaxy role init javarole
+tree javarole
+```
+![preview](../images/n1.png)
+![preview](../images/n2.png)
+
+* Do  tasks/main.yml as below :
+```
+---
+- name: installing java
+  apt:
+    name: openjdk-8-jdk
+    state: present
+    update_cache: yes
+
+```
+![preview](../images/n3.png)
+
+* Now use the javarole in your playbook :
+![preview](../images/n4.png)
+
+```
+---
+- hosts: all
+  become: yes
+  roles:
+    - javarole
 
 
-### How to deal with ansible:
+```
+* Run the above playbook using below command:
+
+```
+ansible-playbook -i hosts usingjavarole.yml
+```
+
+![preview](../images/n5.png)
+
+
+## Tags in Ansible:
+* If you have a large playbook, it may become useful to be able to run only a specific part of it rather than running everything in the playbook. Ansible supports a “tags:” attribute for this reason.
+
+* Tags --  [ReferHere](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_tags.html) 
+
+* Playbook with tags :
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name : Install Tree
+      apt:
+        name: tree
+        state: present
+      tags:
+      - tree
+    - name: install java
+      apt: 
+        name: openjdk-8-jdk
+        state: present
+      tags:
+      - java
+```
+1. Run the taks in the playbook which has tag of ```tree```
+ 
+
+```
+ansible-playbook -i hosts tags.yml --tags "tree"
+```
+![preview](../images/n6.png)
+
+2. Now skip the tasks which has tag of ```tree```
+
+```
+ansible-playbook -i hosts tags.yml --tags "tree"
+
+```
+![preview](../images/n7.png)
+
+
+## How to deal with ansible:
 1. List down the commands/steps to installed the software
 2. My goal is to install tree
 ```
