@@ -861,5 +861,27 @@ yum install tree
         update_cache: yes
 ```
 
-## Terms we learnt in ansible :
-*  Some of them are Modules , parameters , jinja template , hosts , become , taks .
+## Ansible:
+* Ansible is a configuration management tool , we can do deployment as well as configuration management by using ansible .
+* Ansible is a push type model of CM 
+* Ansible uses yaml syntax to write the playbook . But internally ansible is written in python
+* YAML - Yet Another Markup Language
+* Playbooks -- We write playbooks in ansible to mention our desiredstate/tasks to be done.
+* Inventory/hosts -- Where we will provide the nodes information (ipaddress/hostname)
+* Writing host file in different sections 
+* Modules -- parameters.
+* Examples of modules : apt , yum , service , systemd , file , copy  , package , Lineinfile, blockinfile , tags , fail
+* Looping in ansible 
+* Conditionals in ansible 
+* Different types of defining variables -- host, group , playbook,commandline
+* Resuability of playbooks : 1. variables 2.import/include 3. Ansible roles 
+* APache and php installation -- LAMP installation
+* Installing java , tomcat 
+* Created a devops pipeline by using the samplewarfilefrom opensource.
+* Deployed the application by using ansible
+
+
+1. List down manual commands.
+2. Check it by running them manually 
+3. try to automate it by using the playbook (exact module)
+4. create a inventory/host file -- Run the playbook 
