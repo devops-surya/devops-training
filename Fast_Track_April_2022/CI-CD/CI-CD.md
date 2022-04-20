@@ -36,17 +36,15 @@
   [REFER HERE](https://chocolatey.org/packages/MobaXTerm)
   
 
-### Next sessions:
-* we are going to intialize a git and try to push one file to the remote repo , to get understanding about the three phases in the git .
 
-# GIT HISTORY ::
+# GIT HISTORY 
 
 ## Below are the functionality requirements an organization is expecting :
 
 * All the developers has to work on a same code parallely.
 * It must have a feature of versions when the code is being developed.
 * Need to have a feature of tracking the changes in the history.
-* Must have a ability to server the application to the mutiple clients.
+* Must have a ability to serve the application to the mutiple clients.
 
 ### Evolution of VCS :
   * Share the code via mail.
@@ -71,41 +69,12 @@
 
  cd gitpractise
 
- git init  --- it to intilalize the git in the present folder.
+ git init  ---  To intilalize the git in the present folder.
 
 ```
 ![preview](../images/git3.png)
 
-* TO see the changes made are added to the stagging area
-```
-git status
-```
-
-* To add all the changes to the staging area 
-```
-git add .
-```
-
-* To commit all the changes to the local repo 
-
-```
-git commit -m "< added some changes>"
-```
-![preview](../images/git4.png)
-![preview](../images/git5.png)
-
-# Working on git 
-```
- mkdir gitpractise
-
- cd gitpractise
-
- git init  --- it to intilalize the git in the present folder.
-
-```
-![preview](../images/git3.png)
-
-* TO see the changes made are added to the stagging area
+* To see the changes made 
 ```
 git status
 ```
@@ -124,7 +93,8 @@ git commit -m "< added some changes>"
 ![preview](../images/git5.png)
 
 
-* To configure the git  :
+
+* To configure the git in your local  :
 
 ```
 git config --global user.name <username>
