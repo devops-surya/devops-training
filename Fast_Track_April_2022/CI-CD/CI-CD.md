@@ -139,10 +139,10 @@ git checkout master
 ```
 git checkout  --<filename>
 ```
-#### * git checkout --<filename>  -- it is used to remove the changes u made on the working tree , after we do reset..
+### * git checkout --<filename>    -- it is used to remove the changes made on the working tree , after we do reset..
 ![preview](../images/git12.png)
 
-### * Scenario:  If you came across a scenario , where you  want to  remove the changes from stagging area and the working tree at a single shot:
+### * Scenario:  If you came across a scenario , where you  want to  remove the changes from stagging area and the working tree .
 
 ```
 git reset --hard 
@@ -159,7 +159,7 @@ git reset --hard
 * When we are going back to the history , the head will be detached and it will go back to the commit which you are using.
 ![preview](../images/git15.png)
 
-# GIT PUSH 
+## GIT PUSH 
 * git push will add changes  from local repo to the remote repo
 
 ![preview](../images/git16.png)
@@ -223,7 +223,7 @@ git pull https://github.com/devops-surya/sample.git
   ![preview](../images/g2.png) 
   * Developer2 has made changes on the local and pushed the changes , here it is asking for the pull as shown below :
   ![preview](../images/g3.png) 
-  * Developer2 has to pull the code and has to take call of merge conflicta and push the code again.
+  * Developer2 has to pull the code and has to take call of merge conflicts and push the code again.
   ![preview](../images/g4.png)
 
   # Multiple branching :
@@ -270,14 +270,14 @@ git branch -r
 
 ## MERGE :
 ![preview](../images/git41.png)
-* creating a file y1.txt and do add , commit .
+* create a file y1.txt and do add , commit .
 ![preview](../images/git42.png)
-* Switch to the company-x branch .creating a file x1.txt and do add , commit .
+* Switch to the company-x branch . Create  a file x1.txt and do add , commit .
 ![preview](../images/git43.png)
 
 ## Fastforward merge:
 ![preview](../images/git45.png)
-* Create branch a company-z. create afile z1.txt and do add , commit.
+* Create branch a company-z. create a file z1.txt and do add , commit.
 ![preview](../images/git44.png)
 * if u dont want to go with the fastforward merge 
 
@@ -302,7 +302,7 @@ git rebase master
 
 ## cherry-pick :
 ![preview](../images/git50.png)
-* Created a branch-c , added to commits  by creatinf c1.xtx and c2.txt.
+* Create a branch-c , added two commits  by creating c1.xtx and c2.txt.
 ![preview](../images/git49.png)
 * Create a branch-d , add d1.txt . do add and commit.
 ![preview](../images/git51.png)
