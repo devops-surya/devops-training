@@ -11,14 +11,14 @@
 
 # Installing jenkins 
 * prerequisites:
-1. ubuntu
-2. java 
-3. jenkins
+1. Ubuntu
+2. Java 
+3. Jenkins
 
 ## For installing jenkins we have two ways.
-1. jenkins master 
-2. quick setup (it is not the enterprize setup)
-* for quick setup [REFER HERE](https://www.jenkins.io/download/)
+1. Jenkins master 
+2. Quick setup (it is not the enterprize setup)
+* For quick setup [REFER HERE](https://www.jenkins.io/download/)
 ```
  java-jar <path to the download>
 ```
@@ -71,7 +71,7 @@ http://ipaddress:8080
 ## To  create a job , we have multiple ways .Refer below screen shot:
 ![preview](../images/jenkins13.png)
 
-### CREATING A NEW JOB IN FREESTYLE:
+### Creating a new jon in FREESTYLE:
 * click on the newitem and follow the below screenshots :
 ![preview](../images/jenkins14.png)
 ![preview](../images/jenkins15.png)
@@ -81,14 +81,14 @@ http://ipaddress:8080
 
 # Installing jenkins 
 * prerequisites:
-1. ubuntu
-2. java 
-3. jenkins
+1. Ubuntu
+2. Java 
+3. Jenkins
 
 ## For installing jenkins we have two ways.
-1. jenkins master 
-2. quick setup (it is not the enterprize setup)
-* for quick setup [REFER HERE](https://www.jenkins.io/download/)
+1. Jenkins master 
+2. Quick setup (it is not the enterprize setup)
+* For quick setup [REFER HERE](https://www.jenkins.io/download/)
 ```
  java-jar <path to the download>
 ```
