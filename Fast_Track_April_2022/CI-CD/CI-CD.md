@@ -64,7 +64,7 @@
 
 
 
-# Working on git 
+##  Working on git 
 ```
  mkdir gitpractise
 
@@ -125,7 +125,7 @@ git checkout master
 * Git tracks only the files not the folders .
 ![preview](../images/git8.png)
 
-# Working on the git 
+##  Working on the git 
 
 ![preview](../images/git9.png)
 
@@ -158,10 +158,6 @@ git reset --hard
 ## Detached head
 * When we are going back to the history , the head will be detached and it will go back to the commit which you are using.
 ![preview](../images/git15.png)
-
-## Reporting the issues 
-* Refer to the link [REFER HERE](https://github.com/devops-surya/devops-training/issues
-)
 
 # GIT PUSH 
 * git push will add changes  from local repo to the remote repo
