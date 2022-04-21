@@ -302,7 +302,7 @@ git rebase master
 
 ## cherry-pick :
 ![preview](../images/git50.png)
-* Create a branch-c , added two commits  by creating c1.xtx and c2.txt.
+* Create a branch-c , add two commits  by creating c1.xtx and c2.txt.
 ![preview](../images/git49.png)
 * Create a branch-d , add d1.txt . do add and commit.
 ![preview](../images/git51.png)
