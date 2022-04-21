@@ -121,27 +121,27 @@ mvn package = mvn compile + mvn test + mvn package
 ![preview](../images/jenkins44.png)  
 ![preview](../images/jenkins45.png) 
 
-* Delete workspace before every buils , if it is checked it is going to rmove the whole workspca for every build.
+* Delete workspace before every buils , if it is checked it is going to rmove the workspace for every build.
 ![preview](../images/jenkins46.png)
 
 
 
 # Create a job for GOL build.
-1. create a freestyle job with name __gol__
+1. Create a freestyle job with name __gol__
 2. SCM -- provide the github url 
 3. POLLSCM --- * * * * *
-4. DELETE the workspace for every build
+4. Delete the workspace for every build
 5. BUILD -- provide the goal in the invoke top-level maen plugin.
 
 ![preview](../images/jenkins47.png)
 
 ![preview](../images/jenkins48.png)
 
-5. BUild the job.
+5. Build the job.
 
 ![preview](../images/jenkins49.png)
 
-6. GO to configure and add post build actions as below:
+6. Go to configure and add post build actions as below:
 
 ![preview](../images/jenkins50.png)
 
@@ -155,7 +155,7 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins52.png)
 
-9. BUild the job and output will be as shown below:
+9. Build the job and output will be as shown below:
 
 ![preview](../images/jenkins53.png)
 
@@ -166,23 +166,23 @@ mvn package = mvn compile + mvn test + mvn package
     ``` 
     sudo service jenkins restart 
     ```
-  2. FROM GUI 
+  2. From GUI 
     ![preview](../images/jenkins54.png)
   3. In manage jenkins
      ![preview](../images/jenkins55.png)
 
 ## Configurations in the __ Manage jenkins__
-* IN manage jenkins => configure system 
+* In manage jenkins => configure system 
 
 ![preview](../images/jenkins56.png)
 
 ![preview](../images/jenkins57.png)
 
-* IN manage jenkins => configure global security 
+* In manage jenkins => configure global security 
 
 ![preview](../images/jenkins58.png)
 
-* IN manage jenkins => manage plugins
+* In manage jenkins => manage plugins
 
 ![preview](../images/jenkins59.png)
 
@@ -237,8 +237,8 @@ mvn package = mvn compile + mvn test + mvn package
 ## Below are the high level steps discussed on the freestyle:
 1. Git 
 2. Invoke top level maven plugin
-3. archive the artifacts
-4. publish the junit reports
+3. Archive the artifacts
+4. Publish the junit reports
 5. Running the ansible playbook.
 
 ## Creating a jenkins job in pipeline format:
@@ -272,8 +272,8 @@ node('<LABEL>'){
 
 # Jenkins pipeline :
 * In jenkins pipeline there are two ways:
-  1. pipeline  script     
-  2. pipeline  script from SCM
+  1. Pipeline  script     
+  2. Pipeline  script from SCM
 
 * The approcah we follow for the jenkins pipeline and writing the groovy for is called as pipeline-as-code.
 
@@ -314,8 +314,8 @@ node('ubuntu'){
 ## Jenkinsfile 
 * Using jenkins will be helpful in tracking the changes .
 
-## scripted pipeline vs declarative pipeline :
-*  scripted pipeline:
+## Scripted pipeline vs declarative pipeline :
+*  Scripted pipeline:
 ```
 node('ubuntu'){
     stage('git clone'){
@@ -421,7 +421,7 @@ pipeline {
 
 ![preview](../images/jenkins87.png)
 
-* Go to the repo from which you want to fork:
+* Go to the repo  which you want to fork:
 
 ![preview](../images/jenkins88.png) 
 
@@ -435,7 +435,7 @@ pipeline {
 * Install the plugin shown in below image:
 ![preview](../images/jenkins91.png)
 
-* Ater install we see can the option in parameteres:
+* After install we see can the option in parameteres:
 ![preview](../images/jenkins92.png)
 
 ![preview](../images/jenkins93.png)
@@ -499,7 +499,7 @@ pipeline {
 }
 ```
 
-## Triigers for build peridically and pollSCM in the pipeline job [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers)
+## Triggers for build peridically and pollSCM in the pipeline job [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers)
 
 ```
 pipeline {
@@ -632,7 +632,7 @@ pipeline {
 * To install the jfrog [REFER HERE](https://jfrog.com/open-source/#artifactory)
 ![preview](../images/jenkins104.png)
 
-* After downloading that you  need copy that to the machine where you  want to install artifactory:
+* After downloading that , need copy that to the machine where you  want to install artifactory:
  1. In your local machine , copy the jfrog-artifactory-oss-7.10.6.deb to the path documents => mobaxterm => home 
  2. copy to the artifactory machine
     ```
@@ -644,7 +644,7 @@ pipeline {
     systemctl enable artifactory
     sudo systemctl start  artifactory
     ```
-  4. OPen artifactory in UI
+  4. Open artifactory in UI
     ```
     http://publicip:8081/artifactory
     ```
