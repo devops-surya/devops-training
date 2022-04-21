@@ -110,7 +110,7 @@ git config --list
 * To add only the modified changes to the stagging area:
 
 ```
-git add -U 
+git add -u
 ```
 
 ```
@@ -139,17 +139,17 @@ git checkout master
 ```
 git checkout  --<filename>
 ```
-* git checkout --<filename>  -- it is used to remove the changes u made on the working tree , after we do reset..
+#### * git checkout --<filename>  -- it is used to remove the changes u made on the working tree , after we do reset..
 ![preview](../images/git12.png)
 
-### * Scenario.. If you came across a scenario , where you  want to  remove the changes from stagging area and the working tree at a single shot:
+### * Scenario:  If you came across a scenario , where you  want to  remove the changes from stagging area and the working tree at a single shot:
 
 ```
 git reset --hard 
 ```
 ![preview](../images/git13.png)
 
-* removin the file is also a chnage in the working of git.
+#### * Removing  the file is also a change in the working of git.
 ![preview](../images/git14.png)
 
 
