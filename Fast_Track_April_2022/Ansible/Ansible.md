@@ -861,7 +861,7 @@ yum install tree
         update_cache: yes
 ```
 
-## Ansible:
+## Ansible::
 * Ansible is a configuration management tool , we can do deployment as well as configuration management by using ansible .
 * Ansible is a push type model of CM 
 * Ansible uses yaml syntax to write the playbook . But internally ansible is written in python
