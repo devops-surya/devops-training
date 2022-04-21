@@ -253,7 +253,7 @@ git checkout <branchname>
 * To create a branch and switch to it directly:
 
 ```
-git checkout -b <branchname>
+git checkout -b <branchname> 
 ```
 ![preview](../images/git36.png)
 ![preview](../images/git37.png)
