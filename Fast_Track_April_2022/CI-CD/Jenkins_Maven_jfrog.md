@@ -45,11 +45,11 @@ sudo apt-get install jenkins
 ```
 http://ipaddress:8080
 ```
-* After iusing above command we will get below screen on browser:
+* After using above command we will get below screen on browser:
 ![preview](../images/jenkins4.png)
- * copy the password and paste it on the browser:
+ * Copy the password and paste it on the browser:
 ![preview](../images/jenkins5.png)
-* CLick on the install suggested plugins , then u will see below page:
+* Click on the install suggested plugins , then u will see below page:
 ![preview](../images/jenkins6.png)
 * provide the username, password , email:
 ![preview](../images/jenkins7.png)
@@ -78,75 +78,6 @@ http://ipaddress:8080
 ![preview](../images/jenkins16.png)
 ![preview](../images/jenkins17.png)
 
-
-# Installing jenkins 
-* prerequisites:
-1. Ubuntu
-2. Java 
-3. Jenkins
-
-## For installing jenkins we have two ways.
-1. Jenkins master 
-2. Quick setup (it is not the enterprize setup)
-* For quick setup [REFER HERE](https://www.jenkins.io/download/)
-```
- java-jar <path to the download>
-```
-## For installing jenkins master :
-* For the jenkins installation [REFER HERE](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu) 
-
-
-
-```
-sudo apt-get update
-sudo apt-get install openjdk-8-jdk
-
-java -version
-
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > \
-    /etc/apt/sources.list.d/jenkins.list'
-sudo apt-get update
-sudo apt-get install jenkins
-```
-
-* To open jenkins on brower 
-
-```
-http://ipaddress:8080
-```
-* After iusing above command we will get below screen on browser:
-![preview](../images/jenkins4.png)
- * copy the password and paste it on the browser:
-![preview](../images/jenkins5.png)
-* CLick on the install suggested plugins , then u will see below page:
-![preview](../images/jenkins6.png)
-* provide the username, password , email:
-![preview](../images/jenkins7.png)
-* After providing usename and password click on the save and continue:
-![preview](../images/jenkins8.png)
-* Main page of jenkins
-![preview](../images/jenkins9.png)
-
-## To create a new job , we wil use new item:
-![preview](../images/jenkins10.png)
-
-## Manage jenkins is used to configure the jenkins (settings)
-![preview](../images/jenkins11.png)
-
-## jenkins executor :
-* Executor will define , how many jobs run parallely at a time.
-![preview](../images/jenkins12.png)
-
-## To  create a job , we have multiple ways .Refer below screen shot:
-![preview](../images/jenkins13.png)
-
-### CREATING A NEW JOB IN FREESTYLE:
-* click on the newitem and follow the below screenshots :
-![preview](../images/jenkins14.png)
-![preview](../images/jenkins15.png)
-![preview](../images/jenkins16.png)
-![preview](../images/jenkins17.png)
 
 # Build tools
    * c => Make, GCC
