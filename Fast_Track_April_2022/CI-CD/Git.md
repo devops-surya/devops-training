@@ -187,8 +187,21 @@ git remote add origin https://github.com/devops-surya/sample.git
 
 git push origin master
 
+
 ```
 ![preview](../images/git22.png)
+
+## PersonalAccessTokens
+* Git depricated the support of using password and  expecting us to use the PersonalAccessToekn as password.
+* Go to >> Settings >> Developer Settings >> Personal access tokens >> Generate New Token >> 1.Note 2.Expiration 3.select scopes 4. Generate Token
+
+![preview](../images/gn1.png)
+![preview](../images/gn2.png)
+![preview](../images/gn3.png)
+![preview](../images/gn4.png)
+![preview](../images/gn5.png)
+![preview](../images/gn6.png)
+
 
 
 ## * scenario : A new developer added to a team and he/she want the  total code from the repositry:
