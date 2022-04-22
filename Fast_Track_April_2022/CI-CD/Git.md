@@ -217,11 +217,7 @@ git clone https://github.com/devops-surya/sample.git
 git pull https://github.com/devops-surya/sample.git
 ```
 
-# Merge conflicts.
-
-* understanding of the git flow :
-
-![preview](../images/git24.png)
+## Merge conflicts.
 
 ## * Scenario : We have two developers newly assigned to a new project.
 
