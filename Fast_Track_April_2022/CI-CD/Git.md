@@ -152,6 +152,12 @@ git reset --hard
 #### * Removing  the file is also a change in the working of git.
 ![preview](../images/git14.png)
 
+## Git Revert :
+* Git revert is to revert the commit .
+![preview](../images/gn9.png)
+![preview](../images/gn7.png)
+![preview](../images/gn8.png)
+
 
 ## Head 
 * Head will be always at the latest commit .
