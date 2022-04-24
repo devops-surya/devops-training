@@ -5,7 +5,6 @@
 
 * Git is the version control system (VCS)
 
-# GIT HISTORY 
 
 ## Below are the functionality requirements an organization is expecting :
 
@@ -14,6 +13,7 @@
 * Need to have a feature of tracking the changes in the history.
 * Must have a ability to serve the application to the mutiple clients.
 
+# GIT HISTORY 
 ### Evolution of VCS :
   * Share the code via mail.
   * Sharedfolder .
