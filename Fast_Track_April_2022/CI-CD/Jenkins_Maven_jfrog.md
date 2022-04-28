@@ -58,7 +58,7 @@ http://ipaddress:8080
 * Main page of jenkins
 ![preview](../images/jenkins9.png)
 
-## To create a new job , we wil use new item:
+## To create a new job , we will use new item:
 ![preview](../images/jenkins10.png)
 
 ## Manage jenkins is used to configure the jenkins (settings)
@@ -71,7 +71,7 @@ http://ipaddress:8080
 ## To  create a job , we have multiple ways .Refer below screen shot:
 ![preview](../images/jenkins13.png)
 
-### Creating a new jon in FREESTYLE:
+### Creating a new job in FREESTYLE:
 * click on the newitem and follow the below screenshots :
 ![preview](../images/jenkins14.png)
 ![preview](../images/jenkins15.png)
@@ -96,7 +96,7 @@ http://ipaddress:8080
   * Install
   * clean
 # compile: 
-* when we are firing the command __mvn compile__.This creates the  classfile.
+* when we are do  ```__mvn compile__```.This creates the  classfile.
 
 # Test:  __mvn test__
 * This executes the junit tests.
