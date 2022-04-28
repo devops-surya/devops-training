@@ -327,3 +327,14 @@ git rebase master
 * git pull = git fetch + git merge 
 
 ## Branching strategy 
+
+* Git Working 
+* Multiple phases : Working Tree, Staging area , Local repo , Remote repo .
+* Git history 
+* Organization expectation 
+* Git add , commit , push , clone , pull , reset , reset --hard , revert , merge rebase , ff merge , cherry-pick , 
+* Branching startegies 
+* git status
+* Creating local branches , merge between branches
+* Listing the local and remote branches .
+* Pushing the multiple branches to the remote repos .
