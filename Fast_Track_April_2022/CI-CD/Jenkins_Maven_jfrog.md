@@ -84,6 +84,15 @@ http://ipaddress:8080
    * Java => Ant, Maven, Gradle
    * .net => MSBuild, dotnet build
 
+
+## Install maven 
+
+```
+sudo apt update
+sudo apt install maven
+mvn -version
+```
+
 * For maven projects , we are going to have POM.XML , in which developer defines the dependencies to build the project and also he will define the output of the build.
 ![preview](../images/jenkins38.png)
 ![preview](../images/jenkins39.png)  
@@ -96,7 +105,7 @@ http://ipaddress:8080
   * Install
   * clean
 # compile: 
-* when we are do  ```__mvn compile__```.This creates the  classfile.
+* when you  do  ```__mvn compile__```.This creates the  classfile.
 
 # Test:  __mvn test__
 * This executes the junit tests.
