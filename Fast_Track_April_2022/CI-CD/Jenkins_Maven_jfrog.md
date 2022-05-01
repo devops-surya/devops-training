@@ -212,8 +212,8 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins95.png)
 
-## To trigger the jenkins jobs from one-job-to-another-job:
-* Install the plugin shown in the below image:
+## Trigger the jenkins jobs from one-job-to-another-job:
+* Install the plugin __Parameterized Trigger__ as shown in the below image:
 ![preview](../images/jenkins97.png)
 
 * Use the __Trigger parameterized build on other projects__ to trigger other job:
