@@ -155,7 +155,7 @@ mvn package = mvn compile + mvn test + mvn package
 
 6. Go to configure and add post build actions as below:
 
-![preview](../images/jenkins50.png)
+![preview](../images/jen1.png)
 
 7. Build the job and ouput will be as below:
 
@@ -194,9 +194,10 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins58.png)
 
+## Manage Plugins
 * In manage jenkins => manage plugins
 
-![preview](../images/jenkins59.png)
+![preview](../images/jen2.png)
 
 ## Adding a Node to the jenkins:
 * For understanding the node concept. refer below image :
@@ -232,6 +233,7 @@ mvn package = mvn compile + mvn test + mvn package
 ![preview](../images/jenkins69.png)
 
 ## Backup of jenkins:
+
 ![preview](../images/jenkins70.png)
 
 ![preview](../images/jenkins71.png)
