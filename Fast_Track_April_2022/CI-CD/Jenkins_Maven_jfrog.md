@@ -266,7 +266,7 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins61.png)
 
-* To add the node to the jenkins as per the above image. Do the ssh-keygen as below in jenkins-master:
+* To add the node to the jenkins as per the above image. Do the ssh-keygen as showm below in jenkins-master:
 
 ![preview](../images/jenkins62.png)
 
