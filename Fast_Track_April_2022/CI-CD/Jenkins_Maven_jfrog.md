@@ -1,4 +1,75 @@
 # JENKINS and MAVEN
+
+# Maven:
+* Maven is a build automation tool and it helps DevOps in providing automation around the Build phase of the DevOps Life Cycle Management.
+
+## MAVEN GOALS:
+  * compile
+  * Test
+  * package
+  * Install
+  * clean
+## compile: 
+* when you  do  ```__mvn compile__```.This creates the  classfile.
+
+## Test:  __mvn test__
+* This executes the junit tests.
+
+## package :  __mvn package__
+* This will create the package (.war/.jar/.ear)
+
+## clean :  __mvn clean__
+* when you do clean , it will delete the old war and create the war.
+* Basically the output will be stored in the target folder.
+
+```
+mvn test = mvn compile + mvn test
+mvn package = mvn compile + mvn test + mvn package
+
+```
+## Build tools
+   * c => Make, GCC
+   * Java => Ant, Maven, Gradle
+   * .net => MSBuild, dotnet build
+
+
+## Install maven 
+
+```
+sudo apt update
+sudo apt install maven
+mvn -version
+```
+
+## POM.XML : -  Developer defines the dependencies to build the project and also he will define the output of the build:
+* POM stands for Project Object Model. It is the fundamental unit of work in the Maven. It is an XML file. It consists of all the information about the projects and the build configuration details used to build the project. It resides in the base directory of the Maven as the pom.xml
+
+![preview](../images/jenkins38.png)
+
+*  The Project Object Model consists of the following configuration information they are as follows,
+
+    • Build profiles
+
+    • Developers
+
+    • Goals
+
+    • Mailing list
+
+    • Plugins
+
+    • Project dependencies
+
+    • Project version
+
+
+## Types of Maven repository they are central, local, and remote
+![preview](../images/jenkins39.png)  
+![preview](../images/jenkins40.png) 
+
+
+# Jenkins:
+* Jenkins is an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called pipelines.
 * Jenkins is a ci/cd tool
 * ci -- continous integration 
 * cd -- continous delivery / continous deployment
@@ -70,69 +141,29 @@ http://ipaddress:8080
 ## Multiple ways to create a job:
 ![preview](../images/jenkins13.png)
 
-## Creating a new job in FREESTYLE:
+## Create a job in FREESTYLE:
 * click on the newitem and follow the below screenshots :
 ![preview](../images/jenkins14.png)
 ![preview](../images/jenkins15.png)
 ![preview](../images/jenkins16.png)
 ![preview](../images/jenkins17.png)
 
+## Jenkins workspace, Jobs, Builds, Jenkins HOME_PATH/HOME_DIRECTORY
+* All the jenkins stuff will be stored in the jenkins HOME_PATH = /var/lib/jenkins/
+* /var/lib/jenkins/workspace : - Jenkins workspace for everyjob is stored
+![preview](../images/jen16.png)
+* /var/lib/jenkins/jobs : - Configurations of everyjob is stored
+![preview](../images/jen15.png)
+* Delete workspace before every build ,it removes the workspace for every build.
+![preview](../images/jenkins46.png)
 
-## Build tools
-   * c => Make, GCC
-   * Java => Ant, Maven, Gradle
-   * .net => MSBuild, dotnet build
 
-
-## Install maven 
-
-```
-sudo apt update
-sudo apt install maven
-mvn -version
-```
-
-* For maven projects , we are going to have POM.XML , in which developer defines the dependencies to build the project and also he will define the output of the build.
-![preview](../images/jenkins38.png)
-![preview](../images/jenkins39.png)  
-![preview](../images/jenkins40.png) 
-
-## MAVEN GOALS:
-  * compile
-  * Test
-  * package
-  * Install
-  * clean
-## compile: 
-* when you  do  ```__mvn compile__```.This creates the  classfile.
-
-## Test:  __mvn test__
-* This executes the junit tests.
-
-## package :  __mvn package__
-* This will create the package (.war/.jar/.ear)
-
-## clean :  __mvn clean__
-* when you do clean , it will delete the old war and create the war.
-* Basically the output will be stored in the target folder.
-
-```
-mvn test = mvn compile + mvn test
-mvn package = mvn compile + mvn test + mvn package
-
-```
-
-* Jenkins is having a maven plugin called __invoke top-levl maven plugin__
+## Integrate maven in jenkins using  __invoke top-levl maven plugin__ :
 ![preview](../images/jenkins41.png) 
 ![preview](../images/jenkins42.png) 
 ![preview](../images/jenkins43.png)
 ![preview](../images/jenkins44.png)  
 ![preview](../images/jenkins45.png) 
-
-## Jenkins workspace and Jenkins HOME_PATH
-* All the jenkins stuff will be stored in the jenkins HOME_PATH = /var/lib/jenkins/
-* Delete workspace before every build ,it removes the workspace for every build.
-![preview](../images/jenkins46.png)
 
 
 ## Multiple sections in jenkins freestyle job:
@@ -182,9 +213,33 @@ mvn package = mvn compile + mvn test + mvn package
 * Define all you Post-build action steps here 
 ![preview](../images/jen14.png)
 
-## Archive the artifacts / Publish JUnit test results report
+## Build with parameters:
 
-## Create a job for GOL build.
+![preview](../images/jenkins90.png)
+
+* Install the plugin shown in below image:
+![preview](../images/jenkins91.png)
+
+* After install we can see the option in parameters:
+![preview](../images/jenkins92.png)
+
+![preview](../images/jenkins93.png)
+
+![preview](../images/jenkins94.png)
+
+![preview](../images/jenkins95.png)
+
+* To trigger the jenkins jobs from one-to-another:
+  * Install the plugin shown in the below image:
+![preview](../images/jenkins97.png)
+
+* To install see the below options on the jenkins UI:
+    ![preview](../images/jenkins98.png)
+    ![preview](../images/jenkins99.png)
+
+
+## Archive the artifacts / Publish JUnit test results report :
+### Create a job for GOL build.
 1. Create a freestyle job with name __gol__
 2. SCM -- provide the github url 
 3. POLLSCM --- * * * * *
@@ -217,32 +272,55 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins53.png)
 
-## Build with parameters:
-
-![preview](../images/jenkins90.png)
-
-* Install the plugin shown in below image:
-![preview](../images/jenkins91.png)
-
-* After install we see can the option in parameters:
-![preview](../images/jenkins92.png)
-
-![preview](../images/jenkins93.png)
-
-![preview](../images/jenkins94.png)
-
-![preview](../images/jenkins95.png)
-
-* To trigger the jenkins jobs from aone-to-another:
-  * Install the plugin shown in the below image:
-![preview](../images/jenkins97.png)
-
-* For installing we can see the below options on the jenkins UI:
-    ![preview](../images/jenkins98.png)
-    ![preview](../images/jenkins99.png)
 
 
-## Restarting the jenkins :
+## Add a Node/slave to the jenkins:
+* For understanding the node concept. refer below image :
+
+![preview](../images/jenkins60.png)
+
+## Basic architecture of jenkins master and node:
+
+![preview](../images/jenkins61.png)
+
+* To add the node to the jenkins as per the above image. Do the ssh-keygen as below in jenkins-master:
+
+![preview](../images/jenkins62.png)
+
+## Add node/slave to the jenkins.
+
+* In manage jenkins => mange nodes 
+
+![preview](../images/jenkins63.png)
+
+![preview](../images/jenkins64.png)
+
+![preview](../images/jenkins65.png)
+
+![preview](../images/jenkins66.png)
+
+![preview](../images/jenkins67.png)
+
+## Use node/slave in the jenkins job:
+
+![preview](../images/jenkins68.png)
+
+![preview](../images/jenkins69.png)
+
+## Backup of jenkins:
+
+![preview](../images/jenkins70.png)
+
+![preview](../images/jenkins71.png)
+
+![preview](../images/jenkins72.png)
+
+![preview](../images/jenkins73.png)
+
+![preview](../images/jenkins74.png)
+
+
+## Restart the jenkins :
 * Multiple ways to restart 
   1. In cli 
     ``` 
@@ -274,54 +352,7 @@ mvn package = mvn compile + mvn test + mvn package
 ![preview](../images/jenkins72.png)
 
 
-## Adding a Node to the jenkins:
-* For understanding the node concept. refer below image :
-
-![preview](../images/jenkins60.png)
-
-## Basic architecture of jenkins master and node:
-
-![preview](../images/jenkins61.png)
-
-* To add the node to the jenkins as per the above image. Do the ssh-keygen as below in jenkins-master:
-
-![preview](../images/jenkins62.png)
-
-## In jenkins to add the node.
-
-* In manage jenkins => mange nodes 
-
-![preview](../images/jenkins63.png)
-
-![preview](../images/jenkins64.png)
-
-![preview](../images/jenkins65.png)
-
-![preview](../images/jenkins66.png)
-
-![preview](../images/jenkins67.png)
-
-## Using node on the jenkins job:
-
-![preview](../images/jenkins68.png)
-
-![preview](../images/jenkins69.png)
-
-## Backup of jenkins:
-
-![preview](../images/jenkins70.png)
-
-![preview](../images/jenkins71.png)
-
-![preview](../images/jenkins72.png)
-
-![preview](../images/jenkins73.png)
-
-![preview](../images/jenkins74.png)
-
-
-
-# Creating a jenkins job in pipeline format:
+# Create a jenkins job in pipeline format:
 ![preview](../images/jenkins76.png)
 
 ![preview](../images/jenkins77.png)
