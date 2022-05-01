@@ -108,7 +108,7 @@ http://ipaddress:8080
 ![preview](../images/jenkins7.png)
 * After providing usename and password click on the save and continue:
 ![preview](../images/jenkins8.png)
-* Main page of jenkins
+* Dashboard of jenkins
 ![preview](../images/jenkins9.png)
 
 ## Create a new job:
@@ -117,14 +117,14 @@ http://ipaddress:8080
 ## Manage jenkins is used to configure the jenkins (settings) :
 ![preview](../images/jenkins11.png)
 
-## jenkins executor :
+## Jenkins executor :
 * Executor will define , how many jobs run parallely at a time.
 ![preview](../images/jenkins12.png)
 
 ## Multiple ways to create a job:
 ![preview](../images/jenkins13.png)
 
-## Create a job in FREESTYLE:
+## Create a job in Freestyle:
 * click on the newitem and follow the below screenshots :
 ![preview](../images/jenkins14.png)
 ![preview](../images/jenkins15.png)
@@ -212,11 +212,11 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins95.png)
 
-* To trigger the jenkins jobs from one-to-another:
-  * Install the plugin shown in the below image:
+## To trigger the jenkins jobs from one-job-to-another-job:
+* Install the plugin shown in the below image:
 ![preview](../images/jenkins97.png)
 
-* To install see the below options on the jenkins UI:
+* Use the __Trigger parameterized build on other projects__ to trigger other job:
     ![preview](../images/jenkins98.png)
     ![preview](../images/jenkins99.png)
 
