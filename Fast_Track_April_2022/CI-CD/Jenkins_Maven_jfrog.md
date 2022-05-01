@@ -26,7 +26,6 @@
 * For the jenkins installation [REFER HERE](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu) 
 
 
-
 ```
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
@@ -68,10 +67,10 @@ http://ipaddress:8080
 * Executor will define , how many jobs run parallely at a time.
 ![preview](../images/jenkins12.png)
 
-## To  create a job , we have multiple ways .Refer below screen shot:
+## Multiple ways to create a job:
 ![preview](../images/jenkins13.png)
 
-### Creating a new job in FREESTYLE:
+## Creating a new job in FREESTYLE:
 * click on the newitem and follow the below screenshots :
 ![preview](../images/jenkins14.png)
 ![preview](../images/jenkins15.png)
@@ -185,7 +184,7 @@ mvn package = mvn compile + mvn test + mvn package
 
 ## Archive the artifacts / Publish JUnit test results report
 
-### Create a job for GOL build.
+## Create a job for GOL build.
 1. Create a freestyle job with name __gol__
 2. SCM -- provide the github url 
 3. POLLSCM --- * * * * *
@@ -522,7 +521,7 @@ EX: Game-of-life.war-Release-1.0
 ![preview](../images/jenkins101.png)
 
 
-### Jenkins declarative pipeline syntax:
+## Jenkins declarative pipeline syntax:
 * For the pipeline syntax refer the link [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/)
 
 ## For git pipeline syatax [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/git/)
@@ -664,7 +663,7 @@ pipeline {
 
 ```
 
-### Building the another job from this present job [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/)
+## Building the another job from this present job [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/)
 ```
 pipeline {
    agent any
@@ -714,7 +713,7 @@ pipeline {
 
 
 
-### Jfrog artifactory :
+## Jfrog artifactory :
 * To install the jfrog [REFER HERE](https://jfrog.com/open-source/#artifactory)
 ![preview](../images/jenkins104.png)
 
