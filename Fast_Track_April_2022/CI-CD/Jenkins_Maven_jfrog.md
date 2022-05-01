@@ -157,7 +157,7 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins50.png)
 
-7. Build the job again and ouput will be as below:
+7. Build the job and ouput will be as below:
 
 ![preview](../images/jenkins51.png)
 
@@ -242,16 +242,16 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins74.png)
 
-## Adding node to the jenkins:
 
-![preview](../images/jenkins75.png)
 
 ## Below are the high level steps discussed on the freestyle:
 1. Git 
 2. Invoke top level maven plugin
-3. Archive the artifacts
-4. Publish the junit reports
-5. Running the ansible playbook.
+3. Poll SCM 
+4. Archive the artifacts
+5. Publish the junit reports
+6. Running the ansible playbook.
+
 
 ## Creating a jenkins job in pipeline format:
 ![preview](../images/jenkins76.png)
