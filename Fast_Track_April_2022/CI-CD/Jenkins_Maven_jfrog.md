@@ -130,17 +130,20 @@ mvn package = mvn compile + mvn test + mvn package
 ![preview](../images/jenkins44.png)  
 ![preview](../images/jenkins45.png) 
 
-* Delete workspace before every buils , if it is checked it is going to rmove the workspace for every build.
+## Jenkins workspace and Jenkins HOME_PATH
+* All the jenkins stuff will be stored in the jenkins HOME_PATH = /var/lib/jenkins/
+* Delete workspace before every build ,it removes the workspace for every build.
 ![preview](../images/jenkins46.png)
 
 
+# Archive the artifacts / Publish JUnit tes =t results report
 
-# Create a job for GOL build.
+### Create a job for GOL build.
 1. Create a freestyle job with name __gol__
 2. SCM -- provide the github url 
 3. POLLSCM --- * * * * *
 4. Delete the workspace for every build
-5. BUILD -- provide the goal in the invoke top-level maen plugin.
+5. BUILD -- Provide the goal in the invoke top-level maen plugin.
 
 ![preview](../images/jenkins47.png)
 
@@ -160,7 +163,7 @@ mvn package = mvn compile + mvn test + mvn package
 
 * Artifacts are nothing but the war/jar/ear files.
 
-8. Go to configure and add the publish junit test resulta as below:
+8. Go to configure and add the publish junit test results as below:
 
 ![preview](../images/jenkins52.png)
 
@@ -200,11 +203,11 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins60.png)
 
-## Basic image of jenkins amster and node:
+## Basic image of jenkins master and node:
 
 ![preview](../images/jenkins61.png)
 
-* To add the node to the jenkins as per the above image. Did the ssh-keygen as below:
+* To add the node to the jenkins as per the above image. Do the ssh-keygen as below in jenkins-master:
 
 ![preview](../images/jenkins62.png)
 
@@ -444,7 +447,7 @@ pipeline {
 * Install the plugin shown in below image:
 ![preview](../images/jenkins91.png)
 
-* After install we see can the option in parameteres:
+* After install we see can the option in parameters:
 ![preview](../images/jenkins92.png)
 
 ![preview](../images/jenkins93.png)
