@@ -249,7 +249,7 @@ http://ipaddress:8080
 
 8. Go to configure and add the publish junit test results as below:
 
-![preview](../images/jenkins52.png)
+![preview](../images/jen1.png)
 
 9. Build the job and output will be as shown below:
 
@@ -257,8 +257,8 @@ http://ipaddress:8080
 
 
 
-## Add a Node/slave to the jenkins:
-* For understanding the node concept. refer below image :
+## Jenkins Node/slave in jenkins:
+* For understanding the node concept. refer below architecture :
 
 ![preview](../images/jenkins60.png)
 
