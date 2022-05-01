@@ -136,6 +136,53 @@ mvn package = mvn compile + mvn test + mvn package
 ![preview](../images/jenkins46.png)
 
 
+## Multiple sections in jenkins freestyle job:
+1. General
+2. Source Code Management
+3. Build Triggers
+4. Build Environment
+5. Build 
+6. Post-build Actions
+
+![preview](../images/jen3.png)
+
+## 1. General :
+* Description : - Describe about your job
+* Discard old builds : - No of days / No of build to be exists 
+![preview](../images/jen4.png)
+* This project is parameterized : - When can use parameters 
+![preview](../images/jen5.png)
+* Disable this project  : -  It will disable the project like can't Run/build the job
+![preview](../images/jen6.png)
+* Execute concurrent builds if necessary : - It allows you to run the same job multipletimes parallely
+![preview](../images/jen7.png)
+
+
+## 2. Source Code Management
+* Git : - Provide Githuburl/credentials , Branch to build 
+![preview](../images/jen8.png)
+
+## 3. Build Triggers
+* Trigger builds remotely : - Triggers the remote other jobs 
+* Build after other projects are built : - Its allows you to build the present job after any succesfull job
+![preview](../images/jen9.png)
+* Build periodically : - It build the job at given schedule
+![preview](../images/jen10.png)
+* Poll SCM : - It build the job at given schedule , only when there are changes in code repository
+![preview](../images/jen11.png)
+
+## 4. Build Environment
+* Delete workspace before build starts : - Delete and creates a new workspace for every build
+![preview](../images/jen12.png)
+
+## 5. Build
+* Define all your build steps here :
+![preview](../images/jen13.png)
+
+## 6. Post-build Actions
+* Define all you Post-build action steps here 
+![preview](../images/jen14.png)
+
 ## Archive the artifacts / Publish JUnit test results report
 
 ### Create a job for GOL build.
@@ -171,6 +218,30 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins53.png)
 
+## Build with parameters:
+
+![preview](../images/jenkins90.png)
+
+* Install the plugin shown in below image:
+![preview](../images/jenkins91.png)
+
+* After install we see can the option in parameters:
+![preview](../images/jenkins92.png)
+
+![preview](../images/jenkins93.png)
+
+![preview](../images/jenkins94.png)
+
+![preview](../images/jenkins95.png)
+
+* To trigger the jenkins jobs from aone-to-another:
+  * Install the plugin shown in the below image:
+![preview](../images/jenkins97.png)
+
+* For installing we can see the below options on the jenkins UI:
+    ![preview](../images/jenkins98.png)
+    ![preview](../images/jenkins99.png)
+
 
 ## Restarting the jenkins :
 * Multiple ways to restart 
@@ -199,12 +270,17 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jen2.png)
 
+![preview](../images/jenkins71.png)
+
+![preview](../images/jenkins72.png)
+
+
 ## Adding a Node to the jenkins:
 * For understanding the node concept. refer below image :
 
 ![preview](../images/jenkins60.png)
 
-## Basic image of jenkins master and node:
+## Basic architecture of jenkins master and node:
 
 ![preview](../images/jenkins61.png)
 
@@ -246,16 +322,7 @@ mvn package = mvn compile + mvn test + mvn package
 
 
 
-## Below are the high level steps discussed on the freestyle:
-1. Git 
-2. Invoke top level maven plugin
-3. Poll SCM 
-4. Archive the artifacts
-5. Publish the junit reports
-6. Running the ansible playbook.
-
-
-## Creating a jenkins job in pipeline format:
+# Creating a jenkins job in pipeline format:
 ![preview](../images/jenkins76.png)
 
 ![preview](../images/jenkins77.png)
@@ -286,12 +353,12 @@ node('<LABEL>'){
 
 ## Jenkins pipeline :
 * In jenkins pipeline there are two ways:
-  1. Pipeline  script     
-  2. Pipeline  script from SCM
+  1. Pipeline  script     -- Scripted pipeline 
+  2. Pipeline  script from SCM -- Declarative pipeline
 
 * The approcah we follow for the jenkins pipeline and writing the groovy for is called as pipeline-as-code.
 
-## Basic script :
+## Basic scripted pipeline :
 ```
 node('ubuntu'){
     stage('git clone'){
@@ -442,29 +509,6 @@ pipeline {
 ![preview](../images/jenkins89.png)
 
 
-## Build with parameters:
-
-![preview](../images/jenkins90.png)
-
-* Install the plugin shown in below image:
-![preview](../images/jenkins91.png)
-
-* After install we see can the option in parameters:
-![preview](../images/jenkins92.png)
-
-![preview](../images/jenkins93.png)
-
-![preview](../images/jenkins94.png)
-
-![preview](../images/jenkins95.png)
-
-* To trigger the jenkins jobs from aone-to-another:
-  * Install the plugin shown in the below image:
-![preview](../images/jenkins97.png)
-
-* For installing we can see the below options on the jenkins UI:
-    ![preview](../images/jenkins98.png)
-    ![preview](../images/jenkins99.png)
 
 ## SNAPSHOT vs RELEASE 
 * If you find the a artifacts with the Snapshot , that means it is still in development.
@@ -588,7 +632,35 @@ pipeline {
 
 ## Parameters using in jenkins pipeline [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters)
 ```
+pipeline {
+    agent any
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
+            }
+        }
+    }
+}
 
 ```
 
