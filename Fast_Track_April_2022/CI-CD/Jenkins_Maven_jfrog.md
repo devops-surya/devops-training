@@ -43,29 +43,12 @@ mvn package = mvn compile + mvn test + mvn package
 
 ## POM.XML : -  Developer defines the dependencies to build the project and also he will define the output of the build:
 * POM stands for Project Object Model. It is the fundamental unit of work in the Maven. It is an XML file. It consists of all the information about the projects and the build configuration details used to build the project. It resides in the base directory of the Maven as the pom.xml
-
-![preview](../images/jenkins38.png)
-
-*  The Project Object Model consists of the following configuration information they are as follows,
-
-    • Build profiles
-
-    • Developers
-
-    • Goals
-
-    • Mailing list
-
-    • Plugins
-
-    • Project dependencies
-
-    • Project version
-
-
-## Types of Maven repository they are central, local, and remote
-![preview](../images/jenkins39.png)  
 ![preview](../images/jenkins40.png) 
+
+
+## Types of Maven repositories : - central, local, and remote
+![preview](../images/jenkins38.png)
+![preview](../images/jenkins39.png)  
 
 
 # Jenkins:
