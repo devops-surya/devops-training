@@ -111,10 +111,10 @@ http://ipaddress:8080
 * Main page of jenkins
 ![preview](../images/jenkins9.png)
 
-## To create a new job , we will use new item:
+## Create a new job:
 ![preview](../images/jenkins10.png)
 
-## Manage jenkins is used to configure the jenkins (settings)
+## Manage jenkins is used to configure the jenkins (settings) :
 ![preview](../images/jenkins11.png)
 
 ## jenkins executor :
@@ -131,7 +131,7 @@ http://ipaddress:8080
 ![preview](../images/jenkins16.png)
 ![preview](../images/jenkins17.png)
 
-## Jenkins workspace, Jobs, Builds, Jenkins HOME_PATH/HOME_DIRECTORY
+## Jenkins workspace, Jobs, Builds, Jenkins HOME_PATH/HOME_DIRECTORY :
 * All the jenkins stuff will be stored in the jenkins HOME_PATH = /var/lib/jenkins/
 * /var/lib/jenkins/workspace : - Jenkins workspace for everyjob is stored
 ![preview](../images/jen16.png)
@@ -171,11 +171,11 @@ http://ipaddress:8080
 ![preview](../images/jen7.png)
 
 
-## 2. Source Code Management
+## 2. Source Code Management:
 * Git : - Provide Githuburl/credentials , Branch to build 
 ![preview](../images/jen8.png)
 
-## 3. Build Triggers
+## 3. Build Triggers:
 * Trigger builds remotely : - Triggers the remote other jobs 
 * Build after other projects are built : - Its allows you to build the present job after any succesfull job
 ![preview](../images/jen9.png)
@@ -184,15 +184,15 @@ http://ipaddress:8080
 * Poll SCM : - It build the job at given schedule , only when there are changes in code repository
 ![preview](../images/jen11.png)
 
-## 4. Build Environment
+## 4. Build Environment:
 * Delete workspace before build starts : - Delete and creates a new workspace for every build
 ![preview](../images/jen12.png)
 
-## 5. Build
+## 5. Build:
 * Define all your build steps here :
 ![preview](../images/jen13.png)
 
-## 6. Post-build Actions
+## 6. Post-build Actions:
 * Define all you Post-build action steps here 
 ![preview](../images/jen14.png)
 
@@ -200,7 +200,7 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins90.png)
 
-* Install the plugin shown in below image:
+* Install the plugin as shown in below image:
 ![preview](../images/jenkins91.png)
 
 * After install we can see the option in parameters:
