@@ -3,6 +3,19 @@
 # Maven:
 * Maven is a build automation tool and it helps DevOps in providing automation around the Build phase of the DevOps Life Cycle Management.
 
+## Build tools
+   * c => Make, GCC
+   * Java => Ant, Maven, Gradle
+   * .net => MSBuild, dotnet build
+
+## Install maven 
+
+```
+sudo apt update
+sudo apt install maven
+mvn -version
+```
+
 ## MAVEN GOALS:
   * compile
   * Test
@@ -26,19 +39,6 @@
 mvn test = mvn compile + mvn test
 mvn package = mvn compile + mvn test + mvn package
 
-```
-## Build tools
-   * c => Make, GCC
-   * Java => Ant, Maven, Gradle
-   * .net => MSBuild, dotnet build
-
-
-## Install maven 
-
-```
-sudo apt update
-sudo apt install maven
-mvn -version
 ```
 
 ## POM.XML : -  Developer defines the dependencies to build the project and also he will define the output of the build:
