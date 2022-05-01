@@ -9,7 +9,7 @@
 ![preview](../images/jenkins3.png)
 
 
-# Installing jenkins 
+## Installing jenkins 
 * prerequisites:
 1. Ubuntu
 2. Java 
@@ -79,7 +79,7 @@ http://ipaddress:8080
 ![preview](../images/jenkins17.png)
 
 
-# Build tools
+## Build tools
    * c => Make, GCC
    * Java => Ant, Maven, Gradle
    * .net => MSBuild, dotnet build
@@ -104,16 +104,16 @@ mvn -version
   * package
   * Install
   * clean
-# compile: 
+## compile: 
 * when you  do  ```__mvn compile__```.This creates the  classfile.
 
-# Test:  __mvn test__
+## Test:  __mvn test__
 * This executes the junit tests.
 
-# package :  __mvn package__
+## package :  __mvn package__
 * This will create the package (.war/.jar/.ear)
 
-# clean :  __mvn clean__
+## clean :  __mvn clean__
 * when you do clean , it will delete the old war and create the war.
 * Basically the output will be stored in the target folder.
 
@@ -136,7 +136,7 @@ mvn package = mvn compile + mvn test + mvn package
 ![preview](../images/jenkins46.png)
 
 
-# Archive the artifacts / Publish JUnit test results report
+## Archive the artifacts / Publish JUnit test results report
 
 ### Create a job for GOL build.
 1. Create a freestyle job with name __gol__
@@ -198,7 +198,7 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins59.png)
 
-# Adding a Node to the jenkins:
+## Adding a Node to the jenkins:
 * For understanding the node concept. refer below image :
 
 ![preview](../images/jenkins60.png)
@@ -242,7 +242,7 @@ mvn package = mvn compile + mvn test + mvn package
 
 ![preview](../images/jenkins74.png)
 
-# Adding node to the jenkins:
+## Adding node to the jenkins:
 
 ![preview](../images/jenkins75.png)
 
@@ -282,7 +282,7 @@ node('<LABEL>'){
   
 ```
 
-# Jenkins pipeline :
+## Jenkins pipeline :
 * In jenkins pipeline there are two ways:
   1. Pipeline  script     
   2. Pipeline  script from SCM
@@ -429,7 +429,7 @@ pipeline {
 ![preview](../images/jenkins85.png)
 ![preview](../images/jenkins86.png)
 
-# FORK:
+## FORK:
 
 ![preview](../images/jenkins87.png)
 
@@ -464,14 +464,14 @@ pipeline {
     ![preview](../images/jenkins98.png)
     ![preview](../images/jenkins99.png)
 
-# SNAPSHOT vs RELEASE 
+## SNAPSHOT vs RELEASE 
 * If you find the a artifacts with the Snapshot , that means it is still in development.
 * If you find your artifact with the release , that means it is ready for the deploymnet and sent it to production.
 
 EX: Game-of-life.war-sanapshot-1.0 
 EX: Game-of-life.war-Release-1.0
 
-# Upstream and Downstream projects:
+## Upstream and Downstream projects:
 ![preview](../images/jenkins100.png)
 ![preview](../images/jenkins101.png)
 
