@@ -136,7 +136,7 @@ mvn package = mvn compile + mvn test + mvn package
 ![preview](../images/jenkins46.png)
 
 
-# Archive the artifacts / Publish JUnit tes =t results report
+# Archive the artifacts / Publish JUnit test results report
 
 ### Create a job for GOL build.
 1. Create a freestyle job with name __gol__
