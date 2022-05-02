@@ -241,6 +241,7 @@ http://ipaddress:8080
 ![preview](../images/jenkins53.png)
 
 ## Build with parameters:
+* Documentation [ReferHere](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build)
 
 ![preview](../images/jenkins90.png)
 
