@@ -22,11 +22,12 @@ mvn -version
   * package
   * Install
   * clean
-## compile: 
-* when you  do  ```__mvn compile__```.This creates the  classfile.
+## compile: __mvn compile__
+* Compile : - compile the source code
+* when you  do  ```__mvn compile__```. It creates the  classfile.
 
 ## Test:  __mvn test__
-* This executes the junit tests.
+* test :- run unit tests
 
 ## package :  __mvn package__
 * This will create the package (.war/.jar/.ear)
