@@ -128,6 +128,13 @@ http://ipaddress:8080
 ## Create a new job:
 ![preview](../images/jenkins10.png)
 
+## Create a job in Freestyle:
+* click on the newitem and follow the below screenshots :
+![preview](../images/jenkins14.png)
+![preview](../images/jenkins15.png)
+![preview](../images/jenkins16.png)
+![preview](../images/jenkins17.png)
+
 ## Manage jenkins is used to configure the jenkins (settings) :
 ![preview](../images/jenkins11.png)
 
@@ -138,12 +145,6 @@ http://ipaddress:8080
 ## Multiple ways to create a job:
 ![preview](../images/jenkins13.png)
 
-## Create a job in Freestyle:
-* click on the newitem and follow the below screenshots :
-![preview](../images/jenkins14.png)
-![preview](../images/jenkins15.png)
-![preview](../images/jenkins16.png)
-![preview](../images/jenkins17.png)
 
 ## Jenkins workspace, Jobs, Builds, Jenkins HOME_PATH/HOME_DIRECTORY :
 * All the jenkins stuff will be stored in the jenkins HOME_PATH = /var/lib/jenkins/
@@ -206,7 +207,7 @@ http://ipaddress:8080
 ![preview](../images/jen14.png)
 
 
-## Archive the artifacts / Publish JUnit test results report :
+## Scenario: Create a CI pipeline .
 ### Create a job for GOL build.
 1. Create a freestyle job with name __gol__
 2. SCM -- provide the github url 
@@ -257,6 +258,9 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins95.png)
 
+## Upstream and Downstream projects:
+![preview](../images/jenkins100.png)
+![preview](../images/jenkins101.png)
 ## Trigger the jenkins jobs from one-job-to-another-job:
 * Install the plugin __Parameterized Trigger__ as shown in the below image:
 ![preview](../images/jenkins97.png)
@@ -538,10 +542,6 @@ pipeline {
 
 EX: Game-of-life.war-sanapshot-1.0 
 EX: Game-of-life.war-Release-1.0
-
-## Upstream and Downstream projects:
-![preview](../images/jenkins100.png)
-![preview](../images/jenkins101.png)
 
 
 ## Jenkins declarative pipeline syntax:
