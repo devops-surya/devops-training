@@ -50,6 +50,19 @@ mvn package = mvn compile + mvn test + mvn package
 ![preview](../images/jenkins38.png)
 ![preview](../images/jenkins39.png)  
 
+## Build the code manually using maven:
+* Clone the code from github.
+```
+git clone https://github.com/devops-surya/game-of-life.git
+cd game-of-life.git
+```
+![preview](../images/jen21.png)  
+![preview](../images/jen22.png)  
+* __mvn package__
+![preview](../images/jen23.png)  
+![preview](../images/jen24.png)  
+
+
 
 # Jenkins:
 * Jenkins is an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called pipelines.
@@ -141,14 +154,6 @@ http://ipaddress:8080
 ![preview](../images/jenkins46.png)
 
 
-## Integrate maven in jenkins using  __invoke top-levl maven plugin__ :
-![preview](../images/jenkins41.png) 
-![preview](../images/jenkins42.png) 
-![preview](../images/jenkins43.png)
-![preview](../images/jenkins44.png)  
-![preview](../images/jenkins45.png) 
-
-
 ## Multiple sections in jenkins freestyle job:
 1. General
 2. Source Code Management
@@ -191,34 +196,13 @@ http://ipaddress:8080
 ## 5. Build:
 * Define all your build steps here :
 ![preview](../images/jen13.png)
+* Invoke top-level Maven targets : - Invoke the maven steps here
+![preview](../images/jenkins41.png) 
+![preview](../images/jenkins42.png)  
 
 ## 6. Post-build Actions:
 * Define all you Post-build action steps here 
 ![preview](../images/jen14.png)
-
-## Build with parameters:
-
-![preview](../images/jenkins90.png)
-
-* Install the plugin as shown in below image:
-![preview](../images/jenkins91.png)
-
-* After install we can see the option in parameters:
-![preview](../images/jenkins92.png)
-
-![preview](../images/jenkins93.png)
-
-![preview](../images/jenkins94.png)
-
-![preview](../images/jenkins95.png)
-
-## Trigger the jenkins jobs from one-job-to-another-job:
-* Install the plugin __Parameterized Trigger__ as shown in the below image:
-![preview](../images/jenkins97.png)
-
-* Use the __Trigger parameterized build on other projects__ to trigger other job:
-    ![preview](../images/jenkins98.png)
-    ![preview](../images/jenkins99.png)
 
 
 ## Archive the artifacts / Publish JUnit test results report :
@@ -255,6 +239,29 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins53.png)
 
+## Build with parameters:
+
+![preview](../images/jenkins90.png)
+
+* Install the plugin as shown in below image:
+![preview](../images/jenkins91.png)
+
+* After install we can see the option in parameters:
+![preview](../images/jenkins92.png)
+
+![preview](../images/jenkins93.png)
+
+![preview](../images/jenkins94.png)
+
+![preview](../images/jenkins95.png)
+
+## Trigger the jenkins jobs from one-job-to-another-job:
+* Install the plugin __Parameterized Trigger__ as shown in the below image:
+![preview](../images/jenkins97.png)
+
+* Use the __Trigger parameterized build on other projects__ to trigger other job:
+    ![preview](../images/jenkins98.png)
+    ![preview](../images/jenkins99.png)
 
 
 ## Jenkins Node/slave in jenkins:
