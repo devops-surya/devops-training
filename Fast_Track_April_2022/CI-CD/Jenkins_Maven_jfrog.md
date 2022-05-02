@@ -64,6 +64,17 @@ cd game-of-life.git
 ![preview](../images/jen24.png)  
 
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 # Jenkins:
 * Jenkins is an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called pipelines.
@@ -125,6 +136,18 @@ http://ipaddress:8080
 * Dashboard of jenkins
 ![preview](../images/jenkins9.png)
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
 ## Create a new job:
 ![preview](../images/jenkins10.png)
 
@@ -134,6 +157,7 @@ http://ipaddress:8080
 ![preview](../images/jenkins15.png)
 ![preview](../images/jenkins16.png)
 ![preview](../images/jenkins17.png)
+
 
 ## Manage jenkins is used to configure the jenkins (settings) :
 ![preview](../images/jenkins11.png)
@@ -153,6 +177,18 @@ http://ipaddress:8080
 * /var/lib/jenkins/jobs : - Configurations of everyjob is stored
 ![preview](../images/jen15.png)
 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Multiple sections in jenkins freestyle job:
 1. General
@@ -205,6 +241,53 @@ http://ipaddress:8080
 ![preview](../images/jen14.png)
 
 
+
+## Configurations in the __ Manage jenkins__
+* In manage jenkins => configure system 
+
+![preview](../images/jenkins56.png)
+
+![preview](../images/jenkins57.png)
+
+* In manage jenkins => configure global security 
+
+![preview](../images/jenkins58.png)
+
+## Manage Plugins
+* In manage jenkins => manage plugins
+
+![preview](../images/jen2.png)
+
+![preview](../images/jenkins71.png)
+
+![preview](../images/jenkins72.png)
+
+
+## Restart the jenkins :
+* Multiple ways to restart 
+  1. In cli 
+    ``` 
+    sudo service jenkins restart 
+    ```
+  2. From GUI 
+    ![preview](../images/jenkins54.png)
+  3. In manage jenkins
+     ![preview](../images/jenkins55.png)
+
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
 ## Scenario: Create a CI job/pipeline .
 ### Create a job for GOL build.
 1. Create a freestyle job with name __gol__
@@ -239,6 +322,18 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins53.png)
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
 ## Build with parameters:
 ![preview](../images/jenkins90.png)
 
@@ -260,6 +355,17 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins95.png)
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Upstream and Downstream projects:
 ![preview](../images/jenkins100.png)
@@ -272,6 +378,18 @@ http://ipaddress:8080
     ![preview](../images/jenkins98.png)
     ![preview](../images/jenkins99.png)
 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 ## Jenkins Node/slave in jenkins:
@@ -320,36 +438,19 @@ http://ipaddress:8080
 ![preview](../images/jenkins74.png)
 
 
-## Restart the jenkins :
-* Multiple ways to restart 
-  1. In cli 
-    ``` 
-    sudo service jenkins restart 
-    ```
-  2. From GUI 
-    ![preview](../images/jenkins54.png)
-  3. In manage jenkins
-     ![preview](../images/jenkins55.png)
+<br/>
+<br/>
+<br/>
+<br/>
 
-## Configurations in the __ Manage jenkins__
-* In manage jenkins => configure system 
+* * * 
 
-![preview](../images/jenkins56.png)
+<br/>
+<br/>
+<br/>
+<br/>
 
-![preview](../images/jenkins57.png)
 
-* In manage jenkins => configure global security 
-
-![preview](../images/jenkins58.png)
-
-## Manage Plugins
-* In manage jenkins => manage plugins
-
-![preview](../images/jen2.png)
-
-![preview](../images/jenkins71.png)
-
-![preview](../images/jenkins72.png)
 
 
 # Create a jenkins job in pipeline format:
