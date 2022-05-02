@@ -151,6 +151,9 @@ http://ipaddress:8080
 ## Create a new job:
 ![preview](../images/jenkins10.png)
 
+## Multiple ways to create a job:
+![preview](../images/jenkins13.png)
+
 ## Create a job in Freestyle:
 * click on the newitem and follow the below screenshots :
 ![preview](../images/jenkins14.png)
@@ -166,16 +169,6 @@ http://ipaddress:8080
 * Executor will define , how many jobs run parallely at a time.
 ![preview](../images/jenkins12.png)
 
-## Multiple ways to create a job:
-![preview](../images/jenkins13.png)
-
-
-## Jenkins workspace, Jobs, Builds, Jenkins HOME_PATH/HOME_DIRECTORY :
-* All the jenkins stuff will be stored in the jenkins HOME_PATH = /var/lib/jenkins/
-* /var/lib/jenkins/workspace : - Jenkins workspace for everyjob is stored
-![preview](../images/jen16.png)
-* /var/lib/jenkins/jobs : - Configurations of everyjob is stored
-![preview](../images/jen15.png)
 
 
 <br/>
@@ -322,6 +315,15 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins53.png)
 
+
+## Jenkins workspace, Jobs, Builds, Jenkins HOME_PATH/HOME_DIRECTORY :
+* All the jenkins stuff will be stored in the jenkins HOME_PATH = /var/lib/jenkins/
+* /var/lib/jenkins/workspace : - Jenkins workspace for everyjob is stored
+![preview](../images/jen16.png)
+* /var/lib/jenkins/jobs : - Configurations of everyjob is stored
+![preview](../images/jen15.png)
+
+
 <br/>
 <br/>
 <br/>
@@ -355,17 +357,7 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins95.png)
 
-<br/>
-<br/>
-<br/>
-<br/>
 
-* * * 
-
-<br/>
-<br/>
-<br/>
-<br/>
 
 ## Upstream and Downstream projects:
 ![preview](../images/jenkins100.png)
@@ -449,7 +441,6 @@ http://ipaddress:8080
 <br/>
 <br/>
 <br/>
-
 
 
 
