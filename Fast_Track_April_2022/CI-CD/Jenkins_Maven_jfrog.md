@@ -152,8 +152,6 @@ http://ipaddress:8080
 ![preview](../images/jen16.png)
 * /var/lib/jenkins/jobs : - Configurations of everyjob is stored
 ![preview](../images/jen15.png)
-* Delete workspace before every build ,it removes the workspace for every build.
-![preview](../images/jenkins46.png)
 
 
 ## Multiple sections in jenkins freestyle job:
@@ -207,7 +205,7 @@ http://ipaddress:8080
 ![preview](../images/jen14.png)
 
 
-## Scenario: Create a CI pipeline .
+## Scenario: Create a CI job/pipeline .
 ### Create a job for GOL build.
 1. Create a freestyle job with name __gol__
 2. SCM -- provide the github url 
@@ -242,11 +240,15 @@ http://ipaddress:8080
 ![preview](../images/jenkins53.png)
 
 ## Build with parameters:
-* Documentation [ReferHere](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build)
-
 ![preview](../images/jenkins90.png)
 
-* Install the plugin as shown in below image:
+* Git parameter [ReferHere](https://plugins.jenkins.io/git-parameter/)
+* String parameter [ReferHere](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build)
+* Choice Parameter [ReferHere](https://plugins.jenkins.io/extensible-choice-parameter/)
+* Active choice parameter [ReferHere](https://plugins.jenkins.io/uno-choice/#:~:text=The%20Active%20Choices%20plugin%20is,or%20rich%20HTML%20UI%20widgets.)
+
+
+* Install the git-plugin as shown in below image:
 ![preview](../images/jenkins91.png)
 
 * After install we can see the option in parameters:
@@ -258,16 +260,18 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins95.png)
 
+
 ## Upstream and Downstream projects:
 ![preview](../images/jenkins100.png)
-![preview](../images/jenkins101.png)
-## Trigger the jenkins jobs from one-job-to-another-job:
+![preview](../images/jenkins101.png)    
+### Trigger the jenkins jobs from one-job-to-another-job:
 * Install the plugin __Parameterized Trigger__ as shown in the below image:
 ![preview](../images/jenkins97.png)
 
 * Use the __Trigger parameterized build on other projects__ to trigger other job:
     ![preview](../images/jenkins98.png)
     ![preview](../images/jenkins99.png)
+
 
 
 ## Jenkins Node/slave in jenkins:
