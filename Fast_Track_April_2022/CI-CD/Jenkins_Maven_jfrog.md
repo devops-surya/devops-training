@@ -393,9 +393,37 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins61.png)
 
-* To add the node to the jenkins as per the above image. Do the ssh-keygen as showm below in jenkins-master:
+* To add the node to the jenkins as per the above image. Do the ssh-keygen as shown below in jenkins-master:
+
+```
+ssh-keygen
+ssh-copy-id username@ipaddress
+```
 
 ![preview](../images/jenkins62.png)
+
+
+* On node , do the below steps:
+
+```
+
+sudo su 
+
+sudo apt-get update
+
+sudo apt-get install jenkins
+
+vi /etc/ssh/sshd_config 
+
+PasswordAuthentication Yes
+
+sudo service sshd restart
+
+adduser jenkins
+
+visudo -- add jenkins to the sudo group
+
+```
 
 ## Add node/slave to the jenkins.
 
@@ -405,9 +433,10 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins64.png)
 
+![preview](../images/jenkins66.png)
+
 ![preview](../images/jenkins65.png)
 
-![preview](../images/jenkins66.png)
 
 ![preview](../images/jenkins67.png)
 
@@ -428,6 +457,11 @@ http://ipaddress:8080
 ![preview](../images/jenkins73.png)
 
 ![preview](../images/jenkins74.png)
+
+* __Note__ : Makesure the backup folder has 777 permissions.
+
+![preview](../images/jen31.png)
+
 
 
 <br/>
