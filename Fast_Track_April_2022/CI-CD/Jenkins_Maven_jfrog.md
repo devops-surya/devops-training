@@ -816,6 +816,8 @@ pipeline {
 <br/>
 
 
+# JFrog Artifactoy:
+* JFrog Artifactory is the Universal Repository Manager supporting all major packaging formats, build tools and CI servers.
 
 ## Install JFrog Artifactory oss :
 * Installation steps [REFERHERE](https://www.devopsschool.com/blog/artifactory-install-and-configurations-guide/#:~:text=Artifactory%20Pro%20Install%20in%20Linux%20using,jfrog/artifactory/var/etc/system.yaml)
