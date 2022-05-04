@@ -148,6 +148,8 @@ http://ipaddress:8080
 <br/>
 <br/>
 
+
+# Freestyle Project: 
 ## Create a new job:
 ![preview](../images/jenkins10.png)
 
@@ -477,8 +479,8 @@ visudo -- add jenkins to the sudo group
 <br/>
 
 
-
-# Create a jenkins job in pipeline format:
+# Pipeline :
+## Create a jenkins job in pipeline format:
 ![preview](../images/jenkins76.png)
 
 ![preview](../images/jenkins77.png)
@@ -512,7 +514,7 @@ node('<LABEL>'){
   1. Pipeline  script     -- Scripted pipeline 
   2. Pipeline  script from SCM -- Declarative pipeline
 
-* The approcah we follow for the jenkins pipeline and writing the groovy for is called as pipeline-as-code.
+* The approach we follow for the jenkins pipeline and writing the groovy for is called as pipeline-as-code.
 
 ## Basic scripted pipeline :
 ```
@@ -544,12 +546,19 @@ node('ubuntu'){
 * The output of the jenkins pipeline job will be as below:
 ![preview](../images/jenkins81.png)
 
+<br/>
+<br/>
+
+## Tracking the changes in the Jenkins Job:
 ## Job Configuration History :
-* This plugin is used to tarck the changes made previously  .
+* Plugin usage [REFERHERE](https://plugins.jenkins.io/jobConfigHistory/)
+* This plugin is used to track the changes made previously  .
 ![preview](../images/jenkins82.png)
 
 ## Jenkinsfile 
+* Jenkinsfile reference [REFERHERE](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
 * Using jenkins will be helpful in tracking the changes .
+
 
 ## Scripted pipeline vs declarative pipeline :
 *  Scripted pipeline:
@@ -612,45 +621,10 @@ pipeline {
 ![preview](../images/jenkins85.png)
 ![preview](../images/jenkins86.png)
 
-* Declarative pipeline:
-```
-pipeline {
-   agent { label 'ubuntu' }
-   stages{
-       stage('git clone'){
-           steps{
-               git 'https://github.com/devops-surya/game-of-life.git'  
-           }        
-       }
-       stage('build the code'){
-           steps{
-              sh 'mvn package'
-           }
-       }
-       stage('archive the artifacts'){
-           steps{
-              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
-           }          
-       }
-       stage('publish the junit reports'){
-           steps{
-              junit 'gameoflife-web/target/surefire-reports/*.xml'
-           }
-           
-       }
-
-   }
-}
-```
-
-## Create a new pipeline job with pipeline script from scm as below:
-
-![preview](../images/jenkins83.png)
-![preview](../images/jenkins84.png)
 
 ## Blue ocean plugin :
 * In manage jenkins => manage plugins => available => Blue ocean
-* After installing u r going to see below changes:
+* After installing you will see below changes:
 ![preview](../images/jenkins85.png)
 ![preview](../images/jenkins86.png)
 
