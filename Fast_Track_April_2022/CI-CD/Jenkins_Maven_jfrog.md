@@ -486,7 +486,7 @@ visudo -- add jenkins to the sudo group
 ![preview](../images/jenkins77.png)
 
 
-* Basic syntax on the groovy:
+* Basic syntax of groovy:
 
 ```
 node('<LABEL>'){
@@ -539,7 +539,11 @@ node('ubuntu'){
 ## To generate the pipeline script for git:
 ![preview](../images/jenkins79.png)
 
-## To generate pipeline for the publish junkts tests:
+## To generate the pipeline script for archive the artifacts:
+![preview](../images/njen51.png)
+
+
+## To generate pipeline script for the publish junit test results:
 ![preview](../images/jenkins80.png)
 
 
@@ -557,7 +561,11 @@ node('ubuntu'){
 
 ## Jenkinsfile 
 * Jenkinsfile reference [REFERHERE](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
-* Using jenkins will be helpful in tracking the changes .
+* Using jenkinsfile will be helpful in tracking the changes and it is called as __Declarative Pipeline__
+
+## Jenkins declarative pipeline syntax:
+
+* Reference for the __Declarative Pipeline syntax__ [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/)
 
 
 ## Scripted pipeline vs declarative pipeline :
@@ -609,9 +617,6 @@ pipeline {
    }
 }
 ```
-## Jenkins declarative pipeline syntax:
-
-* For the pipeline syntax refer the link [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/)
 
 
 ## Create a new pipeline job with pipeline script from scm as below:
@@ -947,5 +952,6 @@ pipeline {
 
 
     }
+
 
 ```
