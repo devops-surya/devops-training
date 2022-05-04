@@ -619,7 +619,7 @@ pipeline {
 ```
 
 
-## Create a new pipeline job with pipeline script from scm as below:
+## Create a new Jenkins job with Jenkinsfile (Declarative pipeline):
 
 ![preview](../images/jenkins83.png)
 ![preview](../images/jenkins84.png)
@@ -632,6 +632,7 @@ pipeline {
 ![preview](../images/jenkins86.png)
 
 ## Fork:
+* A fork creates a completely independent copy of Git repository that sits in your github account.
 
 ![preview](../images/jenkins87.png)
 
@@ -644,8 +645,8 @@ pipeline {
 
 
 ## SNAPSHOT vs RELEASE 
-* If you find the a artifacts with the Snapshot , that means it is still in development.
-* If you find your artifact with the release , that means it is ready for the deploymnet and sent it to production.
+* If you find an artifact with the Snapshot , that means it is still in development.
+* If you find an artifact with the release , that means it is ready for the deploymnet and sent it to production.
 ```
 EX: Game-of-life.war-sanapshot-1.0 
 EX: Game-of-life.war-Release-1.0
@@ -690,7 +691,7 @@ pipeline {
 }
 ```
 
-## __Upstream__ job triggering: [REFERHERE](https://www.jenkins.io/doc/book/pipeline/syntax/#:~:text=4%20*%20*%201%2D5%27)%20%7D-,upstream,triggers%20%7B%20upstream(upstreamProjects%3A%20%27job1%2Cjob2%27%2C%20threshold%3A%20hudson.model.Result.SUCCESS)%20%7D,-The%20pollSCM%20trigger)
+## __Upstream__ job triggering: [REFERHERE](https://www.jenkins.io/doc/book/pipeline/syntax/#:~:text=4%20*%20*%201%2D5%27)
 
 ```
 pipeline {
