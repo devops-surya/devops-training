@@ -609,17 +609,15 @@ pipeline {
    }
 }
 ```
+## Jenkins declarative pipeline syntax:
+
+* For the pipeline syntax refer the link [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/)
+
 
 ## Create a new pipeline job with pipeline script from scm as below:
 
 ![preview](../images/jenkins83.png)
 ![preview](../images/jenkins84.png)
-
-## Blue ocean plugin :
-* In manage jenkins => manage plugins => available => Blue ocean
-* After installing u r going to see below changes:
-![preview](../images/jenkins85.png)
-![preview](../images/jenkins86.png)
 
 
 ## Blue ocean plugin :
@@ -628,7 +626,7 @@ pipeline {
 ![preview](../images/jenkins85.png)
 ![preview](../images/jenkins86.png)
 
-## FORK:
+## Fork:
 
 ![preview](../images/jenkins87.png)
 
@@ -643,45 +641,11 @@ pipeline {
 ## SNAPSHOT vs RELEASE 
 * If you find the a artifacts with the Snapshot , that means it is still in development.
 * If you find your artifact with the release , that means it is ready for the deploymnet and sent it to production.
-
+```
 EX: Game-of-life.war-sanapshot-1.0 
 EX: Game-of-life.war-Release-1.0
-
-
-## Jenkins declarative pipeline syntax:
-* For the pipeline syntax refer the link [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/)
-
-## For git pipeline syatax [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/git/)
-
 ```
-pipeline {
-   agent any
-   stages{
-       stage('git clone'){
-           steps{
-               git branch: 'master', url: 'https://github.com/devops-surya/game-of-life.git'
-           }        
-       }
-       stage('build the code'){
-           steps{
-              sh 'mvn package'
-           }
-       }
-       stage('archive the artifacts'){
-           steps{
-              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
-           }          
-       }
-       stage('publish the junit reports'){
-           steps{
-              junit 'gameoflife-web/target/surefire-reports/*.xml'
-           }
-           
-       }
 
-   }
-}
-```
 
 ## Triggers for build peridically and pollSCM in the pipeline job [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers)
 
@@ -721,7 +685,7 @@ pipeline {
 }
 ```
 
-## UPSTREAM job triggering:
+## __Upstream__ job triggering: [REFERHERE](https://www.jenkins.io/doc/book/pipeline/syntax/#:~:text=4%20*%20*%201%2D5%27)%20%7D-,upstream,triggers%20%7B%20upstream(upstreamProjects%3A%20%27job1%2Cjob2%27%2C%20threshold%3A%20hudson.model.Result.SUCCESS)%20%7D,-The%20pollSCM%20trigger)
 
 ```
 pipeline {
@@ -790,7 +754,7 @@ pipeline {
 
 ```
 
-## Building the another job from this present job [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/)
+## Triggering remote job [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/)
 ```
 pipeline {
    agent any
@@ -839,60 +803,81 @@ pipeline {
 ![preview](../images/jenkins103.png)
 
 
+<br/>
+<br/>
+<br/>
+<br/>
 
-## Jfrog artifactory :
-* To install the jfrog [REFER HERE](https://jfrog.com/open-source/#artifactory)
-![preview](../images/jenkins104.png)
+* * * 
 
-* After downloading that , need copy that to the machine where you  want to install artifactory:
- 1. In your local machine , copy the jfrog-artifactory-oss-7.10.6.deb to the path documents => mobaxterm => home 
- 2. copy to the artifactory machine
-    ```
-     scp -i <pemfilepath> jfrog-artifactory-oss-7.10.6.deb   ubuntu@<publicip>:/home/ubuntu/
-     ```
- 3. After copying to the artifactory machine follow below commads:
-    ```
-    sudo dpkg -i jfrog-artifactory-oss-7.10.6.deb
-    systemctl enable artifactory
-    sudo systemctl start  artifactory
-    ```
-  4. Open artifactory in UI
-    ```
-    http://publicip:8081/artifactory
-    ```
-    ![preview](../images/jenkins105.png)
-  5. Give the username and password.
-  ```
-  Username: admin
-  Password: password
-  ```
-  ![preview](../images/jenkins106.png)
-  * It will ask for change password:
-  ![preview](../images/jenkins107.png)
+<br/>
+<br/>
+<br/>
+<br/>
 
-  * To create repositry see below steps:
-  ![preview](../images/jenkins108.png)
 
-  ![preview](../images/jenkins109.png)
 
-  ![preview](../images/jenkins110.png)
+## Install JFrog Artifactory oss :
+* Installation steps [REFERHERE](https://www.devopsschool.com/blog/artifactory-install-and-configurations-guide/#:~:text=Artifactory%20Pro%20Install%20in%20Linux%20using,jfrog/artifactory/var/etc/system.yaml)
 
-  ![preview](../images/jenkins111.png)
+```
+# find the release name
+lsb_release -c
+distribution="focal" #ubuntu 20.04
+wget -qO - https://releases.jfrog.io/artifactory/api/gpg/key/public | sudo apt-key add -;
+echo "deb https://releases.jfrog.io/artifactory/artifactory-debs {distribution} main" | sudo tee -a /etc/apt/sources.list;
+sudo apt-get update && sudo apt-get install jfrog-artifactory-oss -y
+sudo systemctl enable artifactory.service
+sudo systemctl start artifactory.service
+sudo systemctl status artifactory.service
 
-  6. Make sure that artifactory plugin is installed before doing the jforgintegartion with jenkins
-   ![preview](../images/jenkins116.png)
+echo "deb https://releases.jfrog.io/artifactory/artifactory-debs focal main" | sudo tee -a /etc/apt/sources.list;
 
-  7. To integrate JFROG with the jenkins , follow below steps:
-      Managejenkins => configure system => artifactory
-    ![preview](../images/jenkins112.png)
-  8. Cretae a maven project by following below steps:
-     ![preview](../images/jenkins113.png)
-     ![preview](../images/jenkins114.png)
-     ![preview](../images/jenkins115.png)
-  9. Build the job and check the jfor artifactory repo :
-     ![preview](../images/jenkins117.png)
+```
 
-* For the  jforg ansible module  [REFER HERE](https://docs.ansible.com/ansible/latest/collections/community/general/maven_artifact_module.html)
+* Access artifactory by using : __https://publicip:8081__ and follow thw below steps:
+* Default username and password :
+```
+Username: admin
+Pasword : password
+```
+![preview](../images/jf1.png)
+![preview](../images/jf2.png)
+![preview](../images/jf3.png)
+![preview](../images/jf4.png)
 
-* For the Jfrog to be added in the Jenkinsfile declarative pipeline [REFER HERE](https://www.jfrog.com/confluence/display/RTF6X/Declarative+Pipeline+Syntax)
+* Create a repository :
+![preview](../images/jf5.png)
+![preview](../images/jf6.png)
+![preview](../images/jf7.png)
+![preview](../images/jf8.png)
+![preview](../images/jf9.png)
+
+
+### Integrate Jfrog with the jenkins :
+* Install Jfrog plugon from __manage plugin__
+![preview](../images/jf10.png)
+
+* After plugin installated, Navigate to Manage jenkins >> Configure System , do the changes as below and save them
+![preview](../images/jf11.png)
+![preview](../images/jf12.png)
+
+
+## Create a Maven-job to store our artifacts to the jfog artifactory:
+1. Create a new maven job 
+![preview](../images/jf13.png)
+
+2. SCM - provide code repository
+![preview](../images/jf14.png)
+
+3. Build -- Provide maven goal 
+![preview](../images/jf15.png)
+
+4. Post-build-Actions -- Deploy Artifacts to Artifactory
+![preview](../images/jf16.png)
+![preview](../images/jf17.png)
+
+5. Build the maven-job to check the artifactory working as per expexted.
+![preview](../images/jf18.png)
+![preview](../images/jf19.png)
 
