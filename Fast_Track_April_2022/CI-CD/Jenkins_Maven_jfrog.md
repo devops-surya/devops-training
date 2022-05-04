@@ -881,3 +881,69 @@ Pasword : password
 ![preview](../images/jf18.png)
 ![preview](../images/jf19.png)
 
+* Upload the artifacts to jfrog in groovy :
+
+```
+pipeline {
+   agent any
+   stages{
+       stage('git clone'){
+           steps{
+               git branch: 'master', url: 'https://github.com/devops-surya/game-of-life.git'
+           }        
+       }
+       stage('build the code'){
+           steps{
+              sh 'mvn package'
+           }
+       }
+       stage('archive the artifacts'){
+           steps{
+              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+           }          
+       }
+       stage('publish the junit reports'){
+           steps{
+              junit 'gameoflife-web/target/surefire-reports/*.xml'
+           }
+           
+       }
+       stage('rt server'){
+           steps{
+               rtServer (
+                   id: 'JFROG-OSS',
+                   url: 'http://35.89.142.196:8082/artifactory',
+                   username: 'admin',
+                   password: 'Jfrog@123',
+                   bypassProxy: true,
+                   timeout: 300
+               )
+
+           }
+       }
+       stage('rt upload'){
+           steps{
+               rtUpload (
+                   serverId: 'JFROG-OSS',
+                   spec: '''{
+                         "files": [
+                             {
+                                 "pattern": "gameoflife-web/target/*.war",
+                                 "target": "my-second-repo/"
+
+                             }
+                                  ]
+                   }''',
+                        
+               )
+
+           }
+
+       }
+
+      }
+
+
+    }
+
+```
