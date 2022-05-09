@@ -19,7 +19,7 @@ echo "deb https://releases.jfrog.io/artifactory/artifactory-debs focal main" | s
 
 ```
 
-* Access artifactory by using : __https://publicip:8081__ and follow thw below steps:
+* Access artifactory by using : __http://publicip:8081__ and follow the below steps:
 * Default username and password :
 ```
 Username: admin
@@ -65,7 +65,7 @@ Pasword : password
 ![preview](../images/jf18.png)
 ![preview](../images/jf19.png)
 
-* Upload the artifacts to jfrog in groovy :
+* Upload the artifacts to jfrog in Declarative-pipeline :
 
 ```
 pipeline {
