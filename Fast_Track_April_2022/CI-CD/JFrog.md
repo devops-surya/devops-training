@@ -66,6 +66,7 @@ Pasword : password
 ![preview](../images/jf19.png)
 
 * Upload the artifacts to jfrog in Declarative-pipeline :
+* Reference Document for __Jfrog Ppeline syntax__ [REFERHERE](https://www.jfrog.com/confluence/display/JFROG/Declarative+Pipeline+Syntax)
 
 ```
 pipeline {
