@@ -13,6 +13,8 @@
 1. Need an EC2 instance (min t2.small)
 2. Install Java-11
   ```sh 
+   sudo su 
+   cd
    apt-get update   
    apt  list | grep openjdk-11  
    apt-get install openjdk-11-jdk -y   
@@ -83,6 +85,7 @@ netstat -plnt
 
 1. Download [soarnqube](https://www.sonarqube.org/downloads/) and extract it.   
   ```sh 
+  sudo su 
   cd /opt/
   wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.2.46101.zip
   apt-get install unzip
