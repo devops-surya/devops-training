@@ -9,6 +9,7 @@
 ![preview](../images/ansible_injenkins.png)
 5. Write a Jenkinsfile which has all steps integrated as shown in above __MasterPipeline__ image.
 
+* __Jenkinsfile__
 ```
 pipeline {
    agent any
@@ -84,4 +85,31 @@ pipeline {
 
 
     }
+```
+
+* __Playbook.yml__
+
+```
+---
+- hosts: all
+  become: yes 
+  tasks: 
+    - name: installing java 
+      apt:
+        name: openjdk-8-jdk
+        state: present
+        update_cache: yes
+    - name: installing tomcat9
+      apt:
+        name: tomcat9
+        state: present 
+        update_cache: yes
+    - name: copying the war file
+      copy:
+        src: /home/devops/SampleWebApp.war
+        dest: /var/lib/tomcat9/webapps/
+    - name: restart the tomcat9
+      service:
+        name: tomcat9
+        state: restarted
 ```
