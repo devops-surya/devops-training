@@ -1,7 +1,7 @@
 # JFrog Artifactoy:
 * JFrog Artifactory is the Universal Repository Manager supporting all major packaging formats, build tools and CI servers.
 
-### Pipeline integration with Jfrog  :
+### Pipeline integrated with Jfrog  :
 ![preview](../images/jfpipeline.png)
 
 
