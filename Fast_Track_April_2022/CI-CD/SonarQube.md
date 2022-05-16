@@ -224,7 +224,7 @@ pipeline{
 
 6. Default Quality Profile VS customized quality profile :
 * Quality profile default 
-![preview](../images/sq15.png)
+![preview](../images/sQ15.png)
 
 * Customized Quality Profile
 ![preview](../images/sq16.png)
