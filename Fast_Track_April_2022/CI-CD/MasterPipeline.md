@@ -78,7 +78,7 @@ pipeline {
         }
         }
         stage('Running ANsible-playbook'){
-            sh 'ansible-playbbok -i /var/lib/jenkins/hosts /var/lib/jenkinsplaybook.yml'
+            sh 'ansible-playbook -i /var/lib/jenkins/hosts /var/lib/jenkins/playbook.yml'
         }
 
       }
@@ -106,7 +106,7 @@ pipeline {
         update_cache: yes
     - name: copying the war file
       copy:
-        src: /home/devops/SampleWebApp.war
+        src: /var/lib/jenkins/workspace/sample/gameoflife-web/target/gameoflife.war
         dest: /var/lib/tomcat9/webapps/
     - name: restart the tomcat9
       service:
