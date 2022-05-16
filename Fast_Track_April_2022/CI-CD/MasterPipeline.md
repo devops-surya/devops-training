@@ -7,7 +7,7 @@
 3. Need Jfrog and SonarQube servers and they must be integrated with jenkins-Master.(Makesure SonarScanner installation also takencare)
 4. Need to setup ssh connection available between jenkins-Master and deployment server.(To run the ansible-playbook)
 ![preview](../images/ansible_injenkins.png)
-5. Write a Jenkinsfile which has all steps integrated as shown in above image.
+5. Write a Jenkinsfile which has all steps integrated as shown in above __MasterPipeline__ image.
 
 ```
 pipeline {
