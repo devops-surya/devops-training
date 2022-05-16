@@ -1,13 +1,14 @@
 # Terraform
-* Terraform is a infraprovisoning tool.
-* Infraprovisoning --- What ever you want to create for your project in the cloud is called as infraprovisoning.
+* Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. 
 
+## Understanding of Terraform:
+* Terraform is a __infraprovisoning__ tool.
+* __Infraprovisoning__ --- What ever you want to create for your project in the cloud is called as infraprovisoning.
 * Terraform work on the multiple clouds.
-* For all the clouds [REFER HERE](https://www.terraform.io/docs/providers/index.html)
-
-* Any cloud  we are using in terraform is called  as provider.
-* Whatever you want to create in the terrafrom is called as resource.
-* Terraform uses the configuration language to write the terraform script.
+* Terraform supported clouds [REFER HERE](https://registry.terraform.io/browse/providers)
+* Any cloud we are using in terraform is called  as __Provider__.
+* Whatever you want to create in the terrafrom is called as __Resource__.
+* Terraform uses the __configuration language__ to write the terraform script.
 ![preview](../images/tf1.png)
 
 ## Prerequisites:
@@ -30,9 +31,7 @@ sudo apt-get install terraform -y
 terraform --version
 ```
 
-# How to  create a ec2 instance in AWS. 
-
-# Create a AWS instance and install terraform:
+## Create a Ec2 instance and install terraform:
 ```
 sudo apt-get update 
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
@@ -42,22 +41,22 @@ terraform --version
 ```
 ## Terraform template :
 ```
-Example:
-
 provider '<name>' {
     <arg1> = <value1>
     <arg2> = <value2>
 }
 ```
-# To write a terraform template for creating VPC in AWS:
+## To write a terraform template for creating VPC in AWS:
 * We must know , how to do it manually .
 * To create a vpc  basic things required are :
    1. Name of vpc
    2. CIDR block
 
+## Authenticate Teeraform to speak with AWS: 
 * Terraform speak to AWS by using IAM(Identity Access Management).
 * As we want to create a VPC in AWS , let see how to configure the aws provider in terraform.
-* create in file with extension .tf (provider.tf)
+* create in file with extension __.tf__ (provider.tf)
+
 ```
 provider "aws" {
   region     = "us-east-2"
@@ -107,13 +106,19 @@ terraform destroy
 ```
 ![preview](../images/tf8.png)
 
-# Using multiple files in the Terraform template:
-* created a folder  multiplefile
+
+## Agruments and Attributes:
+* Arguments are the inputs to your resource and attributes are outputs of your resources
+![preview](../images/tf9.png)
+
+
+## Create a VPC & Subnet using multiple files in the Terraform template:
+* Create a folder  multiplefile
 ```
 mkdir multiplefile
 cd multiplefile
 ```
-* Create a file   provider.tf and add below data to it:
+* Create a file __provider.tf__  and add below data to it:
 
 ```
 provider "aws" {
@@ -123,10 +128,6 @@ provider "aws" {
 }
 
 ```
-
-## Agruments and attributes:
-* Arguments atre the inputs to your resource and attributes are outputs of your resources
-![preview](../images/tf9.png)
 
 * Create a file vpc.tf and add below content:
 
@@ -168,7 +169,7 @@ terraform apply mutilfile.plan
 ![preview](../images/tf11.png)
 
 
-# If you came a across a scenario of creating multiple subnets:
+## If you came a across a scenario of creating multiple subnets:
 1. First case :
     * The main.tf and vars.tf looks like below:
 * main.tf
@@ -288,10 +289,11 @@ variable "subnetcidr" {
   type = list(string)
   default = [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24" ]
 }
+```
 
 ## length in terraform:
 * For length [REFER HERE](https://www.terraform.io/docs/configuration/functions/length.html)
-* After using the legth in terraform script the main.tf will change as below:
+* After using the length in terraform script the main.tf will change as below:
 ```
 provider "aws" {
   region     = "us-east-2"
@@ -332,7 +334,8 @@ variable "subnetcidr" {
 
 ## Depends_on
 * For document [REFER HERE](https://www.terraform.io/docs/configuration/resources.html)
-* AFter adding the depends_on to our script , the main.tf looks as below:
+* After adding the depends_on to our script , the main.tf looks as below:
+
 ```
 provider "aws" {
   region     = "us-east-2"
@@ -359,7 +362,6 @@ resource "aws_subnet" "myfirstsubnet" {
   }
   depends_on = [aws_vpc.myfirstvpc]
 }
-
 
 ```
 
@@ -408,6 +410,8 @@ resource "aws_security_group" "mySG" {
 }
 
 ```
+## Create inbound/outbound rules to the securitygroup
+* For adding securitygroup rules [REFER HERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule)
 * Ingress is for creating the inbound rule and Egress is for creating the outbound rules.
 * After adding the egrees in the terraform template it lokks as below:
 ```
@@ -455,9 +459,8 @@ resource "aws_security_group" "mySG" {
 }
 
 ```
-* For adding securitygroup rules [REFER HERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule)
 
-## creating s3 bucket in teraaform:
+## Create s3 bucket using terraform:
 ```
 resource "aws_s3_bucket" "myfirstbucket" {
   bucket = "my-first-test-bucket"
@@ -471,8 +474,7 @@ resource "aws_s3_bucket" "myfirstbucket" {
 
 ## DATA sources :
 * Data sources are used to query the aws resouces which are already created.
-
-* Creating a subnet with vpc which is already created in aws.
+* Create a subnet to  vpc, which is already created in aws.
 
 ```
 provider "aws" {
@@ -493,11 +495,12 @@ resource "aws_subnet" "example" {
 }
 ```
 
-# Discussion about terraformstatefile :
+## Terraform statefile :
+* Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures. This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
 
 
-# Terraform Registry 
-* Terraform registry is a place where you  can find the predefined modules(terrafrom scripts).
+## Terraform Registry 
+* Terraform registry is a place where you can find the predefined modules(terrafrom scripts).
 ![preview](../images/tf14.png)
 
 * For module document [REFER HERE](https://www.terraform.io/docs/configuration/modules.html) and for the syntax of the terraform module [REFER HERE](https://www.terraform.io/docs/modules/index.html)
@@ -583,7 +586,7 @@ terraform init .
 ![preview](../images/tf15.png)
 
 
-# EC2 instances creation in terraform 
+## EC2 instances creation in terraform 
 * AMI , instancetype , no of instances , vpc , subnet , autoassign publicip , tags , SG , keyname.
 * the vars.tf and main.tf look like below:
 ```
@@ -675,9 +678,9 @@ resource "aws_instance" "myec2" {
 
 ```
 
-# Provisioners in terrafrom 
+## Provisioners in terrafrom 
 # Terraform provisioning :
-* You are assigned with task of creating a vm and installing the necessary softwares in it.
+* You are assigned with task of creating a vm and installing the necessary softwares init.
 * Steps:
   1. Create a VM 
   2. Connection to the VM
