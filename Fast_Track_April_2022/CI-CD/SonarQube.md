@@ -2,6 +2,10 @@
 * SonarQube is an open-source static testing analysis software, it is used by developers to manage source code quality and consistency.
 * __sonarscanner-for-maven__ Official docs [REFERHERE](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
 
+## SonarQube working flow:
+![preview](../images/sqworking.png)
+
+
 ### Pipeline integrated with Jfrog & SonarQube :
 ![preview](../images/sqpipeline.png)
 
@@ -79,6 +83,7 @@ netstat -plnt
 
 1. Download [soarnqube](https://www.sonarqube.org/downloads/) and extract it.   
   ```sh 
+  cd /opt/
   wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.2.46101.zip
   apt-get install unzip
   unzip sonarqube-8.9.2.46101.zip
@@ -89,10 +94,10 @@ netstat -plnt
   sonar.jdbc.username=<sonar_database_username>
   sonar.jdbc.password=<sonar_database_password>
 
-  #sonar.jdbc.username=sonar
-  #sonar.jdbc.password=admin
-  #sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
-  #sonar.search.javaOpts=-Xmx512m -Xms512m -XX:MaxDirectMemorySize=256m -XX:+HeapDumpOnOutOfMemoryError
+  sonar.jdbc.username=sonar
+  sonar.jdbc.password=admin
+  sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
+  sonar.search.javaOpts=-Xmx512m -Xms512m -XX:MaxDirectMemorySize=256m -XX:+HeapDumpOnOutOfMemoryError
   ```
 
 __Note__:Before the step3 do below steps 
@@ -127,7 +132,7 @@ mv sonarqube-8.9.2.46101 sonarqube
 4. Add sonar user and grant ownership to /opt/sonarqube directory 
   ```sh 
   useradd -d /opt/sonarqube sonar
-  chown -R sonar:sonar
+  chown -R sonar:sonar /opt/sonarqube
   ```
 
 5. Reload the demon and start sonarqube service 
