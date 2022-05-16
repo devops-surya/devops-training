@@ -84,8 +84,9 @@ cd game-of-life.git
 
 ## Basic flow of devops :
 ![preview](../images/jenkins1.png)
-![preview](../images/jenkins2.png)
 ![preview](../images/jenkins3.png)
+![preview](../images/sqpipeline.png)
+
 
 
 ## Installing jenkins 
