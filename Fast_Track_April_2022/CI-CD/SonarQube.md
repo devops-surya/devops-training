@@ -24,7 +24,8 @@
   ```
 
 2. Set a password and connect to database (setting password as "admin" password)
-  ```sh 
+  
+  ```sh
   sudo passwd postgres
   su - postgres
   ```
@@ -91,7 +92,7 @@ netstat -plnt
   #sonar.jdbc.password=admin
   #sonar.jdbc.url=jdbc:postgresql://localhost/sonarqube
   #sonar.search.javaOpts=-Xmx512m -Xms512m -XX:MaxDirectMemorySize=256m -XX:+HeapDumpOnOutOfMemoryError
-  ``
+  ```
 
 __Note__:Before the step3 do below steps 
 ```sh
