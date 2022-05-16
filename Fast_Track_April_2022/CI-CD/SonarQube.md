@@ -1,5 +1,9 @@
 # Sonarqube 
 * SonarQube is an open-source static testing analysis software, it is used by developers to manage source code quality and consistency.
+
+### Pipeline integration with Jfrog & SonarQube :
+![preview](../images/sqpipeline.png)
+
 ### Prerequisites
 1. Need an EC2 instance (min t2.small)
 2. Install Java-11
