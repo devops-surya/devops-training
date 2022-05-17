@@ -23,7 +23,10 @@ choco install terraform
 * On ubuntu:
 ```
 sudo apt-get update 
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 sudo apt-get install terraform -y 
+terraform --version
 ```
 * To check terraform version
 
@@ -39,22 +42,38 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 sudo apt-get install terraform -y 
 terraform --version
 ```
-## Terraform template :
+## Authenticate Terraform to speak with AWS: 
+* Terraform speak to AWS by using IAM(Identity Access Management).
+![preview](../images/tfn1.png)
+![preview](../images/tfn2.png)
+![preview](../images/tfn3.png)
+![preview](../images/tfn4.png)
+![preview](../images/tfn5.png)
+![preview](../images/tfn6.png)
+![preview](../images/tfn7.png)
+![preview](../images/tfn8.png)
+
+## Terraform Provider template :
 ```
 provider '<name>' {
     <arg1> = <value1>
     <arg2> = <value2>
 }
 ```
-## To write a terraform template for creating VPC in AWS:
-* We must know , how to do it manually .
-* To create a vpc  basic things required are :
-   1. Name of vpc
-   2. CIDR block
 
-## Authenticate Teeraform to speak with AWS: 
-* Terraform speak to AWS by using IAM(Identity Access Management).
-* As we want to create a VPC in AWS , let see how to configure the aws provider in terraform.
+```
+provider "aws" {
+  region     = "us-east-2"
+  access_key = "AKIAYZCYFVHPR5AP2COI"
+  secret_key = "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"
+}
+```
+
+##  Terraform template to  create VPC in AWS:
+* We must know , how to do it manually .
+* To create a VPC  basic things required are :
+   1. Name of VPC
+   2. CIDR block
 * create in file with extension __.tf__ (provider.tf)
 
 ```

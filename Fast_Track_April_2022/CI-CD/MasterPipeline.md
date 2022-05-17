@@ -118,10 +118,13 @@ pipeline{
         state: restarted
 ```
 
-* Check the application working on broser as shown in below:
+* Check the application working on browser as shown in below:
 
 ```
 http://<publicip>:8080/gameoflife
 ```
 
 ![preview](../images/golbrowser.png)
+
+
+
