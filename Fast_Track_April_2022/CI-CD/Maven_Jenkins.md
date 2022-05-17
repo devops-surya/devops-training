@@ -810,7 +810,7 @@ pipeline {
 ![preview](../images/jenkins103.png)
 
 
-## Integration of ansible , Maven and linux commads directly in jenkins 
+## Integration of ansible , Maven and linux commads directly in Jenkins-job
 * In Build > Execute Shell 
 ![preview](../images/int1.png)
 
