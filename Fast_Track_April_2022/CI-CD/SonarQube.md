@@ -141,6 +141,7 @@ mv sonarqube-8.9.2.46101 sonarqube
 5. Reload the demon and start sonarqube service 
   ```sh 
   systemctl daemon-reload 
+  systemctl enable sonarqube.service
   systemctl start sonarqube.service 
   ```
 

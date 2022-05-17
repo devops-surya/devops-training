@@ -11,19 +11,22 @@
 
 * __Jenkinsfile__
 ```
-pipeline {
-   agent any
-   stages{
-       stage('git clone'){
-           steps{
-               git branch: 'master', url: 'https://github.com/devops-surya/game-of-life.git'
-           }        
-       }
-       stage('build the code'){
-           steps{
-              sh 'mvn package'
-           }
-       }
+pipeline{
+    agent any
+    environment {
+        PATH = "$PATH:/opt/apache-maven-3.8.2/bin"
+    }
+    stages{
+       stage('GetCode'){
+            steps{
+                git 'https://github.com/devops-surya/game-of-life.git'
+            }
+         }        
+       stage('Build'){
+            steps{
+                sh 'mvn clean package'
+            }
+         }
        stage('archive the artifacts'){
            steps{
               archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
@@ -39,7 +42,7 @@ pipeline {
            steps{
                rtServer (
                    id: 'JFROG-OSS',
-                   url: 'http://35.89.142.196:8082/artifactory',
+                   url: 'http://34.222.73.58:8082/artifactory',
                    username: 'admin',
                    password: 'Jfrog@123',
                    bypassProxy: true,
@@ -56,7 +59,7 @@ pipeline {
                          "files": [
                              {
                                  "pattern": "gameoflife-web/target/*.war",
-                                 "target": "my-second-repo/"
+                                 "target": "MasterPipelineRepo/"
 
                              }
                                   ]
@@ -67,6 +70,7 @@ pipeline {
            }
 
        }
+
         stage('SonarQube analysis') {
 //    def scannerHome = tool 'SonarScanner 4.0';
         steps{
@@ -77,14 +81,14 @@ pipeline {
     }
         }
         }
-        stage('Running ANsible-playbook'){
+        stage('Running ansible-playbook'){
+            steps{
             sh 'ansible-playbook -i /var/lib/jenkins/hosts /var/lib/jenkins/playbook.yml'
+            }
         }
-
-      }
-
-
+       
     }
+}
 ```
 
 * __Playbook.yml__
