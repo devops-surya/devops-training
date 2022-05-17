@@ -117,3 +117,11 @@ pipeline{
         name: tomcat9
         state: restarted
 ```
+
+* Check the application working on broser as shown in below:
+
+```
+http://<publicip>:8080/gameoflife
+```
+
+![preview](../images/golbrowser.png)
