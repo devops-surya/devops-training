@@ -814,7 +814,7 @@ pipeline {
 * In Build > Execute Shell 
 ![preview](../images/int1.png)
 
-## jENKINS Built-in environment variables
+## JENKINS Built-in environment variables
 * Jenkins provides a set of environment variables. You can also define your own. Here is a list of built in environment variables:
 
 ```sh
