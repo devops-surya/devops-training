@@ -110,7 +110,7 @@ pipeline{
         update_cache: yes
     - name: copying the war file
       copy:
-        src: /var/lib/jenkins/workspace/sample/gameoflife-web/target/gameoflife.war
+        src: /var/lib/jenkins/workspace/Masterpipeline/gameoflife-web/target/gameoflife.war
         dest: /var/lib/tomcat9/webapps/
     - name: restart the tomcat9
       service:
