@@ -728,7 +728,7 @@ pipeline {
 ```
 
 ## Parameters using in jenkins pipeline [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters)
-```
+```sh
 pipeline {
     agent any
     parameters {
@@ -762,7 +762,7 @@ pipeline {
 ```
 
 ## Triggering remote job [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/)
-```
+```sh
 pipeline {
    agent any
    triggers{
