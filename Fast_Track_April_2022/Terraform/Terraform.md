@@ -1,18 +1,30 @@
 # Terraform
-* Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. 
 
-## Understanding of Terraform:
-* Terraform is a __infraprovisoning__ tool.
-* __Infraprovisoning__ --- What ever you want to create for your project in the cloud is called as infraprovisoning.
-* Terraform work on the multiple clouds.
-* Terraform supported clouds [REFER HERE](https://registry.terraform.io/browse/providers)
-* Any cloud we are using in terraform is called  as __Provider__.
-* Whatever you want to create in the terrafrom is called as __Resource__.
-* Terraform uses the __configuration language__ to write the terraform script.
+* __Terraform__ is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. 
 ![preview](../images/tf1.png)
+
 
 ## Prerequisites:
 * Need to create a AWS free tier account.
+
+
+## Need for Infrastructure Provisioning:
+* The main moto of IAAC is that you write & execute the code to define, deploy, update and destroy your infrastructure.
+* In CI/CD pipelines, we need to create various test environments according to organizational QA policy.
+
+
+## Understanding of Terraform/Terminology:
+* Terraform is a __infraprovisoning__ tool.
+* __Infraprovisoning__ --- What ever you want to create for your project in the cloud is called as infraprovisoning.
+
+![preview](../images/tf1.png)
+
+* Any cloud we are using in terraform is called  as __Provider__.
+* Whatever you want to create in the terrafrom is called as __Resource__.
+* __Arguments__ are the inputs to your resource and __Attributes__ are outputs of your resources
+* Terraform uses the __configuration language__ to write the terraform script.
+* Terraform work on the multiple clouds.
+* Terraform supported clouds [REFER HERE](https://registry.terraform.io/browse/providers)
 
 
 ## How to install terraform:
@@ -34,14 +46,6 @@ terraform --version
 terraform --version
 ```
 
-## Create a Ec2 instance and install terraform:
-```sh
-sudo apt-get update 
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt-get install terraform -y 
-terraform --version
-```
 ## Authenticate Terraform to speak with AWS: 
 * Terraform speak to AWS by using IAM(Identity Access Management).
 ![preview](../images/tfn1.png)
@@ -53,13 +57,15 @@ terraform --version
 ![preview](../images/tfn7.png)
 ![preview](../images/tfn8.png)
 
-## Terraform Provider template :
+## Terraform Provider  :
+
 ```sh
 provider '<name>' {
     <arg1> = <value1>
     <arg2> = <value2>
 }
 ```
+* AWS provider terraform template [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 ```sh
 provider "aws" {
@@ -69,12 +75,26 @@ provider "aws" {
 }
 ```
 
+## Resource syntax :
+
+```
+resource "<resource-type>" "<resource-name>" {
+    arg1 = "value1"
+      ...
+      ..
+      argn = "value2"
+
+}
+```
+
+
 ##  Terraform template to  create VPC in AWS:
 * We must know , how to do it manually .
 * To create a VPC  basic things required are :
    1. Name of VPC
    2. CIDR block
-* Create in file with extension __.tf__ (provider.tf)
+* Create in file with extension __.tf__ (vpc.tf)
+* Resource -- __aws_vpc__   [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
 
 ```sh
 provider "aws" {
@@ -149,6 +169,7 @@ provider "aws" {
 ```
 
 * Create a file vpc.tf and add below content:
+* VPC resource [REFERHER](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
 
 ```sh
 resource "aws_vpc" "myfirstvpc" {
@@ -162,6 +183,7 @@ resource "aws_vpc" "myfirstvpc" {
 
 ```
 * Create a file subnet.tf and add below data:
+& Resource -- __aws_subnet__     [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet)
 ```sh
 resource "aws_subnet" "myfirstsubnet" {
   vpc_id     = aws_vpc.myfirstvpc.id
@@ -187,11 +209,36 @@ terraform apply mutilfile.plan
 ![preview](../images/tf10.png)
 ![preview](../images/tf11.png)
 
+## Variables in terraform :
+* Input variables let you customize aspects of Terraform modules without altering the module's own source code. This allows you to share modules across different Terraform configurations, making your module composable and reusable.
+* Terraform variables [REFERHERE](https://www.terraform.io/language/values/variables)
 
-## If you came a across a scenario of creating multiple subnets:
-1. First case :
-    * The main.tf and vars.tf looks like below:
-* main.tf
+## Use variables to create multiple subnets:
+1. First case : 
+
+### vars.tf:
+```sh
+variable "vpccidr" {
+  type = string
+  default = "10.0.0.0/16"
+}
+variable "subnetcidr" {
+  type = string
+  default = "10.0.1.0/24"
+}
+variable "subnetcidr1" {
+  type = string
+  default = "10.0.2.0/24"
+}
+variable "subnetcidr2" {
+  type = string
+  default = "10.0.3.0/24"
+}
+
+```
+
+* The main.tf and vars.tf looks like below:
+### main.tf
 ```sh
 provider "aws" {
   region     = "us-east-2"
@@ -238,28 +285,8 @@ resource "aws_subnet" "myfirstsubnet2" {
 
 ```
 
-* For variables [REFERHERE](https://www.terraform.io/docs/language/values/variables.html)
-* vars.tf:
-```sh
-variable "vpccidr" {
-  type = string
-  default = "10.0.0.0/16"
-}
-variable "subnetcidr" {
-  type = string
-  default = "10.0.1.0/24"
-}
-variable "subnetcidr1" {
-  type = string
-  default = "10.0.2.0/24"
-}
-variable "subnetcidr2" {
-  type = string
-  default = "10.0.3.0/24"
-}
-
-```
 * Run the below commands after the above data is replicated:
+
 ```sh
 terraform init .
 terraform validate .
@@ -267,10 +294,26 @@ terraform apply .
 terraform destroy .
 ```
 
-2. Second case:
-* using count and count.index .
-* For count [REFER HERE](https://www.terraform.io/docs/language/meta-arguments/count.html)
-* For count.index [REFER HERE](https://www.terraform.io/docs/configuration-0-11/interpolation.html)
+
+## Count in terraform:
+* count is a meta-argument defined by the Terraform language. It can be used with modules and with every resource type.
+* __count.index__ — The distinct index number (starting with 0) corresponding to this instance.
+
+```sh
+resource "aws_instance" "server" {
+  count = 4 # create four similar four VPC's
+
+  cidr_block       = var.vpccidr
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "myfirstvpc-${count.index}"
+  }
+}
+```
+
+
+### Using Count to create a VPC with multiple subnets(Note: Use list(string) in variable) 
 * The main.tf and vars.tf look like below in the second case:
 
 ```sh
@@ -311,9 +354,23 @@ variable "subnetcidr" {
 }
 ```
 
+
 ## length in terraform:
-* For length [REFER HERE](https://www.terraform.io/docs/configuration/functions/length.html)
-* After using the length in terraform script the main.tf will change as below:
+* __length__ determines the length of a given list, map, or string
+* length [REFER HERE](https://www.terraform.io/language/functions/length)
+```
+> length([])
+0
+> length(["a", "b"])
+2
+> length({"a" = "b"})
+1
+> length("hello")
+5
+```
+
+
+### Use the length in terraform script then  main.tf will change as below:
 
 ```sh
 provider "aws" {
@@ -353,9 +410,11 @@ variable "subnetcidr" {
 }
 ```
 
-## Depends_on
-* For document [REFER HERE](https://www.terraform.io/docs/configuration/resources.html)
-* After adding the depends_on to our script , the main.tf looks as below:
+## Depends_on:
+* Use the depends_on meta-argument to handle hidden resource or module dependencies that Terraform can't automatically infer.
+* Depends[REFER HERE](https://www.terraform.io/language/meta-arguments/depends_on)
+
+### Use depends_on in terraform script , the main.tf looks as below:
 
 ```sh
 provider "aws" {
@@ -386,10 +445,10 @@ resource "aws_subnet" "myfirstsubnet" {
 
 ```
 
-## Security group:
+### Security group:
 ![preview](../images/tf13.png)
 
-* For document [REFER HERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+* __Resource: aws_security_group__   [REFERHERE(https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
 
 * After adding SG the main.tf look as below:
 ```sh
@@ -431,8 +490,8 @@ resource "aws_security_group" "mySG" {
 }
 
 ```
-## Create inbound/outbound rules to the securitygroup
-* For adding securitygroup rules [REFER HERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule)
+### Create inbound/outbound rules to the securitygroup
+* __Resource: aws_security_group_rule__ [REFER HERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule)
 * Ingress is for creating the inbound rule and Egress is for creating the outbound rules.
 * After adding the egrees in the terraform template it lokks as below:
 ```sh
@@ -481,7 +540,8 @@ resource "aws_security_group" "mySG" {
 
 ```
 
-## Create s3 bucket using terraform:
+### Create s3 bucket using terraform:
+* __Resource: aws_s3_bucket__  [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
 ```sh
 resource "aws_s3_bucket" "myfirstbucket" {
   bucket = "my-first-test-bucket"
@@ -495,7 +555,8 @@ resource "aws_s3_bucket" "myfirstbucket" {
 
 ## DATA sources :
 * Data sources are used to query the aws resouces which are already created.
-* Create a subnet to  vpc, which is already created in aws.
+
+### Create a subnet to  vpc, which is already created in aws.
 
 ```sh
 provider "aws" {
@@ -700,6 +761,8 @@ resource "aws_instance" "myec2" {
 ```
 
 ## Provisioners in terrafrom 
+* Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can be used to bootstrap a resource, cleanup before destroy, run configuration management, etc.
+* __Terraform Provisionerss__ -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/syntax)
 # Terraform provisioning :
 * You are assigned with task of creating a vm and installing the necessary softwares init.
 * Steps:
@@ -727,7 +790,6 @@ provisioner "file" {
   }
 }
 ```
-
 
 * The terraform template look like below , if we use the provisioners:
 ```sh
