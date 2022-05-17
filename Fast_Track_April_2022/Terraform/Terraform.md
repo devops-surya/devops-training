@@ -94,7 +94,7 @@ resource "<resource-type>" "<resource-name>" {
    1. Name of VPC
    2. CIDR block
 * Create in file with extension __.tf__ (vpc.tf)
-* Resource -- __aws_vpc__   [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
+* __Resource:aws_vpc__  --  [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
 
 ```sh
 provider "aws" {
@@ -169,7 +169,7 @@ provider "aws" {
 ```
 
 * Create a file vpc.tf and add below content:
-* VPC resource [REFERHER](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
+* __Resource:aws_vpc__  -- [REFERHER](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
 
 ```sh
 resource "aws_vpc" "myfirstvpc" {
@@ -183,7 +183,7 @@ resource "aws_vpc" "myfirstvpc" {
 
 ```
 * Create a file subnet.tf and add below data:
-& Resource -- __aws_subnet__     [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet)
+* __Resource:aws_subnet__  --   [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet)
 ```sh
 resource "aws_subnet" "myfirstsubnet" {
   vpc_id     = aws_vpc.myfirstvpc.id
@@ -298,6 +298,7 @@ terraform destroy .
 ## Count in terraform:
 * count is a meta-argument defined by the Terraform language. It can be used with modules and with every resource type.
 * __count.index__ — The distinct index number (starting with 0) corresponding to this instance.
+* __count & count.index__ -- [REFERHERE](https://www.terraform.io/language/meta-arguments/count)
 
 ```sh
 resource "aws_instance" "server" {
@@ -357,7 +358,7 @@ variable "subnetcidr" {
 
 ## length in terraform:
 * __length__ determines the length of a given list, map, or string
-* length [REFER HERE](https://www.terraform.io/language/functions/length)
+* __length__ -- [REFER HERE](https://www.terraform.io/language/functions/length)
 ```
 > length([])
 0
@@ -412,7 +413,7 @@ variable "subnetcidr" {
 
 ## Depends_on:
 * Use the depends_on meta-argument to handle hidden resource or module dependencies that Terraform can't automatically infer.
-* Depends[REFER HERE](https://www.terraform.io/language/meta-arguments/depends_on)
+* __Dependson__ [REFER HERE](https://www.terraform.io/language/meta-arguments/depends_on)
 
 ### Use depends_on in terraform script , the main.tf looks as below:
 
@@ -448,7 +449,7 @@ resource "aws_subnet" "myfirstsubnet" {
 ### Security group:
 ![preview](../images/tf13.png)
 
-* __Resource: aws_security_group__   [REFERHERE(https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+* __Resource: aws_security_group__  --   [REFERHERE(https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
 
 * After adding SG the main.tf look as below:
 ```sh
