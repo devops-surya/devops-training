@@ -10,7 +10,7 @@
 
 ## Need for Infrastructure Provisioning:
 * The main moto of IAAC is that you write & execute the code to define, deploy, update and destroy your infrastructure.
-* In CI/CD pipelines, we need to create various test environments according to organizational QA policy.
+* In CI/CD pipelines, we need to create various test environments according to organizational QA policy, and need to destroy them once after the work is done.
 
 
 ## Understanding of Terraform/Terminology:
