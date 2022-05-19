@@ -250,7 +250,7 @@ terraform apply mutilfile.plan
 <br/>
 
 ## Variables in terraform :
-* Input variables let you customize aspects of Terraform modules without altering the module's own source code. This allows you to share modules across different Terraform configurations, making your module composable and reusable.
+* Variables in Terraform are a great way to define centrally controlled reusable values. The information in Terraform variables is saved independently from the deployment plans, which makes the values easy to read and edit from a single file.
 * Terraform variables [REFERHERE](https://www.terraform.io/language/values/variables)
 
 ## Use variables to create multiple subnets:
