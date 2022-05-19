@@ -4,12 +4,21 @@
 ```
 00000000    .  00000000      .  00000000      .  00000000
 (2^8)-1=255 .  (2^8)-1=255   .  (2^8)-1=255   .  (2^8)-1=255
-
+0-255       .  0-255         .  0-255         .  0-255
 
 10          .  0             .  0             .  0
 00001010    .  00000000      .  00000000      .00000000
 ```
 * Binary-Decimal/Decimal-Binary calculator -- [REFERHERE](https://www.calculator.net/binary-calculator.html)
+
+### Private/Public IP Ranges :
+```
+| Private IP's Range:           | Public Ip's Range:                             |
+| ----------------------------- | ---------------------------------------------- |
+| 10.0.0.0 – 10.255.255.255,    | Besides private IP addresses, rest are public. |
+| 172.16.0.0 – 172.31.255.255,  |                                                |
+| 192.168.0.0 – 192.168.255.255 |                                                |
+```
 
 # CIDR 
 * Classless Inter-Domain Routing (CIDR) is a range of IP addresses a network uses. A CIDR address looks like a normal IP address, except that it ends with a slash followed by a number. The number after the slash represents the number of addresses in the range.
@@ -54,4 +63,12 @@
 | a.0.0.0/3         | 53,68,70,912             |
 | a.0.0.0/2         | 1,07,37,41,824           |
 | a.0.0.0/1         | 2,14,74,83,648           |
-| 0.0.0.0/0         | 4,29,49,67,296           |```
+| 0.0.0.0/0         | 4,29,49,67,296           |
+```
+
+
+
+
+
+
+
