@@ -87,29 +87,68 @@ resource "<resource-type>" "<resource-name>" {
 }
 ```
 
+## Agruments and Attributes:
+* Arguments are the inputs to your resource and attributes are outputs of your resources
+![preview](../images/tf9.png)
 
-##  Terraform template to  create VPC in AWS:
-* We must know , how to do it manually .
-* To create a VPC  basic things required are :
-   1. Name of VPC
-   2. CIDR block
-* Create in file with extension __.tf__ (vpc.tf)
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+## Amazon VPC & Subnet:
+* Amazon __Virtual Private Cloud__ (Amazon VPC) enables you to launch AWS resources into a virtual network that you've defined.
+* A __subnet__ is a segmented piece of a larger network. More specifically, subnets are a logical partition of an IP network into multiple, smaller network segments.
+
+### Create VPC & Subnet from AWS console as below :
+* __VPC Creation__ :
+![Preview](../images/vpc1.png)
+![Preview](../images/vpc2.png)
+![Preview](../images/vpc3.png)
+![Preview](../images/vpc4.png)
+
+* __Subnet creation__ :
+
+
+
+###  Terraform template to  create VPC & Subnet in AWS:
+* Create in file with extension __.tf__ (vpc-subnet.tf)
 * __Resource:aws_vpc__  --  [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
+* __Resource:aws_subnet__  --   [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet)
 
 ```sh
 provider "aws" {
   region     = "us-east-2"
-  access_key = "AKIAYZCYFVHPR5AP2COI"
-  secret_key = "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"
+  access_key = "AKIAYZCYFVHPRSG3D6S3"
+  secret_key = "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"
 }
-resource "aws_vpc" "myfirstvpc1" {
+
+resource "aws_vpc" "myfirstvpc" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
 
   tags = {
-    Name = "myfirstvpc1"
+    Name = "myfirstvpc"
   }
 }
+
+resource "aws_subnet" "myfirstsubnet" {
+  vpc_id     = aws_vpc.myfirstvpc.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "myfirstsubnet"
+  }
+}
+
 ```
 
 * To initialize provider plugins follow below:
@@ -121,38 +160,26 @@ terraform init
 * To validate to validate your script:
 
 ```sh
-terraform validate .
+terraform validate 
 ```
 ![preview](../images/tf3.png)
 
 * To run the terraform script 
 
 ```sh
-terraform apply .
+terraform apply 
 ```
-![preview](../images/tf4.png)
-
-![preview](../images/tf5.png)
-
-![preview](../images/tf6.png)
-
-![preview](../images/tf7.png)
 
 * To destroy the resource :
 
 ```sh
-terraform destroy .
+terraform destroy 
 ```
-![preview](../images/tf8.png)
 
 
-## Agruments and Attributes:
-* Arguments are the inputs to your resource and attributes are outputs of your resources
-![preview](../images/tf9.png)
-
-
-## Create a VPC & Subnet using multiple files in the Terraform template:
-* Create a folder  multiplefile
+ 
+## Create a VPC & Subnet using multi files in the Terraform template:
+* Create a folder  multifile
 ```sh
 mkdir multiplefile
 cd multiplefile
@@ -198,16 +225,29 @@ resource "aws_subnet" "myfirstsubnet" {
 
 * Run the below commands:
 ```sh
-terraform init .
-terraform validate .
-terraform apply .
-terraform destroy .
+terraform init 
+terraform validate 
+terraform apply 
+terraform destroy 
 terraform plan -out mutilfile.plan
 terraform apply mutilfile.plan
 ```
 
 ![preview](../images/tf10.png)
 ![preview](../images/tf11.png)
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Variables in terraform :
 * Input variables let you customize aspects of Terraform modules without altering the module's own source code. This allows you to share modules across different Terraform configurations, making your module composable and reusable.
@@ -288,12 +328,22 @@ resource "aws_subnet" "myfirstsubnet2" {
 * Run the below commands after the above data is replicated:
 
 ```sh
-terraform init .
-terraform validate .
-terraform apply .
-terraform destroy .
+terraform init 
+terraform validate 
+terraform apply 
+terraform destroy 
 ```
+<br/>
+<br/>
+<br/>
+<br/>
 
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Count in terraform:
 * count is a meta-argument defined by the Terraform language. It can be used with modules and with every resource type.
@@ -371,6 +421,7 @@ variable "subnetcidr" {
 ```
 
 
+
 ### Use the length in terraform script then  main.tf will change as below:
 
 ```sh
@@ -411,6 +462,8 @@ variable "subnetcidr" {
 }
 ```
 
+
+
 ## Depends_on:
 * Use the depends_on meta-argument to handle hidden resource or module dependencies that Terraform can't automatically infer.
 * __Dependson__ [REFER HERE](https://www.terraform.io/language/meta-arguments/depends_on)
@@ -445,6 +498,20 @@ resource "aws_subnet" "myfirstsubnet" {
 }
 
 ```
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
 
 ### Security group:
 ![preview](../images/tf13.png)
@@ -541,6 +608,18 @@ resource "aws_security_group" "mySG" {
 
 ```
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
 ### Create s3 bucket using terraform:
 * __Resource: aws_s3_bucket__  [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
 ```sh
@@ -553,6 +632,18 @@ resource "aws_s3_bucket" "myfirstbucket" {
   }
 }
 ```
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## DATA sources :
 * Data sources are used to query the aws resouces which are already created.
@@ -577,6 +668,18 @@ resource "aws_subnet" "example" {
   cidr_block        = cidrsubnet(data.aws_vpc.selected.cidr_block, 4, 1)
 }
 ```
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Terraform statefile :
 * Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures. This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
@@ -664,10 +767,22 @@ variable "subnetcidr" {
 * After creating the module content , run the below command:
 
 ```sh
-terraform init .
+terraform init 
 ```
 ![preview](../images/tf15.png)
 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## EC2 instances creation in terraform 
 * AMI , instancetype , no of instances , vpc , subnet , autoassign publicip , tags , SG , keyname.
@@ -760,6 +875,18 @@ resource "aws_instance" "myec2" {
 }
 
 ```
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Provisioners in terrafrom 
 * Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can be used to bootstrap a resource, cleanup before destroy, run configuration management, etc.
@@ -896,3 +1023,14 @@ connection {
 }
 
 ```
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
