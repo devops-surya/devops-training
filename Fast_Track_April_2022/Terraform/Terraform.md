@@ -538,9 +538,17 @@ resource "aws_subnet" "myfirstsubnet" {
 <br/>
 
 
-### Security group:
-![preview](../images/tf13.png)
+## Security group:
+* A security group is like a virtual firewall. It works much like a traditional firewall does. It consists of a set of rules that can be used to monitor and filter an instance's incoming and outgoing traffic in a Virtual Private Cloud (VPC) instance. Filtering is done on the basis of protocols and ports.
 
+### Create a SecurityGroup in AWS console as shown below :
+* __SecutityGroup Creation_ :
+![preview](../images/sg1.png)
+![preview](../images/sg2.png)
+![preview](../images/sg3.png)
+![preview](../images/sg4.png)
+
+### Use __SecurityGroup__ in terraform script , the main.tf looks as below:
 * __Resource: aws_security_group__  --   [REFERHERE(https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
 
 * After adding SG the main.tf look as below:
@@ -645,7 +653,19 @@ resource "aws_security_group" "mySG" {
 <br/>
 <br/>
 
-### Create s3 bucket using terraform:
+
+## S3 in AWS :
+* Amazon Simple Storage Service (S3) is a popular cloud storage service part of the Amazon Web Services (AWS). Amazon S3 cloud storage provides high reliability, flexibility, scalability and accessibility. The number of objects and the amount of data stored in Amazon S3 is unlimited.
+
+### Create a S3 bucket in AWS console as shown below :
+* __S3 Bucket creation__ :
+![preview](../images/s31.png)
+![preview](../images/s32.png)
+![preview](../images/s33.png)
+![preview](../images/s34.png)
+
+
+### Terraform template to create s3 bucket:
 * __Resource: aws_s3_bucket__  [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
 ```sh
 resource "aws_s3_bucket" "myfirstbucket" {
@@ -811,7 +831,7 @@ terraform init
 
 ## EC2 instances creation in terraform 
 * AMI , instancetype , no of instances , vpc , subnet , autoassign publicip , tags , SG , keyname.
-* the vars.tf and main.tf look like below:
+*  vars.tf and main.tf look like below:
 ```sh
 vars.tf:
 =======
@@ -920,10 +940,9 @@ resource "aws_instance" "myec2" {
 * You are assigned with task of creating a vm and installing the necessary softwares init.
 * Steps:
   1. Create a VM 
-  2. Connection to the VM
+  2. Connection to the VM -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/connection)
+  ![preview](../images/c1.png)
   3. Installing necessary softwares
-
-![preview](../images/tf501.png)
 
 ## File provisioner:
 ```sh
