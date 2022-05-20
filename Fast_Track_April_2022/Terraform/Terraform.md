@@ -116,11 +116,19 @@ resource "<resource-type>" "<resource-name>" {
 ![Preview](../images/vpc4.png)
 
 * __Subnet creation__ :
-
+![Preview](../images/sn1.png)
+![Preview](../images/sn2.png)
+![Preview](../images/sn3.png)
+![Preview](../images/sn3.png)
 
 
 ###  Terraform template to  create VPC & Subnet in AWS:
-* Create in file with extension __.tf__ (vpc-subnet.tf)
+* Create in file with extension __.tf__ (vpc-subnet.tf) in the folder of terraforsample
+```
+mkdir terraformsample
+cd terraformsample
+vi vpc-subnet.tf
+```
 * __Resource:aws_vpc__  --  [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
 * __Resource:aws_subnet__  --   [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet)
 
@@ -178,7 +186,7 @@ terraform destroy
 
 
  
-## Create a VPC & Subnet using multi files in the Terraform template:
+## Use __Terraform Plan__ and Create a VPC/Subnet using multi files in the Terraform template:
 * Create a folder  multifile
 ```sh
 mkdir multiplefile
@@ -229,6 +237,10 @@ terraform init
 terraform validate 
 terraform apply 
 terraform destroy 
+```
+
+* Teeraform plan create a plan-file , to create resources need to use the plan-file.
+```
 terraform plan -out mutilfile.plan
 terraform apply mutilfile.plan
 ```
