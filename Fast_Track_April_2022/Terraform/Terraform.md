@@ -186,7 +186,7 @@ terraform destroy
 
 
  
-## Use __Terraform Plan__ and Create a VPC/Subnet using multi files in the Terraform template:
+## Create a VPC/Subnet using multi files in the Terraform template and  Use __Terraform Plan__ to create resources :
 * Create a folder  multifile
 ```sh
 mkdir multiplefile
