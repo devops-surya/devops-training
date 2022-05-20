@@ -690,9 +690,9 @@ resource "aws_s3_bucket" "myfirstbucket" {
 <br/>
 <br/>
 
-## DATA sources :
+## Data sources :
 * Data sources are used to query the aws resouces which are already created.
-
+* Data sources allow data to be fetched or computed for use elsewhere in Terraform configuration.
 ### Create a subnet to  vpc, which is already created in aws.
 
 ```sh
