@@ -362,15 +362,29 @@ terraform destroy
 * __count.index__ — The distinct index number (starting with 0) corresponding to this instance.
 * __count & count.index__ -- [REFERHERE](https://www.terraform.io/language/meta-arguments/count)
 
+* __Example scrpt__ :
 ```sh
-resource "aws_instance" "server" {
-  count = 4 # create four similar four VPC's
+provider "aws" {
+  region     = "us-east-2"
+  access_key = "AKIAYZCYFVHPSMCGSJPD"
+  secret_key = "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"
+}
 
+resource "aws_vpc" "myfirstvpc" {
   cidr_block       = var.vpccidr
   instance_tenancy = "default"
 
   tags = {
-    Name = "myfirstvpc-${count.index}"
+    Name = "myfirstvpc"
+  }
+}
+resource "aws_subnet" "myfirstsubnet" {
+  count = 3 ## Create three similar subnets
+  vpc_id     = aws_vpc.myfirstvpc.id
+  cidr_block = 10.0.0.0/24
+
+  tags = {
+    Name = "myfirstsubnet-${count.index+1}"
   }
 }
 ```
