@@ -553,12 +553,6 @@ resource "aws_subnet" "myfirstsubnet" {
 
 * After adding SG the main.tf look as below:
 ```sh
-provider "aws" {
-  region     = "us-east-2"
-  access_key = "AKIAYZCYFVHPSMCGSJPD"
-  secret_key = "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"
-}
-
 resource "aws_vpc" "myfirstvpc" {
   cidr_block       = var.vpccidr
   instance_tenancy = "default"
@@ -584,12 +578,25 @@ resource "aws_security_group" "mySG" {
   description = "mySG"
   vpc_id      = aws_vpc.myfirstvpc.id
 
+
+  ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
   tags = {
     Name = "mySG"
   }
   depends_on = [aws_subnet.myfirstsubnet]
 }
-
 ```
 ### Create inbound/outbound rules to the securitygroup
 * __Resource: aws_security_group_rule__ [REFER HERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule)
@@ -626,17 +633,19 @@ resource "aws_security_group" "mySG" {
   name        = "mySG"
   description = "mySG"
   vpc_id      = aws_vpc.myfirstvpc.id
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
   tags = {
     Name = "mySG"
   }
   depends_on = [aws_subnet.myfirstsubnet]
+}
+
+resource "aws_security_group_rule" "alltraffic" {
+  type              = "ingress"
+  from_port        = 0
+  to_port          = 0
+  protocol         = "-1"
+  cidr_blocks      = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.mySG.id
 }
 
 ```
