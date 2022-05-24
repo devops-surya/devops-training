@@ -238,14 +238,6 @@ terraform apply
 terraform destroy 
 ```
 
-* Teeraform plan create a plan-file , to create resources need to use the plan-file.
-```
-terraform plan -out mutilfile.plan
-terraform apply mutilfile.plan
-```
-
-![preview](../images/tf10.png)
-![preview](../images/tf11.png)
 
 
 <br/>
@@ -679,7 +671,6 @@ resource "aws_security_group_rule" "alltraffic" {
 ```sh
 resource "aws_s3_bucket" "myfirstbucket" {
   bucket = "my-first-test-bucket"
-  acl    = "private"
 
   tags = {
     Name        = "myfirstbucket"
@@ -700,7 +691,7 @@ resource "aws_s3_bucket" "myfirstbucket" {
 <br/>
 
 ## Data sources :
-* Data sources are used to query the aws resouces which are already created.
+* Data sources are used to query the aws resources which are already created.
 * Data sources allow data to be fetched or computed for use elsewhere in Terraform configuration.
 ### Create a subnet to  vpc, which is already created in aws.
 
@@ -713,13 +704,13 @@ provider "aws" {
 
 
 data "aws_vpc" "selected" {
-  id = "vpc-0fef1abea454dac56"
+  id = "vpc-072fe7e68bab3c199"
 }
 
 resource "aws_subnet" "example" {
   vpc_id            = data.aws_vpc.selected.id
-  availability_zone = "us-east-1a"
-  cidr_block        = cidrsubnet(data.aws_vpc.selected.cidr_block, 4, 1)
+  availability_zone = "us-west-2a"
+  cidr_block        = "10.0.0.0/24"
 }
 ```
 
@@ -738,13 +729,42 @@ resource "aws_subnet" "example" {
 ## Terraform statefile :
 * Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures. This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
 
+![preview](../images/tfs.png)
+
+
+## Terraform plan : 
+* Terraform plan create a plan-file , to create resources need to use the plan-file.
+```
+terraform plan -out mutilfile.plan
+terraform apply mutilfile.plan
+```
+
+![preview](../images/tf10.png)
+![preview](../images/tf11.png)
+
+
+## Target in terraform :
+* Terraform allows you to target specific resources when you plan, apply, or destroy your infrastructure. 
+* __Target__ : - [REFERHERE](https://learn.hashicorp.com/tutorials/terraform/resource-targeting)
+* __syntax__ :
+```
+terraform apply/destroy -target="RESOURCE_TYPE.RESOURCE_NAME"
+
+```
 
 ## Terraform Registry 
 * Terraform registry is a place where you can find the predefined modules(terrafrom scripts).
 ![preview](../images/tf14.png)
 
-* For module document [REFER HERE](https://www.terraform.io/docs/configuration/modules.html) and for the syntax of the terraform module [REFER HERE](https://www.terraform.io/docs/modules/index.html)
+* __Module Document__ : - [REFER HERE](https://www.terraform.io/language/modules/syntax) 
 
+### Using the module :
+* VPC module -- [REFERHERE](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
+* Usage of module : -  change the values from below Usage
+![preview](../images/ft1.png)
+
+
+### Creating a module : 
 * Create a folder of samplemodule
 ```sh
 mkdir samplemodule
@@ -764,7 +784,12 @@ module "singlefile" {
 }
 
 ```
-* Copy the singlefile folder to /samplemodule/
+* Create a singlefile folder and add below content 
+```
+cd samplemodule
+mkdir singlefile
+```
+
 ```sh
 main.tf:
 ======
@@ -822,6 +847,8 @@ variable "subnetcidr" {
 
 ```sh
 terraform init 
+terraform validate
+terraform apply 
 ```
 ![preview](../images/tf15.png)
 
@@ -838,7 +865,7 @@ terraform init
 <br/>
 <br/>
 
-## EC2 instances creation in terraform 
+## EC2 instances creation in a customised VPC, subnet, SG, keyname : 
 * AMI , instancetype , no of instances , vpc , subnet , autoassign publicip , tags , SG , keyname.
 *  vars.tf and main.tf look like below:
 ```sh
