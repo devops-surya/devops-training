@@ -10,7 +10,7 @@
 * For the docker documentation [REFER HERE](https://docs.docker.com/) 
 
 
-## How docker works:
+## Understand Container :
 * Every app running in container will be using the base os.
 * Every container running in docker wil be having process id.
 * Application running inside the container will have storage, CPU, RAM , network.
@@ -29,7 +29,7 @@
  ![preview](../images/dp4.png)
 
 
-## How Docker works:
+## Docker workflow :
   * Install docker which install two components :
    1. Docker Client
    2. Docker Daemon
@@ -68,7 +68,7 @@ docker container ls -a
 <br/>
 <br/>
 
-## Understand working on Docker :
+## Container creation understanding :
 * Write a Dockefile >> create image from Dockerfile >> create container from image
  ![preview](../images/dw.png)
 
