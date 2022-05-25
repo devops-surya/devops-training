@@ -866,7 +866,22 @@ terraform apply
 <br/>
 
 ## EC2 instances creation in a customised VPC, subnet, SG, keyname : 
-* AMI , instancetype , no of instances , vpc , subnet , autoassign publicip , tags , SG , keyname.
+### Create ec2 from AWS console: 
+* AMI , instancetype , no of instances , vpc , subnet , autoassign publicip , tags , SG , keyname should be used as shown in below images:
+![preview](../images/ec1.png)
+![preview](../images/ec2.png)
+![preview](../images/ec5.png)
+![preview](../images/ec3.png)
+![preview](../images/ec4.png)
+![preview](../images/ec6.png)
+![preview](../images/ec7.png)
+![preview](../images/ec8.png)
+![preview](../images/ec9.png)
+![preview](../images/ec10.png)
+![preview](../images/ec11.png)
+
+
+### ### Terraform template to create ec2:
 *  vars.tf and main.tf look like below:
 ```sh
 vars.tf:
@@ -942,7 +957,7 @@ resource "aws_security_group" "mySG" {
 }
 
 resource "aws_instance" "myec2" {
-  ami           = "ami-0dd9f0e7df0f0a138"
+  ami           = "ami-0cb4e786f15603b0d"
   instance_type = "t2.micro"
   key_name = "devops-training"
   vpc_security_group_ids = [ aws_security_group.mySG.id ]
@@ -1017,8 +1032,8 @@ main.tf:
 =======
 provider "aws" {
   region     = "us-west-2"
-  access_key = "AKIAYZCYFVHPSPURIGOV"
-  secret_key = "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"
+  access_key = "AKIATDL7EYHPSRBBULQD"
+  secret_key = "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"
 }
 
 resource "aws_vpc" "myfirstvpc" {
@@ -1073,9 +1088,9 @@ resource "aws_security_group" "mySG" {
 }
 
 resource "aws_instance" "myec2" {
-  ami           = "ami-0ac73f33a1888c64a"
+  ami           = "ami-0cb4e786f15603b0d"
   instance_type = "t2.medium"
-  key_name = "devops-oregon"
+  key_name = "devops-training"
   vpc_security_group_ids = [ aws_security_group.mySG.id ]
   subnet_id = aws_subnet.myfirstsubnet[0].id
   associate_public_ip_address = true
@@ -1096,7 +1111,7 @@ provisioner "remote-exec" {
 connection {
    type = "ssh"
    user = "ubuntu"
-   private_key = file("./devops-oregon.pem")
+   private_key = file("./devops-training.pem")
    host = aws_instance.myec2.public_ip
 }
 
