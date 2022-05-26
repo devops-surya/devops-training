@@ -20,7 +20,7 @@
   1. Master node
   2. Worker Node
 
-# Master is referred as the controlplane component:
+## Master is referred as the controlplane component:
 * Control-plane-Components on master :
 
 1. Kube-apiserver: 
@@ -29,31 +29,41 @@
     * It is having all the information about the pods created and destroyed in your cluster.
     * It stores the information in the form of keyvalue pairs.
 3. kube-scheduler:
-    * It is responsible for scheduling your pods on he nodes.   
+    * It is responsible for scheduling your pods on the nodes.   
 4. controller-manager:
     * It takes care of your desired state to be there on the nodes.
 
-# Node components:
+## Node components:
 1. kubelet:
-    * It like an agent running on your all  nodes 
+    * It's like an agent running on your all  Worker nodes 
 2. Kube-proxy: 
     * It helps us to have a communication between the two pods , which are on the differen nodes.
  
-![preview](../images/k8s2.png)
 
+<br/>
+<br/>
+<br/>
+<br/>
 
-* Many ways to install k8s.
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+## Many ways to setup k8s cluster.
 1. Kubeadm
 2. EKS (Elastic kubernetes service)
 2. AKS (AZURE kubernetes service)
 
-# Installing kubernets by using kubeadm:
+## Installing kubernets by using kubeadm:
 1. Take 3 VM's from AWS , having atleat 2 GB 
 2. Install docker on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 3. Installing using kubeadm, run the steps in the document on allnodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 
-# Creating a cluster with kubeadm :
+## Create a cluster with kubeadm :
 
 ## Installing kubernets by using kubeadm:
 1. Take 3 VM's from AWS , having atleat 2 GB 
@@ -62,14 +72,14 @@
 
 * For document [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
-# Steps to be done on master :
+## Steps to be done on master :
 ```
 sudo su 
 kubeadm init
 
 ```
 ```
-You will be seeing the commands like below , when u run the above command:
+You will be seeing the commands like below , when you run the above command:
 ==========================================================================
 Your Kubernetes control-plane has initialized successfully!
 
@@ -103,18 +113,17 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 
 ## On all worker nodes :
 ```
-You can now join any number of machines by running the following on each node
-as root:
+You can now join any number of machines by running the following on each node as root:
 
   kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ```
 
-# After above steps are done , connect to master and use below commands:
+## After above steps are done , connect to master and use below commands:
 ```
 kubectl get nodes
 ```
 
-# API-REFERENCE :
+## API-REFERENCE :
 * For api-refernce [REFER HERE](https://kubernetes.io/docs/reference/) and for version1.20 [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/)
 * We will be using the api-reference internally when we are using the kubectl to communicate with the cluster.
 
@@ -127,9 +136,9 @@ kubectl get nodes
 
 * All the above things will be defined in a file called manifest file/deployment.yaml
 
-# POD :
+## POD :
 * Pod can be defined as the basic unit of execution in k8s.
-* Pod is going have application container , storage and network.
+* Pod will have application container , storage and network.
 
 ![preview](../images/k8s3.png)
 
@@ -142,7 +151,7 @@ kubectl get nodes
    1. pod .
    2. Controller .
 
-# Create a pod using the API reference:
+## Create a pod using the API reference:
 ![preview](../images/k8s4.png)
 
 ```
@@ -170,8 +179,22 @@ kubectl delete -f pod.yml
 ![preview](../images/k8s5.png)
 ![preview](../images/k8s6.png)
 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+
 * Pod are not the durable entities 
-* To make sure the pods are running we will be using controllers.
+* To make sure the pods are running all the time , we will be using controllers.
 * Pods will be having states of pending , Running , failed , sucess.
 * Kubernetes will be having some probes inside the running container:
  * liveness probe
@@ -181,7 +204,9 @@ kubectl delete -f pod.yml
 ## Init containers:
 * These containers run before your main conatiner is going to start.
 
-# CONTROLLERS :
+
+
+## CONTROLLERS :
 * Controllers wil be taking care of the desired state .
 * In a k8s cluster it is not a suggestable way of creaing pod.Instead of creating a pod, we will be creating a pod with controllers.
 * Controllers in K8s:
@@ -230,16 +255,16 @@ kubectl get rc
 ![preview](../images/k8s8.png)
 
 
-# Replicaset:
+## Replicaset:
 * It also acts same as a replication controller, but it is internal functionality of another controller(DEPLOYMENT)
 
-# Deployment:
+## Deployment:
 * It is a controller used to deploy the new version of your code, with th help of providing version numbers.
 
-# Jobs and Cronjobs :
+## Jobs and Cronjobs :
 * Jobs are used to call the script/command in the containers.
 
-# DaemonSet:
+## DaemonSet:
 * These are the pods running on every node in k8s cluster and do our job.
 
 ## k8s cluster Neworking:
@@ -354,6 +379,18 @@ kubectl describe pod <podname>
    2. Recycle
    3. Delete
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
 ## AKS (AZURE KUBERNETES SERVICE):
 * In AKS the master is free of cost and it is managed by the AZURE.
 ## EKS (ELASTIC KUBERNETES SERVICE):
@@ -418,6 +455,18 @@ kubectl get nodes
 
 
 * For the sample twotire code deployment [REFERHERE](https://github.com/learnitguide/kubernetes-knote)
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## To create a EKS cluster by using eksctl  follow below steps :
 
@@ -509,7 +558,17 @@ spec:
 ```
 kubectl apply -f pvc.yaml
 ```
+<br/>
+<br/>
+<br/>
+<br/>
 
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Exercise:
 * Analyse how to add a PVC to a pod in eks .
@@ -542,7 +601,17 @@ spec:
         claimName: myclaim
 
 ```
+<br/>
+<br/>
+<br/>
+<br/>
 
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## k8s Deployments:
 * In K8s , there is a api object of deployment .
