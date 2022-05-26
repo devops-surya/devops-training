@@ -985,7 +985,7 @@ resource "aws_instance" "myec2" {
 <br/>
 
 ## Provisioners in terrafrom 
-* Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can be used to bootstrap a resource, cleanup before destroy, run configuration management, etc.
+* Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can be cleanup before destroy, run configuration management, etc..
 * __Terraform Provisionerss__ -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/syntax)
 # Terraform provisioning :
 * You are assigned with task of creating a vm and installing the necessary softwares init.
