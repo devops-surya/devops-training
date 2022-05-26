@@ -92,7 +92,7 @@ vi Dockerfile
 ```
 FROM ubuntu:latest
 RUN  apt-get update
-RUN  apt-get install openjdk-8-jdk -y
+RUN  apt-get install openjdk-11-jdk -y
 ```
 
 * To create a image from dockerfile follow below steps:
@@ -108,7 +108,7 @@ docker image build -t myfirstimage .
 ![preview](../images/Docker5.png)
 ![preview](../images/Docker6.png)
 
-* To run the image we have created 
+* To create a container from the  image we have created 
 ```
 docker conatiner run <imagename>
 docker conatiner run myfirstimage
