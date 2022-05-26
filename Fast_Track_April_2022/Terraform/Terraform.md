@@ -986,14 +986,7 @@ resource "aws_instance" "myec2" {
 
 ## Provisioners in terrafrom 
 * Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can be cleanup before destroy, run configuration management, etc..
-* __Terraform Provisionerss__ -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/syntax)
-# Terraform provisioning :
-* You are assigned with task of creating a vm and installing the necessary softwares init.
-* Steps:
-  1. Create a VM 
-  2. Connection to the VM -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/connection)
-  ![preview](../images/c1.png)
-  3. Installing necessary softwares
+* __Terraform Provisioners__ -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/syntax)
 
 ## File provisioner:
 ```sh
@@ -1007,12 +1000,21 @@ provisioner "file" {
 ```sh
   provisioner "remote-exec" {
     inline = [
-      "puppet apply",
-      "consul join ${aws_instance.web.private_ip}",
+      "sudo apt-get update -y ",
+      "sudo apt-get install python -y"
     ]
   }
 }
 ```
+
+## Terraform provisioning :
+* You are assigned with task of creating a VM and installing the necessary softwares the VM.
+* Steps to be followed :
+  1. Create a VM 
+  2. Connection to the VM -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/connection)
+  ![preview](../images/c1.png)
+  3. Installing necessary softwares by using provisioners.
+
 
 * The terraform template look like below , if we use the provisioners:
 ```sh
@@ -1089,7 +1091,7 @@ resource "aws_security_group" "mySG" {
 
 resource "aws_instance" "myec2" {
   ami           = "ami-0cb4e786f15603b0d"
-  instance_type = "t2.medium"
+  instance_type = "t2.micro"
   key_name = "devops-training"
   vpc_security_group_ids = [ aws_security_group.mySG.id ]
   subnet_id = aws_subnet.myfirstsubnet[0].id
