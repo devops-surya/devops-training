@@ -985,7 +985,7 @@ resource "aws_instance" "myec2" {
 <br/>
 
 ## Provisioners in terrafrom 
-* Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can be cleanup before destroy, run configuration management, etc..
+* Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can also be  configuration management, etc..
 * __Terraform Provisioners__ -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/syntax)
 
 ## File provisioner:
