@@ -113,9 +113,9 @@ docker image build -t myfirstimage .
 
 * To create a container from the  image we have created 
 ```
-docker conatiner run <imagename>
-docker conatiner run myfirstimage
-docker conatiner ls 
+docker container run <imagename>
+docker container run myfirstimage
+docker container ls 
 docker container ls -a
 ```
 ![preview](../images/Docker8.png)
@@ -133,10 +133,11 @@ docker container ls -a
 <br/>
 <br/>
 
-## Installing docker :
- * Installing by script based :
+## Install docker on EC2:
+ * Install by script based :
 
 ```
+sudo su 
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
