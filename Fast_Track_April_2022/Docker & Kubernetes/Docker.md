@@ -145,7 +145,7 @@ sh get-docker.sh
 ![preview](../images/Docker9.png)
 
 ## RUN :
-* This instructor executes your commands in the Dockerfile
+* This instructor executes your bash/linux commands in the Dockerfile
 * Every RUN instructor stores as a single layer .
 * syntax :
 ```
@@ -163,7 +163,7 @@ RUN ["echo", "sample"]
 
 
 ## ENTRYPOINT:
-* This is the command thats executed when the container starting.
+* This is the instructor thats executed when the container creation.
 * syntax:
 ```
 ENTRYPOINT [ "executable, "param1", "param2"  ]
@@ -171,7 +171,7 @@ ENTRYPOINT executable param1 param2
 ```
 
 ## CMD :
-* This will be excuted when the container starting , if the ENTRYPOINT is no there 
+* This will be excuted when the container creation . If the ENTRYPOINT is not there , CMD is high priority.
 * syntax:
 ```
 CMD [ "executable, "param1", "param2"  ]
