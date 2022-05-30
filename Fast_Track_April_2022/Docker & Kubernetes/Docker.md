@@ -3,7 +3,7 @@
 ## The evolution of applications ( VM vs Containers):
  ![preview](../images/d1.png)
 
-* Docker is an open source containerization platform. It enables developers to package applications into containers—standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environmen
+* Docker is an open source containerization platform. It enables developers to package applications into containers—standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment.
 * Docker provides the ability to package and run the application in a loosely isolated environment called a  container. 
 * Containerazation:  The procces of making your application run on the docker conatiners.
 * Image : Docker image is a procees of packaging your application.
@@ -90,9 +90,13 @@ vi Dockerfile
 ![preview](../images/h1.png)
 * After adding Instructions and arguments , Dockerfile looks as below:
 ```
-FROM ubuntu:latest
-RUN  apt-get update
-RUN  apt-get install openjdk-11-jdk -y
+FROM ubuntu:16.04
+ENV DEBIAN_FRONTEND noninteractive
+RUN  apt-get update  -y \
+  && apt-get install -y software-properties-common \
+  && add-apt-repository ppa:openjdk-r/ppa \
+  && apt-get install -y openjdk-8-jdk \
+  && rm -rf /var/lib/apt/lists/*
 ```
 
 * To create a image from dockerfile follow below steps:
@@ -104,7 +108,6 @@ docker image build -t myfirstimage .
 ```
 
 * Dockerfile is convention , we can also change the filename
-![preview](../images/Docker7.png)
 ![preview](../images/Docker5.png)
 ![preview](../images/Docker6.png)
 
