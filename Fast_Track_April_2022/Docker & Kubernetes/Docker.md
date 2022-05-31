@@ -247,6 +247,12 @@ docker container run -d tomcat
 ```
 docker conatainer exec -it  <containerid/container name> /bin/bash 
 ```
+## To get into the container :
+
+```
+docker exec -it <conainername>/<containerid> /bin/bash
+```
+![preview](../images/Docker16.png)
 
 ## Portforwarding:
 * It is used to access our application running inside the container 
@@ -334,7 +340,7 @@ ipaddress:<port>/sample
 
 
 
-## Adding name to the container :
+## Add name to the container :
 
 ```
 docker container  run --name <nameofconainer>  -d -P <image>
@@ -362,12 +368,6 @@ docker image rm -f <imagename>
 docker rmi $(docker images -a -q)
 ```
 
-## To get into the container :
-
-```
-docker exec -it <conainername>/<containerid> /bin/bash
-```
-![preview](../images/Docker16.png)
 
 ## To delete the docker container :
 
