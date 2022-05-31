@@ -222,7 +222,58 @@ COPY <src> <dest>
 <br/>
 <br/>
 
-## Creating a Dockefile for SAMPLEWAR :
+## Run container in multiplemodes :
+## Attached mode:
+* The container runs on foreground
+* Default mode of docker
+
+```
+docker conatiner run -P <dockerimage>
+```
+
+## Detached mode:
+
+* Docker conainer runs in the background .
+
+```
+docker conatiner run -d -P <imagename>
+```
+
+## Interactive :
+* In interactive mode we can interact with docker using terminal (/bin/bash, /bin/sh)
+* We will be using -it in the docker command
+```
+docker conatainer exec -it -P <imagename> /bin/bash 
+```
+
+## Portforwarding:
+* It is used to access our application running inside the container 
+
+```
+docker conatiner run -d -P <image>
+```
+
+## To publish our own specified port :
+```
+docker conatiner run -d  -p <hosport>:<conatinerport> <imagename>
+
+docker conatiner run -d -p 8005:8080 <imagename>
+```
+![preview](../images/Docker15.png)
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+## Create a Dockefile for SAMPLEWAR deployment :
  * Install JAVA 
  * Install tomcat
  * Downloading the war file and copying it to tomcat webapps
@@ -240,6 +291,7 @@ COPY <src> <dest>
   2. Downloading the war file and copying it to tomcat webapps --- ADD/COPY
   3. Open port of tomcat on container   --- EXPOSE 
   4. starting the tomcat  ----  ENTRYPOINT/CMD
+  
 
 ## Dockerfile for the second approach:
 ```
@@ -255,7 +307,7 @@ docker image build -t samplewar .
 ```
 ![preview](../images/Docker10.png)
 ![preview](../images/Docker11.png)
-* To create a cotainer from the image of samplewar follow below steps:
+* To create a container from the image of samplewar follow below steps:
 ```
 docker container run samplewar
 ```
@@ -278,6 +330,53 @@ docker container -d  -P run samplewar
 ipaddress:<port>/sample
 ```
 
+
+
+## Adding name to the container :
+
+```
+docker container  run --name <nameofconainer>  -d -P <image>
+```
+
+![preview](../images/Docker15.png)
+
+
+## To inspect an image : 
+* Docker inspect provides detailed information on constructs controlled by Docker. By default, docker inspect will render results in a JSON array.
+```
+docker image inspect <imagename>
+```
+![preview](../images/ins.png)
+
+## Delete an image :
+
+```
+docker image rm <imagename>
+docker image rm -f <imagename>
+```
+* To delete all images :
+
+```
+docker rmi $(docker images -a -q)
+```
+
+## To get into the container :
+
+```
+docker exec -it <conainername>/<containerid> /bin/bash
+```
+![preview](../images/Docker16.png)
+
+## To delete the docker container :
+
+```
+docker container rm <conatinername>/<conatinerid>
+docker container rm -f  <conatinername>/<conatinerid>
+```
+* For more info [REFERHERE](https://docs.docker.com/engine/reference/commandline/container_rm/)
+
+
+
 <br/>
 <br/>
 <br/>
@@ -289,6 +388,7 @@ ipaddress:<port>/sample
 <br/>
 <br/>
 <br/>
+
 
 # Instructions:
 
@@ -370,62 +470,7 @@ docker container ls -a    ---- list of all contaner running and exited
 docker image ls         ----- list all the images
 
 ```
-<br/>
-<br/>
-<br/>
-<br/>
 
-* * * 
-
-<br/>
-<br/>
-<br/>
-<br/>
-
-## Inspect an Image:
-* Create a folder with java 
-
-```
-mkdir java 
-cd java/
-vi Dockerfile
-```
-
-```
-FROM ubuntu:18.04
-RUN apt-get update
-RUN apt-get install openjdk-8-jdk -y
-```
-
-* Run the above Dockerfile :
-
-```
-docker image build -t java:1.0 .
-docker image build -t java:2.0 .
-```
-* From one Dockerfile we can create multiple images.
-* From one image we can also create multiple containers.
-
-![preview](../images/Docker14.png)
-
-## To inspect an image 
-```
-docker image inspect <imagename>
-```
-
-## To publish our own specified port :
-```
-docker conatiner run -d -p 8005:8080 <imagename>
-```
-![preview](../images/Docker15.png)
-
-## Portforwarding:
-* It is used to access our application running inside the container 
-
-```
-docker conatiner run -P <image>
-docker conatiner run -p <hosport>:<conatinerport>
-```
 
 <br/>
 <br/>
@@ -439,76 +484,8 @@ docker conatiner run -p <hosport>:<conatinerport>
 <br/>
 <br/>
 
-## Run container in multiplemodes :
-## Attached mode:
-* The container runs on foreground
-* Default mode of docker
 
-```
-docker conatiner run -P <dockerimage>
-```
 
-## Detached mode:
-
-* Docker conainer runs in the background .
-
-```
-docker conatiner run -d -P <imagename>
-```
-
-## Interactive :
-* In interactive mode we can interact with docker using terminal (/bin/bash, /bin/sh)
-* We will be using -it in the docker command
-```
-docker conatainer exec -it -P <imagename> /bin/bash 
-```
-
-<br/>
-<br/>
-<br/>
-<br/>
-
-* * * 
-
-<br/>
-<br/>
-<br/>
-<br/>
-
-## Adding name to the container :
-
-```
-docker container  run --name <nameofconainer>  -d -P <image>
-```
-
-![preview](../images/Docker15.png)
-
-## Delete an image :
-
-```
-docker image rm <imagename>
-docker image rm -f <imagename>
-```
-* To delete all images :
-
-```
-docker rmi $(docker images -a -q)
-```
-
-## To get into the container :
-
-```
-docker exec -it <conainername>/<containerid> /bin/bash
-```
-![preview](../images/Docker16.png)
-
-## To delete the docker container :
-
-```
-docker container rm <conatinername>/<conatinerid>
-docker container rm -f  <conatinername>/<conatinerid>
-```
-* For more info [REFERHERE](https://docs.docker.com/engine/reference/commandline/container_rm/)
 
 ## Namespaces:
 ![preview](../images/Docker18.png)
