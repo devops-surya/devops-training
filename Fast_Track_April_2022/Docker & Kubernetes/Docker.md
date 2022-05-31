@@ -489,14 +489,14 @@ docker image ls         ----- list all the images
 
 
 
-## Namespaces:
-![preview](../images/Docker18.png)
+
+## Volumes :
 
 * As the containers are not reliable .That means the containers are going to stop/kill/died when there is no service running inside the container.
 * When the containers are stopped the data inside the containers also lost.
 * For the above isuue to be resolved , there is a concept of volumes, where we can attach the volumes. The volumes will be available even after the container is lost
 
-## Volumes :
+
 * volumes 
 * Bind mount
 * tmpfs
