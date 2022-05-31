@@ -222,12 +222,14 @@ COPY <src> <dest>
 <br/>
 
 ## Run container in multiplemodes :
+
 ## Attached mode:
 * The container runs on foreground
 * Default mode of docker
 
 ```
-docker conatiner run -P <dockerimage>
+docker conatiner run  <dockerimage>
+docker container run tomcat
 ```
 
 ## Detached mode:
@@ -235,28 +237,29 @@ docker conatiner run -P <dockerimage>
 * Docker conainer runs in the background .
 
 ```
-docker conatiner run -d -P <imagename>
+docker conatiner run -d <imagename>
+docker container run -d tomcat 
 ```
 
 ## Interactive :
 * In interactive mode we can interact with docker using terminal (/bin/bash, /bin/sh)
 * We will be using -it in the docker command
 ```
-docker conatainer exec -it -P <imagename> /bin/bash 
+docker conatainer exec -it  <containerid/container name> /bin/bash 
 ```
 
 ## Portforwarding:
 * It is used to access our application running inside the container 
 
 ```
-docker conatiner run -d -P <image>
+docker conatiner run -P <image>
 ```
 
 ## To publish our own specified port :
 ```
-docker conatiner run -d  -p <hosport>:<conatinerport> <imagename>
+docker conatiner run  -p <hosport>:<conatinerport> <imagename>
 
-docker conatiner run -d -p 8005:8080 <imagename>
+docker conatiner run -p 8005:8080 <imagename>
 ```
 ![preview](../images/Docker15.png)
 
