@@ -142,7 +142,6 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
 ``` 
-![preview](../images/Docker9.png)
 
 ## RUN :
 * This instructor executes your bash/linux commands in the Dockerfile
