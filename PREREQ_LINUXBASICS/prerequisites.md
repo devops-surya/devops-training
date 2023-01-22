@@ -1,4 +1,5 @@
-#### prerequisites:
+#### Prerequisites:
+
 * Install choco :
   [REFER HERE](https://chocolatey.org/docs/installation)
 
