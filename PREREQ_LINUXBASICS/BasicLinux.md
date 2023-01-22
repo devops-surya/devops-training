@@ -7,7 +7,11 @@ Linux is a kernal
 EX: ubuntu , REDHAT , centos 
 
 
-## MAJOR COMPONENTS OF Operating System :
+### OS Works :
+
+![preview](../MAR-2021/images/l1.png)
+
+### MAJOR COMPONENTS OF Operating System :
 
 * 1. HARDWARE COMPONENTS:
      * RAM 
@@ -24,10 +28,6 @@ EX: ubuntu , REDHAT , centos
      * CLI
      
      .........
-
-### Basic Functionality of operating system :
-
-![preview](../MAR-2021/images/l1.png)
 
 
 
