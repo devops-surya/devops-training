@@ -87,7 +87,7 @@ echo "devops"
 
 
 
-## List of Linux COmmands :
+## List of Linux Cosssmmands :
 
 ### SUDO 
 
