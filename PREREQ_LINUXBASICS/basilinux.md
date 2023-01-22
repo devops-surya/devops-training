@@ -1,5 +1,5 @@
 ## LINUX :
-* Linux is developed by  linus torvalds
+* Linux is developed by  Linus Torvalds
 
 ```
 Linux is a kernal 
@@ -21,11 +21,11 @@ EX: ubuntu , REDHAT , centos
      ...
 * 3. USER INTERFACE :
      * GUI 
-     * CLI 
-     * shell
+     * CLI
+     
      .........
 
-### basic Functionality of operating system :
+### Basic Functionality of operating system :
 
 ![preview](../MAR-2021/images/linux1.png)
 
