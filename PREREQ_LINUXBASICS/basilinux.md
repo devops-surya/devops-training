@@ -27,7 +27,7 @@ EX: ubuntu , REDHAT , centos
 
 ### Basic Functionality of operating system :
 
-![preview](../MAR-2021/images/linux1.png)
+![preview](../MAR-2021/images/l1.png)
 
 ```
 cd ---- change directory 
