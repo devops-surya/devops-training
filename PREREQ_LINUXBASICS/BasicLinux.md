@@ -37,6 +37,7 @@ ls ------ list the things in the present path
 ls -a -----to see the hidden files 
 pwd ------present working directory 
 mkdir  -----create a directory (folder)
+```
 
 
 ## LINUX COMMANDS:
@@ -74,7 +75,7 @@ mv <source> <destination>
 locate <filename>
 ```
 
-* TO clear the screen :
+* To clear the screen :
 ```
 clear or ctrl+l
 ```
@@ -83,6 +84,10 @@ clear or ctrl+l
 ```
 echo "devops"
 ```
+
+
+
+## List of Linux COmmands :
 
 ### SUDO 
 
@@ -386,10 +391,7 @@ kill pid: To display how to utilize a PID using the kill command.
 Syntax: $kill pid
 ```
 
-### Conclusion:
-```
-Basic commands could upgrade your troubleshooting ability while deciding why your application works in a single advancement climate however maybe not in another. Learning a portion of these valuable commands can assist you in resolving problems with your application. With so numerous new tools and improvements, the designers and architects should get familiar with some essential Linux commands for DevOps. It will aid them sort out, investigate, and optimize their apps, when things turn out badly. By inventively executing these commands into your work measures, you can turn into a specialist Linux user.
-```
+
 
 
 
