@@ -92,8 +92,6 @@ echo "devops"
 ### SUDO 
 
 ```
-Linux Commands in DevOps
-* sudo 
 This command operates only that command by root/ superuser privileges.
 
 Syntax:
