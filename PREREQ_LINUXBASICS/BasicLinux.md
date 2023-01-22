@@ -44,9 +44,9 @@ mkdir  -----create a directory (folder)
 
 * ls -al  --- to list the files or folders with the data stating ,who created it , when it is created , permissions to that folder/file, and time stamp.
 
-* rm -rf <foldername>   -- to remove a file od folder in the machine.
+* rm -rf <foldername>   -- to remove a file or folder 
 
-* touch <filename>   ---- to create a file in a linix machine 
+* touch <filename>   ---- to create a file
 
 * vi -- IT is one of the most pupular editor. To create a file , edit a file.
 If you are using vi , it creates a file and opens the file for editing.
