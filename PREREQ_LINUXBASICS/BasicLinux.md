@@ -389,7 +389,14 @@ kill pid: To display how to utilize a PID using the kill command.
 Syntax: $kill pid
 ```
 
+### ps
 
+```
+The ps command without arguments lists the running processes in the current shell
+
+Syntax: ps -ef           ---- list all running process 
+
+```
 
 
 
