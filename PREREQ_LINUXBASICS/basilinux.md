@@ -7,7 +7,7 @@ Linux is a kernal
 EX: ubuntu , REDHAT , centos 
 
 
-## MAJOR COMPONENTS OF LINUX :
+## MAJOR COMPONENTS OF Operating System :
 
 * 1. HARDWARE COMPONENTS:
      * RAM 
