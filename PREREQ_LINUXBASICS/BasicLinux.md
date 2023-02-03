@@ -32,11 +32,12 @@ EX: ubuntu , REDHAT , centos
 
 
 ```
-cd ---- change directory 
-ls ------ list the things in the present path
-ls -a -----to see the hidden files 
 pwd ------present working directory 
-mkdir  -----create a directory (folder)
+ls ------ list the things in the present path
+cd ---- change directory 
+mkdir  ----- create a directory (folder)
+touch -- create a file
+
 ```
 
 
