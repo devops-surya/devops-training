@@ -46,4 +46,10 @@ choco install vscode
 ![preview](../MAR-2021/images/A8.png)
 ![preview](../MAR-2021/images/A9.png)
 ![preview](../MAR-2021/images/A10.png)
+![preview](../MAR-2021/images/A11.png)
+![preview](../MAR-2021/images/A12.png)
+![preview](../MAR-2021/images/A13.png)
+![preview](../MAR-2021/images/A14.png)
+![preview](../MAR-2021/images/A15.png)
+
 
