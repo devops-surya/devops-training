@@ -166,19 +166,22 @@ grep -c - Returns the number of lines in which the results matched the search st
 grep -v - Returns the result of lines not matching the search string
 ```
 
-### Tail
+### Tail/Head
 ```
 It is corresponding to head command. The tail command prints the last N number of information of the given info. Of course, it prints the last 10 lines of the predefined documents. In the event that you provide more than one file name, at that point information from each document goes before by its record name. 
 
 Syntax:
 
+head [OPTION]... [FILE]...
 tail [OPTION]... [FILE]...
+ 
 
-tail -n 3 state.txt or tail -3 state.txt => -n for no. of lines
+* -n num: Prints the first ‘num’ lines instead of first 10 lines. num is mandatory to be specified in command otherwise it displays an error. 
+* -c num: Prints the first ‘num’ bytes from the file specified. Newline count as a single character, so if head prints out a newline, it will count it as a byte. num is mandatory to be specified in command otherwise displays an error. 
+* -q: It is used if more than 1 file is given. Because of this command, data from each file is not precedes by its file name. 
 
-tail +25 state.txt
 
--c num: Prints the last ‘num’ bytes from the file specified.
+tail -n 3 filename
 ```
 
 ### Cat
@@ -215,6 +218,20 @@ chmod {filename}
 1 – execute permission
 
 0 – no permission
+```
+
+```
+Reference   Class     Description
+u          owner      file's owner
+
+g          group      users who are members of
+                      the file's group
+
+o          others     users who are neither the
+                      file's owner nor members of 
+                      the file's group
+
+a          all       All three of the above, same as ugo
 ```
 
 ### Chown
