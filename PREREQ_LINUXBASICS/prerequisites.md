@@ -25,13 +25,25 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install mobaxterm
 ```
 
-### Git install: [REFER HERE](https://chocolatey.org/packages/git.install)
+### Install Git : [REFER HERE](https://chocolatey.org/packages/git.install)
 ```
 choco install git.install
 ```
 
-### Install visual studio code : [REFER HERE](https://chocolatey.org/packages/vscode)
+### Install visualStudioCode : [REFER HERE](https://chocolatey.org/packages/vscode)
 ```
 choco install vscode
 ```
 ### AWS free tier account [REFER HERE](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc)
+
+![preview](../MAR-2021/images/A1.png)
+![preview](../MAR-2021/images/A2.png)
+![preview](../MAR-2021/images/A3.png)
+![preview](../MAR-2021/images/A4.png)
+![preview](../MAR-2021/images/A5.png)
+![preview](../MAR-2021/images/A6.png)
+![preview](../MAR-2021/images/A7.png)
+![preview](../MAR-2021/images/A8.png)
+![preview](../MAR-2021/images/A9.png)
+![preview](../MAR-2021/images/A10.png)
+
