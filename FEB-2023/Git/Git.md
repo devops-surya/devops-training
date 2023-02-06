@@ -32,14 +32,6 @@
 ![preview](../images/CVCS_VS_DVCS.png)
 
 
-## THREE phases in git:
-1. Working tree
-2. Stagging area
-3. Local repo
-4. Remote repo .
-
-![preview](../images/git2.png)
-
 ## prerequisites:
 * Install choco :
   [REFER HERE](https://chocolatey.org/docs/installation)
@@ -54,16 +46,13 @@
   [REFER HERE](https://chocolatey.org/packages/MobaXTerm)
   
 
-##  Working on git 
-```
- mkdir gitpractice
+## THREE phases in git:
+1. Working tree
+2. Stagging area
+3. Local repo
+4. Remote repo .
 
- cd gitpractice
-
- git init  ---  To intilalize the git in the present folder.
-
-```
-![preview](../images/git3.png)
+![preview](../images/git2.png)
 
 * To see the changes made 
 ```
@@ -80,6 +69,35 @@ git add .
 ```
 git commit -m "< added some changes>"
 ```
+
+
+##  Initializing Git on local  : 
+
+```
+ mkdir gitpractice
+
+ cd gitpractice
+
+ git init  ---  To intilalize the git in the present folder.
+
+```
+![preview](../images/git3.png)
+
+## Scenario : Create a file 1.txt and move from workingarea to Localrepo :
 ![preview](../images/git4.png)
+
+```
+touch 1.txt 
+
+git status 
+
+git add . 
+
+git commit -m "adding 1.txt" 
+
+```
+
 ![preview](../images/git5.png)
+![preview](../images/G9999.png)
+
 
