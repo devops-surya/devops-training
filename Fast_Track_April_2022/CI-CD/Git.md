@@ -174,12 +174,15 @@ git reset --hard
 * Repositry is the place where the code will be stored.
 * The number of repositries will be depending up on the basis of the project.
 
+
 ## High level view of github 
 ![preview](../images/git17.png)
 ![preview](../images/git18.png)
 
+
+
 ## Create a repositry in the github:
-* Got to the repositries and then refer the image below:
+* Go to the repositries and then refer the image below:
 ![preview](../images/git19.png)
 * Provided the repositry name and make it public , so that it will be available to everyone.
 ![preview](../images/git20.png)
@@ -187,6 +190,14 @@ git reset --hard
 ## Add remote repo to the local repo for push 
 
 ![preview](../images/git21.png)
+
+* To configure the git in your local  :
+
+```
+git config --global user.name <username>
+git config --global user.email <emailaddress>
+git config --list
+```
 
 ```
 git remote add origin https://github.com/devops-surya/sample.git
