@@ -103,7 +103,7 @@ git commit -m "adding 1.txt"
 ![preview](../images/G9999.png)
 
 
-## Untracked and Modified :
+## Untracked and Modified files :
 * Untracked is the new file added and it is not there initially.
 * Modified is  the file that already present and there are some changes in the content of the file
 ![preview](../images/git6.png)
