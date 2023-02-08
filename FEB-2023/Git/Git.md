@@ -328,3 +328,61 @@ git push origin company-x
 git branch -r
 ```
 ![preview](../images/git40.png)
+
+
+
+## MERGE :
+![preview](../images/git41.png)
+* create a file y1.txt and do add , commit .
+![preview](../images/git42.png)
+* Switch to the company-x branch . Create  a file x1.txt and do add , commit .
+![preview](../images/git43.png)
+
+## Fastforward merge:
+![preview](../images/git45.png)
+* Create branch a company-z. create a file z1.txt and do add , commit.
+![preview](../images/git44.png)
+* if u dont want to go with the fastforward merge 
+
+```
+git checkout master 
+git merge --no-ff company-z
+```
+
+## Rebase :
+![preview](../images/git47.png)
+* Create  a branch-a and create a a1.txt file in it. do git add , git commit.
+* switch to master branch and create file rebase.txt, do git add and git commit.
+![preview](../images/git46.png)
+* For rebase to be done
+
+```
+git checkout branch-a
+git rebase master
+```
+![preview](../images/git48.png)
+
+
+## cherry-pick :
+![preview](../images/git50.png)
+* Create a branch-c , add two commits  by creating c1.xtx and c2.txt.
+![preview](../images/git49.png)
+* Create a branch-d , add d1.txt . do add and commit.
+![preview](../images/git51.png)
+![preview](../images/git52.png)
+
+## git pull :
+* git pull = git fetch + git merge 
+
+## Branching strategy 
+
+* Git Working 
+* Multiple phases : Working Tree, Staging area , Local repo , Remote repo .
+* Git history 
+* Organization expectation 
+* Git add , commit , push , clone , pull , reset , reset --hard , revert , merge rebase , ff merge , cherry-pick , 
+* Branching startegies 
+* git status
+* Creating local branches , merge between branches
+* Listing the local and remote branches .
+* Pushing the multiple branches to the remote repos .
