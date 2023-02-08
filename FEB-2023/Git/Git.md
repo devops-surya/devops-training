@@ -220,3 +220,111 @@ git revert <commitid>
 ![preview](../images/h6.png)
 ![preview](../images/h7.png)
 
+
+## Create a repositry in the github:
+* Go to the repositries and then refer the image below:
+![preview](../images/git19.png)
+* Provided the repositry name and make it public , so that it will be available to everyone.
+![preview](../images/git20.png)
+
+## Configure RemoteRepo to the LocalRepo to push the code. 
+
+![preview](../images/git21.png)
+
+* To configure the git in your local  :
+
+```
+git config --global user.name <username>
+git config --global user.email <emailaddress>
+git config --list
+git remote add origin https://github.com/devops-surya/sample.git
+git push origin master
+```
+![preview](../images/git22.png)
+
+## PersonalAccessTokens
+* Git depricated the support of using password and  expecting us to use the PersonalAccessToekn as password.
+* Go to >> Settings >> Developer Settings >> Personal access tokens >> Generate New Token >> 1.Note 2.Expiration 3.select scopes 4. Generate Token
+
+![preview](../images/gn1.png)
+![preview](../images/gn2.png)
+![preview](../images/gn3.png)
+![preview](../images/gn4.png)
+![preview](../images/gn5.png)
+![preview](../images/gn6.png)
+
+
+
+## Scenario : A new developer added to a team and he/she want the  total code from the repositry:
+
+```
+git clone https://github.com/devops-surya/sample.git
+```
+![preview](../images/git23.png)
+
+## Scenario : A developer already exists and he/she has the code in his local desktop. But he/she dont have the latest code.
+
+```
+git pull https://github.com/devops-surya/sample.git
+```
+
+
+## Merge conflicts.
+
+## Scenario : We have two developers newly assigned to a new project.
+
+![preview](../images/git34.png)
+
+* To create the above scenario , follow the below steps :
+  * Create a folder of mergeconflicts.
+  * create a two folders with names developer1 , developer2 .
+  * Get into folders of developer1, developer2 and clone the repo .
+  ![preview](../images/g1.png)
+  * Developer1 has made some changes to the file 6.txt and then pushed to the repo .
+  ![preview](../images/g2.png) 
+  * Developer2 has made changes on the local and pushed the changes , here it is asking for the pull as shown below :
+  ![preview](../images/g3.png) 
+  * Developer2 has to pull the code and has to take call of merge conflicts and push the code again.
+  ![preview](../images/g4.png)
+
+## Multiple branching :
+* If a company want to serve the code to the mutliple companies , they will create multiple branches and go for the parallel development.
+![preview](../images/git35.png)
+
+* To create a branch
+
+```
+git branch <branchname>
+```
+* To list the branches:
+```
+git branch
+```
+
+* To switch between the branches
+
+```
+git checkout <branchname>
+```
+
+* To create a branch and switch to it directly:
+
+```
+git checkout -b <branchname> 
+```
+![preview](../images/git36.png)
+![preview](../images/git37.png)
+
+* To push the code from the company-x branch to the remote repo:
+
+```
+git push origin company-x
+```
+![preview](../images/git38.png)
+![preview](../images/git39.png)
+
+* To see the remote branches:
+```
+git branch -r
+```
+![preview](../images/git40.png)

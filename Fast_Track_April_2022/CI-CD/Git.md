@@ -180,14 +180,13 @@ git reset --hard
 ![preview](../images/git18.png)
 
 
-
 ## Create a repositry in the github:
 * Go to the repositries and then refer the image below:
 ![preview](../images/git19.png)
 * Provided the repositry name and make it public , so that it will be available to everyone.
 ![preview](../images/git20.png)
 
-## Add remote repo to the local repo for push 
+## Configure RemoteRepo to the LocalRepo to push the code. 
 
 ![preview](../images/git21.png)
 
@@ -197,14 +196,8 @@ git reset --hard
 git config --global user.name <username>
 git config --global user.email <emailaddress>
 git config --list
-```
-
-```
 git remote add origin https://github.com/devops-surya/sample.git
-
 git push origin master
-
-
 ```
 ![preview](../images/git22.png)
 
@@ -236,7 +229,7 @@ git pull https://github.com/devops-surya/sample.git
 
 ## Merge conflicts.
 
-## * Scenario : We have two developers newly assigned to a new project.
+## Scenario : We have two developers newly assigned to a new project.
 
 ![preview](../images/git34.png)
 
@@ -252,7 +245,8 @@ git pull https://github.com/devops-surya/sample.git
   * Developer2 has to pull the code and has to take call of merge conflicts and push the code again.
   ![preview](../images/g4.png)
 
-  # Multiple branching :
+
+## Multiple branching :
 * If a company want to serve the code to the mutliple companies , they will create multiple branches and go for the parallel development.
 ![preview](../images/git35.png)
 
