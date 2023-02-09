@@ -269,7 +269,7 @@ git pull https://github.com/devops-surya/sample.git
 ```
 
 
-## Merge conflicts.
+## Merge conflicts.  .
 
 ## Scenario : We have two developers newly assigned to a new project.
 
