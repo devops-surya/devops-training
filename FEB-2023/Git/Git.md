@@ -332,6 +332,8 @@ git branch -r
 
 
 ## MERGE :
+* Merge will be helpful in combining the code between two branches .
+
 ![preview](../images/git41.png)
 * create a file y1.txt and do add , commit .
 ![preview](../images/git42.png)
