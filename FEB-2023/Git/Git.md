@@ -273,7 +273,7 @@ git pull https://github.com/devops-surya/sample.git
 
 ## Scenario : We have two developers newly assigned to a new project.
 
-![preview](../images/git34.png)
+![preview](../images/git334.png)
 
 * To create the above scenario , follow the below steps :
   * Create a folder of mergeconflicts.
@@ -289,7 +289,7 @@ git pull https://github.com/devops-surya/sample.git
 
 ## Multiple branching :
 * If a company want to serve the code to the mutliple companies , they will create multiple branches and go for the parallel development.
-![preview](../images/git35.png)
+![preview](../images/git335.png)
 
 * To create a branch
 
