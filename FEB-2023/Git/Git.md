@@ -352,6 +352,7 @@ git merge --no-ff company-z
 ```
 
 ## Rebase :
+* Rebase will be used when you want to change the base of the branch.
 ![preview](../images/git47.png)
 * Create  a branch-a and create a a1.txt file in it. do git add , git commit.
 * switch to master branch and create file rebase.txt, do git add and git commit.
@@ -366,6 +367,7 @@ git rebase master
 
 
 ## cherry-pick :
+* Cherry-pick will be used when you need the specific commit from another branch.
 ![preview](../images/git50.png)
 * Create a branch-c , add two commits  by creating c1.xtx and c2.txt.
 ![preview](../images/git49.png)
@@ -375,16 +377,9 @@ git rebase master
 
 ## git pull :
 * git pull = git fetch + git merge 
+![preview](../images/gp.png)
 
-## Branching strategy 
 
-* Git Working 
-* Multiple phases : Working Tree, Staging area , Local repo , Remote repo .
-* Git history 
-* Organization expectation 
-* Git add , commit , push , clone , pull , reset , reset --hard , revert , merge rebase , ff merge , cherry-pick , 
-* Branching startegies 
-* git status
-* Creating local branches , merge between branches
-* Listing the local and remote branches .
-* Pushing the multiple branches to the remote repos .
+## Branching strategy :
+![preview](../images/BS.png)
+
