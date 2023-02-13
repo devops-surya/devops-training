@@ -23,24 +23,44 @@
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
+<br/>
+
+* * * 
+<br/>
+
 
 ## Install Mobaxterm : [REFER HERE](https://community.chocolatey.org/packages/MobaXTerm)
 * MobaXterm is a toolbox for remote computing. In a single Windows application, it provides loads of functions that are tailored for programmers, webmasters, IT administrators and pretty much all users who need to handle their remote jobs in a more simple fashion
 ```
 choco install mobaxterm
 ```
+<br/>
+
+* * * 
+<br/>
+
 
 ## Install Git : [REFER HERE](https://chocolatey.org/packages/git.install)
 * Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 ```
 choco install git.install
 ```
+<br/>
+
+* * * 
+<br/>
+
 
 ## Install visualStudioCode : [REFER HERE](https://chocolatey.org/packages/vscode)
 * Visual Studio Code combines the simplicity of a source code editor with powerful developer tooling, like IntelliSense code completion and debugging.
 ```
 choco install vscode
 ```
+
+<br/>
+
+* * * 
+<br/>
 
 ## AWS (Amazon Web Services) 
 * Amazon Web Services (AWS) is the world’s most comprehensive and broadly adopted cloud platform, offering over 200 fully featured services from data centers globally. Millions of customers—including the fastest-growing startups, largest enterprises, and leading government agencies—are using AWS to lower costs, become more agile, and innovate faster.
@@ -62,4 +82,9 @@ choco install vscode
 ![preview](../Fast_Track_April_2022/images/A14.png)
 ![preview](../Fast_Track_April_2022/images/A15.png)
 
+<br/>
+<br/>
 
+* * * 
+<br/>
+<br/>

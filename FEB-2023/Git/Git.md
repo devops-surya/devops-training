@@ -1,5 +1,10 @@
-* BASIC PIPELINE OF DEVOPS:
+### BASIC PIPELINE OF DEVOPS:
 ![preview](../images/git1.png)
+
+<br/>
+
+* * * 
+<br/>
 
 # GIT
 
@@ -31,6 +36,10 @@
 ## Difference betwen Centralised VCS and Distibuted VCS :
 ![preview](../images/CVCS_VS_DVCS.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## prerequisites:
 * Install choco :
@@ -45,6 +54,10 @@
 * MOBAXTERM Install 
   [REFER HERE](https://chocolatey.org/packages/MobaXTerm)
   
+<br/>
+
+* * * 
+<br/>
 
 ## THREE phases in git:
 1. Working tree
@@ -69,7 +82,10 @@ git add .
 ```
 git commit -m "< added some changes>"
 ```
+<br/>
 
+* * * 
+<br/>
 
 ##  Initializing Git on local  : 
 
@@ -83,7 +99,10 @@ git commit -m "< added some changes>"
 ```
 ![preview](../images/git3.png)
 
-       
+<br/>
+
+* * * 
+<br/>    
 
 ## Scenario : Create a file 1.txt push it from workingarea to Localrepo :
 ![preview](../images/git4.png)
@@ -102,12 +121,20 @@ git commit -m "adding 1.txt"
 ![preview](../images/git5.png)
 ![preview](../images/G9999.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## Untracked and Modified files :
 * Untracked is the new file added and it is not there initially.
 * Modified is  the file that already present and there are some changes in the content of the file
 ![preview](../images/git6.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## Add only the modified changes to the stagging area:
 
@@ -116,7 +143,10 @@ git add -u      -- add only the modified changes to stagging area
 git add --all   --- it add all changes 
 git add -A      --- it add all chnages
 ```
+<br/>
 
+* * * 
+<br/>
 
 ## Track the changes made in the history : 
 
@@ -127,12 +157,20 @@ git checkout master
 ```
 ![preview](../images/git7.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## Will git track folder ..?
 * Git tracks only the files not the folders .
 
 ![preview](../images/git8.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## SCENARIO : Get back the changes from staggingarea to Workingtree & remove the changes from Workingtree also 
 
@@ -144,15 +182,24 @@ git checkout master
 ![preview](../images/git10.png)
 ![preview](../images/git11.png)
 
+<br/>
+
+* * * 
+<br/>
+
 ### checkout 
 * Checkout  is used to remove the changes made on the workingtree , after we do reset
+* **NOTE** : Checkout in this case works on modified files 
 
 ```
 git checkout  <filename>
 ```
 ![preview](../images/tt1.png)
 
+<br/>
 
+* * * 
+<br/>
 
 ## Scenario:  Get back the changes from both staggingarea and workingtree at a sametime  :
 
@@ -161,12 +208,22 @@ git reset --hard
 ```
 ![preview](../images/git13.png)
 
+<br/>
+
+* * * 
+<br/>
+
 ## Removing  the file is also a change in the working of git.
 ![preview](../images/git14.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## SCENARIO: Revert the commit .
 ![preview](../images/gn9.png)
+
 
 ### Revert :
 * Git revert is to revert the commit .
@@ -184,6 +241,10 @@ git revert <commitid>
 ![preview](../images/gn7.png)
 ![preview](../images/gn8.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## Head VS Detached Head
 * Head will be always at the latest commit .
@@ -192,7 +253,10 @@ git revert <commitid>
 ![preview](../images/Head.png)
 ![preview](../images/git15.png)
 
+<br/>
 
+* * * 
+<br/>
 
 ## Push the changes from local repo to remote repo
 ###  PUSH 
@@ -209,6 +273,10 @@ git revert <commitid>
 ## High level view of github 
 ![preview](../images/git17.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## GitHub Signup : [REFER HERE](https://github.com/signup?return_to=https%3A%2F%2Fgithub.com%2Fsignup&source=login) 
 * Follow the below instructions to signup :
@@ -220,6 +288,10 @@ git revert <commitid>
 ![preview](../images/h6.png)
 ![preview](../images/h7.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## Create a repositry in the github:
 * Go to the repositries and then refer the image below:
@@ -242,6 +314,11 @@ git push origin master
 ```
 ![preview](../images/git22.png)
 
+<br/>
+
+* * * 
+<br/>
+
 ## PersonalAccessTokens
 * Git depricated the support of using password and  expecting us to use the PersonalAccessToekn as password.
 * Go to >> Settings >> Developer Settings >> Personal access tokens >> Generate New Token >> 1.Note 2.Expiration 3.select scopes 4. Generate Token
@@ -253,7 +330,10 @@ git push origin master
 ![preview](../images/gn5.png)
 ![preview](../images/gn6.png)
 
+<br/>
 
+* * * 
+<br/>
 
 ## Scenario : A new developer added to a team and he/she want the  total code from the repositry:
 
@@ -261,13 +341,20 @@ git push origin master
 git clone https://github.com/devops-surya/sample.git
 ```
 ![preview](../images/git23.png)
+<br/>
+
+* * * 
+<br/>
 
 ## Scenario : A developer already exists and he/she has the code in his local desktop. But he/she dont have the latest code.
 
 ```
 git pull https://github.com/devops-surya/sample.git
 ```
+<br/>
 
+* * * 
+<br/>
  
 ## Merge conflicts.
 
@@ -286,6 +373,10 @@ git pull https://github.com/devops-surya/sample.git
   ![preview](../images/g3.png) 
   * Developer2 has to pull the code and has to take call of merge conflicts and push the code again.
   ![preview](../images/g4.png)
+<br/>
+
+* * * 
+<br/>
 
 ## Multiple branching :
 * If a company want to serve the code to the mutliple companies , they will create multiple branches and go for the parallel development.
@@ -329,7 +420,10 @@ git branch -r
 ```
 ![preview](../images/git40.png)
 
+<br/>
 
+* * * 
+<br/>
 
 ## MERGE :
 * Merge will be helpful in combining the code between two branches .
@@ -339,6 +433,10 @@ git branch -r
 ![preview](../images/git42.png)
 * Switch to the company-x branch . Create  a file x1.txt and do add , commit .
 ![preview](../images/git43.png)
+<br/>
+
+* * * 
+<br/>
 
 ## Fastforward merge:
 ![preview](../images/git45.png)
@@ -350,6 +448,10 @@ git branch -r
 git checkout master 
 git merge --no-ff company-z
 ```
+<br/>
+
+* * * 
+<br/>
 
 ## Rebase :
 * Rebase will be used when you want to change the base of the branch.
@@ -365,6 +467,10 @@ git rebase master
 ```
 ![preview](../images/git48.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## cherry-pick :
 * Cherry-pick will be used when you need the specific commit from another branch.
@@ -374,14 +480,27 @@ git rebase master
 * Create a branch-d , add d1.txt . do add and commit.
 ![preview](../images/git51.png)
 ![preview](../images/git52.png)
+<br/>
+
+* * * 
+<br/>
 
 ## git pull :
 * git pull = git fetch + git merge 
 ![preview](../images/gp.png)
 
+<br/>
+
+* * * 
+<br/>
 
 ## Branching strategy :
 ![preview](../images/BS.png)
+
+<br/>
+
+* * * 
+<br/>
 
 ## Delete a Branch in Local/Remote:
 
@@ -400,3 +519,7 @@ git branch -D branch_name
 git push origin -d branch_name
 git push origin -D branch_name
 ```
+<br/>
+
+* * * 
+<br/>
