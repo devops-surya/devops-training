@@ -383,3 +383,20 @@ git rebase master
 ## Branching strategy :
 ![preview](../images/BS.png)
 
+## Delete a Branch in Local/Remote:
+
+## Delete Local branch 
+* -d --> Delete 
+* -D --> Force Delete
+```
+git branch -d branch_name    
+git branch -D branch_name
+```
+
+### Delete Remote branch
+* -d --> Delete 
+* -D --> Force Delete
+```
+git push origin -d branch_name
+git push origin -D branch_name
+```
