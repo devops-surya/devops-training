@@ -166,32 +166,31 @@ http://ipaddress:8080
 ![preview](../images/jenkins9.png)
 
 <br/>
-<br/>
-<br/>
-<br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
 
-
-# Freestyle Project: 
-## Create a new job:
+# Create a *job* :
+* In jenkins we do automation by creating jobs :
 ![preview](../images/jenkins10.png)
 
 ## Multiple ways to create a job:
 ![preview](../images/jenkins13.png)
 
 ## Create a job in Freestyle:
-* click on the newitem and follow the below screenshots :
+* Click on the  *New Item*  and follow the below instructions in the screenshots :
+![preview](../images/jenkins10.png)
 ![preview](../images/jenkins14.png)
 ![preview](../images/jenkins15.png)
 ![preview](../images/jenkins16.png)
 ![preview](../images/jenkins17.png)
 
+<br/>
+
+* * * 
+
+<br/>
 
 ## Manage jenkins is used to configure the jenkins (settings) :
 ![preview](../images/jenkins11.png)
@@ -201,17 +200,10 @@ http://ipaddress:8080
 ![preview](../images/jenkins12.png)
 
 
-
-<br/>
-<br/>
-<br/>
 <br/>
 
 * * * 
 
-<br/>
-<br/>
-<br/>
 <br/>
 
 ## Multiple sections in jenkins freestyle job:
@@ -230,7 +222,7 @@ http://ipaddress:8080
 ![preview](../images/jen4.png)
 * This project is parameterized : - When can use parameters 
 ![preview](../images/jen5.png)
-* Disable this project  : -  It will disable the project like can't Run/build the job
+* Disable this project  : -  It will disable the project , then can't Run/build the job
 ![preview](../images/jen6.png)
 * Execute concurrent builds if necessary : - It allows you to run the same job multipletimes parallely
 ![preview](../images/jen7.png)
@@ -264,9 +256,15 @@ http://ipaddress:8080
 * Define all you Post-build action steps here 
 ![preview](../images/jen14.png)
 
+<br/>
 
+* * * 
 
-## Configurations in the __ Manage jenkins__
+<br/>
+
+# Explore *Manage Jenkins* Options : 
+
+## Configure System 
 * In manage jenkins => configure system 
 
 ![preview](../images/jenkins56.png)
@@ -276,6 +274,7 @@ http://ipaddress:8080
 * In manage jenkins => configure global security 
 
 ![preview](../images/jenkins58.png)
+
 
 ## Manage Plugins
 * In manage jenkins => manage plugins
@@ -299,9 +298,6 @@ http://ipaddress:8080
      ![preview](../images/jenkins55.png)
 
 
-
-<br/>
-<br/>
 <br/>
 <br/>
 
@@ -309,8 +305,7 @@ http://ipaddress:8080
 
 <br/>
 <br/>
-<br/>
-<br/>
+
 
 ## Scenario: Create a CI job/pipeline .
 ### Create a job for GOL build.
@@ -354,18 +349,12 @@ http://ipaddress:8080
 * /var/lib/jenkins/jobs : - Configurations of everyjob is stored
 ![preview](../images/jen15.png)
 
-
-<br/>
-<br/>
-<br/>
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 ## Build with parameters:
 ![preview](../images/jenkins90.png)
@@ -388,7 +377,11 @@ http://ipaddress:8080
 
 ![preview](../images/jenkins95.png)
 
+<br/>
 
+* * * 
+
+<br/>
 
 ## Upstream and Downstream projects:
 ![preview](../images/jenkins100.png)
@@ -402,17 +395,13 @@ http://ipaddress:8080
     ![preview](../images/jenkins99.png)
 
 
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 
 ## Jenkins Node/slave in jenkins:
@@ -477,6 +466,12 @@ visudo -- add jenkins to the sudo group
 
 ![preview](../images/jenkins69.png)
 
+<br/>
+
+* * * 
+
+<br/>
+
 ## Backup of jenkins:
 
 ![preview](../images/jenkins70.png)
@@ -495,17 +490,13 @@ visudo -- add jenkins to the sudo group
 
 
 
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 
 # Pipeline :
