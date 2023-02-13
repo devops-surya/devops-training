@@ -1,4 +1,5 @@
-# JENKINS and MAVEN
+# MAVEN & JENKINS
+
 
 # Maven:
 * Maven is a build automation tool and it helps DevOps in providing automation around the Build phase of the DevOps Life Cycle Management.
@@ -103,3 +104,16 @@ cd game-of-life.git
 <br/>
 <br/>
 <br/>
+
+
+
+# Jenkins:
+* Jenkins is an open source continuous integration/continuous delivery and deployment (CI/CD) automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called pipelines.
+* Jenkins is a ci/cd tool
+* ci -- continous integration 
+* cd -- continous delivery / continous deployment
+
+## Basic flow of devops :
+![preview](../images/jenkins1.png)
+![preview](../images/jenkins3.png)
+![preview](../images/sqpipeline.png)
