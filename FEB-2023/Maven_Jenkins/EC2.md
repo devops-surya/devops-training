@@ -26,9 +26,30 @@
 ![preview](../images/E7.png) 
 
 2. Open Mobaxterm and makesure the file downloaded is there in the present path and paste the command copied from AWS dashboard.
-![preview](../images/E8.png) 
+![preview](../images/e8.png) 
 ![preview](../images/E9.png) 
 
 3. Disconnect from EC2 >> exit (or) Ctrl+ d :
 ![preview](../images/E10.png) 
 
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Terminate EC2 in AWS : 
+* To terminate/kill the EC2 in AWS , follow the screenshots with instructions:
+   * **Terminate instance** : Permanent Delete/kill of instance 
+   * **Stop instance**      : Temporary stopping , can start at anypoint in future
+   * **Reboot instance**    : restart/reboot the instance 
+   
+![preview](../images/E11.png) 
+
+
+<br/>
+
+* * * 
+
+<br/>
