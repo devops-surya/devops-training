@@ -53,3 +53,19 @@
 * * * 
 
 <br/>
+
+
+## Change ***Instance type*** of a EC2 :
+* Changing Instance type is changing the size of the EC2 instance.
+
+1. EC2 server has to be stopped to change the instance type:
+![preview](../images/E12.png) 
+![preview](../images/E13.png) 
+
+2. Go to Actions >> Instance settings >> Change instance type 
+![preview](../images/E14.png) 
+![preview](../images/E15.png) 
+
+3. Now you will have the server with changed **Instance type** >>  Start the Instance
+![preview](../images/E16.png) 
+
