@@ -69,3 +69,22 @@
 3. Now you will have the server with changed **Instance type** >>  Start the Instance
 ![preview](../images/E16.png) 
 
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Setting up Inbound rule to All Traffic for EC2 in AWS:
+* Got to EC2 dashboaed >> check the server >> Security >> Inbound rules >> Security groups
+![preview](../images/E17.png) 
+
+* Edit the Inbound rules 
+![preview](../images/E18.png) 
+![preview](../images/E19.png) 
+![preview](../images/E20.png) 
+![preview](../images/E21.png) 
+
