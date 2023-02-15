@@ -179,22 +179,62 @@ sudo apt-get install jenkins
 ```
 
 * To open jenkins on brower 
-
+* ***NOTE*** : jenkins runs on port of 8080 . So port 8080 must be opened in EC2 server (or) set inbound rule to All Traffic .
 ```
 http://publicipaddress:8080
 ```
 * ***http://publicipaddress:8080*** will open below screen on browser:
-![preview](../images/jenkins4.png)
- * Copy the password and paste it on the browser:
-![preview](../images/jenkins5.png)
-* Click on the install suggested plugins , then u will see below page:
-![preview](../images/jenkins6.png)
-* provide the username, password , email:
-![preview](../images/jenkins7.png)
-* After providing usename and password click on the save and continue:
-![preview](../images/jenkins8.png)
+![preview](../images/J4.png)
+* Copy the password from server and paste it on the browser:
+![preview](../images/J5.png)
+![preview](../images/J6.png)
+* Select ***Install suggested plugins*** and wait all plugins installed:
+![preview](../images/J7.png)
+![preview](../images/J8.png)
+* ***Create First Admin User*** by provide the username, password , email then  Save and continue:
+![preview](../images/J9.png)
+* ***Instance Configuration*** -- No changes
+![preview](../images/j10.png)
+![preview](../images/J11.png)
 * Dashboard of jenkins
-![preview](../images/jenkins9.png)
+![preview](../images/J12.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Create a *job* :
+* In Jenkins we do automation by creating jobs :
+![preview](../images/J13.png)
+
+## Multiple ways to create a job:
+![preview](../images/J14.png)
+
+## Create a job in Freestyle:
+* Click on the  **New Item**  and follow the below instructions in the screenshots :
+![preview](../images/J13.png)
+![preview](../images/J15.png)
+![preview](../images/J16.png)
+![preview](../images/J17.png)
+![preview](../images/J18.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## ***Manage jenkins*** is used to configure the Jenkins (settings) :
+![preview](../images/J19.png)
+
+## Jenkins executor :
+* ***Executor*** will define , how many jobs run parallely at a time.
+![preview](../images/J20.png)
+
 
 <br/>
 
