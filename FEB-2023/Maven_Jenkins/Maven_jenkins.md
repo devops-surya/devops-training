@@ -127,8 +127,77 @@ cd SampleMavenProject
     * ***CD -- Continous Delivery / Continous Deployment*** :
         * **Continous Delivery** : Continuous Delivery is a software development practice that aims to make the release process more efficient and reliable by automating the entire software delivery pipeline. The idea is to ensure that code changes are always in a releasable state and can be deployed to production at any time. Continuous Delivery typically involves a continuous integration process that compiles and tests the code, followed by an automated deployment process that deploys the built artifacts to a staging environment. Once the code has been successfully tested in the staging environment, it can be promoted to the production environment.
         * **Continous Deployment** : Continuous Deployment, on the other hand, is a practice where every code change that passes the automated tests is automatically deployed to production. This means that any changes made to the code are automatically released to the users without any human intervention. Continuous Deployment is a more advanced version of Continuous Delivery and is generally suitable for organizations with high release frequency and the ability to handle fast feedback loops.
+<br/>
 
-## Basic flow of devops :
+* * * 
+
+<br/>
+
+## Pipeline flow of devops :
 ![preview](../images/jenkins1.png)
 ![preview](../images/jenkins3.png)
 ![preview](../images/sqpipeline.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Installing jenkins 
+* prerequisites:
+1. Ubuntu
+2. Java 
+3. Jenkins
+
+## For installing jenkins we have two ways.
+1. Quick setup (it is not the enterprize setup)
+2. Jenkins master 
+
+### Quick setup [REFER HERE](https://www.jenkins.io/download/)
+```
+ java-jar <path to the download>
+```
+
+### Jenkins master setup :
+* Jenkins installation official document [REFER HERE](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu) 
+* Create a EC2 in AWS and follow below steps to install Jenkins :
+```
+sudo apt-get update
+sudo apt-get install openjdk-11-jdk
+
+java -version
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install jenkins
+```
+
+* To open jenkins on brower 
+
+```
+http://publicipaddress:8080
+```
+* ***http://publicipaddress:8080*** will open below screen on browser:
+![preview](../images/jenkins4.png)
+ * Copy the password and paste it on the browser:
+![preview](../images/jenkins5.png)
+* Click on the install suggested plugins , then u will see below page:
+![preview](../images/jenkins6.png)
+* provide the username, password , email:
+![preview](../images/jenkins7.png)
+* After providing usename and password click on the save and continue:
+![preview](../images/jenkins8.png)
+* Dashboard of jenkins
+![preview](../images/jenkins9.png)
+
+<br/>
+
+* * * 
+
+<br/>
