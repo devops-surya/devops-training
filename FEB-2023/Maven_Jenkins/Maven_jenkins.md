@@ -45,6 +45,30 @@ mvn clean package = mvn clean + mvn compile + mvn test + mvn package
 * * * 
 <br/>
 
+
+## Types of Maven repositories :  Local, Central & Remote
+
+![preview](../images/mr.png)  
+
+
+* Maven supports three types of repositories:
+
+    * **Local repository** : This is the local cache where Maven stores the downloaded artifacts on the developer's machine. By default, it's located in the .m2 directory in the user's home directory.
+
+    * **Remote repository** : This is a network location, usually an HTTP or HTTPS URL, where Maven can download the required artifacts. Remote repositories can be public or private, and they can be hosted on a local network or on the internet.
+
+    * **Central repository** : Maven comes with a default set of remote repositories, such as the Maven Central Repository and the JBoss Community Repository. However, you can also configure custom repositories in your POM file, either by specifying their URLs or by setting up a repository manager that can host and manage your custom repositories.
+
+* ***NOTE***: When you add a dependency to your project's POM file, Maven first checks the local repository for the dependency. If it's not found, it then checks the remote repositories configured in the POM file. If the dependency is not found in any of the configured repositories, the build process fails with an error.
+
+
+![preview](../images/LR.png)
+
+<br/>
+
+* * * 
+<br/>
+
 ## Build the code manually using maven:
 
 * Clone the code from github.
@@ -67,29 +91,7 @@ cd SampleMavenProject
 ![preview](../images/M4.png)  
 
 
-<br/>
 
-* * * 
-<br/>
-
-
-## Types of Maven repositories :  Local, Central & Remote
-
-![preview](../images/mr.png)  
-
-
-* Maven supports three types of repositories:
-
-    * **Local repository** : This is the local cache where Maven stores the downloaded artifacts on the developer's machine. By default, it's located in the .m2 directory in the user's home directory.
-
-    * **Remote repository** : This is a network location, usually an HTTP or HTTPS URL, where Maven can download the required artifacts. Remote repositories can be public or private, and they can be hosted on a local network or on the internet.
-
-    * **Central repository** : Maven comes with a default set of remote repositories, such as the Maven Central Repository and the JBoss Community Repository. However, you can also configure custom repositories in your POM file, either by specifying their URLs or by setting up a repository manager that can host and manage your custom repositories.
-
-* ***NOTE***: When you add a dependency to your project's POM file, Maven first checks the local repository for the dependency. If it's not found, it then checks the remote repositories configured in the POM file. If the dependency is not found in any of the configured repositories, the build process fails with an error.
-
-
-![preview](../images/LR.png)
 
 <br/>
 
@@ -240,4 +242,70 @@ http://publicipaddress:8080
 
 * * * 
 
+<br/>
+
+
+## Multiple sections in Jenkins freestyle job:
+1. General
+2. Source Code Management
+3. Build Triggers
+4. Build Environment
+5. Build Steps
+6. Post-build Actions
+![preview](../images/J22.png)
+![preview](../images/J23.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+# Explore ***Manage Jenkins*** Options : 
+
+## Configure System 
+* Go to Manage Jenkins >> Configure System 
+
+![preview](../images/J24.png)
+![preview](../images/J25.png)
+![preview](../images/J26.png)
+![preview](../images/J27.png)
+
+## Configure Global Security 
+* Go to Manage Jenkins >> Configure Global Security 
+
+![preview](../images/J24.png)
+![preview](../images/J28.png)
+![preview](../images/J29.png)
+
+
+## Manage Plugins
+* Go to  Manage jenkins >> Manage Plugins
+![preview](../images/J29.png)
+![preview](../images/J30.png)
+![preview](../images/J31.png)
+
+
+
+## Restart the jenkins :
+* Multiple ways to restart 
+  1. From ***cli*** from jenkins server : 
+    ``` 
+    sudo service jenkins restart 
+    ```
+  2. From ***GUI*** i,e Jenkins dashboard in browser: 
+    ![preview](../images/J32.png)
+
+  3. From  ***Manage Jenkins*** in Jenkins Dashboard
+     ![preview](../images/J33.png)
+
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
 <br/>
