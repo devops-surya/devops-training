@@ -253,7 +253,7 @@ http://publicipaddress:8080
 5. Build Steps
 6. Post-build Actions
 ![preview](../images/J22.png)
-![preview](../images/J23.png)
+![preview](../images/j23.png)
 
 
 
