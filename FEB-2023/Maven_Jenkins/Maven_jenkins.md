@@ -196,7 +196,7 @@ http://publicipaddress:8080
 * ***Create First Admin User*** by provide the username, password , email then  Save and continue:
 ![preview](../images/J9.png)
 * ***Instance Configuration*** -- No changes
-![preview](../images/j10.png)
+![preview](../images/J10.png)
 ![preview](../images/J11.png)
 * Dashboard of jenkins
 ![preview](../images/J12.png)
