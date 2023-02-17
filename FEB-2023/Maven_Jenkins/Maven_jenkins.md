@@ -208,14 +208,14 @@ http://publicipaddress:8080
 
 <br/>
 
-## Create a *job* :
+## Create a *Job* :
 * In Jenkins we do automation by creating jobs :
 ![preview](../images/J13.png)
 
-## Multiple ways to create a job:
+## Multiple ways to create a Job:
 ![preview](../images/J14.png)
 
-## Create a job in Freestyle:
+## Create a Job in Freestyle:
 * Click on the  **New Item**  and follow the below instructions in the screenshots :
 ![preview](../images/J13.png)
 ![preview](../images/J15.png)
@@ -309,3 +309,132 @@ http://publicipaddress:8080
 
 <br/>
 <br/>
+
+
+
+## Scenario-1: Create a CI Job.
+### Find below requirements :
+```
+Need a Freestyle Job that should automatically detect the changes in github , get the code from SampleMavenProject, build it by using Maven, Delete the Workspace for every build.
+```
+![preview](../images/J13.png)
+![preview](../images/J34.png)
+![preview](../images/J35.png)
+![preview](../images/J36.png)
+![preview](../images/J37.png)
+
+* Explore ***Console Output*** of **SMP** Job
+![preview](../images/J38.png)
+![preview](../images/J39.png)
+![preview](../images/J40.png)
+![preview](../images/J41.png)
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+
+## Scenario-2: Add Post-build action to the Scenario-1 
+### Find below requirement for Post-build actions:
+```
+Configure Scenario-1 CI job with *Archive the artifacts* & *Publish JUnit test result report* Post-build actions 
+```
+* ***Archive the artifacts*** -- It will provide option to download the artifact from the Jenkins Dashboard
+* ***Publish JUnit test result report*** -- It will publish the test result in the Jenkins Dashboard 
+
+![preview](../images/J38.png)
+![preview](../images/J42.png)
+![preview](../images/J43.png)
+![preview](../images/J44.png)
+![preview](../images/J46.png)
+![preview](../images/J47.png)
+
+
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+
+##  Understand the build process in Jenkins :
+  * In Jenkins, a workspace is a directory on the Jenkins Server that is used by Jenkins to store the source code, build artifacts, and other files related to a build.
+
+  * The ***Jenkins workspace*** directory is typically a subdirectory of the ***Jenkins home directory*** and is unique to each job. When a job is triggered, Jenkins will create a new workspace directory for the job and copy the source code from your source control system into the workspace.
+
+
+  * A ***build*** in Jenkins refers to the process of running a job, which typically involves compiling the source code, running tests, and producing artifacts etc. Each build in Jenkins is assigned a build number, which is incremented with each new build of a job. You can view the build history for a job in Jenkins, including the build number, the date and time of the build, and the status of the build (success or failure). You can also view the console output for a build, which shows the output of the build process, including any errors or warnings that occurred during the build.
+
+
+## Jenkins Home Directory :
+
+  * In Jenkins, the ***home directory*** is the top-level directory where Jenkins stores all its configuration, plugins, and other related files. The location of the Jenkins home directory varies depending on the operating system and the installation method used.
+
+  * When you install Jenkins on a Unix-like system, such as Linux or macOS, the default Jenkins home directory is usually located at /var/jenkins_home. On Windows, the default location is usually C:\Program Files (x86)\Jenkins.
+
+  * The Jenkins home directory contains several important directories and files, including:
+
+      * config.xml: This file contains the main configuration settings for Jenkins, such as security settings, system properties, and global tool installations.
+
+      * jobs/: This directory contains the configuration and workspace directories for each Jenkins job. Each job is stored in a separate directory within the jobs/ directory.
+      
+      * jobs/<Jobname>/builds/: This directory contains all the build related information like no of builds and build history 
+      
+      * plugins/: This directory contains all the installed plugins for Jenkins. Each plugin is stored in a separate directory within the plugins/ directory.
+
+      * secrets/: This directory contains sensitive information, such as passwords and API keys, that Jenkins uses for authentication and authorization.
+
+    * users/: This directory contains the user accounts and their associated settings, including passwords and permissions.
+
+It's important to back up the Jenkins home directory regularly, as it contains all the important configuration and data for your Jenkins installation. This will allow you to easily restore your Jenkins instance in case of a system failure or other issue.
+
+
+![preview](../images/J48.png)
+![preview](../images/J49.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Build with parameters:
+  * In Jenkins, you can create a build job that accepts parameters from the user. This allows you to customize the build process and pass in values that are specific to the build.
+
+      * String Parameter: Allows the user to enter a text value.
+
+      * Boolean Parameter: Allows the user to select a checkbox.
+
+      * Choice Parameter: Allows the user to select a value from a dropdown list.
+
+      * File Parameter: Allows the user to upload a file.
+
+
+### Official Dcoument for parameters :
+* Git parameter [ReferHere](https://plugins.jenkins.io/git-parameter/)
+* String parameter [ReferHere](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build)
+* Choice Parameter [ReferHere](https://plugins.jenkins.io/extensible-choice-parameter/)
+* Active choice parameter [ReferHere](https://plugins.jenkins.io/uno-choice/#:~:text=The%20Active%20Choices%20plugin%20is,or%20rich%20HTML%20UI%20widgets.)
+
+
+![preview](../images/jenkins90.png)
+
+
+* Install the git-plugin as shown in below image:
+![preview](../images/jenkins91.png)
+
+* After install we can see the option in parameters:
+![preview](../images/jenkins92.png)
+
+![preview](../images/jenkins93.png)
+
+![preview](../images/jenkins94.png)
+
+![preview](../images/jenkins95.png)

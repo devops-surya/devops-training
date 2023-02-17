@@ -357,6 +357,7 @@ http://ipaddress:8080
 
 
 ## Build with parameters:
+* In Jenkins, you can create a build job that accepts parameters from the user. This allows you to customize the build process and pass in values that are specific to the build.
 ![preview](../images/jenkins90.png)
 
 * Git parameter [ReferHere](https://plugins.jenkins.io/git-parameter/)
