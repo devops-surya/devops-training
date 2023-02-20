@@ -1,127 +1,3 @@
-# MAVEN & JENKINS
-
-
-# Maven:
-* Maven is a build automation tool used primarily for Java projects.
-
-## Build tools
-   * c => Make, GCC
-   * Java => Ant, Maven, Gradle
-   * .net => MSBuild, dotnet build
-
-## Install maven 
-
-```
-sudo apt update
-sudo apt install maven
-mvn -version
-```
-<br/>
-
-* * * 
-<br/>
-
-## MAVEN GOALS:
-
-* ***compile***: This goal compiles the source code of the project and creates the class files.
-
-* ***test***: This goal runs the unit tests of the project.
-
-* ***package***: This goal packages the compiled code and resources into a distributable format, such as a JAR, WAR, or ZIP file.
-
-* ***install***: This goal installs the packaged artifact into the local repository, making it available for other projects to use.
-
-* ***clean***: This goal removes all the generated files and directories created by the previous build.
-
-* ***deploy***: This goal deploys the packaged artifact to a remote repository or a remote server.
-
-```
-mvn test = mvn compile + mvn test
-mvn package = mvn compile + mvn test + mvn package
-mvn clean package = mvn clean + mvn compile + mvn test + mvn package
-```
-<br/>
-
-* * * 
-<br/>
-
-
-## Types of Maven repositories :  Local, Central & Remote
-
-![preview](../images/mr.png)  
-
-
-* Maven supports three types of repositories:
-
-    * **Local repository** : This is the local cache where Maven stores the downloaded artifacts on the developer's machine. By default, it's located in the .m2 directory in the user's home directory.
-
-    * **Remote repository** : This is a network location, usually an HTTP or HTTPS URL, where Maven can download the required artifacts. Remote repositories can be public or private, and they can be hosted on a local network or on the internet.
-
-    * **Central repository** : Maven comes with a default set of remote repositories, such as the Maven Central Repository and the JBoss Community Repository. However, you can also configure custom repositories in your POM file, either by specifying their URLs or by setting up a repository manager that can host and manage your custom repositories.
-
-* ***NOTE***: When you add a dependency to your project's POM file, Maven first checks the local repository for the dependency. If it's not found, it then checks the remote repositories configured in the POM file. If the dependency is not found in any of the configured repositories, the build process fails with an error.
-
-
-![preview](../images/LR.png)
-
-<br/>
-
-* * * 
-<br/>
-
-## Build the code manually using maven:
-
-* Clone the code from github.
-
-```
-git clone https://github.com/devops-surya/SampleMavenProject.git
-cd SampleMavenProject
-```
-![preview](../images/M1.png)  
-
-* ***mvn package***
-
-![preview](../images/M2.png)  
-  
-* ***mvn install***
-
-![preview](../images/M3.png)  
-
-* ***mvn clean install*** 
-![preview](../images/M4.png)  
-
-
-
-
-<br/>
-
-* * * 
-<br/>
-
-
-## pom.xml : 
-
-* In Maven, the Project Object Model (POM) is an XML file called pom.xml that describes the project and its configuration. The POM file is located at the root of the project's directory and contains information about the project's name, version, dependencies, build process, and more.
-
-![preview](../images/pom.png) 
-
-
-
-
-<br/>
-<br/>
-<br/>
-<br/>
-
-* * * 
-
-<br/>
-<br/>
-<br/>
-<br/>
-
-
-
 # Jenkins:
 * Jenkins is an open source __continuous integration/continuous delivery and deployment__ (CI/CD) automation software DevOps tool written in the Java programming language. It is used to implement CI/CD workflows, called pipelines.
 * Jenkins is a CI/CD tool
@@ -283,7 +159,7 @@ http://publicipaddress:8080
 
 ## Manage Plugins
 * Go to  Manage jenkins >> Manage Plugins
-![preview](../images/J29.png)
+![preview](../images/J24.png)
 ![preview](../images/J30.png)
 ![preview](../images/J31.png)
 
@@ -417,24 +293,123 @@ It's important to back up the Jenkins home directory regularly, as it contains a
       * File Parameter: Allows the user to upload a file.
 
 
-### Official Dcoument for parameters :
+### Official Dcoument for Parameters :
 * Git parameter [ReferHere](https://plugins.jenkins.io/git-parameter/)
 * String parameter [ReferHere](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build)
 * Choice Parameter [ReferHere](https://plugins.jenkins.io/extensible-choice-parameter/)
 * Active choice parameter [ReferHere](https://plugins.jenkins.io/uno-choice/#:~:text=The%20Active%20Choices%20plugin%20is,or%20rich%20HTML%20UI%20widgets.)
 
+![preview](../images/J50.png)
 
-![preview](../images/jenkins90.png)
 
 
-* Install the git-plugin as shown in below image:
-![preview](../images/jenkins91.png)
+#### Scenario-3 : Install & Configure ***Git Parameter***  to pass the branch paramater while running the Job .
+    
+  1. Install ***Git Paramter plugin*** 
 
-* After install we can see the option in parameters:
-![preview](../images/jenkins92.png)
+![preview](../images/J24.png)
+![preview](../images/J30.png)
+![preview](../images/J31.png)
+![preview](../images/J51.png)
+![preview](../images/J52.png)
+![preview](../images/J53.png)
 
-![preview](../images/jenkins93.png)
+  2. Configure ***Git Paramter plugin*** in the __SMP__ Jenkins Job
 
-![preview](../images/jenkins94.png)
+![preview](../images/J38.png)
+![preview](../images/J54.png)
+![preview](../images/J55.png)
+![preview](../images/J56.png)
+![preview](../images/J57.png)
+![preview](../images/J58.png)
 
-![preview](../images/jenkins95.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Upstream and Downstream projects:
+
+* In Jenkins, "upstream" jobs are those that trigger or initiate the execution of other jobs, while "downstream" jobs are those that are triggered or executed by upstream jobs.
+
+![preview](../images/UD.png)
+
+
+* For example, let's say you have two jobs, Job A and Job B, where Job A triggers Job B when it completes successfully. In this case, Job A is the upstream job and Job B is the downstream job.
+
+  * Here are some examples of upstream and downstream jobs in Jenkins:
+
+   * Upstream job: Build and package an application.
+      * Downstream jobs: Deploy the application to a test environment, run automated tests on the application, deploy the application to a production environment.
+
+   * Upstream job: Pull code changes from a source code repository.
+      * Downstream job: Build and test the code changes, deploy the changes to a staging environment.
+
+   * Upstream job: Run a performance test on an application.
+      * Downstream job: Analyze the performance test results and provide recommendations for optimizing the application.
+
+By defining upstream and downstream jobs in Jenkins, you can create complex workflows and ensure that all the necessary steps are executed in the correct order.
+
+### Install *** Parameterized Trigger*** plugin :
+* Parameterized Trigger is a plugin in Jenkins that allows you to trigger a downstream job with certain parameters from an upstream job. This plugin provides flexibility and customization by enabling you to pass variables and parameters from one job to another.
+  
+  * Go to **Manage Jenkins** >> **Manage Plugin**
+![preview](../images/J59.png)
+![preview](../images/J60.png)
+![preview](../images/J61.png)
+
+
+
+### Scenario-4:  Create a NewJob as SMP-2 , it should be copied from the existing SMP Job.
+* Copy/Clone the existing Job , will help us in this scenario.
+* when you copy a job, it will inherit the settings and configuration of the original job, including the build history.
+![preview](../images/J62.png)
+![preview](../images/J63.png)
+![preview](../images/J64.png)
+![preview](../images/J65.png)
+![preview](../images/J66.png)
+
+
+### Scenario-5: Configure the Upstream & Downstream as per below requirement :
+
+```
+1. Upstream Job : Build a ***SMP*** Job from Dev Branch
+2. Downstream Job: Once the **SMP** Job is sucessfull , it has to build the Downstream Job with Master Branch.
+```
+* 1. Configure Upstream Job :
+![preview](../images/J67.png)
+![preview](../images/J68.png)
+![preview](../images/J69.png)
+![preview](../images/J70.png)
+
+* 2. Build UpstreamJob with Dev branch it should trigger Downstream with master branch : 
+![preview](../images/J71.png)
+![preview](../images/J72.png)
+
+    * Go to dashboard and check for the SMP-2 to trigger automatically :
+![preview](../images/J73.png)
+
+    * Go to Job __SMP-2__ >>  __Console Output__ and check for whether the Job triggered from Master branch :
+![preview](../images/J74.png)
+
+
+* Use the __Trigger parameterized build on other projects__ to trigger other job:
+    ![preview](../images/jenkins98.png)
+    ![preview](../images/jenkins99.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Jenkins Node/slave in jenkins:
+* For understanding the node concept. refer below architecture :
+
+![preview](../images/jenkins60.png)
