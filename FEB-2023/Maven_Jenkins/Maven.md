@@ -1,6 +1,3 @@
-# MAVEN & JENKINS
-
-
 # Maven:
 * Maven is a build automation tool used primarily for Java projects.
 
