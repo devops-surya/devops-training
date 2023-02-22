@@ -13,8 +13,9 @@
 
 ## Pipeline flow of devops :
 ![preview](../images/jenkins1.png)
+![preview](../images/sqpipeline1.png)
 ![preview](../images/jenkins3.png)
-![preview](../images/sqpipeline.png)
+
 
 <br/>
 
@@ -100,14 +101,50 @@ http://publicipaddress:8080
 ![preview](../images/J18.png)
 
 
+
+
 <br/>
 
 * * * 
 
 <br/>
 
+
+## Multiple Sections in Jenkins Freestyle job:
+1. General
+2. Source Code Management
+3. Build Triggers
+4. Build Environment
+5. Build Steps
+6. Post-build Actions
+![preview](../images/J22.png)
+![preview](../images/j23.png)
+
+
+<br/>
+
+<br/>
+
+* * * 
+
+<br/>
+
+<br/>
+
+
+
+# Explore ***Manage Jenkins*** Options : 
+
 ## ***Manage jenkins*** is used to configure the Jenkins (settings) :
 ![preview](../images/J19.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
 
 ## Jenkins executor :
 * ***Executor*** will define , how many jobs run parallely at a time.
@@ -121,25 +158,6 @@ http://publicipaddress:8080
 <br/>
 
 
-## Multiple sections in Jenkins freestyle job:
-1. General
-2. Source Code Management
-3. Build Triggers
-4. Build Environment
-5. Build Steps
-6. Post-build Actions
-![preview](../images/J22.png)
-![preview](../images/j23.png)
-
-
-
-<br/>
-
-* * * 
-
-<br/>
-
-# Explore ***Manage Jenkins*** Options : 
 
 ## Configure System 
 * Go to Manage Jenkins >> Configure System 
@@ -149,6 +167,12 @@ http://publicipaddress:8080
 ![preview](../images/J26.png)
 ![preview](../images/J27.png)
 
+<br/>
+
+* * * 
+
+<br/>
+
 ## Configure Global Security 
 * Go to Manage Jenkins >> Configure Global Security 
 
@@ -156,21 +180,43 @@ http://publicipaddress:8080
 ![preview](../images/J28.png)
 ![preview](../images/J29.png)
 
+<br/>
 
-## Manage Plugins
+* * * 
+
+<br/>
+
+
+## Manage Plugins :
+* Plugins are a core feature of Jenkins, an open-source automation server used for continuous integration and continuous delivery (CI/CD) of software projects. Plugins allow users to extend the functionality of Jenkins by adding new features and integrations with other tools.
+
 * Go to  Manage jenkins >> Manage Plugins
 ![preview](../images/J24.png)
 ![preview](../images/J30.png)
 ![preview](../images/J31.png)
 
+* In the "Available" tab, you can browse for new plugins to install. You can use the search bar to find plugins by name, or you can browse through the list of available plugins.
+* In the "Installed" tab, you can view all of the plugins that are currently installed on your Jenkins instance. You can also disable or uninstall plugins from this page.
+* In the "Updates" tab, you can see if there are any updates available for the plugins you have installed. To update a plugin, select the checkbox next to the plugin and click on the "Download now and install after restart" button.
+* In the "Advanced" tab, you can upload a plugin from your local machine or specify a custom update center URL.
+***Note*** :  Some plugins may require a Jenkins restart to be fully installed or updated. When you install or update a plugin, Jenkins will 
+
+<br/>
+
+* * * 
+
+<br/>
 
 
 ## Restart the jenkins :
 * Multiple ways to restart 
   1. From ***cli*** from jenkins server : 
     ``` 
-    sudo service jenkins restart 
+    sudo service jenkins restart     -- Restart Jenkins
+    sudo service jenkins status      -- check the status of jenkins
     ```
+    ![preview](../images/RJ.png)
+
   2. From ***GUI*** i,e Jenkins dashboard in browser: 
     ![preview](../images/J32.png)
 
@@ -191,8 +237,10 @@ http://publicipaddress:8080
 ## Scenario-1: Create a CI Job.
 ### Find below requirements :
 ```
-Need a Freestyle Job that should automatically detect the changes in github , get the code from SampleMavenProject, build it by using Maven, Delete the Workspace for every build.
+Need a Freestyle Job that should automatically detect the changes in github, get the code from SampleMavenProject, build it by using Maven &  Delete the Workspace for every build.
 ```
+![preview](../images/SN-1.png)
+
 ![preview](../images/J13.png)
 ![preview](../images/J34.png)
 ![preview](../images/J35.png)
@@ -216,10 +264,13 @@ Need a Freestyle Job that should automatically detect the changes in github , ge
 ## Scenario-2: Add Post-build action to the Scenario-1 
 ### Find below requirement for Post-build actions:
 ```
-Configure Scenario-1 CI job with *Archive the artifacts* & *Publish JUnit test result report* Post-build actions 
+Configure Scenario-1 CI job with **Archive the artifacts** & **Publish JUnit test result report** Post-build actions 
 ```
 * ***Archive the artifacts*** -- It will provide option to download the artifact from the Jenkins Dashboard
 * ***Publish JUnit test result report*** -- It will publish the test result in the Jenkins Dashboard 
+
+![preview](../images/SN-2.png)
+
 
 ![preview](../images/J38.png)
 ![preview](../images/J42.png)
@@ -239,19 +290,24 @@ Configure Scenario-1 CI job with *Archive the artifacts* & *Publish JUnit test r
 <br/>
 
 ##  Understand the build process in Jenkins :
-  * In Jenkins, a workspace is a directory on the Jenkins Server that is used by Jenkins to store the source code, build artifacts, and other files related to a build.
+
+  * A ***build*** in Jenkins refers to the process of running a job, which typically involves compiling the source code, running tests, and producing artifacts etc. Each build in Jenkins is assigned a build number, which is incremented with each new build of a job. You can view the build history for a job in Jenkins, including the build number, the date and time of the build, and the status of the build (success or failure). You can also view the console output for a build, which shows the output of the build process, including any errors or warnings that occurred during the build.
 
   * The ***Jenkins workspace*** directory is typically a subdirectory of the ***Jenkins home directory*** and is unique to each job. When a job is triggered, Jenkins will create a new workspace directory for the job and copy the source code from your source control system into the workspace.
 
 
-  * A ***build*** in Jenkins refers to the process of running a job, which typically involves compiling the source code, running tests, and producing artifacts etc. Each build in Jenkins is assigned a build number, which is incremented with each new build of a job. You can view the build history for a job in Jenkins, including the build number, the date and time of the build, and the status of the build (success or failure). You can also view the console output for a build, which shows the output of the build process, including any errors or warnings that occurred during the build.
 
 
-## Jenkins Home Directory :
+## Jenkins Home Directory Structure  :
 
   * In Jenkins, the ***home directory*** is the top-level directory where Jenkins stores all its configuration, plugins, and other related files. The location of the Jenkins home directory varies depending on the operating system and the installation method used.
 
   * When you install Jenkins on a Unix-like system, such as Linux or macOS, the default Jenkins home directory is usually located at /var/jenkins_home. On Windows, the default location is usually C:\Program Files (x86)\Jenkins.
+
+![preview](../images/J48.png)
+![preview](../images/J49.png)
+
+
 
   * The Jenkins home directory contains several important directories and files, including:
 
@@ -259,7 +315,7 @@ Configure Scenario-1 CI job with *Archive the artifacts* & *Publish JUnit test r
 
       * jobs/: This directory contains the configuration and workspace directories for each Jenkins job. Each job is stored in a separate directory within the jobs/ directory.
       
-      * jobs/<Jobname>/builds/: This directory contains all the build related information like no of builds and build history 
+      * jobs/**Jobname**/builds/: This directory contains all the build related information like no of builds and build history 
       
       * plugins/: This directory contains all the installed plugins for Jenkins. Each plugin is stored in a separate directory within the plugins/ directory.
 
@@ -270,8 +326,7 @@ Configure Scenario-1 CI job with *Archive the artifacts* & *Publish JUnit test r
 It's important to back up the Jenkins home directory regularly, as it contains all the important configuration and data for your Jenkins installation. This will allow you to easily restore your Jenkins instance in case of a system failure or other issue.
 
 
-![preview](../images/J48.png)
-![preview](../images/J49.png)
+
 
 
 <br/>
@@ -396,11 +451,6 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 ![preview](../images/J74.png)
 
 
-* Use the __Trigger parameterized build on other projects__ to trigger other job:
-    ![preview](../images/jenkins98.png)
-    ![preview](../images/jenkins99.png)
-
-
 
 <br/>
 
@@ -409,7 +459,82 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 <br/>
 
 
-## Jenkins Node/slave in jenkins:
-* For understanding the node concept. refer below architecture :
+## Jenkins Node/slave/Agent:
+![preview](../images/JMS.png)
 
-![preview](../images/jenkins60.png)
+* In the context of the Jenkins, a "node" refers to a physical or virtual machine that is set up to perform build and testing tasks as part of a Jenkins job.
+
+* A Jenkins node is also known as a "slave", as it operates as a worker machine that can be controlled by the Jenkins master server. A node can run on a variety of operating systems, including Linux, macOS, and Windows.
+
+* In Jenkins, you can configure multiple nodes to distribute the build and testing workloads across a cluster of machines, which can help to improve performance and reduce the time required for building and testing your code. By setting up nodes, you can also run jobs in parallel, which can help to optimize resource utilization and speed up the overall build process.
+
+* Nodes can be configured to have different sets of tools and plugins installed, which makes it possible to support multiple build environments. Once a node is set up and registered with the Jenkins master, you can assign Jenkins jobs to specific nodes, depending on the requirements of the job.
+
+
+## Understanding Pipeline with Jenkins Node: 
+![preview](../images/sqpipeline1.png)
+![preview](../images/sqpipeline.png)
+
+
+## Configure a Jenkins Node and add it to the Jenkins Master:
+
+![preview](../images/JA.png)
+
+1. Configure the Jenkins Node :
+    * Install ***Java*** on Jenkins Node :
+    ```
+    sudo apt-get update
+
+    sudo apt-get install openjdk-8-jdk
+    ```
+    * Create a user in ***jenkins User*** in Jenkins Node & provide ***admin permissions***
+    ```
+    sudo su                  -- Change as root(Admin) user.
+    adduser jenkins          -- create user 
+    visudo                   -- Opens sudoers file
+
+    ```
+    * Enable ***PasswordAuthentication***
+    ```
+    vi /etc/ssh/sshd_config 
+    
+    ====
+    PasswordAuthentication Yes
+    ===
+
+    sudo service sshd restart
+
+    ```
+
+
+* To add the node to the jenkins as per the above image. Do the ssh-keygen as shown below in jenkins-master:
+
+```
+ssh-keygen
+ssh-copy-id username@ipaddress
+```
+
+![preview](../images/jenkins62.png)
+
+
+* On node , do the below steps:
+
+```
+
+sudo su 
+
+sudo apt-get update
+
+sudo apt-get install openjdk-8-jdk
+
+vi /etc/ssh/sshd_config 
+
+PasswordAuthentication Yes
+
+sudo service sshd restart
+
+adduser jenkins
+
+visudo -- add jenkins to the sudo group
+
+```
