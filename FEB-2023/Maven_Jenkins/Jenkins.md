@@ -276,6 +276,7 @@ Configure Scenario-1 CI job with **Archive the artifacts** & **Publish JUnit tes
 ![preview](../images/J42.png)
 ![preview](../images/J43.png)
 ![preview](../images/J44.png)
+![preview](../images/J45.png)
 ![preview](../images/J46.png)
 ![preview](../images/J47.png)
 
@@ -360,6 +361,9 @@ It's important to back up the Jenkins home directory regularly, as it contains a
 
 #### Scenario-3 : Install & Configure ***Git Parameter***  to pass the branch paramater while running the Job .
     
+![preview](../images/SN-3.png)
+
+
   1. Install ***Git Paramter plugin*** 
 
 ![preview](../images/J24.png)
@@ -378,6 +382,30 @@ It's important to back up the Jenkins home directory regularly, as it contains a
 ![preview](../images/J57.png)
 ![preview](../images/J58.png)
 
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+
+### Scenario-4:  Create a NewJob SMP-2 , it should be copied from the existing SMP Job.
+![preview](../images/SN-4.png)
+
+
+* Copy/Clone the existing Job , will help us in this scenario.
+* when you copy a job, it will inherit the settings and configuration of the original job, including the build history.
+
+
+![preview](../images/J62.png)
+![preview](../images/J63.png)
+![preview](../images/J64.png)
+![preview](../images/J65.png)
+![preview](../images/J66.png)
 
 
 <br/>
@@ -418,22 +446,15 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 
 
 
-### Scenario-4:  Create a NewJob as SMP-2 , it should be copied from the existing SMP Job.
-* Copy/Clone the existing Job , will help us in this scenario.
-* when you copy a job, it will inherit the settings and configuration of the original job, including the build history.
-![preview](../images/J62.png)
-![preview](../images/J63.png)
-![preview](../images/J64.png)
-![preview](../images/J65.png)
-![preview](../images/J66.png)
-
-
 ### Scenario-5: Configure the Upstream & Downstream as per below requirement :
 
 ```
 1. Upstream Job : Build a ***SMP*** Job from Dev Branch
-2. Downstream Job: Once the **SMP** Job is sucessfull , it has to build the Downstream Job with Master Branch.
+2. Downstream Job: Once the **SMP** Job is sucessfull , it has to build the Downstream Job(SMP-2) with Master Branch.
 ```
+![preview](../images/SN-5.png)
+
+
 * 1. Configure Upstream Job :
 ![preview](../images/J67.png)
 ![preview](../images/J68.png)
