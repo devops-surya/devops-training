@@ -23,13 +23,13 @@
 
 <br/>
 
-## Installing jenkins 
+## Installing Jenkins 
 * prerequisites:
 1. Ubuntu
 2. Java 
 3. Jenkins
 
-## For installing jenkins we have two ways.
+## For installing Jenkins we have two ways.
 1. Quick setup (it is not the enterprize setup)
 2. Jenkins master 
 
@@ -436,7 +436,7 @@ It's important to back up the Jenkins home directory regularly, as it contains a
 
 By defining upstream and downstream jobs in Jenkins, you can create complex workflows and ensure that all the necessary steps are executed in the correct order.
 
-### Install *** Parameterized Trigger*** plugin :
+### Install ***Parameterized Trigger*** plugin :
 * Parameterized Trigger is a plugin in Jenkins that allows you to trigger a downstream job with certain parameters from an upstream job. This plugin provides flexibility and customization by enabling you to pass variables and parameters from one job to another.
   
   * Go to **Manage Jenkins** >> **Manage Plugin**
@@ -497,7 +497,7 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 ![preview](../images/sqpipeline.png)
 
 
-## Configure a Jenkins Node and add it to the Jenkins Master:
+## Configure a Jenkins Node and attach it to the Jenkins Master:
 
 ![preview](../images/JA.png)
 
@@ -559,3 +559,30 @@ adduser jenkins
 visudo -- add jenkins to the sudo group
 
 ```
+
+## Add node/slave to the jenkins.
+
+* In manage jenkins => mange nodes 
+
+![preview](../images/jenkins63.png)
+
+![preview](../images/jenkins64.png)
+
+![preview](../images/jenkins66.png)
+
+![preview](../images/jenkins65.png)
+
+
+![preview](../images/jenkins67.png)
+
+## Use node/slave in the jenkins job:
+
+![preview](../images/jenkins68.png)
+
+![preview](../images/jenkins69.png)
+
+<br/>
+
+* * * 
+
+<br/>
