@@ -328,6 +328,10 @@ It's important to back up the Jenkins home directory regularly, as it contains a
 
 
 
+## CronTab syntax : 
+* Cronatb Guru -- [REFER HERE](https://crontab.guru/#*_*_*_*_*)
+![preview](../images/CT.png)
+
 
 
 <br/>
