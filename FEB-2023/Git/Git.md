@@ -523,3 +523,15 @@ git push origin -D branch_name
 
 * * * 
 <br/>
+
+
+## Fork:
+* A fork creates a completely independent copy of Git repository that sits in your github account.
+
+![preview](../images/jenkins87.png)
+
+* Go to the repo  which you want to fork:
+
+![preview](../images/jenkins88.png) 
+
+![preview](../images/jenkins89.png)

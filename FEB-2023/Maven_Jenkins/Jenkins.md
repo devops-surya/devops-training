@@ -495,6 +495,18 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 
 * Nodes can be configured to have different sets of tools and plugins installed, which makes it possible to support multiple build environments. Once a node is set up and registered with the Jenkins master, you can assign Jenkins jobs to specific nodes, depending on the requirements of the job.
 
+###  Here are some use cases of Jenkins nodes:
+
+* Distributing build load: One of the primary use cases of Jenkins nodes is to distribute the build load across multiple machines. By running build jobs on separate nodes, Jenkins can perform builds in parallel and reduce build times.
+
+* Supporting different operating systems and environments: Jenkins nodes can be used to support building applications for different operating systems and environments. For example, if you need to build an application that needs to run on both Windows and Linux, you can configure Jenkins nodes to run builds on Windows and Linux machines.
+
+* Isolating builds: Jenkins nodes can be used to isolate builds from the Jenkins master. This can be useful if you want to ensure that builds don't interfere with each other or if you want to enforce security restrictions.
+
+* Scaling Jenkins: Jenkins nodes can be used to scale Jenkins horizontally by adding more nodes as the build load increases. This can help to ensure that builds continue to run smoothly even as the number of build jobs increases.
+
+* Enabling distributed testing: Jenkins nodes can be used to enable distributed testing of applications. By running tests on separate nodes, you can perform tests in parallel and reduce test times.
+
 
 ## Understanding Pipeline with Jenkins Node: 
 ![preview](../images/sqpipeline1.png)
@@ -510,7 +522,7 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
     ```
     sudo apt-get update
 
-    sudo apt-get install openjdk-8-jdk
+    sudo apt-get install openjdk-11-jdk
     ```
     * Create a user in ***jenkins User*** in Jenkins Node & provide ***admin permissions***
     ```
@@ -564,7 +576,7 @@ visudo -- add jenkins to the sudo group
 
 ```
 
-## Add node/slave to the jenkins.
+2. Add node/slave to the jenkins.
 
 * In manage jenkins => mange nodes 
 
@@ -579,6 +591,7 @@ visudo -- add jenkins to the sudo group
 
 ![preview](../images/jenkins67.png)
 
+
 ## Use node/slave in the jenkins job:
 
 ![preview](../images/jenkins68.png)
@@ -590,3 +603,435 @@ visudo -- add jenkins to the sudo group
 * * * 
 
 <br/>
+
+
+## Backup of jenkins:
+* ThinBackup plugin or the Backup plugin, which allow you to schedule automatic backups or perform on-demand backups.
+
+![preview](../images/jenkins70.png)
+
+![preview](../images/jenkins71.png)
+
+![preview](../images/jenkins72.png)
+
+![preview](../images/jenkins73.png)
+
+![preview](../images/jenkins74.png)
+
+* __Note__ : Makesure the backup folder has 777 permissions.
+
+![preview](../images/jen31.png)
+
+
+
+<br/>
+
+<br/>
+
+* * * 
+
+<br/>
+
+<br/>
+
+
+
+
+# Pipeline :
+* A pipeline job in Jenkins is a way to define a continuous delivery pipeline using a domain-specific language (DSL) called Jenkinsfile. This type of job provides a way to define the stages of a build process, from checking out the code to deployment, as a single, declarative pipeline.
+
+## Jenkins pipeline :
+* In jenkins pipeline there are two ways:
+  1. Pipeline  script     -- Scripted pipeline 
+  2. Pipeline  script from SCM -- Declarative pipeline
+
+* The approach we follow for the jenkins pipeline and writing the groovy for is called as pipeline-as-code.
+
+* ***Declarative pipeline*** : -It is a text file that is stored in the source code repository and defines the steps and logic of the pipeline. 
+
+## Create a Jenkins job in pipeline format:
+![preview](../images/jenkins76.png)
+
+![preview](../images/jenkins77.png)
+
+
+* Basic syntax of groovy:
+
+```
+node('<LABEL>'){
+    stage('git clone'){
+      
+    }
+    stage('build the code){
+
+    }
+    stage('archive the artifacts'){
+
+    }
+    stage('publish the junit reports'){
+
+    }
+    stage('Running the ansible playbook'){
+        
+    }
+}
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Basic scripted pipeline :
+```
+node('ubuntu'){
+    stage('git clone'){
+      git 'https://github.com/devops-surya/game-of-life.git' 
+    }
+    stage('build the code'){
+      sh 'mvn package'
+    }
+    stage('archive the artifacts'){
+      archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+    }
+    stage('publish the junit reports'){
+      junit 'gameoflife-web/target/surefire-reports/*.xml'
+    }
+}
+```
+
+## Snippet generator:
+![preview](../images/jenkins78.png)
+
+## To generate the pipeline script for git:
+![preview](../images/jenkins79.png)
+
+## To generate the pipeline script for archive the artifacts:
+![preview](../images/njen51.png)
+
+
+## To generate pipeline script for the publish junit test results:
+![preview](../images/jenkins80.png)
+
+
+* The output of the jenkins pipeline job will be as below:
+![preview](../images/jenkins81.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+
+## Tracking the changes in the Jenkins Job:
+## Job Configuration History :
+* Plugin usage [REFERHERE](https://plugins.jenkins.io/jobConfigHistory/)
+* This plugin is used to track the changes made previously  .
+![preview](../images/jenkins82.png)
+
+## Jenkinsfile 
+* Jenkinsfile reference [REFERHERE](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
+* Using jenkinsfile will be helpful in tracking the changes and it is called as __Declarative Pipeline__
+
+## Jenkins declarative pipeline syntax:
+
+* Reference for the __Declarative Pipeline syntax__ [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/)
+
+
+## Scripted pipeline vs declarative pipeline :
+*  Scripted pipeline:
+```
+node('ubuntu'){
+    stage('git clone'){
+      git 'https://github.com/devops-surya/game-of-life.git' 
+    }
+    stage('build the code'){
+      sh 'mvn package'
+    }
+    stage('archive the artifacts'){
+      archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+    }
+    stage('publish the junit reports'){
+      junit 'gameoflife-web/target/surefire-reports/*.xml'
+    }
+}
+```
+
+* Declarative pipeline:
+```
+pipeline {
+   agent { label 'ubuntu' }
+   stages{
+       stage('git clone'){
+           steps{
+               git 'https://github.com/devops-surya/game-of-life.git'  
+           }        
+       }
+       stage('build the code'){
+           steps{
+              sh 'mvn package'
+           }
+       }
+       stage('archive the artifacts'){
+           steps{
+              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+           }          
+       }
+       stage('publish the junit reports'){
+           steps{
+              junit 'gameoflife-web/target/surefire-reports/*.xml'
+           }
+           
+       }
+
+   }
+}
+```
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Create a new Jenkins job with Jenkinsfile (Declarative pipeline):
+
+![preview](../images/jenkins83.png)
+![preview](../images/jenkins84.png)
+
+
+## Blue ocean plugin :
+* In manage jenkins => manage plugins => available => Blue ocean
+* After installing you will see below changes:
+![preview](../images/jenkins85.png)
+![preview](../images/jenkins86.png)
+
+## SNAPSHOT vs RELEASE 
+* If you find an artifact with the Snapshot , that means it is still in development.
+* If you find an artifact with the release , that means it is ready for the deploymnet and sent it to production.
+```
+EX: Game-of-life.war-sanapshot-1.0 
+EX: Game-of-life.war-Release-1.0
+```
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Triggers for build peridically and pollSCM in the pipeline job [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers)
+
+```
+pipeline {
+   agent any
+   triggers{
+      cron('* * * * *')
+   }
+   triggers{
+      pollSCM('* 8 * * *')
+   }
+   stages{
+       stage('git clone'){
+           steps{
+               git branch: 'master', url: 'https://github.com/devops-surya/game-of-life.git'
+           }        
+       }
+       stage('build the code'){
+           steps{
+              sh 'mvn package'
+           }
+       }
+       stage('archive the artifacts'){
+           steps{
+              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+           }          
+       }
+       stage('publish the junit reports'){
+           steps{
+              junit 'gameoflife-web/target/surefire-reports/*.xml'
+           }
+           
+       }
+
+   }
+}
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+## __Upstream__ job triggering: [REFERHERE](https://www.jenkins.io/doc/book/pipeline/syntax/#:~:text=4%20*%20*%201%2D5%27)
+
+```
+pipeline {
+   agent any
+   triggers{
+     upstream(upstreamProjects: 'pipeline-1', threshold: hudson.model.Result.SUCCESS)
+   }
+   stages{
+       stage('git clone'){
+           steps{
+               git branch: 'master', url: 'https://github.com/devops-surya/game-of-life.git'
+           }        
+       }
+       stage('build the code'){
+           steps{
+              sh 'mvn package'
+           }
+       }
+       stage('archive the artifacts'){
+           steps{
+              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+           }          
+       }
+       stage('publish the junit reports'){
+           steps{
+              junit 'gameoflife-web/target/surefire-reports/*.xml'
+           }
+           
+       }
+
+   }
+}
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Parameters using in jenkins pipeline [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters)
+```sh
+pipeline {
+    agent any
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
+            }
+        }
+    }
+}
+
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Triggering remote job [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/)
+```sh
+pipeline {
+   agent any
+   triggers{
+     upstream(upstreamProjects: 'pipeline-1', threshold: hudson.model.Result.SUCCESS)
+   }
+   parameters{
+     string(name: 'BUILD_BRANCH', defaultValue: 'master', description: 'parameterized the branch' )
+   }
+   stages{
+       stage('git clone'){
+           steps{
+               git branch: "$BUILD_BRANCH", url: 'https://github.com/devops-surya/game-of-life.git'
+           }        
+       }
+       stage('build the code'){
+           steps{
+              sh 'mvn package'
+           }
+       }
+       stage('archive the artifacts'){
+           steps{
+              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+           }          
+       }
+       stage('publish the junit reports'){
+           steps{
+              junit 'gameoflife-web/target/surefire-reports/*.xml'
+           }
+	   stage('triggering the another job named gol'){
+	       steps{
+		      build job: 'gol'
+		   }
+	   }
+           
+       }
+
+   }
+}
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Multibranch pipeline:
+
+![preview](../images/jenkins102.png)
+
+![preview](../images/jenkins103.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+## JENKINS Built-in environment variables
+* Jenkins provides a set of environment variables. You can also define your own. Here is a list of built in environment variables:
+
+```sh
+BUILD_NUMBER - The current build number. For example "153"
+BUILD_ID - The current build id. For example "2018-08-22_23-59-59"
+BUILD_DISPLAY_NAME - The name of the current build. For example "#153".
+JOB_NAME - Name of the project of this build. For example "foo"
+BUILD_TAG - String of "jenkins-${JOB_NAME}-${BUILD_NUMBER}".
+EXECUTOR_NUMBER - The unique number that identifies the current executor.
+NODE_NAME - Name of the "slave" or "master". For example "linux".
+NODE_LABELS - Whitespace-separated list of labels that the node is assigned.
+WORKSPACE - Absolute path of the build as a workspace.
+JENKINS_HOME - Absolute path on the master node for Jenkins to store data.
+JENKINS_URL - URL of Jenkins. For example http://server:port/jenkins/
+BUILD_URL - Full URL of this build. For example http://server:port/jenkins/job/foo/15/
+JOB_URL - Full URL of this job. For example http://server:port/jenkins/job/foo/
+```
+![preview](../images/var1.png)
+![preview](../images/var2.png)
