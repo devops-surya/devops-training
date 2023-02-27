@@ -605,7 +605,10 @@ visudo -- add jenkins to the sudo group
 <br/>
 
 
-## Backup of jenkins:
+## Backup of Jenkins:
+1. Manual    - Take a copy of /var/lib/jenkins/
+2. Automated - Using ThinBackup plugin
+
 * ThinBackup plugin or the Backup plugin, which allow you to schedule automatic backups or perform on-demand backups.
 
 ![preview](../images/jenkins70.png)
@@ -638,16 +641,15 @@ visudo -- add jenkins to the sudo group
 
 
 # Pipeline :
-* A pipeline job in Jenkins is a way to define a continuous delivery pipeline using a domain-specific language (DSL) called Jenkinsfile. This type of job provides a way to define the stages of a build process, from checking out the code to deployment, as a single, declarative pipeline.
+* A pipeline job in Jenkins is a way to define a CI/CD  using a domain-specific language (DSL) called Groovy. 
 
 ## Jenkins pipeline :
-* In jenkins pipeline there are two ways:
+* In Jenkins pipeline there are two ways:
   1. Pipeline  script     -- Scripted pipeline 
   2. Pipeline  script from SCM -- Declarative pipeline
 
-* The approach we follow for the jenkins pipeline and writing the groovy for is called as pipeline-as-code.
+* The approach we follow for the Jenkins pipeline and writing the groovy for is called as pipeline-as-code.
 
-* ***Declarative pipeline*** : -It is a text file that is stored in the source code repository and defines the steps and logic of the pipeline. 
 
 ## Create a Jenkins job in pipeline format:
 ![preview](../images/jenkins76.png)
@@ -655,7 +657,7 @@ visudo -- add jenkins to the sudo group
 ![preview](../images/jenkins77.png)
 
 
-* Basic syntax of groovy:
+* Basic syntax of groovy for pipeline Job:
 
 ```
 node('<LABEL>'){
@@ -684,7 +686,12 @@ node('<LABEL>'){
 <br/>
 
 
-## Basic scripted pipeline :
+## SCENARIO-6:  Create a Pipeline Job for below requirement  :
+```
+Get the code from Git , build using Maven, archive the artifacts & publish the junit reports 
+```
+
+
 ```
 node('ubuntu'){
     stage('git clone'){
@@ -741,10 +748,12 @@ node('ubuntu'){
 
 ## Jenkins declarative pipeline syntax:
 
+* ***Declarative pipeline*** : It is a text file that is stored in the source code repository and defines the steps and logic of the pipeline. 
 * Reference for the __Declarative Pipeline syntax__ [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/)
 
 
 ## Scripted pipeline vs declarative pipeline :
+
 *  Scripted pipeline:
 ```
 node('ubuntu'){
