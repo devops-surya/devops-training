@@ -802,7 +802,7 @@ node('Node-1'){
 * Declarative pipeline:
 ```
 pipeline {
-   agent { label 'Node-1' }
+   agent any
    stages{
        stage('git clone'){
            steps{
@@ -866,8 +866,10 @@ Get the code from Git , build using Maven, archive the artifacts & publish the j
 ![preview](../images/BO1.png)
 
 * After installing you will see below changes:
-![preview](../images/jenkins85.png)
-![preview](../images/jenkins86.png)
+![preview](../img/BO1.png)
+![preview](../img/BO2.png)
+
+
 
 <br/>
 
