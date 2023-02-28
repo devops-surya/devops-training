@@ -762,6 +762,9 @@ node('Node-1'){
 * Plugin usage [REFERHERE](https://plugins.jenkins.io/jobConfigHistory/)
 * This plugin is used to track the changes made .
 ![preview](../images/P10.png)
+![preview](../img/P11.png)
+
+
 
 2. ***Jenkinsfile*** :
 * Jenkinsfile reference [REFERHERE](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
