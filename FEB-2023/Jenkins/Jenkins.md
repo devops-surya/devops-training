@@ -643,6 +643,7 @@ visudo -- add jenkins to the sudo group
 
 # Pipeline :
 * A pipeline job in Jenkins is a way to define a CI/CD  using a domain-specific language (DSL) called Groovy. 
+* Getting started with Pipeline script : [REFERHERE](https://www.jenkins.io/doc/book/pipeline/getting-started/)
 
 ## Jenkins pipeline :
 * In Jenkins pipeline there are two ways:
@@ -892,21 +893,27 @@ EX: Game-of-life.war-Release-1.0
 
 <br/>
 
-## Triggers for build peridically and pollSCM in the pipeline job [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers)
+
+## SCENARIO-8: Create a Declarative pipeline job as per below requirement :
+```
+Automatically trigger the Jenkins Declarative pipeline Job when there are changes in Code Repo.
+Jenkins job should get the code , Build the code , Archive the artifacts & Publish Junit test results.
+```
+
+* Getting started with Pipeline script : [REFERHERE](https://www.jenkins.io/doc/book/pipeline/getting-started/)
+* Official Document for triggers:   [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers)
+
 
 ```
 pipeline {
    agent any
-   triggers{
-      cron('* * * * *')
-   }
    triggers{
       pollSCM('* 8 * * *')
    }
    stages{
        stage('git clone'){
            steps{
-               git branch: 'master', url: 'https://github.com/devops-surya/game-of-life.git'
+               git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'
            }        
        }
        stage('build the code'){
@@ -916,18 +923,20 @@ pipeline {
        }
        stage('archive the artifacts'){
            steps{
-              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+              archive 'target/*.jar'
            }          
        }
        stage('publish the junit reports'){
            steps{
-              junit 'gameoflife-web/target/surefire-reports/*.xml'
+              junit 'target/surefire-reports/*.xml'
            }
            
        }
 
    }
 }
+
+
 ```
 
 <br/>
@@ -936,18 +945,27 @@ pipeline {
 
 <br/>
 
-## __Upstream__ job triggering: [REFERHERE](https://www.jenkins.io/doc/book/pipeline/syntax/#:~:text=4%20*%20*%201%2D5%27)
+
+## SCENARIO-9 :  Create a Jenkins Declarative Pipeline Job as per below requirement :
+
+```
+1. Upstream Job : Build a ***SMP_DeclarativePipelineJob*** Job 
+2. Downstream Job: Once the **SMP_DeclarativePipelineJob** Job is sucessfull , it has to build the Downstream Job(SMP_PipelineJob) 
+```
+
+
+__Upstream__ job triggering: [REFERHERE](https://www.jenkins.io/doc/book/pipeline/syntax/#:~:text=4%20*%20*%201%2D5%27)
 
 ```
 pipeline {
    agent any
    triggers{
-     upstream(upstreamProjects: 'pipeline-1', threshold: hudson.model.Result.SUCCESS)
+     upstream(upstreamProjects: 'SMP_PipelineJob', threshold: hudson.model.Result.SUCCESS)
    }
    stages{
        stage('git clone'){
            steps{
-               git branch: 'master', url: 'https://github.com/devops-surya/game-of-life.git'
+               git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'
            }        
        }
        stage('build the code'){
@@ -957,12 +975,12 @@ pipeline {
        }
        stage('archive the artifacts'){
            steps{
-              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
+              archive 'target/*.jar'
            }          
        }
        stage('publish the junit reports'){
            steps{
-              junit 'gameoflife-web/target/surefire-reports/*.xml'
+            junit 'target/surefire-reports/*.xml'
            }
            
        }
@@ -977,7 +995,9 @@ pipeline {
 
 <br/>
 
-## Parameters using in jenkins pipeline [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters)
+## SCENARIO-10:  Create a pipeline with below script and understand the parameters usage .
+
+* Parameters using in Jenkins Declarative pipeline [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters)
 ```sh
 pipeline {
     agent any
@@ -1017,46 +1037,40 @@ pipeline {
 
 <br/>
 
-## Triggering remote job [REFER HERE](https://www.jenkins.io/doc/pipeline/steps/pipeline-build-step/)
+## SCENARIO-11: Trigger a Jenkins declarative job using git parameter 
+
+* Triggering remote job [REFER HERE](https://plugins.jenkins.io/git-parameter/)
+
 ```sh
 pipeline {
-   agent any
-   triggers{
-     upstream(upstreamProjects: 'pipeline-1', threshold: hudson.model.Result.SUCCESS)
-   }
-   parameters{
-     string(name: 'BUILD_BRANCH', defaultValue: 'master', description: 'parameterized the branch' )
-   }
-   stages{
-       stage('git clone'){
-           steps{
-               git branch: "$BUILD_BRANCH", url: 'https://github.com/devops-surya/game-of-life.git'
-           }        
-       }
-       stage('build the code'){
-           steps{
-              sh 'mvn package'
-           }
-       }
-       stage('archive the artifacts'){
-           steps{
-              archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
-           }          
-       }
-       stage('publish the junit reports'){
-           steps{
-              junit 'gameoflife-web/target/surefire-reports/*.xml'
-           }
-	   stage('triggering the another job named gol'){
-	       steps{
-		      build job: 'gol'
-		   }
-	   }
-           
-       }
-
-   }
+  agent any
+  parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  }
+  stages {
+    stage('Git clone') {
+      steps {
+        git branch: "${params.BRANCH}", url: 'https://github.com/devops-surya/SampleMavenProject.git'
+      }
+    }
+    stage('Build the code') {
+        steps{
+            sh 'mvn package'
+        }
+    }
+    stage('Archive the artifacts') {
+        steps{
+            archive 'target/*.jar'
+        }
+    }
+    stage('publish junit test reports') {
+        steps{
+            junit 'target/surefire-reports/*.xml'
+        }
+    }
+  }
 }
+
 ```
 
 <br/>
@@ -1066,19 +1080,8 @@ pipeline {
 <br/>
 
 
-## Multibranch pipeline:
 
-![preview](../images/jenkins102.png)
-
-![preview](../images/jenkins103.png)
-
-<br/>
-
-* * * 
-
-<br/>
-
-## JENKINS Built-in environment variables
+## JENKINS Built-in environment variables : 
 * Jenkins provides a set of environment variables. You can also define your own. Here is a list of built in environment variables:
 
 ```sh
