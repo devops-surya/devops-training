@@ -9,6 +9,8 @@
 ### Pipeline integrated with Jfrog & SonarQube :
 ![preview](../images/sqpipeline.png)
 
+
+# Install & Configure Sonarqube :
 ### Prerequisites
 1. Need an EC2 instance (min t2.small)
 2. Install Java-11
@@ -146,7 +148,7 @@ mv sonarqube-8.9.2.46101 sonarqube
   ```
 
 
-* Open SOnarqube on browser:
+* Open Sonarqube on browser:
 
 ```sh
 
@@ -159,13 +161,20 @@ password: admin
 ```
  ### Unable to access Sonarqube from browser? 
 
- 1. Make sure port 9000 is opened at security group leave
+ 1. Make sure port 9000 is opened at security group level
  2. start sonar service as a sonar user 
  3. user correct database credentials in the sonar.properties
  4. use instance which has atleast 2 GB of RAM
 
 
-## Integrate the Sonarqube with jenkins:
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Integrate Sonarqube with Jenkins:
 ### On Sonarqube server 
 * Generate a sonarqube token to authenticate from Jenkins as followed below:
 ![preview](../images/sq1.png)
@@ -234,7 +243,36 @@ pipeline{
 ```
 ![preview](../images/sq14.png)
 
-6. Default Quality Profile VS customized quality profile :
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Understanding of SonarQube :
+* SonarQube is an open-source platform for continuous code quality inspection. It provides a variety of features and tools to analyze and manage code quality, including rules, quality profiles, and quality gates.
+
+    * Rules: In SonarQube, rules are predefined sets of guidelines that define the quality of the code. These rules are used to analyze the source code and identify potential issues and defects. SonarQube comes with a large number of pre-configured rules for different programming languages and frameworks, and users can also create their own custom rules.
+
+    * Quality profile: A quality profile is a collection of rules that are applied to a project or a subset of the project. Quality profiles are used to define the quality standards for a project and to ensure that the code meets those standards. SonarQube provides default quality profiles for different programming languages and frameworks, and users can also create their own custom profiles by selecting specific rules.
+
+    * Quality gate: A quality gate is a set of predefined conditions that are used to measure the quality of the code. Quality gates are used to ensure that the code meets specific quality criteria before it is released or deployed. A quality gate can be set up to check different aspects of code quality, such as code coverage, code duplication, and coding standards. If the code does not meet the quality gate conditions, the build will fail, and the code will not be deployed.
+
+* In summary, rules, quality profiles, and quality gates are essential components of SonarQube's code quality analysis process. By defining and enforcing these standards, developers can ensure that their code is high quality, reliable, and maintainable.
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+## . Default Quality Profile VS customized quality profile :
 * Quality profile default 
 ![preview](../images/SQ15.png)
 
