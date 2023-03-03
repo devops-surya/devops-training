@@ -2,7 +2,7 @@
 * SonarQube is an open-source static testing analysis software, it is used by developers to manage source code quality and consistency.
 * __sonarscanner-for-maven__ Official docs [REFERHERE](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-maven/)
 
-## SonarQube work-flow:
+## SonarQube Architecture:
 ![preview](../images/sqworking.png)
 
 
