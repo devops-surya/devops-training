@@ -211,7 +211,9 @@ mvn sonar:sonar \
 ![preview](../images/sq12.png)
 ![preview](../images/sq13.png)
 
-5. Create a  Pipeline job with sonar integrated script and run it :
+
+
+##  Create a  Pipeline job with sonar integrated script and run it :
 
 ```
 pipeline{
@@ -272,7 +274,7 @@ pipeline{
 
 
 
-## . Default Quality Profile VS customized quality profile :
+## Default Quality Profile VS customized quality profile :
 * Quality profile default 
 ![preview](../images/SQ15.png)
 
