@@ -203,6 +203,26 @@ password: admin
 
 <br/>
 
+## Default Quality Profile VS customized quality profile :
+* Quality profile default 
+![preview](../images/SQ15.png)
+
+* Customized Quality Profile
+![preview](../images/sq16.png)
+![preview](../images/sq17.png)
+![preview](../images/sq18.png)
+![preview](../images/sq19.png)
+![preview](../images/sq20.png)
+![preview](../images/sq21.png)
+![preview](../images/sq22.png)
+![preview](../images/sq23.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
 ## Integrate Sonarqube with Jenkins
 1. Create a Sonarqube token  on SonarQubr Dashboard
 * Generate a sonarqube token to authenticate from Jenkins as followed below:
@@ -285,19 +305,6 @@ pipeline{
 
 
 
-## Default Quality Profile VS customized quality profile :
-* Quality profile default 
-![preview](../images/SQ15.png)
-
-* Customized Quality Profile
-![preview](../images/sq16.png)
-![preview](../images/sq17.png)
-![preview](../images/sq18.png)
-![preview](../images/sq19.png)
-![preview](../images/sq20.png)
-![preview](../images/sq21.png)
-![preview](../images/sq22.png)
-![preview](../images/sq23.png)
 
 ## Create a Jenkinsjob to use the customized quality profile :
 ![preview](../images/sq24.png)
