@@ -32,12 +32,13 @@
   sudo apt-get -y install postgresql
   ```
 
-2. Set a password and connect to database (setting password as "admin" password)
+2. Set a password for postgres user (setting password as "admin" password)
   
   ```sh
   sudo passwd postgres
   su - postgres
   ```
+
 
 3. Create a database user and database for sonarque 
   ```sh 
@@ -49,17 +50,24 @@
   \q
   exit
   ``` 
+  ![preview](../img/SQ1.png)
 
-4. Restart postgres database to take latest changes effect 
+
+4. Restart postgres database to take latest changes effect from root user 
   ```sh 
   systemctl restart postgresql 
   systemctl status postgresql
   ```
+  ![preview](../img/SQ2.png)
+
+
 `check point`: You should see postgres is running on 5432
 ```sh
 apt install net-tools
 netstat -plnt
 ```
+  ![preview](../img/SQ3.png)
+
 
 `Source: https://docs.sonarqube.org/latest/requirements/requirements/`
 
@@ -92,9 +100,11 @@ netstat -plnt
   wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.9.2.46101.zip
   apt-get install unzip
   unzip sonarqube-8.9.2.46101.zip
+  mv sonarqube-8.9.2.46101 sonarqube
   ```
 
 2. Update sonar.properties with below information 
+* /opt/sonarqube/conf/sonar.properties
   ```sh
   sonar.jdbc.username=<sonar_database_username>
   sonar.jdbc.password=<sonar_database_password>
@@ -105,11 +115,6 @@ netstat -plnt
   sonar.search.javaOpts=-Xmx512m -Xms512m -XX:MaxDirectMemorySize=256m -XX:+HeapDumpOnOutOfMemoryError
   ```
 
-__Note__:Before the step3 do below steps 
-```sh
-cd /opt/
-mv sonarqube-8.9.2.46101 sonarqube
-``` 
 
 3. Add below data to `/etc/systemd/system/sonarqube.service` file start sonarqube service at the boot time 
   ```sh   
@@ -159,6 +164,11 @@ Default:
 username: admin
 password: admin
 ```
+  ![preview](../img/SQ4.png)
+  ![preview](../img/SQ5.png)
+
+
+
  ### Unable to access Sonarqube from browser? 
 
  1. Make sure port 9000 is opened at security group level
@@ -173,47 +183,63 @@ password: admin
 
 <br/>
 
+## Understanding of SonarQube & Dashboard components :
+![preview](../img/SQ11.png)
 
-## Integrate Sonarqube with Jenkins:
-### On Sonarqube server 
+* SonarQube is an open-source platform for continuous code quality inspection. It provides a variety of features and tools to analyze and manage code quality, including rules, quality profiles, and quality gates.
+
+    * Rules: In SonarQube, rules are predefined sets of guidelines that define the quality of the code. These rules are used to analyze the source code and identify potential issues and defects. SonarQube comes with a large number of pre-configured rules for different programming languages and frameworks, and users can also create their own custom rules.
+
+    * Quality profile: A quality profile is a collection of rules that are applied to a project or a subset of the project. Quality profiles are used to define the quality standards for a project and to ensure that the code meets those standards. SonarQube provides default quality profiles for different programming languages and frameworks, and users can also create their own custom profiles by selecting specific rules.
+
+    * Quality gate: A quality gate is a set of predefined conditions that are used to measure the quality of the code. Quality gates are used to ensure that the code meets specific quality criteria before it is released or deployed. A quality gate can be set up to check different aspects of code quality, such as code coverage, code duplication, and coding standards. If the code does not meet the quality gate conditions, the build will fail, and the code will not be deployed.
+
+* In summary, rules, quality profiles, and quality gates are essential components of SonarQube's code quality analysis process. By defining and enforcing these standards, developers can ensure that their code is high quality, reliable, and maintainable.
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Integrate Sonarqube with Jenkins
+1. Create a Sonarqube token  on SonarQubr Dashboard
 * Generate a sonarqube token to authenticate from Jenkins as followed below:
-![preview](../images/sq1.png)
-![preview](../images/sq2.png)
-![preview](../images/sq3.png)
-![preview](../images/sq4.png)
-
-* Use the below stuff when you want to use the sonar in your build 
-```sh
-mvn sonar:sonar \
-  -Dsonar.projectKey=GOL-Project \
-  -Dsonar.host.url=http://52.39.32.1:9000 \
-  -Dsonar.login=b6b603faf2879eb994hagskaadhlal a24e93acbdf37bbd81
-```
-![preview](../images/sq5.png)
+![preview](../img/SQ6.png)
+![preview](../img/SQ7.png)
+![preview](../img/SQ8.png)
+![preview](../img/SQ9.png)
+![preview](../img/SQ10.png)
 
 
+2. Install SonarQube Scanner 
+* Install Sonarqube plugin --  Manage Jenkins >> Manage Plugins >> SonarQube Scanner  
 
-### On Jenkins server 
-1. Install Sonarqube plugin --  Manage Jenkins >> Manage Plugins >> SonarQube Scanner  
 ![preview](../images/sq6.png)
 
-2. Configure Sonarqube credentials  -- Manage Jenkins >> Manage Credentials 
-![preview](../images/sq7.png)
-![preview](../images/sq8.png)
-![preview](../images/sq9.png)
+
+3. Configure Sonarqube credentials in Jenkins -- Manage Jenkins >> Manage Credentials 
+
+![preview](../img/SQ12.png)
+![preview](../img/SQ13.png)
+![preview](../img/SQ14.png)
+![preview](../img/SQ15.png)
+
 
 3. Add Sonarqube to jenkins "configure system"  -- Manage jenkins >> configure system
-![preview](../images/sq10.png)
-![preview](../images/sq11.png)
-
-
-4. Install SonarScanner -- Manage Jenkins >> Global Tool Configuration
-![preview](../images/sq12.png)
-![preview](../images/sq13.png)
+![preview](../img/SQ16.png)
 
 
 
-##  Create a  Pipeline job with sonar integrated script and run it :
+4. Install SonarScanner 
+* Go to Manage Jenkins >> Global Tool Configuration
+![preview](../img/SQ17.png)
+
+
+
+
+##  Create a  Pipeline job with SonarQubr analysis :
 
 ```
 pipeline{
@@ -221,7 +247,7 @@ pipeline{
     stages{
        stage('GetCode'){
             steps{
-                git 'https://github.com/devops-surya/game-of-life.git'
+                git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'
             }
          }        
        stage('Build'){
@@ -243,6 +269,10 @@ pipeline{
     }
 }
 ```
+1. Copy the above script to the jenkinsfile 
+![preview](../img/SQ18.png)
+
+
 ![preview](../images/sq14.png)
 
 
@@ -252,25 +282,6 @@ pipeline{
 
 <br/>
 
-
-## Understanding of SonarQube :
-* SonarQube is an open-source platform for continuous code quality inspection. It provides a variety of features and tools to analyze and manage code quality, including rules, quality profiles, and quality gates.
-
-    * Rules: In SonarQube, rules are predefined sets of guidelines that define the quality of the code. These rules are used to analyze the source code and identify potential issues and defects. SonarQube comes with a large number of pre-configured rules for different programming languages and frameworks, and users can also create their own custom rules.
-
-    * Quality profile: A quality profile is a collection of rules that are applied to a project or a subset of the project. Quality profiles are used to define the quality standards for a project and to ensure that the code meets those standards. SonarQube provides default quality profiles for different programming languages and frameworks, and users can also create their own custom profiles by selecting specific rules.
-
-    * Quality gate: A quality gate is a set of predefined conditions that are used to measure the quality of the code. Quality gates are used to ensure that the code meets specific quality criteria before it is released or deployed. A quality gate can be set up to check different aspects of code quality, such as code coverage, code duplication, and coding standards. If the code does not meet the quality gate conditions, the build will fail, and the code will not be deployed.
-
-* In summary, rules, quality profiles, and quality gates are essential components of SonarQube's code quality analysis process. By defining and enforcing these standards, developers can ensure that their code is high quality, reliable, and maintainable.
-
-
-
-<br/>
-
-* * * 
-
-<br/>
 
 
 
@@ -288,7 +299,7 @@ pipeline{
 ![preview](../images/sq22.png)
 ![preview](../images/sq23.png)
 
-* Now run the jenkinsjob , it will the new quality Profile and produces output as below :
+## Create a Jenkinsjob to use the customized quality profile :
 ![preview](../images/sq24.png)
 * Verify jenkins job is using new customized quality profile :
 ![preview](../images/sq25.png)
