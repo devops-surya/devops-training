@@ -35,14 +35,16 @@
 
 <br/>
 
-## Architecture of the ansible:
+## Push / Pull type CM :
+
+### Push type CM : 
 * Ansible is the push type model of CM.
-* We also had pull type model of CM ex: CHEF
-![preview](../images/ansible1.png)
 
-## Pull type works:
+![preview](../img/PA1.png)
 
-![preview](../images/ansible2.png)
+### Pull type works:
+* Chef is the  pull type model of CM 
+![preview](../img/PC1.png)
 
 <br/>
 
@@ -50,24 +52,17 @@
 
 <br/>
 
-## Architecture with components of ansible:
+## Architecture  of ansible :
+![preview](../img/AA1.png)
 
-![preview](../images/ansible3.png)
-
-###  Prerequisites of ansible:
-![preview](../images/ansible1.png)
-* For ansible to be worked we need to install python on all the servers where u want to install softwares.
-* We also have to make sure that python is installed on the ACS , however it will be installed while installing ansible.
+### Playbook:
+* Write Playbooks in ansible to do the configuration management 
+* YAML is all about mention all the desired states in the yaml file.
 
 ### Inventory : 
 * list of the servers where you want to do CM.
 
 
-###  what we need to do for configuration management:
-* Write Playbooks in ansible to do the configuration management 
-* YAML is all about mention all the desired states in the yaml file.
-
-
 <br/>
 
 * * * 
@@ -76,29 +71,12 @@
 
 
 
-<br/>
-
-* * * 
-
-<br/>
-
-## Ansible Installation with node setup:
-
-* Ways of connecting to a ubuntu machine .Refer below image
-* 1. password based
-* 2. Key based
-![preview](../images/ansible4.png)
-
-<br/>
-
-* * * 
-
-<br/>
-
-
-## LAB SETUP of ANSIBLE :
+## Scenario-1 :-  LAB SETUP of ANSIBLE  :
 
 ![preview](../images/nansible5.png)
+
+* For ansible to be worked we need to install python on all the servers where you  want to install softwares.
+* We also have to make sure that python is installed on the ACS , however it will be installed while installing ansible.
 
 1. Enabling the password based authentication :
 ```
@@ -111,7 +89,7 @@ sudo service ssh status
 ![preview](../images/nansible1.png)
 ![preview](../images/ansible6.png)
 
-2. Create a user  and give sudo acess
+2. Create a user  and give sudo acess on both ACS and NODE1 servers : 
 
 ```
 sudo su 
@@ -123,7 +101,7 @@ su devops
 ![preview](../images/ansible7.png)
 ![preview](../images/ansible8.png)
 
-3. ssh-keygen 
+3. ssh-keygen on ACS Server to create keys for Key-based Authentication
 
 ```
 ssh-keygen  
@@ -158,8 +136,8 @@ sudo apt install python
 
 
 
-### Inventory :
-
+## Inventory :
+* An inventory file is a simple text file that contains information about your hosts or devices, such as their IP addresses, hostnames, and connection details.
 * The default path of inventory is 
 
 ```
@@ -173,7 +151,7 @@ sudo apt install python
 <br/>
 
 
-### checking ansible ping between ACS and NODE1:
+## checking ansible ping between ACS and NODE1:
 
 ```
 ansible -m ping all
@@ -189,8 +167,7 @@ ansible -m ping all
 
 
 
-
-### using customized file for hosts:
+## Using customized file for inventory:
 
 ```
 ansible -i <path to the file> -m ping all
@@ -205,7 +182,7 @@ ansible -i <path to the file> -m ping all
 <br/>
 
 
-#### To write ansible playbooks :
+## How to write ansible playbooks :
 * list down all the manaul commands for the desired state.
 * Make sure that the commands are working , when doing manaully .
 * Each desired state / each step you are going to do in ansible is considered as task.
