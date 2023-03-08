@@ -26,8 +26,8 @@
 
 ### Configuration Management:
 * We write the desired state ..i,e(i want a file to be created)
-* it uses declarative syntax.
-The main usecase of CM tool are idempotency .
+* It uses declarative syntax.
+* The main usecase of CM tool are idempotency .
 
 <br/>
 
@@ -50,17 +50,23 @@ The main usecase of CM tool are idempotency .
 
 <br/>
 
-### Prerequisites of ansible:
+## Architecture with components of ansible:
+
+![preview](../images/ansible3.png)
+
+###  Prerequisites of ansible:
 ![preview](../images/ansible1.png)
 * For ansible to be worked we need to install python on all the servers where u want to install softwares.
 * We also have to make sure that python is installed on the ACS , however it will be installed while installing ansible.
 
-## what we need to do for configuration management:
+### Inventory : 
+* list of the servers where you want to do CM.
+
+
+###  what we need to do for configuration management:
 * Write Playbooks in ansible to do the configuration management 
 * YAML is all about mention all the desired states in the yaml file.
 
-## Inventory : 
-* list of the servers where you want to do CM.
 
 <br/>
 
@@ -68,9 +74,7 @@ The main usecase of CM tool are idempotency .
 
 <br/>
 
-## Architecture with components of ansible:
 
-![preview](../images/ansible3.png)
 
 <br/>
 
