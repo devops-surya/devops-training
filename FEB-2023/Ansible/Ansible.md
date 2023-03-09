@@ -153,6 +153,8 @@ sudo apt install python
 
 ## checking ansible ping between ACS and NODE1:
 
+* Add your NODE1 public ip to the /etc/ansible/hosts file
+
 ```
 ansible -m ping all
 ```
@@ -167,7 +169,8 @@ ansible -m ping all
 
 
 
-## Using customized file for inventory:
+## Using customized file for inventory: 
+* Add your NODE1 public ip to the /home/devops/hosts file
 
 ```
 ansible -i <path to the file> -m ping all
@@ -188,6 +191,37 @@ ansible -i <path to the file> -m ping all
 * Each desired state / each step you are going to do in ansible is considered as task.
 * In Ansible the tasks are executed by using MODULES.
 * Modules are atomic units of ansible which performs execution
+
+## playbook syntax:
+* Ansible modules Offical Document [REFER HERE](https://docs.ansible.com/ansible/2.8/modules/list_of_all_modules.html)
+
+![preview](../img/PS1.png)
+
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: name of your task1
+      module:
+        par1: val1
+        par2: val2
+    - name: name of your task2
+      module:
+        par1: val1
+        par2: val2
+  ...
+  ..
+  ..
+
+```
+
+<br/>
+
+* * * 
+
+<br/>
 
 # SCENARIO-1: Write a playbook to install tomcat & Java:
 
@@ -211,25 +245,11 @@ sudo apt-get install tomcat9
 sudo service tomcat9 restart
 sudo service tomcat9 status
 ```
-![preview](../images/ansible13.png)
 ![preview](../images/nansible14.png)
 
-## sample playbook:
 
-```
----
-- hosts: all
-  become: yes
-  tasks:
-  ...
-  ..
-  ..
 
-```
-
-* Ansible modules [REFER HERE](https://docs.ansible.com/ansible/2.8/modules/list_of_all_modules.html)
-
-## playbook to install java8 and tomcat9
+## Playbook to install java8 and tomcat9
 
 ```
 ---
