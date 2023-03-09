@@ -42,7 +42,7 @@
 
 ![preview](../img/PA1.png)
 
-### Pull type works:
+### Pull type CM:
 * Chef is the  pull type model of CM 
 ![preview](../img/PC1.png)
 
