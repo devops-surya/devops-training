@@ -224,7 +224,7 @@ ansible -i <path to the file> -m ping all
 
 <br/>
 
-## SCENARIO-2: Write a playbook to install tomcat & Java to configure servers:
+## SCENARIO-2: Write a playbook to install Tomcat & Java to configure servers:
 
 ```
 Java is a developement softwares and it is prequisite for Tomcat.
