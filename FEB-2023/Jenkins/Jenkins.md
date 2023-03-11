@@ -949,8 +949,8 @@ pipeline {
 ## SCENARIO-9 :  Create a Jenkins Declarative Pipeline Job as per below requirement :
 
 ```
-1. Upstream Job : Build a ***SMP_DeclarativePipelineJob*** Job 
-2. Downstream Job: Once the **SMP_DeclarativePipelineJob** Job is sucessfull , it has to build the Downstream Job(SMP_PipelineJob) 
+1. Upstream Job : Build a ***SMP_PipelineJob*** Job 
+2. Downstream Job: Once the **SMP_PipelineJob** Job is sucessfull , it has to build the Downstream Job(SMP_PipelineJob) 
 ```
 
 
