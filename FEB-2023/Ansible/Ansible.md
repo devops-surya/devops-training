@@ -228,12 +228,12 @@ ansible -i <path to the file> -m ping all
 
 ```
 Java is a developement softwares and it is prequisite for Tomcat.
-Tomcat is one of  the appliaction server.
+Tomcat is one of the appliaction server.
 ```
 ![preview](../img/AS1.png)
 
 
-## list down the steps to install tomcat:
+## List down the steps to install tomcat:
 
 ```
 sudo apt-get update 
@@ -250,16 +250,16 @@ sudo service tomcat9 status
 
 
 
-## Playbook to install java8 and tomcat9
+## Playbook to install java11 and tomcat9
 
 ```
 ---
 - hosts: all
   become: yes
   tasks:
-    - name: installing java 8 
+    - name: installing java 11
       apt:
-        name: openjdk-8-jdk
+        name: openjdk-11-jdk
         state: present
         update_cache: yes
     - name: installing tomcat9
@@ -328,9 +328,9 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 - hosts: node1
   become: yes
   tasks:
-    - name: installing java 8 
+    - name: installing java 11
       apt:
-        name: openjdk-8-jdk
+        name: openjdk-11-jdk
         state: present
         update_cache: yes
 ```
@@ -604,7 +604,7 @@ SYNTAX:
   tasks: 
     - name: installing java 
       apt:
-        name: openjdk-8-jdk
+        name: openjdk-11-jdk
         state: present
         update_cache: yes
     - name: installing tomcat9
@@ -920,7 +920,7 @@ ansible-playbook -i hosts usingjavarole.yml
       - tree
     - name: install java
       apt: 
-        name: openjdk-8-jdk
+        name: openjdk-11-jdk
         state: present
       tags:
       - java
