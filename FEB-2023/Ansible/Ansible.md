@@ -56,11 +56,11 @@
 ![preview](../img/AA1.png)
 
 ### Playbook:
-* Write Playbooks in ansible to do the configuration management 
-* YAML is all about mention all the desired states in the yaml file.
+* In playbook we will define the desired state .
+* Playbooks are written in YAML format and consist of a set of tasks that define what actions Ansible should take on the managed hosts.
 
 ### Inventory : 
-* list of the servers where you want to do CM.
+* In Ansible, an inventory file is a simple text file that contains a list of hosts or IP addresses that Ansible can connect to and manage. It is essentially a collection of the hosts or nodes that you want to configure or manage with Ansible.
 
 
 <br/>
@@ -71,7 +71,7 @@
 
 
 
-## Scenario-1 :-  LAB SETUP of ANSIBLE  :
+## SCENARIO-1 :-  LAB SETUP of ANSIBLE  :
 
 ![preview](../images/nansible5.png)
 
@@ -80,11 +80,11 @@
 
 1. Enabling the password based authentication :
 ```
-sudo su 
-cd
+sudo su - 
 vi /etc/ssh/sshd_config
 sudo service ssh restart 
 sudo service ssh status
+ctrl+c or Q -- to exit 
 ```
 ![preview](../images/nansible1.png)
 ![preview](../images/ansible6.png)
@@ -92,10 +92,10 @@ sudo service ssh status
 2. Create a user  and give sudo acess on both ACS and NODE1 servers : 
 
 ```
-sudo su 
-cd
+sudo su - 
 adduser devops
-visudo
+visudo  
+*  To exit : ctrl+X , Y/N , Enter
 su devops   
 ```
 ![preview](../images/ansible7.png)
@@ -104,6 +104,7 @@ su devops
 3. ssh-keygen on ACS Server to create keys for Key-based Authentication
 
 ```
+sudo su - devops
 ssh-keygen  
 ssh-copy-id devops@<nodeipadress>
 ``` 
@@ -151,9 +152,9 @@ sudo apt install python
 <br/>
 
 
-## checking ansible ping between ACS and NODE1:
+## Check the communication b/w ACS and NODE-1:
 
-* Add your NODE1 public ip to the /etc/ansible/hosts file
+* Add your NODE-1 public ip to the /etc/ansible/hosts file
 
 ```
 ansible -m ping all
@@ -169,7 +170,7 @@ ansible -m ping all
 
 
 
-## Using customized file for inventory: 
+## Use customized file for inventory: 
 * Add your NODE1 public ip to the /home/devops/hosts file
 
 ```
@@ -223,13 +224,13 @@ ansible -i <path to the file> -m ping all
 
 <br/>
 
-# SCENARIO-1: Write a playbook to install tomcat & Java:
+## SCENARIO-2: Write a playbook to install tomcat & Java to configure servers:
 
 ```
 Java is a developement softwares and it is prequisite for Tomcat.
 Tomcat is one of  the appliaction server.
 ```
-![preview](../images/sqpipeline.png)
+![preview](../img/AS1.png)
 
 
 ## list down the steps to install tomcat:
@@ -273,19 +274,19 @@ sudo service tomcat9 status
     
 ```
 
-* To run the playbook use below command 
+* To run the playbook use below command : 
 
 ```
  ansible-playbook -i /home/devops/hosts playbook.yml
 ```
 
-* To check the playbook syntax is correct 
+* To check the playbook syntax is correct : 
 
 ```
  ansible-playbook -i inventory playbook.yml --syntax-check
 ```
 
-* To run the playbook for he dryrun 
+* To run the playbook for the  dryrun 
 
 ```
  ansible-playbook -i inventory playbook.yml --check
@@ -297,15 +298,12 @@ sudo service tomcat9 status
 
 <br/>
 
-## WAYS of working with ansible:
-1. playbook
-2. Adhoc-commands
-
-## playbook vc Adhoc :
+## Playbook vc Adhoc commands :
+* Playbooks and Ad-hoc commands are different ways of using Ansible to achieve the same result: configure and manage systems.
 * We can define all the tasks and modules in a file (playbook file).
 * In adhoc commands , we can use  only one module at at time.
 
-## syntax:
+## Adhoc commands syntax:
 
 ```
 ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <all>
@@ -313,10 +311,16 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 
 * For the adhoc commands [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
 
+<br/>
 
-### SCENARIO
-* I had 5 servers in the hosts . but i want the playbook to be run on only one server.
+* * * 
 
+<br/>
+
+
+
+## SCENARIO -3 : Run the playbook on the specific server in the inventory file.
+![preview](../img/AS3.png)
 ![preview](../images/ansible15.png)
 
 ```
@@ -331,7 +335,14 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
         update_cache: yes
 ```
 
-### Defining variables in the ansible:
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Reuse ansible playbooks by using  variables :
 * In ansible we had a below ways to define variable:
 1. host level
 2. group level 
@@ -351,10 +362,10 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 
 ```
 
-## Host level and group level :
+*  **Host level and group level variables**  :
 ![preview](../images/nansible15.png)
 
-## For playbook level variable see below playbook:
+*  **Playbook level variable** see below playbook:
 
 ```
 - hosts: webserver
@@ -377,7 +388,13 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
  ansible-playbook -i <hostspath> -e " package_name=tomcat9" playbook.yml
 ```
 
-### sample deployment of apache and php modules:
+<br/>
+
+* * * 
+
+<br/>
+
+## SCENARIO-4 :  sample deployment of apache and php modules:
 * Reference Sample Link : [Apache_PHP_Installation](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04)
 * list down the steps :
 ```
@@ -454,17 +471,9 @@ phpinfo();
 sudo systemctl restart httpd
 
 ```
-### Mostly used modules in the ansible:
-
-* apt 
-* yum 
-* package
-* service
-* file
-* copy
 
 
-## To check the apache and php  installed in browser do as below :
+## To open the apache & php modules installed on browser  :
 
 ```
 <publicipaddress>  --in the browser
@@ -487,6 +496,29 @@ ansible-playbook -i hosts apache2centos.yml --check
 ```
 ![preview](../images/ansible19.png)
 ![preview](../images/ansible20.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Mostly used modules in the ansible for install & configure softwares:
+
+* apt 
+* yum 
+* package
+* service
+* file
+* copy
+
+<br/>
+
+* * * 
+
+<br/>
+
 
 ## Ansible conditionals:
 * Full document here [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html)
@@ -540,7 +572,7 @@ ansible-playbook -i hosts apache2centos.yml --check
 
 ## If you  didnt find any module /  unable to get the exact modules.
 
-* We have  modules in ansible  where we can provide the linux command as it is and run the playbook.
+* We have modules in ansible , where we can provide the linux command as it is and run the playbook.
 * Examples : shell and command modules
 
 1. SHELL 
@@ -559,9 +591,9 @@ SYNTAX:
 - name: Command module 
   command: sudo apt-get update
 ```
-Shell and command modules there wont be any idempotency.
+* ***NOTE*** : In Shell and command modules there wont be any idempotency.
 
-## BASIC PIPELINE WITH ANSIBLE:
+## Basic pipeline with ansible:
 
 ![preview](../images/ansible21.png)
 
