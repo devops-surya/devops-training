@@ -78,7 +78,7 @@
 * For ansible to be worked we need to install python on all the servers where you  want to install softwares.
 * We also have to make sure that python is installed on the ACS , however it will be installed while installing ansible.
 
-1. Enabling the password based authentication :
+1. Enabling the password based authentication both  on ACS and NODE-1 :
 ```
 sudo su - 
 vi /etc/ssh/sshd_config
@@ -89,7 +89,7 @@ ctrl+c or Q -- to exit
 ![preview](../images/nansible1.png)
 ![preview](../images/ansible6.png)
 
-2. Create a user  and give sudo acess on both ACS and NODE1 servers : 
+2. Create a user and give sudo acess on both ACS and NODE1 servers : 
 
 ```
 sudo su - 
@@ -178,6 +178,9 @@ ansible -i <path to the file> -m ping all
 ```
 * EX : ansible -i /home/devops/hosts -m ping all
 
+![preview](../img/CIA.png)
+
+
 
 <br/>
 
@@ -193,7 +196,8 @@ ansible -i <path to the file> -m ping all
 * In Ansible the tasks are executed by using MODULES.
 * Modules are atomic units of ansible which performs execution
 
-## playbook syntax:
+## Playbook syntax:
+* Yaml Syntax [REFERHERE(]https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
 * Ansible modules Offical Document [REFER HERE](https://docs.ansible.com/ansible/2.8/modules/list_of_all_modules.html)
 
 ![preview](../img/PS1.png)
