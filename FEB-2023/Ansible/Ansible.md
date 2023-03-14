@@ -173,6 +173,10 @@ ansible -m ping all
 ## Use customized file for inventory: 
 * Add your NODE1 public ip to the /home/devops/hosts file
 
+![preview](../img/ANS1.png)
+
+* Use below command to check communication between ACS & NODE1
+
 ```
 ansible -i <path to the file> -m ping all
 ```
@@ -234,7 +238,7 @@ ansible -i <path to the file> -m ping all
 Java is a developement softwares and it is prequisite for Tomcat.
 Tomcat is one of the appliaction server.
 ```
-![preview](../img/AS1.png)
+![preview](../img/ANS1.png)
 
 
 ## List down the steps to install tomcat:
@@ -277,24 +281,35 @@ sudo service tomcat9 status
          state: restarted
     
 ```
+* ***NOTE***: Make sure you addd your NODE1 public ip to the /home/devops/hosts file
+![preview](../img/ANS1.png)
 
-* To run the playbook use below command : 
-
-```
- ansible-playbook -i /home/devops/hosts playbook.yml
-```
 
 * To check the playbook syntax is correct : 
 
 ```
  ansible-playbook -i inventory playbook.yml --syntax-check
 ```
+![preview](../img/ANS3.png)
+
+
+* To run the playbook use below command : 
+
+```
+ ansible-playbook -i /home/devops/hosts playbook.yml
+```
+![preview](../img/ANS2.png)
+
+
 
 * To run the playbook for the  dryrun 
 
 ```
  ansible-playbook -i inventory playbook.yml --check
 ```
+
+![preview](../img/ANS4.png)
+
 
 <br/>
 
