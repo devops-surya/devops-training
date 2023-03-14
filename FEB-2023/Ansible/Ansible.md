@@ -339,12 +339,26 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 
 
 ## SCENARIO -3 : Run the playbook on the specific server in the inventory file.
+
 ![preview](../img/AS3.png)
-![preview](../images/ansible15.png)
+
+* The  /home/devops/hosts file changes as below :
+![preview](../img/ANS5.png)
+
+* Cretae a java.yml with below playbook  content : 
+
+```
+sudo su - devops 
+cd /home/devops
+vi java.yml 
+
+Paste the below Playbook content 
+
+```
 
 ```
 ---
-- hosts: node1
+- hosts: Node1
   become: yes
   tasks:
     - name: installing java 11
@@ -353,6 +367,16 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
         state: present
         update_cache: yes
 ```
+
+
+* To run the playbook use below command : 
+
+```
+ ansible-playbook -i /home/devops/hosts java.yml
+```
+![preview](../img/ANS6.png)
+
+
 
 <br/>
 
@@ -382,6 +406,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 ```
 
 *  **Host level and group level variables**  :
+
 ![preview](../images/nansible15.png)
 
 *  **Playbook level variable** see below playbook:
