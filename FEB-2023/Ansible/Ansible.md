@@ -409,7 +409,7 @@ Paste the below Playbook content
 
 ![preview](../images/nansible15.png)
 
-*  **Playbook level variable** see below playbook:
+*  **Playbook level variable** :
 
 ```
 - hosts: webserver
@@ -426,7 +426,7 @@ Paste the below Playbook content
 
 ```
 
-## Defining variable at commandline level
+* ***commandline level variable*** 
 
 ```
  ansible-playbook -i <hostspath> -e " package_name=tomcat9" playbook.yml
