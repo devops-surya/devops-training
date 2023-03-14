@@ -426,7 +426,7 @@ Paste the below Playbook content
 
 ```
 
-* ***commandline level variable*** 
+* **commandline level variable**
 
 ```
  ansible-playbook -i <hostspath> -e " package_name=tomcat9" playbook.yml
