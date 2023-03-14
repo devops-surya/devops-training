@@ -25,8 +25,8 @@
 ![preview](../images/E6.png) 
 ![preview](../images/E7.png) 
 
-2. Open Mobaxterm and makesure the file downloaded is there in the present path and paste the command copied from AWS dashboard.
-![preview](../images/e8.png) 
+2. Open Mobaxterm and makesure the file downloaded while creating Keypair  is there in the present path . Paste the command copied from AWS dashboard
+![preview](../img/ANS7.png) 
 ![preview](../images/E9.png) 
 
 3. Disconnect from EC2 >> exit (or) Ctrl+ d :
