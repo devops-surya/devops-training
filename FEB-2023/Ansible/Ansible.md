@@ -288,7 +288,7 @@ sudo service tomcat9 status
 * To check the playbook syntax is correct : 
 
 ```
- ansible-playbook -i inventory playbook.yml --syntax-check
+ ansible-playbook -i /home/devops/hosts playbook.yml --syntax-check
 ```
 ![preview](../img/ANS3.png)
 
@@ -322,7 +322,7 @@ sudo service tomcat9 status
 * We can define all the tasks and modules in a file (playbook file).
 * In adhoc commands , we can use  only one module at at time.
 
-## Adhoc commands syntax:
+*  Adhoc commands syntax:
 
 ```
 ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <all>
