@@ -392,6 +392,7 @@ Paste the below Playbook content
 3. playbook level 
 4. commandline level
 
+* Create variable name **package_name** as below in playbook :
 ```
 ---
 - hosts: webserver
@@ -405,11 +406,16 @@ Paste the below Playbook content
 
 ```
 
-*  **Host level and group level variables**  :
+1. **Host level variable**  :
 
-![preview](../images/nansible15.png)
+![preview](../img/ANS8.png)
 
-*  **Playbook level variable** :
+2. **Group level variable** : 
+
+![preview](../img/ANS9.png)
+
+
+3. **Playbook level variable** :
 
 ```
 - hosts: webserver
@@ -426,7 +432,7 @@ Paste the below Playbook content
 
 ```
 
-* **commandline level variable**
+4 **commandline level variable** :
 
 ```
  ansible-playbook -i <hostspath> -e " package_name=tomcat9" playbook.yml
@@ -440,7 +446,9 @@ Paste the below Playbook content
 
 ## SCENARIO-4 :  sample deployment of apache and php modules:
 * Reference Sample Link : [Apache_PHP_Installation](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04)
-* list down the steps :
+
+* list down the manual steps :
+
 ```
 sudo apt-get update 
 sudo apt-get  install apache2 -y 
@@ -453,6 +461,7 @@ phpinfo();
 sudo systemctl restart apache2
 ```
 
+* The playbook looks as below once after convert the manual steps in to tasks :
 
 ```
 ---
@@ -499,24 +508,6 @@ sudo systemctl restart apache2
 
 ```
 
-
-
-* For redhat/centos machines
-
-```
-sudo yum update 
-sudo yum  install httpd -y 
-sudo systemctl enable httpd
-sudo yum install php libapache2-mod-php php-mysql php-cli -y 
-sudo vi /var/www/html/info.php
-<?php
-phpinfo();
-?>
-sudo systemctl restart httpd
-
-```
-
-
 ## To open the apache & php modules installed on browser  :
 
 ```
@@ -541,6 +532,36 @@ ansible-playbook -i hosts apache2centos.yml --check
 ![preview](../images/ansible19.png)
 ![preview](../images/ansible20.png)
 
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## SCENARIO-5 :  sample deployment of apache and php modules on redhat/centos 
+
+* Below are the maual steps : 
+
+```
+sudo yum update 
+sudo yum  install httpd -y 
+sudo systemctl enable httpd
+sudo yum install php libapache2-mod-php php-mysql php-cli -y 
+sudo vi /var/www/html/info.php
+<?php
+phpinfo();
+?>
+sudo systemctl restart httpd
+
+```
+
+* **Exercise** : Write a playbook for above manual steps 
+
+
+
+
 <br/>
 
 * * * 
@@ -556,12 +577,15 @@ ansible-playbook -i hosts apache2centos.yml --check
 * service
 * file
 * copy
+* blockinfile
+* lineinfile
 
 <br/>
 
 * * * 
 
 <br/>
+
 
 
 ## Ansible conditionals:
