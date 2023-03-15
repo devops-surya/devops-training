@@ -345,7 +345,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 * The  /home/devops/hosts file changes as below :
 ![preview](../img/ANS5.png)
 
-* Cretae a java.yml with below playbook  content : 
+* Create a java.yml with below playbook  content : 
 
 ```
 sudo su - devops 
