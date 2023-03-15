@@ -604,6 +604,13 @@ sudo systemctl restart httpd
       when: ansible_facts['os_family'] == "Debian"
 ```
 
+<br/>
+
+* * * 
+
+<br/>
+
+
 ## Fail module:
 
 ```
@@ -623,6 +630,13 @@ sudo systemctl restart httpd
       when: ansible_facts['os_family'] == "Debian"
 ```
 
+
+<br/>
+
+* * * 
+
+<br/>
+
 ## Package module :
 * This module is used to install the both centos and ubuntu packages
 
@@ -637,6 +651,13 @@ sudo systemctl restart httpd
         state: present
         update_cache: yes
 ```
+
+<br/>
+
+* * * 
+
+<br/>
+
 
 ## If you  didnt find any module /  unable to get the exact modules.
 
@@ -660,6 +681,12 @@ SYNTAX:
   command: sudo apt-get update
 ```
 * ***NOTE*** : In Shell and command modules there wont be any idempotency.
+
+<br/>
+
+* * * 
+
+<br/>
 
 ## Basic pipeline with ansible:
 
