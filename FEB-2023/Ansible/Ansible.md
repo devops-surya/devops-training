@@ -338,6 +338,7 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 
 
 
+
 ## SCENARIO -3 : Run the playbook on the specific server in the inventory file.
 
 ![preview](../img/AS3.png)
