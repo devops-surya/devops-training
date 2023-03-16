@@ -517,7 +517,7 @@ sudo systemctl restart apache2
 
 ```
 
-* Create a file with apache2php.yml  with above content .
+* Create a file named  apache2php.yml  with above content .
 
 ```
 sudo su - devops 
@@ -543,17 +543,32 @@ ansible-playbook -i hosts apache2php.yml --syntax-check
 ```
 ansible-playbook -i hosts apache2php.yml --check
 ```
-![preview](../images/ansible19.png)
-![preview](../images/ansible20.png)
 
+
+* Run the playbook :
+
+```
+ansible-playbook -i hosts apache2php.yml 
+```
+
+![preview](../img/ANS9.png)
 
 *  To see the apache & php modules installed on browser  :
 
 ```
-<publicipaddress>  --in the browser
+# Apache
+
+http://<publicipaddress> 
+
+# PHP
+
+http://<publicipaddress>/info.php
+
 ```
 ![preview](../images/ansible17.png)
 ![preview](../images/ansible18.png)
+
+
 
 
 
@@ -595,14 +610,14 @@ sudo systemctl restart httpd
 
 ## Mostly used modules in the ansible for install & configure softwares:
 
-* apt 
-* yum 
-* package
-* service
-* file
-* copy
-* blockinfile
-* lineinfile
+* apt         -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.3/apt_module.html)
+* yum         -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.4/yum_module.html)
+* package     -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.3/service_module.html)
+* file        -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/ansible/2.8/modules/list_of_files_modules.html)
+* copy        -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.4/copy_module.html)
+* blockinfile -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/ansible/2.8/modules/blockinfile_module.html#blockinfile-module)
+* lineinfile  -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/ansible/2.8/modules/lineinfile_module.html#lineinfile-module)
+* loop       -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.3/playbooks_loops.html#standard-loops)
 
 <br/>
 
@@ -610,10 +625,16 @@ sudo systemctl restart httpd
 
 <br/>
 
+## Ansible facts:
+* In Ansible, facts are pieces of information about the remote systems that Ansible collects during a playbook run. Ansible facts are automatically collected by the setup module and stored in a set of variables that you can access in your playbook. These facts provide useful information about the remote system, such as the operating system, the hostname, the network interfaces, and much more.
 
+* Ansible Document: --  [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#id3)
 
 ## Ansible conditionals:
-* Full document here [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html)
+
+* In Ansible, conditionals are used to check if certain conditions are true or false before executing a task or a block of tasks. Ansible provides several conditional statements that can be used in playbooks
+
+* Ansible  document here [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html)
 
 ```
 ---
@@ -636,6 +657,9 @@ sudo systemctl restart httpd
 
 
 ## Fail module:
+* In Ansible, the fail module is used to terminate the playbook or task execution with a custom failure message. It can be useful when you need to enforce certain conditions in your playbook or task and stop execution if those conditions are not met.
+
+* Fail Module [REFERHERE - Ansible module Documentation](https://docs.ansible.com/ansible/2.8/modules/fail_module.html)
 
 ```
 ---
@@ -662,7 +686,10 @@ sudo systemctl restart httpd
 <br/>
 
 ## Package module :
-* This module is used to install the both centos and ubuntu packages
+
+* The package module provides a generic interface for package management, which means that it can handle different package managers such as YUM, APT, and DNF on Linux systems, and Windows Package Manager (winget) on Windows systems.
+* Package  Module    -- [REFERHERE - Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.3/service_module.html)
+
 
 ```
 ---
@@ -688,7 +715,7 @@ sudo systemctl restart httpd
 * We have modules in ansible , where we can provide the linux command as it is and run the playbook.
 * Examples : shell and command modules
 
-1. SHELL 
+1. SHELL : -  [Ansible Document](https://docs.ansible.com/archive/ansible/2.3/shell_module.html)
 
 SYNTAX:
 
@@ -696,7 +723,7 @@ SYNTAX:
 - name: shell module
   shell: sudo apt-get update 
 ```
-2. COMMAND :
+2. COMMAND : [Ansible Document](https://docs.ansible.com/ansible/2.9/modules/command_module.html)
 
 SYNTAX:
 
@@ -711,6 +738,112 @@ SYNTAX:
 * * * 
 
 <br/>
+
+
+## Handler in ansible
+* Handler is  also one of the module in ansible . One of the best use case is to optimise the playbook.
+* In Ansible, a handler is a task that is triggered only when a change has been made on a managed node by a task in a playbook. Handlers are used to ensure that changes made to a system are applied only when necessary, rather than every time a task is executed.
+
+* Look at below example for understanding.
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      notify:
+      - restart apache2
+    - name: installing php modules
+      apt:
+        name: "{{ item }}"
+        state: present  
+        update_cache: yes
+      loop:
+        - php
+        - libapache2-mod-php
+        - php-mysql
+        - php-cli
+
+    - name: creating the file info.php
+      file:
+        path: /var/www/html/info.php
+        state: touch
+
+    - name: add content to the info.php file
+      blockinfile:
+        path: /var/www/html/info.php
+        block: |
+          <?php
+          phpinfo();
+          ?>
+      notify:
+      - restart apache2 
+    handlers:
+      - name: restart apache2 
+        service:
+          name: apache2
+          enabled: yes 
+          state: restarted
+```
+
+* Create a file handler.yml with below playbook content: 
+
+```
+sudo su - devops 
+
+vi handler.yml 
+
+Insert mode 
+copy the below playbook content 
+
+ESC:wq                  -- To save the file 
+
+```
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install apcahe2
+    apt:
+      name: apache2
+      state: present
+      update_cache: yes
+    notify:
+    - restartapache2
+  handlers:
+    - name : restartapache2
+      service:
+        name: apache2
+        state: restarted
+
+```
+
+
+* Run ansible playbook:
+
+```
+ansible-playbook -i /home/devops/hosts handler.yml 
+```
+![preview](../img/ANS11.png)
+
+* Run the playbook again and look at the output: 
+
+![preview](../img/ANS12.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+
 
 ## Basic pipeline with ansible:
 
@@ -771,79 +904,7 @@ ansible-playbook -i hosts tomcat1.yml
    * Copy the sample war to the /var/lib/tomcat9/webapps/
    * Restart the tomcat9
 
-## Handler in ansible
-* Handler is  also one of the module in ansible . It is mostly used to optimise the playbook.
-* For Example 
 
-```
----
-- hosts: all
-  become: yes
-  tasks:
-    - name: installing apache2
-      apt:
-        name: apache2
-        state: present
-        update_cache: yes
-      notify:
-      - restart apache2
-    - name: installing php modules
-      apt:
-        name: "{{ item }}"
-        state: present  
-        update_cache: yes
-      loop:
-        - php
-        - libapache2-mod-php
-        - php-mysql
-        - php-cli
-
-    - name: creating the file info.php
-      file:
-        path: /var/www/html/info.php
-        state: touch
-
-    - name: add content to the info.php file
-      blockinfile:
-        path: /var/www/html/info.php
-        block: |
-          <?php
-          phpinfo();
-          ?>
-      notify:
-      - restart apache2 
-    handlers:
-      - name: restart apache2 
-        service:
-          name: apache2
-          enabled: yes 
-          state: restarted
-```
-
-
-```
----
-- hosts: all
-  become: yes
-  tasks:
-  - name: install apcahe2
-    apt:
-      name: apache2
-      state: present
-      update_cache: yes
-    notify:
-    - restartapache2
-  handlers:
-    - name : restartapache2
-      service:
-        name: apache2
-        state: restarted
-
-```
-
-
-## Ansible facts
-* For the documents [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#id3)
 
 ## Reusability of ansible playbooks.
 1. VARIABLES
