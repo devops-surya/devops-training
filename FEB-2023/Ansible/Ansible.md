@@ -448,6 +448,14 @@ Paste the below Playbook content
 ## SCENARIO-4 :  sample deployment of apache and php modules:
 * Reference Sample Link : [Apache_PHP_Installation](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04)
 
+* *Apache* is a popular open-source web server software that is used to serve websites and web applications over the internet. It was developed by the Apache Software Foundation and is available for a variety of operating systems, including Windows, macOS, and Linux.
+
+* Apache is highly customizable and supports a variety of programming languages, including PHP, Python, Perl, and Ruby. It also supports many different modules and plugins, allowing users to add functionality to their web servers as needed.
+
+* Apache is known for its reliability, scalability, and security, and is widely used by businesses and individuals around the world. It is a key component of the LAMP (Linux, Apache, MySQL, PHP) and LEMP (Linux, Nginx, MySQL, PHP) stacks, which are commonly used for web development and hosting.
+
+* *PHP (Hypertext Preprocessor)* is a popular server-side scripting language that is widely used for web development. It was originally created in 1994 by Rasmus Lerdorf, and has since evolved into a powerful language that is used by millions of developers worldwide.
+
 * list down the manual steps :
 
 ```
