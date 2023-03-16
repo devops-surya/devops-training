@@ -517,7 +517,37 @@ sudo systemctl restart apache2
 
 ```
 
-## To open the apache & php modules installed on browser  :
+* Create a file with apache2php.yml  with above content .
+
+```
+sudo su - devops 
+
+vi apache2php.yml 
+
+Insert mode 
+copy the above playbook content 
+
+ESC:wq                  -- To save the file 
+
+```
+
+
+*  To check the syntactical errors in playbook:
+
+```
+ansible-playbook -i hosts apache2php.yml --syntax-check
+```
+
+*  Trial run  :
+
+```
+ansible-playbook -i hosts apache2php.yml --check
+```
+![preview](../images/ansible19.png)
+![preview](../images/ansible20.png)
+
+
+*  To see the apache & php modules installed on browser  :
 
 ```
 <publicipaddress>  --in the browser
@@ -525,21 +555,6 @@ sudo systemctl restart apache2
 ![preview](../images/ansible17.png)
 ![preview](../images/ansible18.png)
 
-
-
-## To check the playbook is having any syntactical errors:
-
-```
-ansible-playbook -i hosts apache2centos.yml --syntax-check
-```
-
-## Trial run in ansible :
-
-```
-ansible-playbook -i hosts apache2centos.yml --check
-```
-![preview](../images/ansible19.png)
-![preview](../images/ansible20.png)
 
 
 <br/>
