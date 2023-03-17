@@ -630,6 +630,9 @@ sudo systemctl restart httpd
 
 * Ansible Document: --  [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#id3)
 
+![preview](../img/ANS13.png)
+
+
 ## Ansible conditionals:
 
 * In Ansible, conditionals are used to check if certain conditions are true or false before executing a task or a block of tasks. Ansible provides several conditional statements that can be used in playbooks
