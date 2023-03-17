@@ -826,7 +826,7 @@ ESC:wq                  -- To save the file
 ```
 
 
-* Run ansible playbook:
+* Run ansible playbook where apache2 is not installed:
 
 ```
 ansible-playbook -i /home/devops/hosts handler.yml 
