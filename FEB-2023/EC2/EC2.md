@@ -88,3 +88,21 @@
 ![preview](../images/E20.png) 
 ![preview](../images/E21.png) 
 
+
+
+## Create a Centos EC2 in AWS :
+* Creating centos is same like Ubuntu creation , the only difference is the Centos will be available in ***AWS Marketplace AMIs***
+![preview](../img/C1.png)
+![preview](../img/C6.png)
+![preview](../img/C7.png)
+
+
+
+* ***NOTE*** :- Select Centos from **Browse more AMIs** refer below steps
+
+* Select Centos from ***Browse more AMIs*** :
+![preview](../img/C2.png) 
+![preview](../img/C3.png) 
+![preview](../img/C4.png) 
+![preview](../img/C5.png) 
+
