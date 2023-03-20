@@ -587,7 +587,7 @@ http://<publicipaddress>/info.php
 sudo yum update 
 sudo yum  install httpd -y 
 sudo systemctl enable httpd
-sudo yum install php libapache2-mod-php php-mysql php-cli -y 
+sudo yum install php php-mysqlnd 
 sudo vi /var/www/html/info.php
 <?php
 phpinfo();
@@ -596,7 +596,7 @@ sudo systemctl restart httpd
 
 ```
 
-* **Exercise** : Write a playbook for above manual steps 
+* **Exercise-1** : Write a playbook for above manual steps 
 
 
 
@@ -847,10 +847,20 @@ ansible-playbook -i /home/devops/hosts handler.yml
 <br/>
 
 
+# Important and main stuff we do in pipeline using ansible .
+## Scenario- 6:  Deployment using ansible playbook:
+* Look at the below pipelins:
+![preview](../images/BasicdevopsPipeline.png)
+![preview](../img/ANS41.png)
 
-## Basic pipeline with ansible:
+### Steps Involved :
+1. Install Java 
+2. Install Tomcat 
+3. Need war file to copy 
+4. Restart Tomcat
 
-![preview](../images/ansible21.png)
+* For war [REFER HERE](https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.war)
+
 
 ```
 ---
@@ -877,11 +887,10 @@ ansible-playbook -i /home/devops/hosts handler.yml
         state: restarted
 
 ```
-* For war [REFER HERE](https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.war)
 
 
 ```
-ansible-playbook -i hosts tomcat1.yml --syntac-check
+ansible-playbook -i hosts tomcat1.yml --syntax-check
 
 ansible-playbook -i hosts tomcat1.yml
 ```
@@ -889,12 +898,12 @@ ansible-playbook -i hosts tomcat1.yml
 ![preview](../images/ansible22.png)
 
 
-### ANSIBLE:
+## ANSIBLE:
 1. Mostly used modules are copy, apt , yum , package , service , systemd , file , blockinfile , lineinfile .
 2. Tomcat home path is /var/lib/tomcat9/webapps/ . It runs on the port 8080 . Tomcat logs will be on the folder /var/log/tomcat9/ .
 
 
-## Exercise:
+## Exercise-2:
 * Run the playbbok with below tasks :
    * Install java 
    * Install tomcat9
