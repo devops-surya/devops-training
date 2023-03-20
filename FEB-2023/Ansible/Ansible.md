@@ -641,7 +641,7 @@ sudo systemctl restart httpd
 
 ```
 ---
-- hosts: ubuntu
+- hosts: all
   become: yes
   tasks:
     - name: installing apache2
@@ -666,7 +666,7 @@ sudo systemctl restart httpd
 
 ```
 ---
-- hosts: ubuntu
+- hosts: all
   become: yes
   tasks:
     - name: fail if the os is other than the debian
@@ -696,7 +696,7 @@ sudo systemctl restart httpd
 
 ```
 ---
-- hosts: ubuntu
+- hosts: all
   become: yes
   tasks:
     - name: installing apache2
@@ -894,8 +894,9 @@ ansible-playbook -i hosts tomcat1.yml --syntax-check
 
 ansible-playbook -i hosts tomcat1.yml
 ```
+![preview](../img/C15.png)
+![preview](../img/C16.png)
 
-![preview](../images/ansible22.png)
 
 
 ## ANSIBLE:
