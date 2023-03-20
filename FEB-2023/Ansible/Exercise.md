@@ -1,4 +1,4 @@
-## Setup CentOs as node to ACS :
+## Exercise-1 : Setup CentOs as node to ACS.
 * Create a devops user , set password & provide sudo access .
 
 ```
@@ -48,4 +48,46 @@ ssh-copy-id dvops@<CentOsPublicIpaddress>
 ![preview](../img/C13.png)
 ![preview](../img/C14.png) 
 
+
+### Playbook for manual steps :
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing httpd
+      yum:
+        name: httpd
+        state: present
+        update_cache: yes
+    - name: enable httpd
+      service:
+        name: httpd
+        enabled: yes
+        state: restarted
+    - name: installing php modules
+      yum:
+        name: "{{ item }}"
+        state: present  
+        update_cache: yes
+      loop:
+        - php
+    - name: creating the file info.php
+      file:
+        path: /var/www/html/info.php
+        state: touch
+
+    - name: add content to the info.php file
+      blockinfile:
+        path: /var/www/html/info.php
+        block: |
+          <?php
+          phpinfo();
+          ?>
+    - name: restart the apache
+      service:
+         name: httpd
+         state: restarted
+```
 

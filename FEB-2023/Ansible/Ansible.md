@@ -587,7 +587,7 @@ http://<publicipaddress>/info.php
 sudo yum update 
 sudo yum  install httpd -y 
 sudo systemctl enable httpd
-sudo yum install php php-mysqlnd 
+sudo yum install php 
 sudo vi /var/www/html/info.php
 <?php
 phpinfo();
@@ -596,7 +596,7 @@ sudo systemctl restart httpd
 
 ```
 
-* **Exercise-1** : Write a playbook for above manual steps 
+* **Exercise-1** : Write a playbook for above manual steps and setup CentOs as a node to ACS.
 
 
 
