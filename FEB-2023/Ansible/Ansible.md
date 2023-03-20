@@ -847,7 +847,7 @@ ansible-playbook -i /home/devops/hosts handler.yml
 <br/>
 
 
-# Important and main stuff we do in pipeline using ansible .
+# Important and main stuff we do in pipeline using ansible:
 ## Scenario- 6:  Deployment using ansible playbook:
 * Look at the below pipelins:
 ![preview](../images/BasicdevopsPipeline.png)
