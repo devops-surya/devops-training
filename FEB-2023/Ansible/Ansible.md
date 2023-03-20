@@ -862,6 +862,8 @@ ansible-playbook -i /home/devops/hosts handler.yml
 * For war [REFER HERE](https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.war)
 
 
+* Look at the below playbook : 
+
 ```
 ---
 - hosts: all
@@ -898,24 +900,18 @@ ansible-playbook -i hosts tomcat1.yml
 ![preview](../img/C16.png)
 
 
+<br/>
+
+* * * 
+
+<br/>
+
+
 
 ## ANSIBLE:
 1. Mostly used modules are copy, apt , yum , package , service , systemd , file , blockinfile , lineinfile .
 2. Tomcat home path is /var/lib/tomcat9/webapps/ . It runs on the port 8080 . Tomcat logs will be on the folder /var/log/tomcat9/ .
 
-
-## Exercise-2:
-* Run the playbbok with below tasks :
-   * Install java 
-   * Install tomcat9
-   * Stop the tomcat9
-   * Copy the sample war to the /var/lib/tomcat9/webapps/
-   * Restart the tomcat9
-* When you are running the above playbook for the second time change the playbook as per below tasks:
-   * Stop the tomcat9
-   * Take the backup of the exising code which is in /var/lib/tomcat9/webapps/
-   * Copy the sample war to the /var/lib/tomcat9/webapps/
-   * Restart the tomcat9
 
 
 
@@ -940,12 +936,27 @@ ansible-playbook -i hosts tomcat1.yml
         update_cache: yes
 ```
 
-```
-ansible-plybook -i hosts -e package_name=git  playbook.yml
-```
-## 2. Import/Include
-* java playbook (java.yml) 
 
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## 2. Import/Include :
+* In Ansible, you can use the import and include directives to reuse code across different parts of your playbook.
+* Official Ansible Documentation [REFERHERE](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_reuse_includes.html)
+
+* All ***import**** statements are pre-processed at the time playbooks are parsed.
+* All ***include**** statements are processed as they are encountered during the execution of the playbook.
+
+
+## Import playbook :
+
+### java playbook (java.yml) 
 ```
 - hosts: all
   become: yes 
@@ -960,6 +971,7 @@ ansible-plybook -i hosts -e package_name=git  playbook.yml
 
 * Using the java playbook in installing tomcat9
 
+### Import playbook (import.yml)
 ```
 - import_playbook: java.yml
 - hosts: all
@@ -979,6 +991,96 @@ ansible-plybook -i hosts -e package_name=git  playbook.yml
         name: tomcat9
         state: restarted
 ```
+
+![preview](../img/C17.png)
+
+* Run playbook import.yml 
+
+```
+ansible-playbook -i /home/devops/hosts import.yml
+```
+![preview](../img/C18.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Include  
+### tasks playbook (tasks.yml)
+
+
+``` 
+- name: installing java 
+  apt:
+    name: openjdk-8-jdk
+    state: present
+    update_cache: yes
+```
+
+### Include playbook (Include.yml)
+```
+---
+- hosts: all
+  become: yes 
+  tasks: 
+    - include_tasks: tasks.yml
+    - name: installing tomcat9
+      apt:
+        name: tomcat9
+        state: present 
+        update_cache: yes
+    - name: copying the war file
+      copy:
+        src: /home/devops/SampleWebApp.war
+        dest: /var/lib/tomcat9/webapps/
+    - name: restart the tomcat9
+      service:
+        name: tomcat9
+        state: restarted  
+```
+
+![preview](../img/C20.png)
+
+
+* Run Playbook :
+
+```
+ansible-playbook -i /home/devops/hosts include.yml
+```
+
+![preview](../img/C19.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Exercise-2:
+* Run the playbbok with below tasks :
+   * Install java 
+   * Install tomcat9
+   * Stop the tomcat9
+   * Copy the sample war to the /var/lib/tomcat9/webapps/
+   * Restart the tomcat9
+* When you are running the above playbook for the second time change the playbook as per below tasks:
+   * Stop the tomcat9
+   * Take the backup of the exising code which is in /var/lib/tomcat9/webapps/
+   * Copy the sample war to the /var/lib/tomcat9/webapps/
+   * Restart the tomcat9
+
+
+<br/>
+
+* * * 
+
+<br/>
+
 
 ## 3. ANSIBLE ROLES:
 * Ansible roles are the best way of reusing the playbooks :
