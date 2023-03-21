@@ -1083,8 +1083,52 @@ ansible-playbook -i /home/devops/hosts include.yml
 
 
 ## 3. ANSIBLE ROLES:
-* Ansible roles are the best way of reusing the playbooks :
- We need to understand about the ansible-galaxy [REFER HERE](https://galaxy.ansible.com/)
+* Ansible roles are the best way of reusing the playbooks .
+* Ansible Roles are a way of organizing and managing Ansible code that allows for better modularity, reusability, and scalability of your infrastructure automation. A role is essentially a collection of tasks, variables, templates, and files that are grouped together to accomplish a specific goal, such as configuring a web server or installing a database.
+
+
+## Structure of Ansible Role :
+![preview](../img/C21.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Ansible-Galaxy:
+* Ansible Galaxy is a community repository of pre-built Ansible roles, playbooks, and collections. It is a central hub for sharing and discovering Ansible content created by the community, including individual users, organizations, and vendors.
+ 
+* Ansible-Galaxy [REFER HERE](https://galaxy.ansible.com/)
+
+
+## Using Ansible roles from Ansible-galaxy : 
+* Ansible-Galaxy link [REFER HERE](https://galaxy.ansible.com/)
+
+### How to use the role from ansible galaxy:
+```
+ ansible-galaxy install geerlingguy.java
+```
+
+![preview](../images/ansible23.png)
+
+### How to use the ansible role downloaded from the ansible-galaxy:
+
+```
+---
+- hosts: all
+  become: yes 
+  roles: 
+    - role: geerlingguy.java
+```
+
+
+<br/>
+
+* * * 
+
+<br/>
 
 ## Jinja template
 * These are used to create the dynamic files. Dynamic files means the content in the file will not be the static
@@ -1097,7 +1141,7 @@ This is for the os {{ ansible_os_family }}
 This is of distribution {{ ansible_distribution }}
 ```
 
-* playbook  using jinja template
+* playbook using jinja template
 
 ```
 ---
@@ -1110,6 +1154,7 @@ This is of distribution {{ ansible_distribution }}
         dest: /home/devops/
         
 ```
+
 
 * Run above playbook by using below command:
 
@@ -1125,25 +1170,11 @@ This is of distribution "Ubuntu"
 
 ```
 
-## Ansible roles 
-* Ansible galaxy link [REFER HERE](https://galaxy.ansible.com/)
+<br/>
 
-## How to use the role from ansible galaxy:
-```
- ansible-galaxy install geerlingguy.java
-```
+* * * 
 
-![preview](../images/ansible23.png)
-
-## How to use the ansible role downloaded from the ansible-galaxy:
-
-```
----
-- hosts: all
-  become: yes 
-  roles: 
-    - role: geerlingguy.java
-```
+<br/>
 
 ## How to create a ansible role:
 
