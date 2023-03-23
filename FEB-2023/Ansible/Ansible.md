@@ -1015,7 +1015,7 @@ ansible-playbook -i /home/devops/hosts import.yml
 ``` 
 - name: installing java 
   apt:
-    name: openjdk-8-jdk
+    name: openjdk-11-jdk
     state: present
     update_cache: yes
 ```
@@ -1090,6 +1090,23 @@ ansible-playbook -i /home/devops/hosts include.yml
 ## Structure of Ansible Role :
 ![preview](../img/C21.png)
 
+* An Ansible role is a collection of tasks, templates, files, and variables that are grouped together in a structured way to configure a specific part of a system. Ansible Roles are organized into a specific folder structure. The main folders that make up an Ansible role are as follows:
+
+    * defaults: This folder contains default variables that are used by the role. These variables can be overridden by variables set in the playbook.
+
+    * files: This folder contains any files that need to be copied to the remote server as part of the role.
+
+    * handlers: This folder contains any handlers that the role uses. Handlers are tasks that are triggered by another task, typically after a change has been made.
+
+    * meta: This folder contains metadata about the role, such as its author, license, and dependencies on other roles.
+
+    * tasks: This folder contains the main set of tasks that are performed by the role. These tasks are typically defined in a YAML file.
+
+    * templates: This folder contains any templates that the role uses. Templates are files that are processed by the Jinja2 templating engine and copied to the remote server.
+
+    * vars: This folder contains any variables that are specific to the role. These variables can be overridden by variables set in the playbook.
+
+* In addition to these folders, an Ansible role can also contain other files and folders, such as README.md files, tests, and even additional subfolders. The folder structure of an Ansible role is designed to be easily reusable and shareable, making it easy for others to use and contribute to the role.
 <br/>
 
 * * * 
@@ -1193,7 +1210,7 @@ tree javarole
 ![preview](../images/n1.png)
 ![preview](../images/n2.png)
 
-* Do  tasks/main.yml as below :
+*  tasks/main.yml as below :
 ```
 ---
 - name: installing java
@@ -1203,9 +1220,11 @@ tree javarole
     update_cache: yes
 
 ```
+
 ![preview](../images/n3.png)
 
 * Now use the javarole in your playbook :
+
 ![preview](../images/n4.png)
 
 ```
