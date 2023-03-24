@@ -1223,7 +1223,13 @@ tree javarole
 
 ![preview](../images/n3.png)
 
-* Now use the javarole in your playbook :
+<br/>
+
+* * * 
+
+<br/>
+
+## use the javarole in your playbook :
 
 ![preview](../images/n4.png)
 
@@ -1245,10 +1251,23 @@ ansible-playbook -i hosts usingjavarole.yml
 ![preview](../images/n5.png)
 
 
+<br/>
+
+* * * 
+
+<br/>
+
 ## Tags in Ansible:
-* If you have a large playbook, it may become useful to be able to run only a specific part of it rather than running everything in the playbook. Ansible supports a “tags:” attribute for this reason.
+
+* In Ansible, tags are a way to organize and selectively run certain tasks or plays within a playbook. Tags are applied to individual tasks or entire plays using the tags keyword.
 
 * Tags --  [ReferHere](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_tags.html) 
+
+```
+*  --skip-tags option to skip tasks with certain tags
+*  --tags option to run tasks with certain tags 
+
+```
 
 * Playbook with tags :
 
@@ -1287,32 +1306,13 @@ ansible-playbook -i hosts tags.yml --skip-tags "tree"
 ![preview](../images/n7.png)
 
 
-## How to deal with ansible:
-1. List down the commands/steps to installed the software
-2. My goal is to install tree
-```
-sudo apt-get update 
-sudo apt-get install tree
-```
 
-```
-yum update
-yum install tree
-```
+<br/>
 
-### Write a playbook for installing tree : 
+* * * 
 
-```
----
-- hosts: all
-  become: yes
-  tasks:
-    - name: installing tree
-      apt:
-        name: tree
-        state: present
-        update_cache: yes
-```
+<br/>
+
 
 ## Ansible::
 * Ansible is a configuration management tool , we can do deployment as well as configuration management by using ansible .
@@ -1332,7 +1332,12 @@ yum install tree
 * Installing java , tomcat 
 * Created a devops pipeline by using the samplewarfilefrom opensource.
 * Deployed the application by using ansible
-
+* ANSIBLE ROLES & Structure of Role 
+* Ansible-Galaxy & usage of ansible galaxy 
+* Jinja template 
+* How to create a Ansible role 
+* Use the Ansible role created 
+* Tags in ansible 
 
 1. List down manual commands.
 2. Check it by running them manually 
