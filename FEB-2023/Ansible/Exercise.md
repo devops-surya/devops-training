@@ -96,6 +96,14 @@ ssh-copy-id dvops@<CentOsPublicIpaddress>
 
 
 
+<br/>
+
+* * * 
+
+<br/>
+
+
+
 
 ## Exercise-2: 
 
@@ -194,3 +202,11 @@ Esc:wq
 
 ![preview](../img/C23.png)
 ![preview](../img/C22.png)
+![preview](../img/C24.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
