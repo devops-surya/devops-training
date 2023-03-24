@@ -178,14 +178,15 @@ ssh-copy-id dvops@<CentOsPublicIpaddress>
 ```
 vi /home/devops/backup.sh
 
-Add below content 
-```
+
+## Add below content 
+
 #!/bin/bash
 
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
 mv /var/lib/tomcat9/webapps/SampleWebApp.war /home/devops/Backup/SampleWebApp.war-$current_time
 
-```
+
 
 Esc:wq
 

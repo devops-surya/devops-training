@@ -1331,7 +1331,7 @@ ansible.cfg path - /etc/ansible/ansible.cfg
 ```
 vi /etc/ansible/ansible.cfg
 
-
+## Add below content
 [defaults]
 forks = 30
 
