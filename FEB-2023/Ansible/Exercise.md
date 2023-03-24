@@ -146,7 +146,7 @@ ssh-copy-id dvops@<CentOsPublicIpaddress>
 - hosts: all
   become: yes 
   tasks: 
-    - name: restart the tomcat9
+    - name: Stop  the tomcat9
       service:
         name: tomcat9
         state: stopped 
@@ -154,13 +154,13 @@ ssh-copy-id dvops@<CentOsPublicIpaddress>
       file:
         path: /home/devops/Backup
         state: directory
-        mode: '0755
+        mode: '0777'
     - name: Copying the bashscript to the Node
       copy: 
         src: /home/devops/backup.sh
         dest: /home/devops/
     - name: Taking backup of existing code
-      shell: bin/bash /home/devops/backup.sh
+      shell: /bin/bash /home/devops/backup.sh
     - name: copying the war file
       copy:
         src: /home/devops/SampleWebApp.war
@@ -183,10 +183,13 @@ Add below content
 #!/bin/bash
 
 current_time=$(date "+%Y.%m.%d-%H.%M.%S")
-mv SampleWebApp.war /home/devops/backup/SampleWebApp.war-$$current_time
+mv /var/lib/tomcat9/webapps/SampleWebApp.war /home/devops/Backup/SampleWebApp.war-$current_time
 
 ```
 
 Esc:wq
 
 ```
+
+![preview](../img/C23.png)
+![preview](../img/C22.png)

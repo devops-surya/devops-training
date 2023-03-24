@@ -1062,7 +1062,7 @@ ansible-playbook -i /home/devops/hosts include.yml
 
 
 ## Exercise-2:
-* Run the playbbok with below tasks :
+* Run the playbook with below tasks :
    * Install java 
    * Install tomcat9
    * Stop the tomcat9
