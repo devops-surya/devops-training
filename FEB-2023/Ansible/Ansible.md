@@ -1314,6 +1314,39 @@ ansible-playbook -i hosts tags.yml --skip-tags "tree"
 <br/>
 
 
+## Ansible fork :
+
+* In Ansible, a fork is a setting that determines how many parallel processes or threads are created to execute a playbook or a task. By default, Ansible runs with a fork value of 5, which means that it will execute the task on five remote machines at a time.
+
+* You can change the fork value in the ansible.cfg file, which is located in the /etc/ansible directory or in the current working directory. If you set the fork value to a higher number, Ansible can execute tasks on more remote machines in parallel, which can speed up the execution of large playbooks.
+
+* However, increasing the fork value can also increase the memory and CPU usage on the Ansible control node, which could cause performance issues if the hardware resources are limited. Therefore, it's important to balance the fork value with the available system resources to avoid overloading the control node.
+
+* Setup fork in ansible.cfg
+```
+ansible.cfg path - /etc/ansible/ansible.cfg
+
+```
+
+```
+vi /etc/ansible/ansible.cfg
+
+
+[defaults]
+forks = 30
+
+Esc:wq
+
+```
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
 ## Ansible::
 * Ansible is a configuration management tool , we can do deployment as well as configuration management by using ansible .
 * Ansible is a push type model of CM 
