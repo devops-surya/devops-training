@@ -1,25 +1,32 @@
 # JFrog Artifactoy:
 * JFrog Artifactory is the Universal Repository Manager supporting all major packaging formats, build tools and CI servers.
+* Artifactory supports a wide range of software package formats, including Maven, Gradle, npm, Docker, and many others. It also provides powerful features for managing artifacts, such as version control, access control, metadata management, and integration with popular build tools and CI/CD pipelines.
 
 ### Pipeline integrated with Jfrog  :
 ![preview](../images/jfpipeline.png)
 
+### Server-Specs:
+* t2 small and t2 medium is atleast needed.
 
 ## Install JFrog Artifactory oss :
 * Installation steps [REFERHERE](https://www.devopsschool.com/blog/artifactory-install-and-configurations-guide/#:~:text=Artifactory%20Pro%20Install%20in%20Linux%20using,jfrog/artifactory/var/etc/system.yaml)
 
 ```
-# find the release name
-lsb_release -c
-distribution="focal" #ubuntu 20.04
-wget -qO - https://releases.jfrog.io/artifactory/api/gpg/key/public | sudo apt-key add -;
-echo "deb https://releases.jfrog.io/artifactory/artifactory-debs {distribution} main" | sudo tee -a /etc/apt/sources.list;
-sudo apt-get update && sudo apt-get install jfrog-artifactory-oss -y
-sudo systemctl enable artifactory.service
-sudo systemctl start artifactory.service
-sudo systemctl status artifactory.service
+ sudo apt update
 
-echo "deb https://releases.jfrog.io/artifactory/artifactory-debs focal main" | sudo tee -a /etc/apt/sources.list;
+ wget -qO - https://api.bintray.com/orgs/jfrog/keys/gpg/public.key | sudo apt-key add -
+
+ echo "deb https://jfrog.bintray.com/artifactory-debs bionic main" | sudo tee /etc/apt/sources.list.d/jfrog.list
+
+ sudo apt update
+
+ sudo apt install jfrog-artifactory-oss
+
+ sudo systemctl start artifactory.service
+
+ sudo systemctl enable artifactory.service
+
+ systemctl status artifactory.service
 
 ```
 
@@ -33,6 +40,8 @@ Pasword : password
 ![preview](../images/jf2.png)
 ![preview](../images/jf3.png)
 ![preview](../images/jf4.png)
+![preview](../img/JF1.png)
+
 
 * Create a repository :
 ![preview](../images/jf5.png)
