@@ -1,6 +1,5 @@
 # JFrog Artifactoy:
-* JFrog Artifactory is the Universal Repository Manager supporting all major packaging formats, build tools and CI servers.
-* Artifactory supports a wide range of software package formats, including Maven, Gradle, npm, Docker, and many others. It also provides powerful features for managing artifacts, such as version control, access control, metadata management, and integration with popular build tools and CI/CD pipelines.
+* Jfrog Artifactory supports a wide range of software package formats, including Maven, Gradle, npm, Docker, and many others. It also provides powerful features for managing artifacts, such as version control, access control, metadata management, and integration with popular build tools and CI/CD pipelines.
 
 <br/>
 
@@ -10,7 +9,8 @@
 
 ## Pipeline integrated with Jfrog  :
 ![preview](../img/JfrogBasicPipeline.png)
-![preview](../images/jfpipeline.png)
+![preview](../img/SQJfrogpipeline.png)
+
 
 <br/>
 
