@@ -22,7 +22,7 @@
 
 
 ## Install JFrog Artifactory oss :
-* Installation steps [REFERHERE](https://www.devopsschool.com/blog/artifactory-install-and-configurations-guide/#:~:text=Artifactory%20Pro%20Install%20in%20Linux%20using,jfrog/artifactory/var/etc/system.yaml)
+* Installation steps [REFERHERE](https://jfrog.com/community/download-artifactory-oss/)
 
 ### Server-Specs:
 * t2 small and t2 medium is atleast needed.
@@ -31,14 +31,13 @@
 sudo apt update
 
 wget -qO - https://releases.jfrog.io/artifactory/api/gpg/key/public | sudo apt-key add -;
-echo "deb https://releases.jfrog.io/artifactory/artifactory-pro-debs bionic main" | sudo tee -a /etc/apt/sources.list;
-sudo apt-get update && sudo apt-get install jfrog-artifactory-pro
+echo "deb https://releases.jfrog.io/artifactory/artifactory-debs bionic main" | sudo tee -a /etc/apt/sources.list;
+sudo apt-get update && sudo apt-get install jfrog-artifactory-oss
 
 sudo systemctl start artifactory.service
-
 sudo systemctl enable artifactory.service
+sudo systemctl status artifactory.service
 
-systemctl status artifactory.service
 ```
 
 * Access artifactory by using : __http://publicip:8081__ and follow the below steps:
