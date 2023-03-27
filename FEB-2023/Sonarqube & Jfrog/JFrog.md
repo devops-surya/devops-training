@@ -88,7 +88,7 @@ Pasword : password
 
 <br/>
 
-## Integrate Jfrog with the jenkins :
+## Integrate Jfrog with the Jenkins :
 
 * Install Jfrog plugin from __manage plugin__
 
