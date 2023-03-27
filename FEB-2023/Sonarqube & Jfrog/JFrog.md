@@ -28,22 +28,17 @@
 * t2 small and t2 medium is atleast needed.
 
 ```
- sudo apt update
+sudo apt update
 
- wget -qO - https://api.bintray.com/orgs/jfrog/keys/gpg/public.key | sudo apt-key add -
+wget -qO - https://releases.jfrog.io/artifactory/api/gpg/key/public | sudo apt-key add -;
+echo "deb https://releases.jfrog.io/artifactory/artifactory-pro-debs bionic main" | sudo tee -a /etc/apt/sources.list;
+sudo apt-get update && sudo apt-get install jfrog-artifactory-pro
 
- echo "deb https://jfrog.bintray.com/artifactory-debs bionic main" | sudo tee /etc/apt/sources.list.d/jfrog.list
+sudo systemctl start artifactory.service
 
- sudo apt update
+sudo systemctl enable artifactory.service
 
- sudo apt install jfrog-artifactory-oss
-
- sudo systemctl start artifactory.service
-
- sudo systemctl enable artifactory.service
-
- systemctl status artifactory.service
-
+systemctl status artifactory.service
 ```
 
 * Access artifactory by using : __http://publicip:8081__ and follow the below steps:
