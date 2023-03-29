@@ -11,7 +11,7 @@
 
 ## Basic architecture of zabbix :
 
-![preview](../img/Zabbixarc.png)
+![preview](../img/zabbixarc.png)
 
 
 ## ZABBIX-SERVER-INSTALLATION :
