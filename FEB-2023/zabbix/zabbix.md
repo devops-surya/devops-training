@@ -9,7 +9,7 @@
 * Baisc monioring things in zabbix:
 
 
-## Basic architecture of zabbix:
+## Basic architecture of zabbix :
 
 ![preview](../img/Zabbixarc.png)
 
