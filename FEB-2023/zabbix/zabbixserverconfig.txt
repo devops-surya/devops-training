@@ -1,0 +1,131 @@
+## link: https://tecadmin.net/install-zabbix-on-ubuntu/
+Note: mysql commands should be run once.If run second time,we get error as already exists.
+
+
+NOTE : need to add below steps in sudo vi /etc/zabbix/zabbix_server.conf
+
+JavaGateway=127.0.0.1
+JavaGatewayPort=10052
+StartJavaPollers=5
+
+
+and also need to install :     zabbix-java-gateway
+
+```
+---
+- hosts: all
+  become: yes
+  vars:
+    zabbix_packages:
+      - zabbix-server-mysql
+      - zabbix-frontend-php
+      - zabbix-agent
+      - zabbix-java-gateway
+      - zabbix-sql-scripts
+    package_modules:
+      - apache2
+      - libapache2-mod-php
+      - mysql-server
+      - php
+      - php-mbstring
+      - php-gd
+      - php-xml
+      - php-bcmath
+      - php-ldap
+      - php-mysql
+  tasks:
+    - name: update and install package modules
+      apt:
+        name: "{{ item }}"
+        update_cache: yes
+        state: present
+      loop: "{{ package_modules }}"
+    - name: add a new line to file
+      lineinfile:
+        path: /etc/php/8.1/apache2/php.ini
+        line: date.timezone = 'Asia/Kolkata'
+        insertafter: ;date.timezone =
+    - name: download zabbix package repositaries
+      get_url:
+        url: https://repo.zabbix.com/zabbix/6.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.2-2%2Bubuntu22.04_all.deb 
+        dest: /tmp/zabbix-release_6.2-2+ubuntu22.04_all.deb
+    - name: depackage zabbix release
+      apt:
+        deb: /tmp/zabbix-release_6.2-2+ubuntu22.04_all.deb
+    - name: update and install zabbix packages
+      apt:
+        name: "{{ item }}"
+        update_cache: yes
+        state: present
+      loop: "{{ zabbix_packages }}"
+    - name: create database schema
+      command: mysql -u root -p'root' -e"create database zabbix character set utf8mb4 collate utf8mb4_bin;"
+    - name: create database schema 2
+      command: mysql -u root -p'root' -e"create user zabbix@localhost identified by 'password';"
+    - name: create database schema 3
+      command: mysql -u root -p'root' -e"grant all privileges on zabbix.* to zabbix@localhost"
+    - name: create database schema 4
+      command: mysql -u root -p'root' -e"set global log_bin_trust_function_creators = 1;"
+    - name: zabbix database schema#    
+      shell:
+        cmd: zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p 'password' zabbix
+    - name: create database schema 5
+      command: mysql -u root -p'root' -e"set global log_bin_trust_function_creators = 0;"
+    - name: restart Apache
+      service:
+        name: apache2
+        enabled: yes
+        state: restarted
+    - name: restart zabbix
+      service:
+        name: zabbix-server
+        enabled: yes
+        state: restarted
+
+    - name: adding DBHost=localhost
+      lineinfile:
+        path: /etc/zabbix/zabbix_server.conf
+        insertafter: '^# DBHost=localhost'
+        line: DBHost=localhost
+
+    - name: adding DBPassword=password
+      lineinfile:
+        path: /etc/zabbix/zabbix_server.conf
+        insertafter: '^# DBPassword='
+        line: 'DBPassword=password'
+
+    - name: adding JavaGateway=127.0.0.1
+      lineinfile:
+        path: /etc/zabbix/zabbix_server.conf
+        insertafter: '^# JavaGateway='
+        line: 'JavaGateway=127.0.0.1'
+
+    - name: adding JavaGatewayPort=10052
+      lineinfile:
+        path: /etc/zabbix/zabbix_server.conf
+        insertafter: '^# JavaGatewayPort='
+        line: 'JavaGatewayPort=10052'
+      
+    - name: adding StartJavaPollers=5
+      lineinfile:
+        path: /etc/zabbix/zabbix_server.conf
+        insertafter: '^# StartJavaPollers='
+        line: 'StartJavaPollers=5'
+
+    - name: restart Apache
+      service:
+        name: apache2
+        enabled: yes
+        state: restarted
+
+    - name: restart zabbix
+      service:
+        name: zabbix-server
+        enabled: yes
+        state: restarted
+
+```
+
+
+
+      
