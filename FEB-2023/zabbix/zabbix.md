@@ -14,7 +14,7 @@
 ![preview](../img/ArcZabbix.png)
 
 
-## ZABBIX-SERVER-INSTALLATION :
+# ZABBIX-SERVER-INSTALLATION :
 
 * For document [REFER HERE](https://www.layerstack.com/resources/tutorials/How-to-install-ZABBIX-on-Ubuntu22)
 
@@ -28,7 +28,8 @@ sudo apt-get install mysql-server
 sudo apt-get install php php-mbstring php-gd php-xml php-bcmath php-ldap php-mysql
 ```
 
-## Update timezone in php configuration file /etc/php/PHP_VERSION/apache2/php.ini. Like below:
+## Update timezone in php configuration file /etc/php/PHP_VERSION/apache2/php.ini Like below:
+* vi /etc/php/PHP_VERSION/apache2/php.ini 
 
 ```
 [Date]
@@ -76,6 +77,8 @@ mysql> exit
 
 
 ```
+![preview](../img/Z1.png)
+
 
 ## Step 5 – Edit Zabbix Configuration File
 
@@ -98,30 +101,21 @@ sudo service zabbix-server restart
 
 ```
 
-* TO open in browser:
+* Open zabbix in browser :
 ```
 publicip/zabbix
 ```
 
-*  Follow the below images after installation is completed:
-![preview](../images/zb4.png)
+* Follow the below images after installation is completed:
+![preview](../img/Z2.png)
+![preview](../img/Z3.png)
+![preview](../img/Z4.png)
+![preview](../img/Z5.png)
+![preview](../img/Z6.png)
+![preview](../img/Z7.png)
+![preview](../img/Z8.png)
+![preview](../img/Z9.png)
 
-![preview](../images/zb5.png)
-
-![preview](../images/zb6.png)
-
-![preview](../images/zb7.png)
-
-![preview](../images/zb8.png)
-
-
-![preview](../images/zb9.png)
-
-* Provide username as Admin and password as password:
-
-![preview](../images/zb10.png)
-
-![preview](../images/zb11.png)
 
 # ZABBIX-AGENT-INSTALLATION :
 ## Step 1 – Enable Apt Repository :
