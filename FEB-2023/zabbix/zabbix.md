@@ -59,7 +59,7 @@ sudo dpkg -i zabbix-release_6.2-2+ubuntu22.04_all.deb
 
 ```
 sudo apt-get update
-sudo apt-get install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent -y
+sudo apt-get install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-java-gateway zabbix-agent -y
 ```
 
 ## Step 4 – Create Database user & Schema:
@@ -259,3 +259,5 @@ df -h
 * * * 
 
 <br/>
+
+
