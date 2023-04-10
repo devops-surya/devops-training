@@ -35,16 +35,18 @@
 
 
 ## How to install terraform:
+* Terraform official document for installation - [REFERHERE](https://phoenixnap.com/kb/how-to-install-terraform)
 * On windows : 
+
 ```sh
 choco install terraform
 ```
 * On ubuntu:
+
 ```sh
-sudo apt-get update 
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt-get install terraform -y 
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
 ```
 * To check terraform version
 
@@ -79,6 +81,8 @@ terraform --version
 
 ## Terraform Provider  :
 
+* Provider template syntax :
+
 ```sh
 provider '<name>' {
     <arg1> = <value1>
@@ -95,6 +99,12 @@ provider "aws" {
 }
 ```
 
+<br/>
+
+* * * 
+
+<br/>
+
 ## Resource syntax :
 
 ```
@@ -106,6 +116,12 @@ resource "<resource-type>" "<resource-name>" {
 
 }
 ```
+
+<br/>
+
+* * * 
+
+<br/>
 
 ## Agruments and Attributes:
 * Arguments are the inputs to your resource and attributes are outputs of your resources
