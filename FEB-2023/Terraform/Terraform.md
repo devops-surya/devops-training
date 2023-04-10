@@ -1,6 +1,6 @@
 # Terraform
 
-* __Terraform__ is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. 
+* __Terraform__  is an open-source infrastructure as code (IaC) tool that enables you to define, provision, and manage your infrastructure resources across different cloud providers and platforms in a declarative and repeatable way.
 ![preview](../images/tf1.png)
 
 
