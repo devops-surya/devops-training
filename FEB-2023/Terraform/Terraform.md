@@ -34,7 +34,8 @@
 <br/>
 
 
-## How to install terraform:
+## Install Terraform:
+
 * Terraform official document for installation - [REFERHERE](https://phoenixnap.com/kb/how-to-install-terraform)
 * On windows : 
 
@@ -63,14 +64,18 @@ terraform --version
 
 ## Authenticate Terraform to speak with AWS: 
 * Terraform speak to AWS by using IAM(Identity Access Management).
-![preview](../images/tfn1.png)
-![preview](../images/tfn2.png)
-![preview](../images/tfn3.png)
-![preview](../images/tfn4.png)
-![preview](../images/tfn5.png)
-![preview](../images/tfn6.png)
-![preview](../images/tfn7.png)
-![preview](../images/tfn8.png)
+![preview](../img/TF1.png)
+![preview](../img/TF2.png)
+![preview](../img/TF3.png)
+![preview](../img/TF4.png)
+![preview](../img/TF5.png)
+![preview](../img/TF6.png)
+![preview](../img/TF7.png)
+![preview](../img/TF8.png)
+![preview](../img/TF9.png)
+![preview](../img/TF10.png)
+![preview](../img/TF11.png)
+
 
 <br/>
 
@@ -78,10 +83,38 @@ terraform --version
 
 <br/>
 
+## Install terraform on ubuntu:
+* create a EC2 server in AWS -- [REFERHERE](https://github.com/devops-surya/devops-training/blob/main/FEB-2023/EC2/EC2.md)
 
-## Terraform Provider  :
+* Run the following command on EC2 :
 
-* Provider template syntax :
+```sh
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+
+```
+
+* To check terraform version
+
+```sh
+terraform --version
+```
+![preview](../img/TF12.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+# Terraform syntax for configuration files : 
+
+## Provider syntax : [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+
+* In Terraform, a provider is a plugin that defines how to interact with a specific infrastructure platform, such as AWS, Azure, Google Cloud, or VMware. Each provider has its own set of resources and configuration options.
+
+* Provider  syntax :
 
 ```sh
 provider '<name>' {
@@ -93,9 +126,9 @@ provider '<name>' {
 
 ```sh
 provider "aws" {
-  region     = "us-east-2"
-  access_key = "AKIAYZCYFVHPR5AP2COI"
-  secret_key = "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"
+  region     = "ap-northeast-1"
+  access_key = "AKIASAK53KCFRR4WX7OP"
+  secret_key = "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"
 }
 ```
 
@@ -105,7 +138,9 @@ provider "aws" {
 
 <br/>
 
-## Resource syntax :
+## Resource syntax : [REFERHER](https://developer.hashicorp.com/terraform/language/resources/syntax)
+
+* In Terraform, a resource represents an infrastructure object that you want to manage, such as an AWS EC2 instance, a Google Cloud Storage bucket, or an Azure Virtual Machine. Each resource has a specific configuration that defines its properties, dependencies, and relationships with other resources.
 
 ```
 resource "<resource-type>" "<resource-name>" {
@@ -124,20 +159,59 @@ resource "<resource-type>" "<resource-name>" {
 <br/>
 
 ## Agruments and Attributes:
-* Arguments are the inputs to your resource and attributes are outputs of your resources
+
+* In Terraform, an argument is a value that is passed to a resource or module to configure its behavior. Arguments can be mandatory or optional, and they have specific names that correspond to the parameters of the resource or module.
+
+* On the other hand, attributes are values that can be retrieved from a resource or module after it has been created. Attributes represent the current state of the resource or module and can be used for different purposes, such as validation, reporting, or further configuration.
+
 ![preview](../images/tf9.png)
 
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
+
+## Scenario-1 : Write a Terraform template to configure the AWS provider :
+
+* AWS provider terraform template [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+
+
+* Create a folder named ```terraformprovider``` 
+
+```sh
+mkdir terraformprovider
+cd terraformprovider
+```
+* Create a file named ```provider.tf``` and add below content : 
+
+```sh
+provider "aws" {
+  region     = "ap-northeast-1"
+  access_key = "AKIASAK53KCFRR4WX7OP"
+  secret_key = "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"
+}
+
+```
+![preview](../img/TF13.png)
+
+
+* Initialize terraform :
+
+```sh
+terraform init 
+```
+* Terraform validate :
+
+```sh
+terraform validate . 
+```
+
+![preview](../img/TF14.png)
+
+
 
 
 ## Amazon VPC & Subnet:
