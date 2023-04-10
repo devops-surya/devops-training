@@ -27,6 +27,13 @@
 * Terraform supported clouds [REFER HERE](https://registry.terraform.io/browse/providers)
 
 
+<br/>
+
+* * * 
+
+<br/>
+
+
 ## How to install terraform:
 * On windows : 
 ```sh
@@ -45,6 +52,13 @@ sudo apt-get install terraform -y
 terraform --version
 ```
 
+<br/>
+
+* * * 
+
+<br/>
+
+
 ## Authenticate Terraform to speak with AWS: 
 * Terraform speak to AWS by using IAM(Identity Access Management).
 ![preview](../images/tfn1.png)
@@ -55,6 +69,13 @@ terraform --version
 ![preview](../images/tfn6.png)
 ![preview](../images/tfn7.png)
 ![preview](../images/tfn8.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
 
 ## Terraform Provider  :
 
