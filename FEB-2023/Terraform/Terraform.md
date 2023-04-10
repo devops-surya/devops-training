@@ -138,7 +138,7 @@ provider "aws" {
 
 <br/>
 
-## Resource syntax : [REFERHER](https://developer.hashicorp.com/terraform/language/resources/syntax)
+## Resource syntax : [REFERHERE](https://developer.hashicorp.com/terraform/language/resources/syntax)
 
 * In Terraform, a resource represents an infrastructure object that you want to manage, such as an AWS EC2 instance, a Google Cloud Storage bucket, or an Azure Virtual Machine. Each resource has a specific configuration that defines its properties, dependencies, and relationships with other resources.
 
@@ -198,7 +198,7 @@ provider "aws" {
 ![preview](../img/TF13.png)
 
 
-* Initialize terraform :
+* T erraform initialize  :
 
 ```sh
 terraform init 
