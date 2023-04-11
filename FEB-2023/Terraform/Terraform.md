@@ -140,7 +140,7 @@ provider "aws" {
 
 ## Resource syntax : [REFERHERE](https://developer.hashicorp.com/terraform/language/resources/syntax)
 
-* In Terraform, a resource represents an infrastructure object that you want to manage, such as an AWS EC2 instance, a Google Cloud Storage bucket, or an Azure Virtual Machine. Each resource has a specific configuration that defines its properties, dependencies, and relationships with other resources.
+* In Terraform, a resource represents an infrastructure object that you want to manage, such as an AWS EC2 instance, storage etc..
 
 ```
 resource "<resource-type>" "<resource-name>" {
@@ -162,7 +162,7 @@ resource "<resource-type>" "<resource-name>" {
 
 * In Terraform, an argument is a value that is passed to a resource or module to configure its behavior. Arguments can be mandatory or optional, and they have specific names that correspond to the parameters of the resource or module.
 
-* On the other hand, attributes are values that can be retrieved from a resource or module after it has been created. Attributes represent the current state of the resource or module and can be used for different purposes, such as validation, reporting, or further configuration.
+* Attributes are values that can be retrieved from a resource or module after it has been created. 
 
 ![preview](../images/tf9.png)
 
