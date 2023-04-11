@@ -174,7 +174,7 @@ resource "<resource-type>" "<resource-name>" {
 <br/>
 
 
-## Terraform template to configure the AWS provider :
+## Terraform template for AWS provider :
 
 * AWS provider terraform template [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
@@ -214,7 +214,7 @@ terraform validate .
 
 
 
-## Amazon VPC & Subnet:
+## AWS VPC & Subnet:
 * Amazon __Virtual Private Cloud__ (Amazon VPC) enables you to launch AWS resources into a virtual network that you've defined.
 * A __subnet__ is a segmented piece of a larger network. More specifically, subnets are a logical partition of an IP network into multiple, smaller network segments.
 
