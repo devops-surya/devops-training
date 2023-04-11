@@ -63,7 +63,7 @@ terraform --version
 
 
 ## Authenticate Terraform to speak with AWS: 
-* Terraform speak to AWS by using IAM(Identity Access Management).
+* Terraform speak to AWS by using IAM(Identity Access Management) user.
 ![preview](../img/TF1.png)
 ![preview](../img/TF2.png)
 ![preview](../img/TF3.png)
@@ -83,7 +83,7 @@ terraform --version
 
 <br/>
 
-## Install terraform on ubuntu:
+## Install Terraform on ubuntu:
 * create a EC2 server in AWS -- [REFERHERE](https://github.com/devops-surya/devops-training/blob/main/FEB-2023/EC2/EC2.md)
 
 * Run the following command on EC2 :
@@ -108,7 +108,7 @@ terraform --version
 
 <br/>
 
-# Terraform syntax for configuration files : 
+# Terraform syntax/Template for configuration language : 
 
 ## Provider syntax : [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
@@ -174,7 +174,7 @@ resource "<resource-type>" "<resource-name>" {
 <br/>
 
 
-## Scenario-1 : Write a Terraform template to configure the AWS provider :
+## Terraform template to configure the AWS provider :
 
 * AWS provider terraform template [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
