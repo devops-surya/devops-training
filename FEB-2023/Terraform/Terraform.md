@@ -297,7 +297,7 @@ terraform destroy
 
 
  
-## Create a VPC/Subnet using multi files in the Terraform template and  Use __Terraform Plan__ to create resources :
+## Create a VPC/Subnet using multi files in the Terraform template :
 * Create a folder  multifile
 ```sh
 mkdir multiplefile
@@ -365,10 +365,23 @@ terraform destroy
 <br/>
 
 ## Variables in terraform :
-* Variables in Terraform are a great way to define centrally controlled reusable values. The information in Terraform variables is saved independently from the deployment plans, which makes the values easy to read and edit from a single file.
-* Terraform variables [REFERHERE](https://www.terraform.io/language/values/variables)
+* In Terraform, variables are used to define values that can be passed into modules or configurations. These variables can be used to define values for things like IP addresses, instance types, or other parameters that are used in your infrastructure.
 
-## Use variables to create multiple subnets:
+* There are several types of variables in Terraform:
+    * Terraform variables [REFERHERE](https://www.terraform.io/language/values/variables)
+
+    * String Variables: These variables are used to define strings of text, and can be defined using the string type.
+
+    * Number Variables: These variables are used to define numerical values, and can be defined using the number type.
+
+    * Boolean Variables: These variables are used to define true/false values, and can be defined using the bool type.
+
+    * List Variables: These variables are used to define a list of values, and can be defined using the list type.
+
+    * Map Variables: These variables are used to define a set of key/value pairs, and can be defined using the map type.
+
+
+## SCENARIO-1:- Use variables & create multiple subnets:
 1. First case : 
 
 ### vars.tf:
@@ -448,17 +461,13 @@ terraform validate
 terraform apply 
 terraform destroy 
 ```
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 ## Count in terraform:
 * count is a meta-argument defined by the Terraform language. It can be used with modules and with every resource type.
