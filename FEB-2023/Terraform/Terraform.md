@@ -473,7 +473,7 @@ terraform destroy
 * __count.index__ — The distinct index number (starting with 0) corresponding to this instance.
 * __count & count.index__ -- [REFERHERE](https://www.terraform.io/language/meta-arguments/count)
 
-* __Example scrpt__ :
+* __Example scrpt__ : The below script will fail stating conflicts in subnets CIDR .
 ```sh
 provider "aws" {
   region     = "us-east-2"
@@ -482,7 +482,7 @@ provider "aws" {
 }
 
 resource "aws_vpc" "myfirstvpc" {
-  cidr_block       = var.vpccidr
+  cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
 
   tags = {
@@ -492,10 +492,10 @@ resource "aws_vpc" "myfirstvpc" {
 resource "aws_subnet" "myfirstsubnet" {
   count = 3 ## Create three similar subnets
   vpc_id     = aws_vpc.myfirstvpc.id
-  cidr_block = 10.0.0.0/24
+  cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name = "myfirstsubnet-${count.index+1}"
+    Name = "myfirstsubnet"
   }
 }
 ```
@@ -543,6 +543,13 @@ variable "subnetcidr" {
 ```
 
 
+<br/>
+
+* * * 
+
+<br/>
+
+
 ## length in terraform:
 * __length__ determines the length of a given list, map, or string
 * __length__ -- [REFER HERE](https://www.terraform.io/language/functions/length)
@@ -559,7 +566,7 @@ variable "subnetcidr" {
 
 
 
-### Use the length in terraform script then  main.tf will change as below:
+### Use the length in terraform script then main.tf will change as below:
 
 ```sh
 provider "aws" {
@@ -601,6 +608,13 @@ variable "subnetcidr" {
 
 
 
+<br/>
+
+* * * 
+
+<br/>
+
+
 ## Depends_on:
 * Use the depends_on meta-argument to handle hidden resource or module dependencies that Terraform can't automatically infer.
 * __Dependson__ [REFER HERE](https://www.terraform.io/language/meta-arguments/depends_on)
@@ -637,17 +651,13 @@ resource "aws_subnet" "myfirstsubnet" {
 ```
 
 
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 
 ## Security group:
