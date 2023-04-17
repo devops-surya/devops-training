@@ -230,7 +230,6 @@ terraform validate .
 ![Preview](../images/sn1.png)
 ![Preview](../images/sn2.png)
 ![Preview](../images/sn3.png)
-![Preview](../images/sn3.png)
 
 
 ###  Terraform template to  create VPC & Subnet in AWS:
