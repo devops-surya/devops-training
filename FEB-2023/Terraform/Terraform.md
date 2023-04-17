@@ -69,11 +69,11 @@ terraform --version
 ![preview](../img/TF3.png)
 ![preview](../img/TF4.png)
 ![preview](../img/TF5.png)
-![preview](../img/TF15.png)
 ![preview](../img/TF6.png)
 ![preview](../img/TF7.png)
 ![preview](../img/TF8.png)
 ![preview](../img/TF9.png)
+![preview](../img/TF15.png)
 ![preview](../img/TF10.png)
 ![preview](../img/TF11.png)
 
