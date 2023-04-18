@@ -664,19 +664,19 @@ resource "aws_subnet" "myfirstsubnet" {
 * A security group is like a virtual firewall. It works much like a traditional firewall does. It consists of a set of rules that can be used to monitor and filter an instance's incoming and outgoing traffic in a Virtual Private Cloud (VPC) instance. Filtering is done on the basis of protocols and ports.
 
 ### Create a SecurityGroup in AWS console as shown below :
-* __SecutityGroup Creation_ :
+* __SecutityGroup Creation__ :
 ![preview](../images/sg1.png)
 ![preview](../images/sg2.png)
 ![preview](../images/sg3.png)
 ![preview](../images/sg4.png)
 
 ### Use __SecurityGroup__ in terraform script , the main.tf looks as below:
-* __Resource: aws_security_group__  --   [REFERHERE(https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+* __Resource: aws_security_group__  --   [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
 
 * After adding SG the main.tf look as below:
 ```sh
 resource "aws_vpc" "myfirstvpc" {
-  cidr_block       = var.vpccidr
+  cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
 
   tags = {
@@ -684,16 +684,6 @@ resource "aws_vpc" "myfirstvpc" {
   }
 }
 
-resource "aws_subnet" "myfirstsubnet" {
-  count = length(var.subnetcidr)
-  vpc_id     = aws_vpc.myfirstvpc.id
-  cidr_block = var.subnetcidr[count.index]
-
-  tags = {
-    Name = "myfirstsubnet-${count.index+1}"
-  }
-  depends_on = [aws_vpc.myfirstvpc]
-}
 
 resource "aws_security_group" "mySG" {
   name        = "mySG"
@@ -732,7 +722,7 @@ provider "aws" {
 }
 
 resource "aws_vpc" "myfirstvpc" {
-  cidr_block       = var.vpccidr
+  cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
 
   tags = {
@@ -740,16 +730,6 @@ resource "aws_vpc" "myfirstvpc" {
   }
 }
 
-resource "aws_subnet" "myfirstsubnet" {
-  count = length(var.subnetcidr)
-  vpc_id     = aws_vpc.myfirstvpc.id
-  cidr_block = var.subnetcidr[count.index]
-
-  tags = {
-    Name = "myfirstsubnet-${count.index+1}"
-  }
-  depends_on = [aws_vpc.myfirstvpc]
-}
 
 resource "aws_security_group" "mySG" {
   name        = "mySG"
@@ -772,17 +752,13 @@ resource "aws_security_group_rule" "alltraffic" {
 
 ```
 
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 
 ## S3 in AWS :
@@ -808,17 +784,13 @@ resource "aws_s3_bucket" "myfirstbucket" {
 }
 ```
 
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 ## Data sources :
 * Data sources are used to query the aws resources which are already created.
@@ -844,22 +816,25 @@ resource "aws_subnet" "example" {
 }
 ```
 
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 ## Terraform statefile :
 * Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures. This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
 
 ![preview](../images/tfs.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
 
 
 ## Terraform plan : 
@@ -872,6 +847,11 @@ terraform apply mutilfile.plan
 ![preview](../images/tf10.png)
 ![preview](../images/tf11.png)
 
+<br/>
+
+* * * 
+
+<br/>
 
 ## Target in terraform :
 * Terraform allows you to target specific resources when you plan, apply, or destroy your infrastructure. 
@@ -881,6 +861,11 @@ terraform apply mutilfile.plan
 terraform apply/destroy -target="RESOURCE_TYPE.RESOURCE_NAME"
 
 ```
+<br/>
+
+* * * 
+
+<br/>
 
 ## Terraform Registry 
 * Terraform registry is a place where you can find the predefined modules(terrafrom scripts).
@@ -893,6 +878,11 @@ terraform apply/destroy -target="RESOURCE_TYPE.RESOURCE_NAME"
 * Usage of module : -  change the values from below Usage
 ![preview](../images/ft1.png)
 
+<br/>
+
+* * * 
+
+<br/>
 
 ### Creating a module : 
 * Create a folder of samplemodule
@@ -1010,8 +1000,13 @@ terraform apply
 ![preview](../images/ec10.png)
 ![preview](../images/ec11.png)
 
+<br/>
 
-### ### Terraform template to create ec2:
+* * * 
+
+<br/>
+
+### Terraform template to create ec2:
 *  vars.tf and main.tf look like below:
 ```sh
 vars.tf:
