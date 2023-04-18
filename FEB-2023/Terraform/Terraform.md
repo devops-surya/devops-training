@@ -675,6 +675,12 @@ resource "aws_subnet" "myfirstsubnet" {
 
 * After adding SG the main.tf look as below:
 ```sh
+provider "aws" {
+  region     = "ap-northeast-1"
+  access_key = "AKIASAK53KCF5BH7UJRC"
+  secret_key = "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"
+}
+
 resource "aws_vpc" "myfirstvpc" {
   cidr_block       = "10.0.0.0/16"
   instance_tenancy = "default"
@@ -707,7 +713,7 @@ resource "aws_security_group" "mySG" {
   tags = {
     Name = "mySG"
   }
-  depends_on = [aws_subnet.myfirstsubnet]
+  depends_on = [aws_vpc.myfirstvpc]
 }
 ```
 ### Create inbound/outbound rules to the securitygroup
@@ -738,7 +744,7 @@ resource "aws_security_group" "mySG" {
   tags = {
     Name = "mySG"
   }
-  depends_on = [aws_subnet.myfirstsubnet]
+  depends_on = [aws_vpc.myfirstvpc]
 }
 
 resource "aws_security_group_rule" "alltraffic" {
