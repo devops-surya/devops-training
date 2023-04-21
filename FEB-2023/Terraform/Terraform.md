@@ -781,6 +781,11 @@ resource "aws_security_group_rule" "alltraffic" {
 ### Terraform template to create s3 bucket:
 * __Resource: aws_s3_bucket__  [REFERHERE](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket)
 ```sh
+provider "aws" {
+  region     = "ap-northeast-1"
+  access_key = "AKIAYZCYFVHPSMCGSJPD"
+  secret_key = "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"
+}
 resource "aws_s3_bucket" "myfirstbucket" {
   bucket = "my-first-test-bucket"
 
@@ -788,6 +793,7 @@ resource "aws_s3_bucket" "myfirstbucket" {
     Name        = "myfirstbucket"
   }
 }
+
 ```
 
 
@@ -862,7 +868,7 @@ terraform apply mutilfile.plan
 ## Target in terraform :
 * Terraform allows you to target specific resources when you plan, apply, or destroy your infrastructure. 
 * __Target__ : - [REFERHERE](https://learn.hashicorp.com/tutorials/terraform/resource-targeting)
-* __syntax__ :
+### __syntax__ :
 ```
 terraform apply/destroy -target="RESOURCE_TYPE.RESOURCE_NAME"
 
@@ -883,7 +889,34 @@ terraform apply/destroy -target="RESOURCE_TYPE.RESOURCE_NAME"
 * VPC module -- [REFERHERE](https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws/latest)
 * Usage of module : -  change the values from below Usage
 ![preview](../images/ft1.png)
+* Use the below script to use the terraform module from registry :
 
+```
+provider "aws" {
+  region     = "ap-northeast-1"
+  access_key = "AKIASAK53KCFXPJBKMQ4"
+  secret_key = "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"
+}
+
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = "my-vpc"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["ap-northeast-1a", "ap-northeast-1a", "ap-northeast-1a"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+
+  enable_nat_gateway = true
+  enable_vpn_gateway = true
+
+  tags = {
+    Terraform = "true"
+    Environment = "dev"
+  }
+}
+```
 <br/>
 
 * * * 
