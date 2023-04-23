@@ -923,6 +923,20 @@ module "vpc" {
 
 <br/>
 
+## Difference between terraform module and standard terrafrom template 
+
+* In Terraform, a module is a collection of Terraform resources that are grouped together and managed as a single entity. A module can be thought of as a reusable package of Terraform code that can be used to create and manage a specific set of infrastructure resources. A module can be shared and reused across multiple Terraform configurations, making it easier to manage and maintain infrastructure code.
+
+* On the other hand, a Terraform template is a single file that defines a set of resources to be created and managed by Terraform. It is a standard way of defining infrastructure-as-code using the Terraform language.
+
+* The main difference between a Terraform module and a standard Terraform template is the level of abstraction and reusability. A Terraform template is a single file that defines the resources to be created and managed by Terraform, whereas a module is a collection of resources that can be reused across multiple Terraform configurations.
+
+<br/>
+
+* * * 
+
+<br/>
+
 ### Creating a module : 
 * Create a folder of samplemodule
 ```sh
@@ -1023,6 +1037,38 @@ terraform apply
 <br/>
 <br/>
 <br/>
+
+## Complete VPC setup for an application:
+
+![preview](../img/VPCsetup.png)
+
+#### In AWS, you can create an Internet Gateway and attach it to your VPC to enable communication between your VPC and the Internet. An Internet Gateway is a logical entity that represents the AWS side of the connection. You can use it to communicate with resources outside of your VPC and allow outside resources to communicate with resources in your VPC.
+
+#### A NAT Gateway is a highly available AWS-managed service that allows resources in a private subnet to connect to the Internet or other AWS services, without exposing those resources to the public Internet. NAT (Network Address Translation) Gateway translates the private IP addresses of instances in the private subnet to a public IP address when those instances communicate with the Internet or other AWS services.
+
+### VPC Setup steps :
+1. Create a VPC: To create a VPC, navigate to the AWS Management Console, select VPC from the Services menu, and click Create VPC. You'll need to specify a name, CIDR block, and any optional settings.
+
+2. Create subnets: Once your VPC is created, you can create subnets by navigating to the Subnets tab in the VPC dashboard and clicking Create Subnet. You'll need to specify a name, CIDR block, and which Availability Zone you want the subnet to be in.
+
+3. Create an internet gateway: An internet gateway (IG) allows traffic to flow between your VPC and the internet. To create an IG, navigate to the Internet Gateways tab in the VPC dashboard and click Create Internet Gateway.
+
+4. Attach IG to VPC: To attach the IG to your VPC, select the IG in the dashboard and click Attach to VPC. Select your VPC from the dropdown menu and click Attach.
+
+5. Create NAT gateway: If you want your instances in private subnets to access the internet, you'll need to create a NAT gateway. To create a NAT gateway, navigate to the NAT Gateways tab in the VPC dashboard and click Create NAT Gateway.
+
+6. Create public and private route tables: You'll need to create two route tables - one for public subnets and one for private subnets. Navigate to the Route Tables tab in the VPC dashboard and click Create Route Table. Name your route table and select your VPC. Then click Create.
+
+7. Associate subnets with route tables: Once you have created your route tables, you'll need to associate them with the appropriate subnets. To do this, select the route table in the dashboard and click the Subnet Associations tab. Click Edit and select the subnets you want to associate with the route table.
+
+8. Configure routes: To allow traffic to flow between your VPC and the internet, you'll need to configure routes. In the public route table dashboard, click Edit routes and add a new route to your IG. For the private route table, add a new route to your NAT gateway.
+
+9. Create security groups: Security groups act as a virtual firewall for your instances. To create a security group, navigate to the Security Groups tab in the VPC dashboard and click Create Security Group. Name your security group, select your VPC, and configure inbound and outbound rules as needed.
+
+10. Launch instances: Now you can launch instances in your public and private subnets. Make sure to select the appropriate security group and subnet for each instance.
+
+
+
 
 ## EC2 instances creation in a customised VPC, subnet, SG, keyname : 
 ### Create ec2 from AWS console: 
