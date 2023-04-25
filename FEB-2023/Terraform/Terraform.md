@@ -1070,20 +1070,20 @@ terraform apply
 
 
 
-## EC2 instances creation in a customised VPC, subnet, SG, keyname : 
+## EC2 instances creation in a customised VPC, subnet & keyname : 
 ### Create ec2 from AWS console: 
-* AMI , instancetype , no of instances , vpc , subnet , autoassign publicip , tags , SG , keyname should be used as shown in below images:
-![preview](../images/ec1.png)
-![preview](../images/ec2.png)
-![preview](../images/ec5.png)
-![preview](../images/ec3.png)
-![preview](../images/ec4.png)
-![preview](../images/ec6.png)
-![preview](../images/ec7.png)
-![preview](../images/ec8.png)
-![preview](../images/ec9.png)
-![preview](../images/ec10.png)
-![preview](../images/ec11.png)
+* Follow the instruction in the below images :
+
+![preview](../images/E1.png)  
+![preview](../images/E2.png) 
+![preview](../img/VPC1.png)
+
+* Check the VPC & Subnet in the server: 
+
+![preview](../img/VPC2.png)
+
+
+
 
 <br/>
 
@@ -1091,8 +1091,11 @@ terraform apply
 
 <br/>
 
-### Terraform template to create ec2:
+
+## Terraform template to create ec2 in customized VPC ,Subnet, Keypair & SecurityGroup :
+
 *  vars.tf and main.tf look like below:
+
 ```sh
 vars.tf:
 =======
@@ -1101,8 +1104,8 @@ variable "vpccidr" {
   default = "10.0.0.0/16"
 }
 variable "subnetcidr" {
-  type = list(string)
-  default = [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24" ]
+  type = string
+  default = "10.0.1.0/24"
 }
 
 main.tf:
@@ -1125,7 +1128,7 @@ resource "aws_vpc" "myfirstvpc" {
 resource "aws_subnet" "myfirstsubnet" {
   count = length(var.subnetcidr)
   vpc_id     = aws_vpc.myfirstvpc.id
-  cidr_block = var.subnetcidr[count.index]
+  cidr_block = var.subnetcidr
 
   tags = {
     Name = "myfirstsubnet-${count.index+1}"
@@ -1171,7 +1174,7 @@ resource "aws_instance" "myec2" {
   instance_type = "t2.micro"
   key_name = "devops-training"
   vpc_security_group_ids = [ aws_security_group.mySG.id ]
-  subnet_id = aws_subnet.myfirstsubnet[0].id
+  subnet_id = aws_subnet.myfirstsubnet.id
 
   tags = {
     Name = "myec2"
@@ -1182,23 +1185,21 @@ resource "aws_instance" "myec2" {
 
 ```
 
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
 <br/>
-<br/>
-<br/>
-<br/>
+
 
 ## Provisioners in terrafrom 
-* Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction. Provisioners can also be  configuration management, etc..
+* Provisioners are used to execute scripts on a local or remote machine as part of resource creation or destruction.
+* Provisioners can also be used for configuration management, etc..
 * __Terraform Provisioners__ -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/syntax)
 
 ## File provisioner:
+
 ```sh
 provisioner "file" {
   source      = "conf/myapp.conf"
@@ -1218,7 +1219,7 @@ provisioner "file" {
 ```
 
 ## Terraform provisioning :
-* You are assigned with task of creating a VM and installing the necessary softwares the VM.
+* You are assigned with task of creating a VM and installing the necessary softwares in VM.
 * Steps to be followed :
   1. Create a VM 
   2. Connection to the VM -- [REFERHERE](https://www.terraform.io/language/resources/provisioners/connection)
@@ -1227,6 +1228,7 @@ provisioner "file" {
 
 
 * The terraform template look like below , if we use the provisioners:
+
 ```sh
 vars.tf:
 ======
@@ -1330,14 +1332,9 @@ connection {
 }
 
 ```
-<br/>
-<br/>
-<br/>
+
 <br/>
 
 * * * 
 
-<br/>
-<br/>
-<br/>
 <br/>
