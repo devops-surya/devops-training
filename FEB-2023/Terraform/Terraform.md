@@ -1110,10 +1110,11 @@ variable "subnetcidr" {
 
 main.tf:
 ==========
+
 provider "aws" {
-  region     = "us-east-2"
-  access_key = "AKIAYZCYFVHPQZCE4Z6P"
-  secret_key = "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"
+  region     = "ap-northeast-1"
+  access_key = "AKIASAK53KCFYWHM7YW2"
+  secret_key = "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"
 }
 
 resource "aws_vpc" "myfirstvpc" {
@@ -1126,12 +1127,11 @@ resource "aws_vpc" "myfirstvpc" {
 }
 
 resource "aws_subnet" "myfirstsubnet" {
-  count = length(var.subnetcidr)
   vpc_id     = aws_vpc.myfirstvpc.id
   cidr_block = var.subnetcidr
 
   tags = {
-    Name = "myfirstsubnet-${count.index+1}"
+    Name = "myfirstsubnet"
   }
   depends_on = [aws_vpc.myfirstvpc]
 }
@@ -1170,9 +1170,9 @@ resource "aws_security_group" "mySG" {
 }
 
 resource "aws_instance" "myec2" {
-  ami           = "ami-0cb4e786f15603b0d"
+  ami           = "ami-0d979355d03fa2522"
   instance_type = "t2.micro"
-  key_name = "devops-training"
+  key_name = "MyAWSKeypair"
   vpc_security_group_ids = [ aws_security_group.mySG.id ]
   subnet_id = aws_subnet.myfirstsubnet.id
 
