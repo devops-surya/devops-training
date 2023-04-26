@@ -1230,24 +1230,22 @@ provisioner "file" {
 * The terraform template look like below , if we use the provisioners:
 
 ```sh
-vars.tf:
-======
 variable "vpccidr" {
   type = string
   default = "10.0.0.0/16"
 }
 variable "subnetcidr" {
-  type = list(string)
-  default = [ "10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24", "10.0.4.0/24" ]
+  type = string
+  default = "10.0.1.0/24"
 }
 
-
 main.tf:
-=======
+==========
+
 provider "aws" {
-  region     = "us-west-2"
-  access_key = "AKIATDL7EYHPSRBBULQD"
-  secret_key = "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"
+  region     = "ap-northeast-1"
+  access_key = "AKIASAK53KCFYWHM7YW2"
+  secret_key = "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"
 }
 
 resource "aws_vpc" "myfirstvpc" {
@@ -1260,12 +1258,11 @@ resource "aws_vpc" "myfirstvpc" {
 }
 
 resource "aws_subnet" "myfirstsubnet" {
-  count = length(var.subnetcidr)
   vpc_id     = aws_vpc.myfirstvpc.id
-  cidr_block = var.subnetcidr[count.index]
+  cidr_block = var.subnetcidr
 
   tags = {
-    Name = "myfirstsubnet-${count.index+1}"
+    Name = "myfirstsubnet"
   }
   depends_on = [aws_vpc.myfirstvpc]
 }
@@ -1276,16 +1273,16 @@ resource "aws_security_group" "mySG" {
   vpc_id      = aws_vpc.myfirstvpc.id
 
   ingress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -1295,6 +1292,8 @@ resource "aws_security_group" "mySG" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+
   tags = {
     Name = "mySG"
   }
@@ -1302,18 +1301,18 @@ resource "aws_security_group" "mySG" {
 }
 
 resource "aws_instance" "myec2" {
-  ami           = "ami-0cb4e786f15603b0d"
+  ami           = "ami-0d979355d03fa2522"
   instance_type = "t2.micro"
-  key_name = "devops-training"
+  key_name = "MyAWSKeypair"
   vpc_security_group_ids = [ aws_security_group.mySG.id ]
-  subnet_id = aws_subnet.myfirstsubnet[0].id
+  subnet_id = aws_subnet.myfirstsubnet.id
   associate_public_ip_address = true
 
   tags = {
     Name = "myec2"
   }
   depends_on = [aws_security_group.mySG]
-
+  
 provisioner "remote-exec" {
   inline = [
     "sudo apt-get update -y",
@@ -1321,15 +1320,15 @@ provisioner "remote-exec" {
 ]
 }
 
-
 connection {
    type = "ssh"
    user = "ubuntu"
-   private_key = file("./devops-training.pem")
+   private_key = file("./MyAWSKeypair.pem")
    host = aws_instance.myec2.public_ip
 }
 
 }
+
 
 ```
 
