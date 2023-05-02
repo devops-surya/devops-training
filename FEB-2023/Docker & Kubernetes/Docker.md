@@ -12,16 +12,30 @@
 
 <br/>
 
-
-## The evolution of applications ( VM vs Containers):
- ![preview](../images/d1.png)
+## Docker :
 
 * Docker is an open source containerization tool. It enables developers to package applications into containers—standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment.
-* __Containerazation__:  The process of making your application run on the docker containers.
-* __Image__: Docker image is a process of packaging your application.
-* Docker provides the ability to package and run the application in a loosely isolated environment called a  container. 
+* __Containerazation__:  The process of making your application run on the docker containers. 
 * For the docker documentation [REFER HERE](https://docs.docker.com/) 
 
+<br/>
+
+* * * 
+
+<br/>
+
+## VM vs Containers:
+
+![preview](../images/d1.png)
+
+![preview](../img/diff.png)
+
+
+   * A VM is essentially an emulation of a complete computer system, including its hardware and operating system. It runs on top of a host operating system and provides a self-contained environment that behaves like a real computer. Each VM has its own virtual CPU, memory, disk, and network interfaces, which are isolated from other VMs running on the same physical machine. This allows multiple operating systems to run on a single physical server, enabling better resource utilization and scalability.
+
+   * On the other hand, a container is a lightweight, standalone executable package that includes everything needed to run a piece of software, such as code, libraries, and dependencies, but shares the kernel of the host operating system with other containers. This means that multiple containers can run on the same physical machine, but each container appears as a separate process with its own isolated file system, network interfaces, and process space. Containers provide a more efficient and portable way to package and deploy applications, as they can be easily moved between different environments without modification.
+
+* In summary, while a virtual machine provides a complete virtual environment, a container provides a lightweight, isolated environment for a specific application or service. The choice between the two depends on the specific use case and requirements of the application.
 
 ## Understand Container :
 * Every app running in container will be using the base os.
@@ -66,14 +80,44 @@
 
 <br/>
 
+## Docker workflow :
+  * While installing docker it installs two components :
+   1. Docker Client
+   2. Docker Daemon
+  * When we use docker commands, docker client speaks with docker daemon to do the stuff
+ ![preview](../images/Docker3.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Container creation understanding :
+* Write a Dockefile >> create image from Dockerfile >> create container from image
+ ![preview](../images/dw.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
 ## Dockerhub & Playground:
+### Dockerhub :
+* DockerHub is the default remote registry to the docker, where you can store images and use the images when required
+* There are many private registries:
+  * ECR - (Elastic container registry provided by AWS)
+  * ACR - (Azure container regitry provided by Azure)
 * Signup in dockerhub [REFER HERE](https://hub.docker.com/signup)
+
+### Docker playground
 * Docker playground     
  ![preview](../images/dp1.png)
  ![preview](../images/dp2.png)
  ![preview](../images/dp3.png)
  ![preview](../images/dp4.png)
-
 
 
 <br/>
@@ -83,19 +127,8 @@
 <br/>
 
 
-## Docker workflow :
-  * While installing docker it installs two components :
-   1. Docker Client
-   2. Docker Daemon
-  * When we use docker commands, docker client speaks with docker daemon to do the stuff
- ![preview](../images/Docker3.png)
 
-## DockerHub:
-* DockerHub is the default remote registry to the docker, where you can store images and use the images when required
-* There are many private registries:
-  * ECR - (Elastic container registry provided by AWS)
-  * ACR - (Azure container regitry provided by Azure)
-
+## Hello-world container creation : 
 ```sh
 * List images in local :
 docker image ls
@@ -117,18 +150,8 @@ docker container ls -a
 
 <br/>
 
-## Container creation understanding :
-* Write a Dockefile >> create image from Dockerfile >> create container from image
- ![preview](../images/dw.png)
 
-
-<br/>
-
-* * * 
-
-<br/>
-
-## Basic Dockerfile syntax :
+## Dockerfile syntax :
 ```
 INSTRUCTIONS <ARGUMENTS>
 ```
