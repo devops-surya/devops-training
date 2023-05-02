@@ -1,7 +1,7 @@
 # Docker :
 
 ## Basic Devops Pipeline :
-![preview](../images/jenkins1.png)
+![preview](../img/BasePipeline.png)
 
 
 <br/>
