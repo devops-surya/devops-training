@@ -2,6 +2,8 @@
 
 ## Basic Devops Pipeline :
 ![preview](../img/BasePipeline.png)
+![preview](../img/BasicDockerPipeline.png)
+
 
 
 <br/>
