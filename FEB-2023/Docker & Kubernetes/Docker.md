@@ -14,8 +14,8 @@
 
 ## Docker :
 
-* Docker is an open source containerization tool. It enables developers to package applications into containers—standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment.
-* __Containerazation__:  The process of making your application run on the docker containers. 
+* Docker is an open source containerization tool. It helps to package applications into containers—standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment.
+* __Containerazation__:  The process of making your application run inside the docker containers. 
 * For the docker documentation [REFER HERE](https://docs.docker.com/) 
 
 <br/>
@@ -37,17 +37,6 @@
 
 * In summary, while a virtual machine provides a complete virtual environment, a container provides a lightweight, isolated environment for a specific application or service. The choice between the two depends on the specific use case and requirements of the application.
 
-## Understand Container :
-* Every app running in container will be using the base os.
-* Every container running in docker will be having process id.
-* Application running inside the container will have storage, CPU, RAM , network.
-* Each container running in the docker is going to have ip address.
-
-<br/>
-
-* * * 
-
-<br/>
 
 ## Advantages of using docker over VM :
 * Docker offers several advantages over virtual machines (VMs) for deploying and managing software applications. Some of these advantages include:
@@ -62,6 +51,12 @@
 
 * Overall, Docker provides a lightweight, portable, and efficient way to deploy and manage software applications, making it an increasingly popular choice for modern application development and deployment.
 
+
+## Understand Container :
+* Every app running in container will be using the base os.
+* Every container running in docker will be having process id.
+* Application running inside the container will have storage, CPU, RAM , network.
+* Each container running in the docker is going to have ip address.
 
 <br/>
 
@@ -80,12 +75,11 @@
 
 <br/>
 
-## Docker workflow :
-  * While installing docker it installs two components :
-   1. Docker Client
-   2. Docker Daemon
-  * When we use docker commands, docker client speaks with docker daemon to do the stuff
- ![preview](../images/Docker3.png)
+
+## Container creation understanding :
+* Write a Dockefile >> create image from Dockerfile >> create container from image
+ ![preview](../images/dw.png)
+
 
 <br/>
 
@@ -93,10 +87,12 @@
 
 <br/>
 
-## Container creation understanding :
-* Write a Dockefile >> create image from Dockerfile >> create container from image
- ![preview](../images/dw.png)
-
+## Docker workflow :
+  * While installing docker it installs two components :
+   1. Docker Client
+   2. Docker Daemon
+  * When we use docker commands, docker client speaks with docker daemon to do the stuff
+ ![preview](../images/Docker3.png)
 
 <br/>
 
@@ -171,7 +167,7 @@ mkdir sample
 cd sample
 vi Dockerfile
 ```
-* Search for the ubuntu image in the dockerhub . For latest image follow below
+* Search for the ubuntu image in the dockerhub . For latest image follow below : 
 ![preview](../images/h1.png)
 * After adding Instructions and arguments , Dockerfile looks as below:
 ```
