@@ -126,7 +126,7 @@ docker container ls -a
 ```
  ![preview](../images/docker143.png)
 
-* Docker cheat sheet [REFER HERE](https://www.docker.com/wp-content/uploads/2022/03/docker-cheat-sheet.pdf)
+* Docker cheat sheet [REFER HERE](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
 
 
 <br/>
