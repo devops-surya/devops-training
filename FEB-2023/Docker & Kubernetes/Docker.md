@@ -87,18 +87,7 @@
 
 <br/>
 
-## Docker workflow :
-  * While installing docker it installs two components :
-   1. Docker Client
-   2. Docker Daemon
-  * When we use docker commands, docker client speaks with docker daemon to do the stuff
- ![preview](../images/Docker3.png)
 
-<br/>
-
-* * * 
-
-<br/>
 
 ## Dockerhub & Playground:
 ### Dockerhub :
@@ -146,6 +135,18 @@ docker container ls -a
 
 <br/>
 
+## Docker workflow :
+  * While installing docker it installs two components :
+   1. Docker Client
+   2. Docker Daemon
+  * When we use docker commands, docker client speaks with docker daemon to do the stuff
+ ![preview](../images/Docker3.png)
+
+<br/>
+
+* * * 
+
+<br/>
 
 ## Dockerfile syntax :
 ```
