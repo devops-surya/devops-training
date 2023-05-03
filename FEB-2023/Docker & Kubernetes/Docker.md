@@ -151,6 +151,13 @@ docker container ls -a
 ## Dockerfile syntax :
 ```
 INSTRUCTIONS <ARGUMENTS>
+INSTRUCTION-1 <ARGUMENT-1>
+;
+;
+;
+;
+;
+INSTRUCTION-n <ARGUMENTS-n>
 ```
 * Some of the INSTRUCTIONS are FROM , RUN , CMD , ENTRYPOINT , ARG 
 
@@ -168,17 +175,46 @@ mkdir sample
 cd sample
 vi Dockerfile
 ```
-* Search for the ubuntu image in the dockerhub . For latest image follow below : 
+* Search for the ubuntu image in the dockerhub . For base image follow below : 
 ![preview](../images/h1.png)
-* After adding Instructions and arguments , Dockerfile looks as below:
+
+## FROM :
+* This instructor is used to get the base image for your image creation .
+* Syntax:
+
 ```
-FROM ubuntu:16.04
-ENV DEBIAN_FRONTEND noninteractive
-RUN  apt-get update  -y \
-  && apt-get install -y software-properties-common \
-  && add-apt-repository ppa:openjdk-r/ppa \
-  && apt-get install -y openjdk-8-jdk \
-  && rm -rf /var/lib/apt/lists/*
+FROM <baseimagename>
+```
+
+* Example :
+```
+FROM Ubuntu:22.04
+```
+
+
+## RUN :
+* This instructor executes your bash/linux commands in the Dockerfile
+* Every RUN instructor stores as a single layer .
+* syntax :
+```
+RUN <command>
+RUN ["executable, "param1", "param2" ]
+```
+* shell way of providing RUN command:
+```
+RUN echo sample
+```
+* exec way of providing RUN command
+```
+RUN ["echo", "sample"]
+```
+
+* After adding Instructions and arguments , Dockerfile looks as below:
+
+```
+FROM ubuntu:22.04
+RUN apt-get update  -y \
+  && apt-get install
 ```
 
 * To create a image from dockerfile follow below steps:
@@ -203,6 +239,9 @@ docker container ls -a
 ![preview](../images/Docker8.png)
 
 
+
+
+
 <br/>
 <br/>
 <br/>
@@ -218,6 +257,7 @@ docker container ls -a
 
 ## Install docker on EC2:
  * Install by script based :
+ * Create a EC2 instance in AWS and run the below commands to install docker :
 
 ```
 sudo su 
@@ -225,23 +265,6 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
 ``` 
-
-## RUN :
-* This instructor executes your bash/linux commands in the Dockerfile
-* Every RUN instructor stores as a single layer .
-* syntax :
-```
-RUN <command>
-RUN ["executable, "param1", "param2" ]
-```
-* shell way of providing RUN command:
-```
-RUN echo sample
-```
-* exec way of providing RUN command
-```
-RUN ["echo", "sample"]
-```
 
 
 ## ENTRYPOINT:
