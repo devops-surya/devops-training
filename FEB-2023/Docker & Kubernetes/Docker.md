@@ -200,11 +200,11 @@ FROM Ubuntu:22.04
 RUN <command>
 RUN ["executable, "param1", "param2" ]
 ```
-* shell way of providing RUN command:
+### shell way of providing RUN command:
 ```
 RUN echo sample
 ```
-* exec way of providing RUN command
+### exec way of providing RUN command
 ```
 RUN ["echo", "sample"]
 ```
@@ -214,7 +214,7 @@ RUN ["echo", "sample"]
 ```
 FROM ubuntu:22.04
 RUN apt-get update  -y \
-  && apt-get install
+  && apt-get install openjdk-11-jdk -y
 ```
 
 * To create a image from dockerfile follow below steps:
