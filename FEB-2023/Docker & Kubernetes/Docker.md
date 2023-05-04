@@ -255,8 +255,8 @@ docker container ls -a
 <br/>
 
 
-## Install docker on EC2:
- * Install by script based :
+## Exercise: Install docker on EC2:
+ * Scripted way of installing docker [REFER HERE](https://get.docker.com/)
  * Create a EC2 instance in AWS and run the below commands to install docker :
 
 ```
