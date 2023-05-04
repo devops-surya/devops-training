@@ -268,7 +268,19 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
 ``` 
+<br/>
+<br/>
+<br/>
+<br/>
 
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+![preview](../img/Instructorsdiscussion.png)
 
 ## ENTRYPOINT:
 * This is the instructor thats executed when the container creation.
@@ -317,6 +329,9 @@ ADD <src> <dest>
 ADD <url> <dest>
 COPY <src> <dest>
 ```
+
+
+
 
 <br/>
 <br/>
