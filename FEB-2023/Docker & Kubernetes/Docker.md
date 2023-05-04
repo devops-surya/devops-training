@@ -169,7 +169,7 @@ INSTRUCTION-n <ARGUMENTS-n>
 <br/>
 
 ## Dockerfile for the java image :
-### Comapre with java installation on VM : 
+### Compare with java installation on VM : 
 ![preview](../img/DockerfilecreationcomaparisonwithVM.png)
 
 * Make folder of sample and create a Dockerfile in that samplefolder
