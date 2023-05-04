@@ -280,6 +280,7 @@ sh get-docker.sh
 <br/>
 <br/>
 
+## Instructors discussion image :
 ![preview](../img/Instructorsdiscussion.png)
 
 ## ENTRYPOINT:
