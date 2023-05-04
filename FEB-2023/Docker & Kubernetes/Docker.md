@@ -168,7 +168,7 @@ INSTRUCTION-n <ARGUMENTS-n>
 
 <br/>
 
-## Dockerfile for the java :
+## Dockerfile for the java image :
 * Make folder of sample and create a Dockerfile in that samplefolder
 ```
 mkdir sample 
