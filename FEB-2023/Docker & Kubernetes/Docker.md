@@ -356,6 +356,8 @@ COPY <src> <dest>
 docker conatiner run  <dockerimage>
 docker container run tomcat
 ```
+![preview](../img/am.png)
+
 
 ## Detached mode:
 
@@ -365,6 +367,9 @@ docker container run tomcat
 docker conatiner run -d <imagename>
 docker container run -d tomcat 
 ```
+
+![preview](../img/dm.png)
+
 
 ## Interactive :
 * In interactive mode we can interact with docker using terminal (/bin/bash, /bin/sh)
@@ -377,7 +382,20 @@ docker conatainer exec -it  <containerid/container name> /bin/bash
 ```
 docker exec -it <conainername>/<containerid> /bin/bash
 ```
-![preview](../images/Docker16.png)
+![preview](../img/im.png)
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## Portforwarding:
 * It is used to access our application running inside the container 
@@ -386,7 +404,7 @@ docker exec -it <conainername>/<containerid> /bin/bash
 docker conatiner run -P <image>
 ```
 
-## To publish our own specified port :
+## To publish on our own specified port :
 ```
 docker conatiner run  -p <hosport>:<conatinerport> <imagename>
 
@@ -472,6 +490,8 @@ docker container  run --name <nameofconainer>  -d -P <image>
 ```
 
 ![preview](../images/Docker15.png)
+![preview](../images/Docker16.png)
+
 
 
 ## To inspect an image : 
