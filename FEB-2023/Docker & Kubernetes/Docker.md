@@ -375,12 +375,12 @@ docker container run -d tomcat
 * In interactive mode we can interact with docker using terminal (/bin/bash, /bin/sh)
 * We will be using -it in the docker command
 ```
-docker conatainer exec -it  <containerid/container name> /bin/bash 
+docker container exec -it  <containerid/container name> /bin/bash 
 ```
 ## To get into the container :
 
 ```
-docker exec -it <conainername>/<containerid> /bin/bash
+docker container exec -it <conainername>/<containerid> /bin/bash
 ```
 ![preview](../img/im.png)
 
@@ -399,18 +399,20 @@ docker exec -it <conainername>/<containerid> /bin/bash
 
 ## Portforwarding:
 * It is used to access our application running inside the container 
+![preview](../img/pf.png)
+![preview](../img/pf1.png)
 
 ```
-docker conatiner run -P <image>
+docker container run -P <image>
 ```
 
 ## To publish on our own specified port :
 ```
-docker conatiner run  -p <hosport>:<conatinerport> <imagename>
+docker container run  -p <hosport>:<conatinerport> <imagename>
 
-docker conatiner run -p 8005:8080 <imagename>
+docker container run -p 8005:8080 <imagename>
 ```
-![preview](../images/Docker15.png)
+![preview](../img/pf2.png)
 
 <br/>
 <br/>
