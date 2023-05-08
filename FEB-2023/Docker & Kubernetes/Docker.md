@@ -263,7 +263,6 @@ docker container ls -a
  * Create a EC2 instance in AWS and run the below commands to install docker :
 
 ```
-sudo su 
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
@@ -426,11 +425,35 @@ docker container run -p 8005:8080 <imagename>
 <br/>
 <br/>
 
-## Create a Dockefile for SAMPLEWAR deployment :
+## Install docker on AWS EC2 server:
+ * Scripted way of installing docker [REFER HERE](https://get.docker.com/)
+ * Create a EC2 instance in AWS and run the below commands to install docker :
+
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+```
+![preview](../img/di1.png)
+![preview](../img/di2.png)
+![preview](../img/di3.png)
+
+
+
+## SAMPLEWAR Application deployment Using Docker in AWS EC2 server:
+
+
+ ![preview](../img/BasicDockerPipeline.png)
+
+ ![preview](../img/SampleDockerDeployment.png)
+
+
+
  * Install JAVA 
- * Install tomcat
+ * Install Tomcat
  * Downloading the war file and copying it to tomcat webapps
  * start the tomcat
+
+
 ### First approach :
   1. Taking baseimage of ubuntu  ---- FROM 
   2. Installing java     ----  RUN 
@@ -439,6 +462,7 @@ docker container run -p 8005:8080 <imagename>
   5. downloading the war file  and copy to the webapps -----  ADD/COPY
   6. Open port of tomcat on container   --- EXPOSE 
   7. starting the tomcat  ----  ENTRYPOINT/CMD
+
 ### Second approch:
   1. Taking the baseimage of tomcat directly --- FROM
   2. Downloading the war file and copying it to tomcat webapps --- ADD/COPY
@@ -447,6 +471,7 @@ docker container run -p 8005:8080 <imagename>
   
 
 ## Dockerfile for the second approach:
+
 ```
 FROM tomcat:8
 LABEL author="surya"
@@ -454,12 +479,13 @@ ADD https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war /usr/local
 EXPOSE 8080
 CMD [ "catalina.sh", "run" ]
 ```
-* Run the above Dockerfile wiht below commads
+* Run the above Dockerfile with below commands
 ```
 docker image build -t samplewar .
 ```
 ![preview](../images/Docker10.png)
 ![preview](../images/Docker11.png)
+
 * To create a container from the image of samplewar follow below steps:
 ```
 docker container run samplewar
@@ -469,12 +495,13 @@ docker container run samplewar
 ```
 docker container  run -d samplewar
 ```
+
+
 * To check the application ruuning on tomcat , we use -P to publish one of the port on the base OS to the container:
 ```
 docker container -d  -P run samplewar
 ```
-![preview](../images/Docker12.png)
-![preview](../images/Docker13.png)
+![preview](../img/di5.png)
 
 
 * To check the samplewar application accessible to the outside world:
@@ -482,7 +509,19 @@ docker container -d  -P run samplewar
 ```
 ipaddress:<port>/sample
 ```
+![preview](../img/di4.png)
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 ## Add name to the container :
@@ -612,13 +651,7 @@ docker container start  <container-id>/<containername>
 docker container pause  <container-id>/<containername>
 docker container unpause  <container-id>/<containername>
 ```
-## Commands:
-```
-docker container ls   ---- list of running container 
-docker container ls -a    ---- list of all contaner running and exited
-docker image ls         ----- list all the images
 
-```
 
 
 <br/>
