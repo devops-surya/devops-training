@@ -437,7 +437,17 @@ sh get-docker.sh
 ![preview](../img/di2.png)
 ![preview](../img/di3.png)
 
+<br/>
+<br/>
+<br/>
+<br/>
 
+* * * 
+
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## SAMPLEWAR Application deployment Using Docker in AWS EC2 server:
 
