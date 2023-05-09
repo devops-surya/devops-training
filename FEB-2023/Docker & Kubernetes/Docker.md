@@ -480,7 +480,7 @@ sh get-docker.sh
   4. starting the tomcat  ----  ENTRYPOINT/CMD
   
 
-## Dockerfile for the second approach:
+### Dockerfile for the second approach:
 
 ```
 FROM tomcat:8
@@ -620,7 +620,7 @@ ENV <key>=<value>
 ```
 * Environmental variable can also be replaced while container running.
 
-## Example  Dockerfile with above Instructions
+## Example Dockerfile with above Instructions
 
 ```
 FROM tomcat:8
