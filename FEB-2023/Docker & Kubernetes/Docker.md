@@ -588,6 +588,8 @@ docker container rm -f  <conatinername>/<conatinerid>
 
 
 # Instructions:
+![preview](../img/DockerInstructions.png)
+
 
 ## USER :
 * This sets the username for any subsequent commands running by RUN , CMD , ENTRYPOINT
@@ -644,8 +646,11 @@ CMD [ "catalina.sh", "run" ]
 <br/>
 <br/>
 
-##  CMD &  ENTRYPOINT :
+##  CMD &  ENTRYPOINT override :
+
 * These can be overwritten while creating a container:
+![preview](../img/DockerOverwrite.png)
+
 
 ```
 docker container run -d samplewar echo hello
