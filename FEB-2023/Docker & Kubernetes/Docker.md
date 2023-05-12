@@ -509,7 +509,7 @@ docker container  run -d samplewar
 
 * To check the application ruuning on tomcat , we use -P to publish one of the port on the base OS to the container:
 ```
-docker container -d  -P run samplewar
+docker container run  -d  -P run samplewar
 ```
 ![preview](../img/di5.png)
 
