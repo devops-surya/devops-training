@@ -11,6 +11,17 @@
 <br/>
 <br/>
 
+## Integrate k8s in BasicDevopsPipeline:
+
+![preview](../img/BasicK8sPipeline.png)
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
 
 
 ## Why you need Kubernetes and what it can do :
