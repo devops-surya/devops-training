@@ -1,18 +1,38 @@
 # Kubernetes or K8s :
-* Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. 
+* Kubernetes (often abbreviated as "K8s") is an open-source container orchestration platform. It provides a way to automate the deployment, scaling, and management of containerized applications. With Kubernetes, you can easily manage complex containerized applications that run across multiple cloud providers or on-premises infrastructure. 
 
-* For the document [REFER HERE ](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/   )
+* For the document [REFER HERE ](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+
+
 
 ## Why you need Kubernetes and what it can do :
 * Automatic scaling .
 * Microservices .
 * Handle persistent volume .(stateful vs stateless)
 * Zero downtime deployments .
-* Effecient loadbalancers integrations.
+* Efficient loadbalancers integrations.
 * Monitoring interface
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
 
 ## Basic architecture of k8s:
 ![preview](../images/k8s1.png)
+
+
 
 # Kubernetes componenets:
 * K8s cluster is combination of nodes.
@@ -58,7 +78,7 @@
 2. AKS (AZURE kubernetes service)
 
 ## Installing kubernets by using kubeadm:
-1. Take 3 VM's from AWS , having atleat 2 GB 
+1. Take 3 VM's from AWS , having atleat 2 GB RAM
 2. Install docker on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 3. Installing using kubeadm, run the steps in the document on allnodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
