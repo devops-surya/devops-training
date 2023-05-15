@@ -88,13 +88,13 @@
 2. EKS (Elastic kubernetes service)
 2. AKS (AZURE kubernetes service)
 
-## Installing kubernets by using kubeadm:
+## Setup kubernetes cluster by using kubeadm:
 1. Take 3 VM's from AWS , having atleat 2 GB RAM
 2. Install docker on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 3. Installing using kubeadm, run the steps in the document on allnodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 
-## Create a cluster with kubeadm :
+## Create a k8s cluster with kubeadm :
 
 ## Installing kubernets by using kubeadm:
 1. Take 3 VM's from AWS , having atleat 2 GB 
