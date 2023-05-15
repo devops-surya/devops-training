@@ -55,9 +55,9 @@
 * Control-plane-Components on master :
 
 1. Kube-apiserver: 
-    * The communicaion in the cluster happens from the kube-apiserver.
+    * The communicaion in the cluster from master to worker-nodes happens from the kube-apiserver.
 2. etcd:
-    * It is having all the information about the pods created and destroyed in your cluster.
+    * It is having all the information about the pods and nodes created and destroyed in your cluster.
     * It stores the information in the form of keyvalue pairs.
 3. kube-scheduler:
     * It is responsible for scheduling your pods on the nodes.   
@@ -66,7 +66,7 @@
 
 ## Node components:
 1. kubelet:
-    * It's like an agent running on your all  Worker nodes 
+    * It's like an agent running on your all Worker nodes and tajes care of desired state.
 2. Kube-proxy: 
     * It helps us to have a communication between the two pods , which are on the differen nodes.
  
