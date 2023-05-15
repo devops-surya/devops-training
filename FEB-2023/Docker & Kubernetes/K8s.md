@@ -41,7 +41,7 @@
 <br/>
 
 ## Basic architecture of k8s:
-![preview](../img /K8sArchitecture.png)
+![preview](../img/K8sArchitecture.png)
 
 
 
