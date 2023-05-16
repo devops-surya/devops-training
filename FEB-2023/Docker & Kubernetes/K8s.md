@@ -102,8 +102,8 @@
 
 ## Create a k8s cluster with kubeadm :
 
-## Installing kubernets by using kubeadm:
 1. Take 3 VM's from AWS , having atleat 2 GB RAM 2 VCPUS 
+
 2. Install docker on all the nodes [REFER HERE](https://docs.docker.com/engine/install/ubuntu/)
 
       ### Install using the apt repository
@@ -156,13 +156,41 @@
       ```
 
 
-3. Installing using kubeadm, run the steps in the document on allnodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+3. Installing using kubeadm, run the steps in the document on all nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+
+      ### Update the apt package index and install packages needed to use the Kubernetes apt repository:
+
+      ```
+      sudo apt-get update
+      sudo apt-get install -y apt-transport-https ca-certificates curl
+      ```
+
+      ### Download the Google Cloud public signing key:
+
+      ```
+      sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      ```
+
+      ### Add the Kubernetes apt repository:
+      
+      ```
+      echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+      ```
+
+      ### Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
+    
+      ```
+      sudo apt-get update
+      sudo apt-get install -y kubelet kubeadm kubectl
+      sudo apt-mark hold kubelet kubeadm kubectl
+      ```
+
 
 * For document [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
 ## Steps to be done on master :
 ```
-sudo su 
+sudo su -
 kubeadm init
 
 ```
