@@ -184,11 +184,19 @@
       sudo apt-get install -y kubelet kubeadm kubectl
       sudo apt-mark hold kubelet kubeadm kubectl
       ```
+      ### NOTE : Check required ports
+      * These required ports need to be open in order for Kubernetes components to communicate with each other. You can use tools like netcat to check if a port is open. For example:
+      
+      ```
+      nc 127.0.0.1 6443
+      ```
 
+
+
+4. Steps to be done on master :
 
 * For document [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
-## Steps to be done on master :
 ```
 sudo su -
 kubeadm init
@@ -205,33 +213,40 @@ To start using your cluster, you need to run the following as a regular user:
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-You should now deploy a Pod network to the cluster.
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
 Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
-  /docs/concepts/cluster-administration/addons/
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
 
-You can now join any number of machines by running the following on each node
-as root:
+Then you can join any number of worker nodes by running the following on each as root:
 
-  kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+kubeadm join 172.31.5.211:6443 --token f00e59.1auf8qakfohr4ewx \
+        --discovery-token-ca-cert-hash sha256:a56986f5455e74e236f55e94c41b0cc9e9085324e8f57fa7be4578f34da61bb5
 ```
 
-```
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config 
+![preview](../img/K8S1.png)
+![preview](../img/K8S2.png)
+![preview](../img/K8S3.png)
 
-```
 
-## For weavenet to be installed on the master:
+
+
+
+5. Configure  weavenet for network communication on the master -- [REFERHERE](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy:~:text=Weave%20Net%20provides%20networking%20and%20network%20policy%2C%20will%20carry%20on%20working%20on%20both%20sides%20of%20a%20network%20partition%2C%20and%20does%20not%20require%20an%20external%20database.)
+
 ```
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
 ```
 
 ## On all worker nodes :
+
 ```
 You can now join any number of machines by running the following on each node as root:
 
-  kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
+kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ```
 
 ## After above steps are done , connect to master and use below commands:
