@@ -266,34 +266,50 @@ kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discove
 ```
 kubectl get nodes
 ```
+![preview](../img/K8S6.png)
 
-## API-REFERENCE :
-* For api-refernce [REFER HERE](https://kubernetes.io/docs/reference/) and for version1.20 [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/)
-* We will be using the api-reference internally when we are using the kubectl to communicate with the cluster.
+<br/>
+
+* * * 
+
+<br/>
+
 
 ## Working with k8s :
-* We will be creating an image for our application to be running.
-* The image created will be deployed to the k8s cluster, and we will be specifying the desired state.
-* controller-manager will be taking care of our desired state.
-* To access these pods we will be using service.
-* We will be using volumes to be attached as persistent volumes.
+* We will be creating a Image that has the latest build code(.war/.jar).
+* The image created has be deployed to the k8s cluster in the form of pod.
+* Controller-Manager will be taking care of our desired state(Pod to be always up).
+* To deploy the Image in to K8s cluster in the form pf POD, we write a file called ___manifest file__ or ___deployment.yaml file__
 
-* All the above things will be defined in a file called manifest file/deployment.yaml
+## API-REFERENCE :
+* For api-refernce [REFER HERE](https://kubernetes.io/docs/reference/kubernetes-api/) and for version1.27 [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/)
+* We will be using the api-reference internally when we are using the kubectl to communicate with the cluster.
 
-## POD :
-* Pod can be defined as the basic unit of execution in k8s.
-* Pod will have application container , storage and network.
+<br/>
 
+* * * 
+
+<br/>
+
+## Understanding POD :
 ![preview](../images/k8s3.png)
 
-* pod is having docker conainer 
-* Pod can run single/multiple containers running inside it.
-* Running one-container per pod is best usecase.
+* Pod can be defined as the basic unit of execution in k8s.
+* Pod will have docker conainer.
+* Pod will have application container, storage and network.
+* Pod can run single or multiple containers running inside it.
+* Running one-application-container per pod is best usecase.
+
+<br/>
+
+* * * 
+
+<br/>
 
 ## Workloads:
 * K8s workloads will be having two things 
-   1. pod .
-   2. Controller .
+   1. Pod
+   2. Controller 
 
 ## Create a pod using the API reference:
 ![preview](../images/k8s4.png)
@@ -347,8 +363,6 @@ kubectl delete -f pod.yml
 
 ## Init containers:
 * These containers run before your main conatiner is going to start.
-
-
 
 ## CONTROLLERS :
 * Controllers wil be taking care of the desired state .
