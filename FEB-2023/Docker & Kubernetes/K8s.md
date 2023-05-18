@@ -156,7 +156,7 @@
       ```
 
 
-3. Installing using kubeadm, run the steps in the document on all nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+3. Install kubelet kubeadm kubectl , run the steps in the document on all nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
       ### Update the apt package index and install packages needed to use the Kubernetes apt repository:
 
@@ -202,6 +202,15 @@ sudo su -
 kubeadm init
 
 ```
+* Run below steps if your getting error as ``` container runtime is not running```
+
+```
+sudo su -
+rm /etc/containerd/config.toml
+systemctl restart containerd.service
+kubeadm init
+```
+
 ```
 You will be seeing the commands like below , when you run the above command:
 ==========================================================================
@@ -227,7 +236,7 @@ kubeadm join 172.31.5.211:6443 --token f00e59.1auf8qakfohr4ewx \
         --discovery-token-ca-cert-hash sha256:a56986f5455e74e236f55e94c41b0cc9e9085324e8f57fa7be4578f34da61bb5
 ```
 
-![preview](../img/K8S1.png)
+![preview](../img/k8S1.png)
 ![preview](../img/K8S2.png)
 ![preview](../img/K8S3.png)
 
@@ -238,8 +247,10 @@ kubeadm join 172.31.5.211:6443 --token f00e59.1auf8qakfohr4ewx \
 5. Configure  weavenet for network communication on the master -- [REFERHERE](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy:~:text=Weave%20Net%20provides%20networking%20and%20network%20policy%2C%20will%20carry%20on%20working%20on%20both%20sides%20of%20a%20network%20partition%2C%20and%20does%20not%20require%20an%20external%20database.)
 
 ```
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 ```
+![preview](../img/K8S5.png)
+
 
 ## On all worker nodes :
 
@@ -248,6 +259,8 @@ You can now join any number of machines by running the following on each node as
 
 kubeadm join <control-plane-host>:<control-plane-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ```
+
+![preview](../img/K8S4.png)
 
 ## After above steps are done , connect to master and use below commands:
 ```
