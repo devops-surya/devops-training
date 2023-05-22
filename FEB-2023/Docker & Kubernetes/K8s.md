@@ -169,6 +169,14 @@
 
       ```
       sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      
+      Use below command if above not works or any issue with gpg keys:
+      ================================================================
+      ```
+      W: GPG error: https://packages.cloud.google.com/apt kubernetes-xenial InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY B53DC80D13EDEF05
+      ```
+
+      sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://dl.k8s.io/apt/doc/apt-key.gpg
       ```
 
       ### Add the Kubernetes apt repository:
