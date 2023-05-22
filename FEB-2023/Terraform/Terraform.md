@@ -1316,7 +1316,7 @@ resource "aws_instance" "myec2" {
 provisioner "remote-exec" {
   inline = [
     "sudo apt-get update -y",
-    "sudo apt-get install python -y"
+    "sudo apt-get install python3 -y"
 ]
 }
 
