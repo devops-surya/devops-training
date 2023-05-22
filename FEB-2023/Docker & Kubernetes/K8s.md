@@ -276,6 +276,11 @@ kubectl get nodes
 ```
 ![preview](../img/K8S6.png)
 
+* ___Note__ : If you are getting The connection to the server x.x.x.:6443 was refused - did you specify the right host or port? Kubernetes [closed] - __Refer below links__ : 
+* [Stackoveflow-ClickHere](https://stackoverflow.com/questions/56737867/the-connection-to-the-server-x-x-x-6443-was-refused-did-you-specify-the-right)
+* [Kubernetes.io-ClickHere](https://discuss.kubernetes.io/t/the-connection-to-the-server-host-6443-was-refused-did-you-specify-the-right-host-or-port/552/5)
+* [Kubernetes.io-ClickHere](https://discuss.kubernetes.io/t/the-connection-to-the-server-host-6443-was-refused-did-you-specify-the-right-host-or-port/552/43?page=3)
+
 <br/>
 
 * * * 
