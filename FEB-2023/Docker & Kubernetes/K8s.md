@@ -174,10 +174,10 @@
 
 
 ### Install Containerd using the apt repository -- [REFERHERE](https://docs.docker.com/engine/install/ubuntu/#:~:text=Install%20using%20the,run%20hello%2Dworld)
-      * Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
+  * Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
 
   ### Set up the repository
-          * Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+   * Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
           ```
           sudo apt-get update
@@ -234,6 +234,7 @@
             SystemdCgroup = true
           ```
    * Restart the containerd service:
+
           ```
           sudo systemctl restart containerd
 
@@ -338,7 +339,7 @@ kubeadm join 172.31.5.211:6443 --token f00e59.1auf8qakfohr4ewx \
 
 
 
-5. Configure  weavenet for network communication on the master -- [REFERHERE](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy:~:text=Weave%20Net%20provides%20networking%20and%20network%20policy%2C%20will%20carry%20on%20working%20on%20both%20sides%20of%20a%20network%20partition%2C%20and%20does%20not%20require%20an%20external%20database.)
+5. Configure  weavenet for network communication on the master -- [REFERHERE](https://kubernetes.io/docs/concepts/cluster-administration/addons/#:~:text=Weave%20Net%20provides%20networking%20and%20network%20policy%2C%20will%20carry%20on%20working%20on%20both%20sides%20of%20a%20network%20partition%2C%20and%20does%20not%20require%20an%20external%20database)
 
 ```
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
