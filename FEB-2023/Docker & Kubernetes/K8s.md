@@ -91,7 +91,7 @@
 ## Setup kubernetes cluster by using kubeadm:
 * Steps to be followed: 
     1. Take 3 VM's from AWS , having atleat 2 GB RAM
-    2. Install container rntime on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
+    2. Install container runtime on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
     3. Installing using kubeadm, run the steps in the document on all nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
     4. Configure Master 
     5. Configure Network 
@@ -128,9 +128,9 @@
 
 2. Install container runtime  on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 
-      ### Install and configure prerequisites :
+### Install and configure prerequisites : [REFERHERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#:~:text=for%20that%20version.-,Install%20and%20configure%20prerequisites,cgroupfs,-driver)
 
-      * Forwarding IPv4 and letting iptables see bridged traffic
+  * Forwarding IPv4 and letting iptables see bridged traffic
       * Execute the below mentioned instructions:
 
         ```
@@ -166,17 +166,17 @@
       * Verify that the net.bridge.bridge-nf-call-iptables, net.bridge.bridge-nf-call-ip6tables, and net.ipv4.ip_forward system variables are set to 1 in your sysctl config by running the following command:
 
         ```
-       sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
-
+        sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+  
         ```
 
 
 
 
-      ### Install Containerd using the apt repository -- [REFERHERE](https://docs.docker.com/engine/install/ubuntu/)
+### Install Containerd using the apt repository -- [REFERHERE](https://docs.docker.com/engine/install/ubuntu/#:~:text=Install%20using%20the,run%20hello%2Dworld)
       * Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
 
-          ### Set up the repository
+  ### Set up the repository
           * Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
           ```
@@ -184,7 +184,7 @@
           sudo apt-get install ca-certificates curl gnupg
           ```
 
-          ### Add Docker’s official GPG key:
+  ### Add Docker’s official GPG key:
 
           ```
           sudo install -m 0755 -d /etc/apt/keyrings
@@ -192,7 +192,7 @@
           sudo chmod a+r /etc/apt/keyrings/docker.gpg
           ```
 
-          ### Use the following command to set up the repository:
+  ### Use the following command to set up the repository:
 
           ```
           echo \
@@ -201,37 +201,39 @@
           sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
           ```
 
-          ### Install Docker Engine
-          * Update the apt package index:
+  ### Install Docker Engine
+   * Update the apt package index:
 
           ```
           sudo apt-get update
           ```
 
-          ### Install Docker Engine, containerd, and Docker Compose.
+  ### Install Docker Engine, containerd, and Docker Compose.
 
-          * To install the latest version, run:
+   * To install the latest version, run:
 
           ```
-          sudo apt-get install -y containerd.io 
+          sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
           ```
 
-          ### Verify that the Docker Engine installation is successful by running the hello-world image.
+  ### Verify that the Docker Engine installation is successful by running the hello-world image.
 
           ```
           sudo docker run hello-world
           ```
 
-     ### containerd --  [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd:~:text=change.%20More%20information.-,containerd,io.containerd.grpc.v1.cri%22.containerd.runtimes.runc.options%5D%0A%20%20%20%20SystemdCgroup%20%3D%20true,-The%20systemd%20cgroup):
+
+### containerd --  [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd:~:text=change.%20More%20information.-,containerd,io.containerd.grpc.v1.cri%22.containerd.runtimes.runc.options%5D%0A%20%20%20%20SystemdCgroup%20%3D%20true,-The%20systemd%20cgroup):
         
-       ### Configuring the systemd cgroup driver  :
-       * To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set
+  ### Configuring the systemd cgroup driver  :
+
+   * To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set
           ```
           [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
             [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
             SystemdCgroup = true
           ```
-       * Restart the containerd service:
+   * Restart the containerd service:
           ```
           sudo systemctl restart containerd
 
