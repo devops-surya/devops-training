@@ -91,8 +91,30 @@
 ## Setup kubernetes cluster by using kubeadm:
 * Steps to be followed: 
     1. Take 3 VM's from AWS , having atleat 2 GB RAM
-    2. Install docker on all the nodes [REFER HERE](https://docs.docker.com/engine/install/ubuntu/)
+    2. Install container rntime on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
     3. Installing using kubeadm, run the steps in the document on all nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+    4. Configure Master 
+    5. Configure Network 
+    6. Join Worker Nodes
+
+
+## Before you begin
+  * A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
+  * 2 GB or more of RAM per machine (any less will leave little room for your apps).
+  * 2 CPUs or more.
+  * Full network connectivity between all machines in the cluster (public or private network is fine).
+  * Unique hostname, MAC address, and product_uuid for every node. See here for more details.
+  * Certain ports are open on your machines. See here for more details.
+  * Swap disabled. You MUST disable swap in order for the kubelet to work properly.
+  * For example, sudo swapoff -a will disable swapping temporarily. To make this change persistent across reboots, make sure swap is disabled in config files like /etc/fstab, systemd.swap, depending how it was configured on your system
+      * Steps to disable swap
+       ```
+       sudo swapoff -a
+       sudo vi  /etc/fstab   -- remove or comment the line with swap
+       sudo reboot
+       sudo swapon --show    -- If swap is disabled correctly , no output will will be shown 
+ 
+       ```
 
 <br/>
 
@@ -104,56 +126,116 @@
 
 1. Take 3 VM's from AWS , having atleat 2 GB RAM 2 VCPUS 
 
-2. Install docker on all the nodes [REFER HERE](https://docs.docker.com/engine/install/ubuntu/)
+2. Install container runtime  on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 
-      ### Install using the apt repository
+      ### Install and configure prerequisites :
+
+      * Forwarding IPv4 and letting iptables see bridged traffic
+      * Execute the below mentioned instructions:
+
+        ```
+        cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+        overlay
+        br_netfilter
+        EOF
+
+        sudo modprobe overlay
+        sudo modprobe br_netfilter
+
+        # sysctl params required by setup, params persist across reboots
+        cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+        net.bridge.bridge-nf-call-iptables  = 1
+        net.bridge.bridge-nf-call-ip6tables = 1
+        net.ipv4.ip_forward                 = 1
+        EOF
+
+        # Apply sysctl params without reboot
+        sudo sysctl --system
+
+        ```
+
+      * Verify that the br_netfilter, overlay modules are loaded by running the following commands:
+
+
+        ```
+        lsmod | grep br_netfilter
+        lsmod | grep overlay
+
+        ```
+
+      * Verify that the net.bridge.bridge-nf-call-iptables, net.bridge.bridge-nf-call-ip6tables, and net.ipv4.ip_forward system variables are set to 1 in your sysctl config by running the following command:
+
+        ```
+       sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+
+        ```
+
+
+
+
+      ### Install Containerd using the apt repository -- [REFERHERE](https://docs.docker.com/engine/install/ubuntu/)
       * Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
 
-      ### Set up the repository
-      * Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+          ### Set up the repository
+          * Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
-      ```
-      sudo apt-get update
-      sudo apt-get install ca-certificates curl gnupg
-      ```
+          ```
+          sudo apt-get update
+          sudo apt-get install ca-certificates curl gnupg
+          ```
 
-      ### Add Docker’s official GPG key:
+          ### Add Docker’s official GPG key:
 
-      ```
-      sudo install -m 0755 -d /etc/apt/keyrings
-      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-      sudo chmod a+r /etc/apt/keyrings/docker.gpg
-      ```
+          ```
+          sudo install -m 0755 -d /etc/apt/keyrings
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+          sudo chmod a+r /etc/apt/keyrings/docker.gpg
+          ```
 
-      ### Use the following command to set up the repository:
+          ### Use the following command to set up the repository:
 
-      ```
-      echo \
-      "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-      "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-      ```
+          ```
+          echo \
+          "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+          "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+          sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+          ```
 
-      ### Install Docker Engine
-      * Update the apt package index:
+          ### Install Docker Engine
+          * Update the apt package index:
 
-      ```
-      sudo apt-get update
-      ```
+          ```
+          sudo apt-get update
+          ```
 
-      ### Install Docker Engine, containerd, and Docker Compose.
+          ### Install Docker Engine, containerd, and Docker Compose.
 
-      * To install the latest version, run:
+          * To install the latest version, run:
 
-      ```
-      sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-      ```
+          ```
+          sudo apt-get install -y containerd.io 
+          ```
 
-      ### Verify that the Docker Engine installation is successful by running the hello-world image.
+          ### Verify that the Docker Engine installation is successful by running the hello-world image.
 
-      ```
-      sudo docker run hello-world
-      ```
+          ```
+          sudo docker run hello-world
+          ```
+
+     ### containerd --  [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd:~:text=change.%20More%20information.-,containerd,io.containerd.grpc.v1.cri%22.containerd.runtimes.runc.options%5D%0A%20%20%20%20SystemdCgroup%20%3D%20true,-The%20systemd%20cgroup):
+        
+       ### Configuring the systemd cgroup driver  :
+       * To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set
+          ```
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+            [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+          ```
+       * Restart the containerd service:
+          ```
+          sudo systemctl restart containerd
+
+          ```
 
 
 3. Install kubelet kubeadm kubectl , run the steps in the document on all nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
@@ -209,7 +291,7 @@
 
 ```
 sudo su -
-kubeadm init
+kubeadm init 
 
 ```
 * Run below steps if your getting error as ``` container runtime is not running```
@@ -218,7 +300,7 @@ kubeadm init
 sudo su -
 rm /etc/containerd/config.toml
 systemctl restart containerd.service
-kubeadm init
+kubeadm init 
 ```
 
 ```
@@ -262,7 +344,7 @@ kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/we
 ![preview](../img/K8S5.png)
 
 
-## On all worker nodes :
+6. Join  worker nodes :
 
 ```
 You can now join any number of machines by running the following on each node as root:
