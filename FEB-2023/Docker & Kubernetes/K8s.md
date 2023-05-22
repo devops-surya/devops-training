@@ -176,7 +176,7 @@
       ```
       W: GPG error: https://packages.cloud.google.com/apt kubernetes-xenial InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY B53DC80D13EDEF05
       ```
-      
+
       ```
       sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://dl.k8s.io/apt/doc/apt-key.gpg
       ```
@@ -283,6 +283,21 @@ kubectl get nodes
 * [Kubernetes.io-ClickHere](https://discuss.kubernetes.io/t/the-connection-to-the-server-host-6443-was-refused-did-you-specify-the-right-host-or-port/552/5)
 * [Kubernetes.io-ClickHere](https://discuss.kubernetes.io/t/the-connection-to-the-server-host-6443-was-refused-did-you-specify-the-right-host-or-port/552/43?page=3)
 
+
+## Check the master components by using below command on Master-node :
+
+```
+kubectl get pods -n kube-system
+
+```
+![preview](../img/K8S7.png)
+
+* All the controller plane configs are available in the path -- /etc/kubernetes/manifests
+
+![preview](../img/K8S8.png)
+
+
+
 <br/>
 
 * * * 
@@ -291,10 +306,9 @@ kubectl get nodes
 
 
 ## Working with k8s :
-* We will be creating a Image that has the latest build code(.war/.jar).
-* The image created has be deployed to the k8s cluster in the form of pod.
-* Controller-Manager will be taking care of our desired state(Pod to be always up).
-* To deploy the Image in to K8s cluster in the form pf POD, we write a file called ___manifest file__ or ___deployment.yaml file__
+* We will be creating a image that has the latest build code(.war/.jar).
+* The image created has to be deployed to the k8s cluster in the form of pod.
+* To deploy the image in to K8s cluster in the form pf POD, we write a file called ___manifest file__ or ___deployment.yaml file__
 
 ## API-REFERENCE :
 * For api-refernce [REFER HERE](https://kubernetes.io/docs/reference/kubernetes-api/) and for version1.27 [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/)
@@ -310,9 +324,9 @@ kubectl get nodes
 ![preview](../images/k8s3.png)
 
 * Pod can be defined as the basic unit of execution in k8s.
-* Pod will have docker conainer.
+* Pod will have docker container.
 * Pod will have application container, storage and network.
-* Pod can run single or multiple containers running inside it.
+* Pod can run single or multiple containers inside it.
 * Running one-application-container per pod is best usecase.
 
 <br/>
@@ -432,7 +446,7 @@ kubectl get rc
 * It also acts same as a replication controller, but it is internal functionality of another controller(DEPLOYMENT)
 
 ## Deployment:
-* It is a controller used to deploy the new version of your code, with th help of providing version numbers.
+* It is a controller used to deploy the new version of your code, with the help of providing version numbers.
 
 ## Jobs and Cronjobs :
 * Jobs are used to call the script/command in the containers.
