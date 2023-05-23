@@ -102,17 +102,17 @@
 
   * The container runtime provides the necessary functionality to create, start, stop, and manage containers. It interacts with the host operating system's kernel to set up the necessary isolation features, such as namespaces and control groups, which provide process isolation, resource allocation, and security boundaries for the containers.
 
-  ### Some popular container runtimes include:
+      ### Some popular container runtimes include:
 
-  * Docker: Docker is one of the most widely used container runtimes. It provides a complete ecosystem for building, distributing, and running containers, including a command-line interface (CLI) and a container image registry.
+      * Docker: Docker is one of the most widely used container runtimes. It provides a complete ecosystem for building, distributing, and running containers, including a command-line interface (CLI) and a container image registry.
 
-  * containerd: containerd is an industry-standard container runtime developed under the auspices of the Cloud Native Computing Foundation (CNCF). It focuses on providing a minimalistic, stable, and secure runtime environment.
+      * containerd: containerd is an industry-standard container runtime developed under the auspices of the Cloud Native Computing Foundation (CNCF). It focuses on providing a minimalistic, stable, and secure runtime environment.
 
-  * CRI-O: CRI-O is another container runtime developed by the CNCF. It is optimized for running containers that conform to the Kubernetes Container Runtime Interface (CRI) specification, making it a popular choice for Kubernetes deployments.
+      * CRI-O: CRI-O is another container runtime developed by the CNCF. It is optimized for running containers that conform to the Kubernetes Container Runtime Interface (CRI) specification, making it a popular choice for Kubernetes deployments.
 
-  * rkt: rkt is a container runtime developed by CoreOS (now part of Red Hat). It emphasizes security, simplicity, and composability, and it supports running both Docker and App Container (appc) format containers.
+      * rkt: rkt is a container runtime developed by CoreOS (now part of Red Hat). It emphasizes security, simplicity, and composability, and it supports running both Docker and App Container (appc) format containers.
 
-These container runtimes facilitate the deployment and management of containers, allowing developers to package applications with their dependencies, ensuring consistent behavior across different environments, and improving resource utilization and scalability.
+    These container runtimes facilitate the deployment and management of containers, allowing developers to package applications with their dependencies, ensuring consistent behavior across different environments, and improving resource utilization and scalability.
 
 
 
