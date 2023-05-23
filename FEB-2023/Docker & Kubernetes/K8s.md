@@ -88,7 +88,7 @@
 2. EKS (Elastic kubernetes service)
 2. AKS (AZURE kubernetes service)
 
-## Setup kubernetes cluster by using kubeadm:
+## Setup kubernetes cluster by using kubeadm: [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 * Steps to be followed: 
     1. Take 3 VM's from AWS , having atleat 2 GB RAM
     2. Install container runtime on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
@@ -123,7 +123,7 @@
 
 <br/>
 
-# Create a k8s cluster with kubeadm :
+# Create a k8s cluster with kubeadm : [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 ## Before you begin
   * A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
