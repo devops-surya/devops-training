@@ -66,7 +66,7 @@
 
 ## Node components:
 1. kubelet:
-    * It's like an agent running on your all Worker nodes and tajes care of desired state.
+    * It's like an agent running on your all Worker nodes and takes care of desired state.
 2. Kube-proxy: 
     * It helps us to have a communication between the two pods , which are on the differen nodes.
  
@@ -97,6 +97,33 @@
     5. Configure Network 
     6. Join Worker Nodes
 
+## container runtime   
+  * A container runtime is a software component responsible for managing and running containers on a host operating system. Containers are lightweight, isolated environments that package applications and their dependencies, allowing them to run consistently across different computing environments.
+
+  * The container runtime provides the necessary functionality to create, start, stop, and manage containers. It interacts with the host operating system's kernel to set up the necessary isolation features, such as namespaces and control groups, which provide process isolation, resource allocation, and security boundaries for the containers.
+
+  ### Some popular container runtimes include:
+
+  * Docker: Docker is one of the most widely used container runtimes. It provides a complete ecosystem for building, distributing, and running containers, including a command-line interface (CLI) and a container image registry.
+
+  * containerd: containerd is an industry-standard container runtime developed under the auspices of the Cloud Native Computing Foundation (CNCF). It focuses on providing a minimalistic, stable, and secure runtime environment.
+
+  * CRI-O: CRI-O is another container runtime developed by the CNCF. It is optimized for running containers that conform to the Kubernetes Container Runtime Interface (CRI) specification, making it a popular choice for Kubernetes deployments.
+
+  * rkt: rkt is a container runtime developed by CoreOS (now part of Red Hat). It emphasizes security, simplicity, and composability, and it supports running both Docker and App Container (appc) format containers.
+
+These container runtimes facilitate the deployment and management of containers, allowing developers to package applications with their dependencies, ensuring consistent behavior across different environments, and improving resource utilization and scalability.
+
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+# Create a k8s cluster with kubeadm :
 
 ## Before you begin
   * A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
@@ -115,14 +142,6 @@
        sudo swapon --show    -- If swap is disabled correctly , no output will will be shown 
  
        ```
-
-<br/>
-
-* * * 
-
-<br/>
-
-## Create a k8s cluster with kubeadm :
 
 1. Take 3 VM's from AWS , having atleat 2 GB RAM 2 VCPUS 
 
