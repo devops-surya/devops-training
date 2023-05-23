@@ -145,9 +145,16 @@
 
 1. Take 3 VM's from AWS , having atleat 2 GB RAM 2 VCPUS 
 
+  ![preview](../img/k8S9.png)
+
+
+* ___NOTE__ : Before step-2 , disable swap on all the servers :
+  ![preview](../img/k8S10.png)
+
+  
 2. Install container runtime  on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 
-### Install and configure prerequisites : [REFERHERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#:~:text=for%20that%20version.-,Install%20and%20configure%20prerequisites,cgroupfs,-driver)
+### Install and configure prerequisites : [REFERHERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#:~:text=Install%20and%20configure%20prerequisites,ip6tables%20net.ipv4.ip_forward)
 
   * Forwarding IPv4 and letting iptables see bridged traffic
       * Execute the below mentioned instructions:
@@ -425,17 +432,11 @@ kubectl get pods -n kube-system
 ## Working with k8s :
 * We will be creating a image that has the latest build code(.war/.jar).
 * The image created has to be deployed to the k8s cluster in the form of pod.
-* To deploy the image in to K8s cluster in the form pf POD, we write a file called ___manifest file__ or ___deployment.yaml file__
+* To deploy the image in to K8s cluster in the form of POD, we write a file called ___manifest file__ or ___deployment.yaml file__
 
 ## API-REFERENCE :
 * For api-refernce [REFER HERE](https://kubernetes.io/docs/reference/kubernetes-api/) and for version1.27 [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/)
 * We will be using the api-reference internally when we are using the kubectl to communicate with the cluster.
-
-<br/>
-
-* * * 
-
-<br/>
 
 ## Understanding POD :
 ![preview](../images/k8s3.png)
@@ -446,18 +447,15 @@ kubectl get pods -n kube-system
 * Pod can run single or multiple containers inside it.
 * Running one-application-container per pod is best usecase.
 
+
 <br/>
 
 * * * 
 
 <br/>
 
-## Workloads:
-* K8s workloads will be having two things 
-   1. Pod
-   2. Controller 
+## Create  a ___manifest file__ or ___deployment.yaml file__ for Pod  : [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/ )
 
-## Create a pod using the API reference:
 ![preview](../images/k8s4.png)
 
 ```
