@@ -559,7 +559,7 @@ kubectl get rc
 ```
 ---
 apiVersion: v1
-kind: ReplicationController
+kind: ReplicaSet
 metadata:
   name: nginx
   labels:
