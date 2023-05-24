@@ -558,7 +558,7 @@ kubectl get rc
 
 ```
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: nginx
@@ -579,7 +579,7 @@ spec:
           image: nginx
   selector:
     matchLabels:
-      app:myapp
+      app: myapp
 
 ```
 
@@ -608,14 +608,46 @@ You create manifest files that describe the desired state of resources, such as 
 
 Overall, the declarative approach is considered the recommended way of working with Kubernetes, as it aligns with the desired state management philosophy of the platform. It provides better control and manageability over resources in the long run, especially for complex applications and infrastructure.
 
-## Deployment:
-* It is a controller used to deploy the new version of your code, with the help of providing version numbers.
 
-## Jobs and Cronjobs :
-* Jobs are used to call the script/command in the containers.
+## DaemonSet: 
+* Ensures that a copy of a specific pod is running on each node in the cluster. It is typically used for cluster-wide tasks like log collection, monitoring agents, or network plugins that need to run on every node.
 
-## DaemonSet:
-* These are the pods running on every node in k8s cluster and do our job.
+* Fluentd: Fluentd is an open-source data collection and log aggregation tool designed for collecting, parsing, transforming, and forwarding logs and other data from various sources. It acts as a unified logging layer in distributed systems and provides a flexible and scalable solution for log management.
+
+```
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd
+  labels:
+    app: daemonset-example
+spec: 
+  template:
+    metadata: 
+      name: fluentd
+      labels: 
+        app: daemonset-example
+    spec: 
+      containers: 
+        - name: fluentd
+          image: fluentd
+  selector:
+    matchLabels:
+      app: daemonset-example
+
+```
+
+
+## StatefulSet: 
+* Similar to ReplicaSet, but designed for stateful applications that require stable network identities and persistent storage. It ensures ordered deployment and scaling of pods, and maintains stable hostnames and volume mounting across pod rescheduling.
+
+
+## Job: 
+* Manages the execution of batch workloads, such as running a job to completion or in a parallel set of pods. It ensures that a specified number of successful completions is achieved before terminating the job.
+
+## CronJob: 
+* Similar to a Job, but allows you to schedule the execution of jobs at specified intervals using Cron syntax. It is useful for running periodic or scheduled tasks within the cluster.
 
 ## k8s cluster Neworking:
 * For any k8s cluster , below are the things o be addresed:
@@ -740,6 +772,8 @@ kubectl describe pod <podname>
 <br/>
 <br/>
 <br/>
+
+
 
 ## AKS (AZURE KUBERNETES SERVICE):
 * In AKS the master is free of cost and it is managed by the AZURE.
