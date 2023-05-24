@@ -145,11 +145,11 @@
 
 1. Take 3 VM's from AWS , having atleat 2 GB RAM 2 VCPUS 
 
-  ![preview](../img/k8S9.png)
+  ![preview](../img/K8S9.png)
 
 
 * ___NOTE__ : Before step-2 , disable swap on all the servers :
-  ![preview](../img/k8S10.png)
+  ![preview](../img/K8S10.png)
 
   
 2. Install container runtime  on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
