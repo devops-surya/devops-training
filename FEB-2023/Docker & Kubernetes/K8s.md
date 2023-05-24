@@ -439,7 +439,7 @@ kubectl get pods -n kube-system
 * We will be using the api-reference internally when we are using the kubectl to communicate with the cluster.
 
 ## Understanding POD :
-![preview](../images/k8s3.png)
+![preview](../img/K8S11.png)
 
 * Pod can be defined as the basic unit of execution in k8s.
 * Pod will have docker container.
