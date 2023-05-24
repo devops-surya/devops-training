@@ -454,7 +454,7 @@ kubectl get pods -n kube-system
 
 <br/>
 
-## Create  a ___manifest file__ or ___deployment.yaml file__ for Pod  : [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/ )
+## Create  a ___manifest file__ or ___deployment.yaml file__ for nginx Pod  : [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.27/ )
 
 ![preview](../images/k8s4.png)
 
@@ -464,28 +464,28 @@ apiVersion: v1
 kind: Pod
 metadata: 
   name: myfirstpod
+  labels:
+    app: myapp
+    type: frontend
 spec:
   containers: 
-    - name: myjenkins
-      image: jenkins:2.60.3  
+    - name: nginx
+      image: nginx 
 ```
 
 * Connect to the k8s master and try to use above manifest to create a pod.
+
 ```
-vi pod.yml
-kubectl apply -f pod.yml
-kubecl get nodes
-kubectl get pods 
-kubectl get pods -o wide
-kubectl get po
-kubectl delete -f pod.yml
+vi pod.yml                 -- Add above content to the file
+kubectl apply -f pod.yml   -- create a pod 
+kubecl get nodes           -- list nodes in k8s 
+kubectl get pods           -- list pods in default namespace
+kubectl get pods -o wide   -- list pods along with on which node they are running
+kubectl get po             -- po is short form of pods
+kubectl delete -f pod.yml  -- delete the pod created
 ```
-![preview](../images/k8s5.png)
-![preview](../images/k8s6.png)
 
 
-<br/>
-<br/>
 <br/>
 <br/>
 
@@ -493,27 +493,17 @@ kubectl delete -f pod.yml
 
 <br/>
 <br/>
-<br/>
-<br/>
 
-
-* Pod are not the durable entities 
-* To make sure the pods are running all the time , we will be using controllers.
-* Pods will be having states of pending , Running , failed , sucess.
-* Kubernetes will be having some probes inside the running container:
- * liveness probe
- * readiness probe
- * startup probe
-
-## Init containers:
-* These containers run before your main conatiner is going to start.
 
 ## CONTROLLERS :
+* Pod are not the durable entities 
+* To make sure the pods are running all the time , we will be using controllers.
 * Controllers wil be taking care of the desired state .
-* In a k8s cluster it is not a suggestable way of creaing pod.Instead of creating a pod, we will be creating a pod with controllers.
-* Controllers in K8s:
- 1. ReplicaSet
- 2. ReplicationController
+* In a k8s cluster it is not a  best pracice to create pod for your application,  we will be creating a pod with controllers.
+
+### Controllers in K8s:
+ 1. ReplicationController
+ 2. ReplicaSet
  3. Deployments
  4. SatefulSets
  5. DaemonSets
@@ -521,8 +511,8 @@ kubectl delete -f pod.yml
  7. CronJOb
 
 ##  ReplicationController:
-* It make sures that the specified pods to be running all the time.
-* create a yaml/manifest file for the ReplicationController
+* It make sures that the specified number of pods to be running all the time.
+* Create a yaml/manifest file for the ReplicationController
 * For the ReplicationController reference  [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#replicationcontroller-v1-core)
 
 
@@ -531,34 +521,92 @@ kubectl delete -f pod.yml
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: myjenkins
+  name: nginx
+  labels:
+    app: myapp
+    type: frontend
 spec: 
   replicas: 3
   template:
     metadata: 
+      name: nginx
       labels: 
-        app: myjenkins
+        app: myapp
+        type: frontend
     spec: 
       containers: 
-        - name: myjenkins
-          image: jenkins:2.60.3
+        - name: nginx
+          image: nginx
 ```
 
-* RUn below commands to apply Replicationcontroller
+* Run below commands to apply Replicationcontroller
 ```
 kubectl apply -f rc.yml
 kubectl get rc
 ```
 
-![preview](../images/k8s7.png)
 
 
-* If the node on which the pods are running are deleted , RC will create the pod on existing node.
-![preview](../images/k8s8.png)
+* ___Note__ : Delete the pod manuallly and see the working of ReplicationController
 
 
 ## Replicaset:
-* It also acts same as a replication controller, but it is internal functionality of another controller(DEPLOYMENT)
+* It also acts same like  replication controller .
+* The difference between the ReplicationController vs ReplicaSet is , the ReplicationController is old object and ReplicaSet is new object which has extra features like selector when you compare with the ReplicationController
+
+* ReplicaSet Manifestfile :
+
+```
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx
+  labels:
+    app: myapp
+    type: frontend
+spec: 
+  replicas: 3
+  template:
+    metadata: 
+      name: nginx
+      labels: 
+        app: myapp
+        type: frontend
+    spec: 
+      containers: 
+        - name: nginx
+          image: nginx
+  selector:
+    matchLabels:
+      app:myapp
+
+```
+
+
+## Imperative vs Declarative way of working with K8s :
+
+* In Kubernetes, there are two primary approaches to working with resources: imperative and declarative.
+
+### Imperative Approach:
+* The imperative approach involves giving explicit commands to the Kubernetes API to perform specific actions. It focuses on specifying the exact steps to be executed. Some examples of imperative commands include creating resources, updating configurations, and scaling replicas.
+With the imperative approach, you directly interact with the Kubernetes command-line interface (CLI) using commands like kubectl. For instance, you might run kubectl create deployment to create a deployment or kubectl scale deployment to scale the number of replicas.
+
+* Benefits of the imperative approach include its simplicity, quick feedback, and easy ad hoc modifications. It is well-suited for tasks that require immediate changes or troubleshooting. However, managing complex deployments can become challenging, as it may involve handling multiple commands and managing configurations manually.
+
+* Example :
+
+```
+kubectl run nginx --image=nginx
+```
+
+## Declarative Approach:
+* The declarative approach involves defining the desired state of resources using YAML or JSON manifests. You specify the desired configuration, and Kubernetes takes responsibility for reconciling the actual state with the desired state.
+You create manifest files that describe the desired state of resources, such as deployments, services, and ingress rules. You then use kubectl to apply the manifest files, and Kubernetes handles the process of creating, updating, or deleting resources to match the desired state.
+
+* The benefits of the declarative approach include reproducibility, consistency, and version control of configurations. It simplifies the management of complex deployments, as you can easily track and apply changes to the desired state. It also facilitates collaboration and automation through version control systems and continuous integration/continuous deployment (CI/CD) pipelines.
+
+Overall, the declarative approach is considered the recommended way of working with Kubernetes, as it aligns with the desired state management philosophy of the platform. It provides better control and manageability over resources in the long run, especially for complex applications and infrastructure.
 
 ## Deployment:
 * It is a controller used to deploy the new version of your code, with the help of providing version numbers.
