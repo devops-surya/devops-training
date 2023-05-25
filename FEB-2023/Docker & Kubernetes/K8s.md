@@ -90,12 +90,13 @@
 
 ## Setup kubernetes cluster by using kubeadm: [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 * Steps to be followed: 
-    1. Take 3 VM's from AWS , having atleat 2 GB RAM
+    1. Take 3 VM's from AWS , having atleat 2 GB RAM & 2 CPUs or more.
     2. Install container runtime on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
     3. Install  kubeadm,kubectl & kubelet  on all nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
     4. Configure Master 
     5. Configure Network 
     6. Join Worker Nodes
+
 
 ## container runtime   
   * A container runtime is a software component responsible for managing and running containers on a host operating system. Containers are lightweight, isolated environments that package applications and their dependencies, allowing them to run consistently across different computing environments.
@@ -138,8 +139,16 @@
        ```
        sudo swapoff -a
        sudo reboot
-
        ```
+
+### Expected Errors and the things to remember :
+
+```
+* Take Ubuntu-20 as OS , Ubuntu-22 has issues while running k8s cluster.
+* Reboot the server after swapoff disabled
+* Install only containerd while installing runtime , dont install all components they occupy the Space/RAM
+* While initializing kubeadm provide  -- kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=<K8sMasterPrivateIP>
+```
 
 1. Take 3 VM's from AWS , having atleat 2 GB RAM 2 VCPUS 
 
