@@ -137,10 +137,8 @@
       * Steps to disable swap
        ```
        sudo swapoff -a
-       sudo vi  /etc/fstab   -- remove or comment the line with swap
        sudo reboot
-       sudo swapon --show    -- If swap is disabled correctly , no output will will be shown 
- 
+
        ```
 
 1. Take 3 VM's from AWS , having atleat 2 GB RAM 2 VCPUS 
@@ -250,7 +248,7 @@
 
         
       ```
-      sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+      sudo apt-get install -y  containerd.io 
       ```
         
 
@@ -333,7 +331,7 @@
 
 ```
 sudo su -
-kubeadm init 
+kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=<K8sMasterPrivateIP>
 
 ```
 * Run below steps if your getting error as ``` container runtime is not running```
@@ -469,8 +467,8 @@ metadata:
     type: frontend
 spec:
   containers: 
-    - name: nginx
-      image: nginx 
+  - name: nginx
+    image: nginx 
 ```
 
 * Connect to the k8s master and try to use above manifest to create a pod.
@@ -535,8 +533,8 @@ spec:
         type: frontend
     spec: 
       containers: 
-        - name: nginx
-          image: nginx
+      - name: nginx
+        image: nginx
 ```
 
 * Run below commands to apply Replicationcontroller
@@ -575,8 +573,8 @@ spec:
         type: frontend
     spec: 
       containers: 
-        - name: nginx
-          image: nginx
+      - name: nginx
+        image: nginx
   selector:
     matchLabels:
       app: myapp
