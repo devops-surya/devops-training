@@ -645,29 +645,74 @@ spec:
 
 ```
 
-
-## StatefulSet: 
-* Similar to ReplicaSet, but designed for stateful applications that require stable network identities and persistent storage. It ensures ordered deployment and scaling of pods, and maintains stable hostnames and volume mounting across pod rescheduling.
-
+* spec.template.spec.restartPolicy: This field specifies the policy for restarting the Pod if it fails, in this case set to Never.
+* spec.backoffLimit: This field specifies the number of times the Job should be retried if it fails, in this case set to 4.
 
 ## Job: 
 * Manages the execution of batch workloads, such as running a job to completion or in a parallel set of pods. It ensures that a specified number of successful completions is achieved before terminating the job.
 
+* Use Kubernetes jobs for one-off or batch processing tasks that have a defined start and end point. Jobs are useful for tasks that require a high level of control over parallelism, retries, and backoffs, such as running data processing pipelines or running periodic database migrations.
+
+
+```
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: echo-job
+spec:
+  template:
+    metadata:
+      name: echo-job
+    spec:
+      containers:
+      - name: echo
+        image: busybox
+        command: ['echo', 'Hello Kubernetes Jobs!']
+      restartPolicy: Never
+  backoffLimit: 4
+```
+
+* spec.template.spec.restartPolicy: This field specifies the policy for restarting the Pod if it fails, in this case set to Never.
+* spec.backoffLimit: This field specifies the number of times the Job should be retried if it fails, in this case set to 4.
+
+
 ## CronJob: 
 * Similar to a Job, but allows you to schedule the execution of jobs at specified intervals using Cron syntax. It is useful for running periodic or scheduled tasks within the cluster.
 
-## k8s cluster Neworking:
-* For any k8s cluster , below are the things o be addresed:
- * container-conatiner communication
- * pod to pod communication
- * Pod to service communication
- * External to service communication
+* Use Kubernetes cronjobs for recurring tasks that need to be performed on a regular basis. Cronjobs are useful for tasks that run on a schedule, such as generating daily reports or performing regular system maintenance.
+
+* Cron syntax -- [REFERHERE](https://crontab.guru/)
+
+```
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: simple-cron-job
+spec:
+  schedule: "*/1 * * * *" # run every minute
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: simple-cron-job
+            image: busybox
+            command:
+            - "echo"
+            - "This is a simple cron job."
+          restartPolicy: OnFailure
+  concurrencyPolicy: Allow
+```
 
 
-## Service:
+## Service: --  [REFERHERE](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)
+* In Kubernetes, a Service is a method for exposing a network application that is running as one or more Pods in your cluster.
 ![preview](../images/k8s9.png)
 
-* For document [REFER HERE](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#service-v1-core)
+## Services have following types:
+* ClusterIP: Exposes service on clusteripinternal address. Default type
+* NodePort: If you want to expose the service on the node on which pod is running.
+* Loadbalancer: Exposes the service externaly using cloud loadbalancers.
 
 ```
 ---
@@ -686,12 +731,7 @@ spec:
 
 ```
 
-* To publish ports , we have following types:
-* ClusterIP: Exposes service on clusteripinternal address. Default type
-* NodePort: If you want to expose the service on the node on which pod is running.
-* Loadbalancer: Exposes the service externaly using cloud loadbalancers.
-
-* Take an example from replicationController:
+* Take an example from replicationController for pods used by svc:
 
 ```
 ---
@@ -713,12 +753,20 @@ spec:
 ```
 
 ```
+kubectl apply -f svc.yml
+kubectl apply -f rc.yml
 kubectl get svc 
 kubectl describe service <servicename>
 kubectl describe pod <podname>
 ```
 
 ![preview](../images/k8s10.png)
+
+
+
+
+## StatefulSet: 
+* Similar to ReplicaSet, but designed for stateful applications that require stable network identities and persistent storage. It ensures ordered deployment and scaling of pods, and maintains stable hostnames and volume mounting across pod rescheduling.
 
 ## k8s storages:
 * In K8s , when ever the pod is deleted , the data produced by the pod is also deleted.
@@ -732,6 +780,7 @@ kubectl describe pod <podname>
 * In the volumes the behaviour is , whenever the pod is deleted the volume is also deleted.
 
 ![preview](../images/k8s11.png)
+
 # Persistent volume:
 * To make persistent volume available to the pod , we need to follow below things:
    1. create a volume manually
@@ -750,7 +799,6 @@ kubectl describe pod <podname>
 ## Dynamic provisioning:
    1. We will be creating storage class
    2. We will be claiming the persistent volume claim directly.
-
 
 
 ## Access modes to the volumes :
@@ -1127,7 +1175,7 @@ spec:
 ## labels and annotations:
 * Search thhe pods with labels :
 ```
-kubectl get pods --selector="app=jenkins
+kubectl get pods --selector="app=jenkins"
 ```
 
 ## Horizontal pod autoscaling (HPA):
