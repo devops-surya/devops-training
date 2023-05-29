@@ -675,6 +675,13 @@ spec:
 * spec.template.spec.restartPolicy: This field specifies the policy for restarting the Pod if it fails, in this case set to Never.
 * spec.backoffLimit: This field specifies the number of times the Job should be retried if it fails, in this case set to 4.
 
+```
+vi job.yml  -- Add above content to the file
+kubectl apply -f job.yml
+kubectl get pods 
+kubectl get jobs 
+kubectl describe pod <podname>
+```
 
 ## CronJob: 
 * Similar to a Job, but allows you to schedule the execution of jobs at specified intervals using Cron syntax. It is useful for running periodic or scheduled tasks within the cluster.
@@ -684,26 +691,36 @@ spec:
 * Cron syntax -- [REFERHERE](https://crontab.guru/)
 
 ```
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: simple-cron-job
+  name: hello
 spec:
-  schedule: "*/1 * * * *" # run every minute
+  schedule: "* * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: simple-cron-job
-            image: busybox
+          - name: hello
+            image: busybox:1.28
+            imagePullPolicy: IfNotPresent
             command:
-            - "echo"
-            - "This is a simple cron job."
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
           restartPolicy: OnFailure
-  concurrencyPolicy: Allow
 ```
 
+
+```
+vi cronjob.yml  -- Add above content to the file
+kubectl apply -f cronjob.yml
+kubectl get pods 
+kubectl get cronjobs 
+kubectl describe pod <podname>
+kubectl get jobs --watch
+```
 
 ## Service: --  [REFERHERE](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)
 * In Kubernetes, a Service is a method for exposing a network application that is running as one or more Pods in your cluster.
@@ -753,8 +770,8 @@ spec:
 ```
 
 ```
-kubectl apply -f svc.yml
 kubectl apply -f rc.yml
+kubectl apply -f svc.yml
 kubectl get svc 
 kubectl describe service <servicename>
 kubectl describe pod <podname>
