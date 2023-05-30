@@ -733,9 +733,11 @@ kubectl get jobs --watch
 ![preview](../images/k8s9.png)
 
 ## Services have following types:
-* ClusterIP: Exposes service on clusteripinternal address. Default type
+* ClusterIP: Exposes service on clusterip internal address. Default type
 * NodePort: If you want to expose the service on the node on which pod is running.
 * Loadbalancer: Exposes the service externaly using cloud loadbalancers.
+
+## NodePort:
 
 ```
 ---
@@ -775,6 +777,7 @@ spec:
 
 ```
 
+
 ```
 kubectl apply -f rc.yml
 kubectl apply -f svc.yml
@@ -783,19 +786,63 @@ kubectl describe service <servicename>
 kubectl describe pod <podname>
 ```
 
-![preview](../images/k8s10.png)
 ![preview](../img/K8S13.png)
 ![preview](../img/K8S14.png)
 
 
+##  ClusterIp
+
+```
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-example
+spec:
+  type: ClusterIP
+  ports:
+      - port: 80
+        targetPort: 80
+  selector:
+    app: nginx
+```
 
 
+```
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: replicationcontroller-example
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14
+
+```
+
+
+```
+kubectl apply -f rc.yml
+kubectl apply -f cluster-svc.yml
+kubectl get svc 
+kubectl describe service <servicename>
+kubectl describe pod <podname>
+```
+
+![preview](../img/K8S15.png)
 
 
 ## StatefulSet: 
 * Similar to ReplicaSet, but designed for stateful applications that require stable network identities and persistent storage. It ensures ordered deployment and scaling of pods, and maintains stable hostnames and volume mounting across pod rescheduling.
 
-## k8s storages:
+## K8S storages:
 * In K8s , when ever the pod is deleted , the data produced by the pod is also deleted.
 * Inorder to not having data loss , the concept of persistent volumes came in to picture.
 
@@ -808,13 +855,8 @@ kubectl describe pod <podname>
 
 ![preview](../images/k8s11.png)
 
-# Persistent volume:
-* To make persistent volume available to the pod , we need to follow below things:
-   1. create a volume manually
-   2. Make it available for the k8s (persistent volume)
-   3. Make it available to the pod (persistent volume claims)
 
-* we have two way of provisioning:
+##  we have two way of provisioning Persistent volume:
 1. Static provisioning
 2. Dynamic provisioning
 
