@@ -645,8 +645,14 @@ spec:
 
 ```
 
-* spec.template.spec.restartPolicy: This field specifies the policy for restarting the Pod if it fails, in this case set to Never.
-* spec.backoffLimit: This field specifies the number of times the Job should be retried if it fails, in this case set to 4.
+```
+vi daemonset.yml  -- add above content to the file 
+kubectl apply -f daemonset.yml
+kubectl get daemonset
+kubectl get pods -A -o wide
+```
+![preview](../img/K8S12.png)
+
 
 ## Job: 
 * Manages the execution of batch workloads, such as running a job to completion or in a parallel set of pods. It ensures that a specified number of successful completions is achieved before terminating the job.
@@ -778,6 +784,10 @@ kubectl describe pod <podname>
 ```
 
 ![preview](../images/k8s10.png)
+![preview](../img/K8S13.png)
+![preview](../img/K8S14.png)
+
+
 
 
 
