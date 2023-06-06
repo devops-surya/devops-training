@@ -977,6 +977,10 @@ eksctl create cluster \
 
 ```
 
+   ![preview](../img/K8S54.png)
+   ![preview](../img/K8S55.png)
+
+
 5. Run the below command to destroy the cluster :
 
 ```
