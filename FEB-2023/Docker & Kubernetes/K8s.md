@@ -911,15 +911,46 @@ kubectl describe pod <podname>
 ### Prerequisites:
 1. Need a ssh key in the required region
 2. Create a ubuntu instance and install the Kubectl , IAM authenticator , aws cli 
-    * Install kubectl -- [REFERHERE](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
-    * Install IAM Authenticator -- [REFERHERE](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)
-    * Install AWS CLI -- [REFERHERE](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html)
-    * Install eksctl -- [REFERHERE](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html)
-3. Must have a user with admin access and configure the user with your instance by using aws-cli.
+__Note__: Take ubuntu 20.04 server 
 
-```
-aws configure 
-```
+   * Create a Ec2 ubuntu server :
+      ![preview](../img/EKS15.png)
+      ![preview](../img/EKS16.png)
+      ![preview](../img/EKS17.png)
+      ![preview](../img/EKS18.png)
+
+   * Install kubectl -- [REFERHERE](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html)
+
+      ![preview](../img/EKS19.png)
+
+   * Install IAM Authenticator -- [REFERHERE](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)
+
+      ![preview](../img/EKS20.png)
+
+   * Install AWS CLI -- [REFERHERE](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html)
+
+      ![preview](../img/EKS22.png)
+      ![preview](../img/EKS21.png)
+
+   * Install eksctl -- [REFERHERE](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-eksctl.html)
+
+3. Create a IAM user with admin access in AWS  and configure the IAM user on  your K8S-Master instance by using aws-cli.
+    * Create IAM user with Admin access :
+      ![preview](../img/EKS23.png)
+      ![preview](../img/EKS24.png)
+      ![preview](../img/EKS25.png)
+      ![preview](../img/EKS26.png)
+      ![preview](../img/EKS27.png)
+      ![preview](../img/EKS28.png)
+      ![preview](../img/EKS29.png)
+
+    * Configure IAM user to the K8s-Master to authenticate AWS: 
+
+        ```
+        aws configure 
+
+        ```
+      ![preview](../img/EKS30.png)
 
 
 4. Run the below command  to create the cluster .
@@ -927,9 +958,9 @@ aws configure
 ```
 eksctl create cluster \
 --name eks-cluster-demo \
---region us-west-2 \
+--region us-east-2 \
 --nodegroup-name eks-cluster-demo-nodegroup \
---node-type t3.medium \
+--node-type t2.medium \
 --nodes 2 \
 --nodes-min 2 \
 --nodes-max 2 \
@@ -942,8 +973,8 @@ eksctl create cluster \
 5. Run the below command to destroy the cluster :
 
 ```
-eksctl delete cluster --name my-cluster --region us-west-2
-eksctl delete cluster --name eks-cluster-demo --region us-west-2
+eksctl delete cluster --name my-cluster --region us-east-2
+eksctl delete cluster --name eks-cluster-demo --region us-east-2
 
 ```
 
