@@ -911,7 +911,7 @@ kubectl describe pod <podname>
 ### Prerequisites:
 1. Need a ssh key in the required region
 2. Create a ubuntu instance and install the Kubectl , IAM authenticator , aws cli 
-__Note__: Take ubuntu 20.04 server 
+* __Note__: Take ubuntu 20.04 server 
 
    * Create a Ec2 ubuntu server :
       ![preview](../img/EKS15.png)
