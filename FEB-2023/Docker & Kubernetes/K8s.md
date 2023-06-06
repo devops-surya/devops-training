@@ -905,13 +905,13 @@ kubectl describe pod <podname>
 * In EKS the master is not free of cost and it is managed by AWS.
 
 
-
+# EKS cluster creation: 
 ## To create a EKS cluster by using eksctl  follow below steps :
 
 ### Prerequisites:
 1. Need a ssh key in the required region
 2. Create a ubuntu instance and install the Kubectl , IAM authenticator , aws cli 
-* __Note__: Take ubuntu 20.04 server & t2.medium
+* __Note__: Take ubuntu 20.04 server & t2.medium & Run the install steps on ubuntu user 
 
    * Create a Ec2 ubuntu server :
       ![preview](../img/EKS15.png)
@@ -933,6 +933,9 @@ kubectl describe pod <podname>
       ![preview](../img/EKS21.png)
 
    * Install eksctl -- [REFERHERE](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-eksctl.html)
+       
+      ![preview](../img/K8S51.png)
+
 
 3. Create a IAM user with admin access in AWS  and configure the IAM user on  your K8S-Master instance by using aws-cli.
     * Create IAM user with Admin access :
@@ -940,7 +943,11 @@ kubectl describe pod <podname>
       ![preview](../img/EKS24.png)
       ![preview](../img/EKS25.png)
       ![preview](../img/EKS26.png)
+      ![preview](../img/K8S52.png)
       ![preview](../img/EKS27.png)
+
+    * Create AccesKey and Secret Key 
+      ![preview](../img/K8S53.png)
       ![preview](../img/EKS28.png)
       ![preview](../img/EKS29.png)
 
