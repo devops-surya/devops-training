@@ -1169,7 +1169,6 @@ kubectl rollout history deployments jenkins-deploy
 kubectl rollout undo deployments jenkins-deploy --to-revision=1
 ```
 
-## statefulset  and stateless set:
 
 ## ConfigMap and secrets:
 * For any application to be running , we will be havings some configuration
@@ -1209,12 +1208,15 @@ spec:
 * For official document of secrets [REFER HERE](https://kubernetes.io/docs/concepts/configuration/secret/)
 
 
-## Namespaces:
+## Namespace:
+* In Kubernetes (K8s), a namespace is a virtual cluster within a physical cluster. It is used to create a logical separation and grouping of resources. Namespaces provide a way to divide and isolate resources in a Kubernetes cluster to avoid naming collisions and manage access control.
+
+* By default, when you create resources in Kubernetes without specifying a namespace, they are created in the "default" namespace. However, you can create additional namespaces to organize your resources based on different criteria, such as teams, environments (e.g., development, staging, production), or projects.
 
 --namespce=dev
 
 ## labels and annotations:
-* Search thhe pods with labels :
+* Search the pods with labels :
 ```
 kubectl get pods --selector="app=jenkins"
 ```
