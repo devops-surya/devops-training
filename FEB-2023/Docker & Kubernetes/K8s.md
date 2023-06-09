@@ -1187,7 +1187,7 @@ metadata:
 data:
   name: devops-surya
 ```
-* create a pod with above confimap:
+* create a pod with above configmap:
 
 ```
 apiVersion: v1
@@ -1213,7 +1213,9 @@ spec:
 
 * By default, when you create resources in Kubernetes without specifying a namespace, they are created in the "default" namespace. However, you can create additional namespaces to organize your resources based on different criteria, such as teams, environments (e.g., development, staging, production), or projects.
 
---namespce=dev
+```
+kubectl create namespace <namespace-name>
+```
 
 ## labels and annotations:
 * Search the pods with labels :
