@@ -70,7 +70,7 @@
 
 
 
-## Difference betwen Centralised VCS and Distibuted VCS :
+## Difference betwen Centralised VCS and Distributed VCS :
 ![preview](../images/CVCS_VS_DVCS.png)
 
 <br/>
@@ -138,3 +138,114 @@ git commit -m "< added some changes>"
 
 * * * 
 <br/>  
+
+# Move changes from workingtree to Localrepo
+## Scenario : Create a file 1.txt move it from workingtree to Localrepo :
+![preview](../images/git4.png)
+
+```
+touch 1.txt 
+
+git status 
+
+git add . 
+
+git commit -m "adding 1.txt" 
+
+```
+  
+![preview](../images/git5.png)
+![preview](../images/G9999.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## Untracked and Modified files :
+* Untracked is the new file added and it is not there initially.
+* Modified is the file that already present and there are some changes in the content of the file
+![preview](../images/git6.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## Add only the modified changes to the stagging area:
+
+```
+git add -u      -- add only the modified changes to stagging area 
+git add --all   --- it add all changes 
+git add -A      --- it add all chnages
+```
+<br/>
+
+* * * 
+<br/>
+
+## Track the changes made in the history : 
+
+```
+git log --oneline   ---it will show u all the commit u have made till now
+git checkout <commitid>   --- u can track the changes on the history 
+git checkout master 
+```
+![preview](../images/git7.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## Will git track folder ..?
+* Git tracks only the files not the folders .
+
+![preview](../images/git8.png)
+
+<br/>
+
+* * * 
+<br/>
+
+# Revert the changes from staggingarea , Workingtree & delete in  Workingtree 
+## SCENARIO : Get back the changes from staggingarea to Workingtree & remove the changes from Workingtree also 
+
+![preview](../images/git12.png)
+
+### RESET 
+* Reset will get back the changes from the staggingarea to the workingtree
+
+![preview](../images/git10.png)
+![preview](../images/git11.png)
+
+<br/>
+
+* * * 
+<br/>
+
+### checkout 
+* Checkout  is used to remove the changes made on the workingtree , after we do reset
+* **NOTE** : Checkout in this case works on modified files 
+
+```
+git checkout  <filename>
+```
+![preview](../images/tt1.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## Scenario:  Get back the changes from both staggingarea and workingtree at a sametime  :
+
+```
+git reset --hard 
+```
+![preview](../images/git13.png)
+
+<br/>
+
+* * * 
+<br/>
