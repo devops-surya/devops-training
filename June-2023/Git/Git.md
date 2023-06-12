@@ -1,11 +1,4 @@
-### BASIC PIPELINE OF DEVOPS:
-![preview](../images/git1.png)
-
-<br/>
-
-* * * 
-<br/>
-
+# GIT :
 
 ## Organization Requirements :
 * All the developers has to work on a same code parallely.
