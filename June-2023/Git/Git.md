@@ -122,4 +122,19 @@ git commit -m "< added some changes>"
 * * * 
 <br/>
 
+##  Initializing Git on local  : 
 
+```
+ mkdir gitpractice
+
+ cd gitpractice
+
+ git init  ---  To intilalize the git in the present folder.
+
+```
+![preview](../images/git3.png)
+
+<br/>
+
+* * * 
+<br/>  
