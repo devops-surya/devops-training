@@ -128,7 +128,7 @@ git commit -m "adding 1.txt"
 
 ## Untracked and Modified files :
 * Untracked is the new file added and it is not there initially.
-* Modified is  the file that already present and there are some changes in the content of the file
+* Modified is the file that already present and there are some changes in the content of the file
 ![preview](../images/git6.png)
 
 <br/>
@@ -172,12 +172,13 @@ git checkout master
 * * * 
 <br/>
 
+# Revert the changes from staggingarea , Workingtree & delete in  Workingtree 
 ## SCENARIO : Get back the changes from staggingarea to Workingtree & remove the changes from Workingtree also 
 
 ![preview](../images/git12.png)
 
 ### RESET 
-* Reset will get back the changes from  the staggingarea to the workingtree
+* Reset will get back the changes from the staggingarea to the workingtree
 
 ![preview](../images/git10.png)
 ![preview](../images/git11.png)
@@ -213,6 +214,7 @@ git reset --hard
 * * * 
 <br/>
 
+#  Tracking the deleted files
 ## Removing  the file is also a change in the working of git.
 ![preview](../images/git14.png)
 
@@ -335,6 +337,9 @@ git push origin master
 * * * 
 <br/>
 
+# CLONE
+* *  you can use the git clone command followed by the repository URL to clone the repository. The repository URL can be obtained from the repository's webpage or by copying the URL provided by the version control system hosting the repository (e.g., GitHub, GitLab, Bitbucket).
+
 ## Scenario : A new developer added to a team and he/she want the  total code from the repositry:
 
 ```
@@ -346,7 +351,14 @@ git clone https://github.com/devops-surya/sample.git
 * * * 
 <br/>
 
-## Scenario : A developer already exists and he/she has the code in his local desktop. But he/she dont have the latest code.
+# PULL & FETCH
+* The git pull command is used to update your local repository with the latest changes from the remote repository. It combines the actions of ```git fetch``` and ```git merge``` into one command.
+
+```
+git pull = git fetch + git merge
+```
+
+## Scenario : A developer already exists and he/she has the code in his local desktop. But he/she don't have the latest code. To get the latest the code we use git pull
 
 ```
 git pull https://github.com/devops-surya/sample.git
@@ -356,27 +368,6 @@ git pull https://github.com/devops-surya/sample.git
 * * * 
 <br/>
  
-## Merge conflicts.
-
-## Scenario : We have two developers newly assigned to a new project.
-
-![preview](../images/git334.png)
-
-* To create the above scenario , follow the below steps :
-  * Create a folder of mergeconflicts.
-  * create a two folders with names developer1 , developer2 .
-  * Get into folders of developer1, developer2 and clone the repo .
-  ![preview](../images/g1.png)
-  * Developer1 has made some changes to the file 6.txt and then pushed to the repo .
-  ![preview](../images/g2.png) 
-  * Developer2 has made changes on the local and pushed the changes , here it is asking for the pull as shown below :
-  ![preview](../images/g3.png) 
-  * Developer2 has to pull the code and has to take call of merge conflicts and push the code again.
-  ![preview](../images/g4.png)
-<br/>
-
-* * * 
-<br/>
 
 ## Multiple branching :
 * If a company want to serve the code to the mutliple companies , they will create multiple branches and go for the parallel development.
@@ -425,6 +416,7 @@ git branch -r
 * * * 
 <br/>
 
+
 ## MERGE :
 * Merge will be helpful in combining the code between two branches .
 
@@ -437,6 +429,33 @@ git branch -r
 
 * * * 
 <br/>
+
+
+## Merge conflicts.
+* A merge conflict is a situation that occurs in Git when there are conflicting changes to the same part of a file or multiple files during a merge operation.
+
+## Scenario : We have two developers newly assigned to a new project.
+
+![preview](../images/git334.png)
+
+* To create the above scenario , follow the below steps :
+  * Create a folder of mergeconflicts.
+  * create a two folders with names developer1 , developer2 .
+  * Get into folders of developer1, developer2 and clone the repo .
+  ![preview](../images/g1.png)
+  * Developer1 has made some changes to the file 6.txt and then pushed to the repo .
+  ![preview](../images/g2.png) 
+  * Developer2 has made changes on the local and pushed the changes , here it is asking for the pull as shown below :
+  ![preview](../images/g3.png) 
+  * Developer2 has to pull the code and has to take call of merge conflicts and push the code again.
+  ![preview](../images/g4.png)
+  
+<br/>
+
+* * * 
+<br/>
+
+
 
 ## Fastforward merge:
 ![preview](../images/git45.png)

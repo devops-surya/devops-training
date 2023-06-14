@@ -373,6 +373,9 @@ git push origin master
 * * * 
 <br/>
 
+# CLONE
+* *  you can use the git clone command followed by the repository URL to clone the repository. The repository URL can be obtained from the repository's webpage or by copying the URL provided by the version control system hosting the repository (e.g., GitHub, GitLab, Bitbucket).
+
 ## Scenario : A new developer added to a team and he/she want the  total code from the repositry:
 
 ```
@@ -384,11 +387,66 @@ git clone https://github.com/devops-surya/sample.git
 * * * 
 <br/>
 
-## Scenario : A developer already exists and he/she has the code in his local desktop. But he/she dont have the latest code.
+# PULL & FETCH
+* The git pull command is used to update your local repository with the latest changes from the remote repository. It combines the actions of ```git fetch``` and ```git merge``` into one command.
+
+```
+git pull = git fetch + git merge
+```
+
+## Scenario : A developer already exists and he/she has the code in his local desktop. But he/she don't have the latest code. To get the latest the code we use git pull
 
 ```
 git pull https://github.com/devops-surya/sample.git
 ```
+<br/>
+
+* * * 
+<br/>
+ 
+
+## Multiple branching :
+* If a company want to serve the code to the mutliple companies , they will create multiple branches and go for the parallel development.
+![preview](../images/git335.png)
+
+* To create a branch
+
+```
+git branch <branchname>
+```
+* To list the branches:
+```
+git branch
+```
+
+* To switch between the branches
+
+```
+git checkout <branchname>
+```
+
+* To create a branch and switch to it directly:
+
+```
+git checkout -b <branchname> 
+```
+![preview](../images/git36.png)
+![preview](../images/git37.png)
+
+* To push the code from the company-x branch to the remote repo:
+
+```
+git push origin company-x
+```
+![preview](../images/git38.png)
+![preview](../images/git39.png)
+
+* To see the remote branches:
+```
+git branch -r
+```
+![preview](../images/git40.png)
+
 <br/>
 
 * * * 
