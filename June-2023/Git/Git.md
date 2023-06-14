@@ -199,7 +199,7 @@ git checkout master
 <br/>
 
 ## Will git track folder ..?
-* Git tracks only the files not the folders .
+* Git tracks only the files not the empty folders .
 
 ![preview](../images/git8.png)
 
@@ -208,7 +208,7 @@ git checkout master
 * * * 
 <br/>
 
-# Revert the changes from staggingarea , Workingtree & delete in  Workingtree 
+# Revert the changes from Staggingarea to Workingtree & delete in  Workingtree 
 ## SCENARIO : Get back the changes from staggingarea to Workingtree & remove the changes from Workingtree also 
 
 ![preview](../images/git12.png)
@@ -245,6 +245,150 @@ git reset --hard
 ```
 ![preview](../images/git13.png)
 
+<br/>
+
+* * * 
+<br/>
+
+#  Tracking the deleted files
+## Removing  the file is also a change in the working of git.
+![preview](../images/git14.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## SCENARIO: Revert the commit .
+![preview](../images/gn9.png)
+
+
+### Revert :
+* Git revert is to revert the commit .
+
+```
+touch 7.txt
+
+git add .
+
+git commit -m " added 7.txt"
+
+git revert <commitid>
+```
+
+![preview](../images/gn7.png)
+![preview](../images/gn8.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## Head VS Detached Head
+* Head will be always at the latest commit .
+* When we are going back to the history , the head will be detached and it will go back to the commit which you are using.
+
+![preview](../images/Head.png)
+![preview](../images/git15.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## Push the changes from local repo to remote repo
+###  PUSH 
+* git push will add changes from local repo to the remote repo
+
+![preview](../images/git16.png)
+
+
+* For Remote repository we must have a ***github*** account to create it .
+* Repositry is the place where the code will be stored.
+* The number of repositries will be depending up on the basis of the project.
+
+
+## High level view of github 
+![preview](../images/git17.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## GitHub Signup : [REFER HERE](https://github.com/signup?return_to=https%3A%2F%2Fgithub.com%2Fsignup&source=login) 
+* Follow the below instructions to signup :
+* **Note** - check the Free plan in the below steps
+![preview](../images/h2.png)
+![preview](../images/h3.png)
+![preview](../images/h4.png)
+![preview](../images/h5.png)
+![preview](../images/h6.png)
+![preview](../images/h7.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## Create a repositry in the github:
+* Go to the repositries and then refer the image below:
+![preview](../images/git19.png)
+* Provided the repositry name and make it public , so that it will be available to everyone.
+![preview](../images/git20.png)
+
+## Configure RemoteRepo to the LocalRepo to push the code. 
+
+![preview](../images/git21.png)
+
+* To configure the git in your local  :
+
+```
+git config --global user.name <username>
+git config --global user.email <emailaddress>
+git config --list
+git remote add origin https://github.com/devops-surya/sample.git
+git push origin master
+```
+![preview](../images/git22.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## PersonalAccessTokens
+* Git depricated the support of using password and  expecting us to use the PersonalAccessToekn as password.
+* Go to >> Settings >> Developer Settings >> Personal access tokens >> Generate New Token >> 1.Note 2.Expiration 3.select scopes 4. Generate Token
+
+![preview](../images/gn1.png)
+![preview](../images/gn2.png)
+![preview](../images/gn3.png)
+![preview](../images/gn4.png)
+![preview](../images/gn5.png)
+![preview](../images/gn6.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## Scenario : A new developer added to a team and he/she want the  total code from the repositry:
+
+```
+git clone https://github.com/devops-surya/sample.git
+```
+![preview](../images/git23.png)
+<br/>
+
+* * * 
+<br/>
+
+## Scenario : A developer already exists and he/she has the code in his local desktop. But he/she dont have the latest code.
+
+```
+git pull https://github.com/devops-surya/sample.git
+```
 <br/>
 
 * * * 
