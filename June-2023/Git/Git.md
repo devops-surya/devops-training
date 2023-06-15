@@ -405,7 +405,7 @@ git pull https://github.com/devops-surya/sample.git
 <br/>
  
 
-## Multiple branching :
+## Multi branching :
 * If a company want to serve the code to the mutliple companies , they will create multiple branches and go for the parallel development.
 ![preview](../images/git335.png)
 
@@ -453,3 +453,91 @@ git branch -r
 <br/>
 
 
+## MERGE :
+* Merge will be helpful in combining the code between two branches .
+
+![preview](../images/git41.png)
+* create a file y1.txt and do add , commit .
+![preview](../images/git42.png)
+* Switch to the company-x branch . Create  a file x1.txt and do add , commit .
+![preview](../images/git43.png)
+
+<br/>
+
+* * * 
+<br/>
+
+
+
+## Merge conflicts.
+* A merge conflict is a situation that occurs in Git when there are conflicting changes to the same part of a file or multiple files during a merge operation.
+
+## Scenario : We have two developers newly assigned to a new project.
+
+![preview](../images/git334.png)
+
+* To create the above scenario , follow the below steps :
+  * Create a folder of mergeconflicts.
+  * create a two folders with names developer1 , developer2 .
+  * Get into folders of developer1, developer2 and clone the repo .
+  ![preview](../images/g1.png)
+  * Developer1 has made some changes to the file 6.txt and then pushed to the repo .
+  ![preview](../images/g2.png) 
+  * Developer2 has made changes on the local and pushed the changes , here it is asking for the pull as shown below :
+  ![preview](../images/g3.png) 
+  * Developer2 has to pull the code and has to take call of merge conflicts and push the code again.
+  ![preview](../images/g4.png)
+  
+<br/>
+
+* * * 
+<br/>
+
+
+
+## Fastforward merge:
+![preview](../images/git45.png)
+* Create branch a company-z. create a file z1.txt and do add , commit.
+![preview](../images/git44.png)
+* if u dont want to go with the fastforward merge 
+
+```
+git checkout master 
+git merge --no-ff company-z
+```
+<br/>
+
+* * * 
+<br/>
+
+## Rebase :
+* Rebase will be used when you want to change the base of the branch.
+![preview](../images/git47.png)
+* Create  a branch-a and create a a1.txt file in it. do git add , git commit.
+* switch to master branch and create file rebase.txt, do git add and git commit.
+![preview](../images/git46.png)
+* For rebase to be done
+
+```
+git checkout branch-a
+git rebase master
+```
+![preview](../images/git48.png)
+
+<br/>
+
+* * * 
+<br/>
+
+## cherry-pick :
+* Cherry-pick will be used when you need the specific commit from another branch.
+![preview](../images/git50.png)
+* Create a branch-c , add two commits  by creating c1.xtx and c2.txt.
+![preview](../images/git49.png)
+* Create a branch-d , add d1.txt . do add and commit.
+![preview](../images/git51.png)
+![preview](../images/git52.png)
+<br/>
+
+* * * 
+<br/>
