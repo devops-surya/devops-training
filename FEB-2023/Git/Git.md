@@ -544,7 +544,8 @@ git push origin -D branch_name
 <br/>
 
 ## Branching strategy :
-![preview](../images/BS.png)
+![preview](../img/BranchingStarategy.png)
+
 
 <br/>
 
