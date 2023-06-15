@@ -374,7 +374,7 @@ git push origin master
 <br/>
 
 # CLONE
-* *  you can use the git clone command followed by the repository URL to clone the repository. The repository URL can be obtained from the repository's webpage or by copying the URL provided by the version control system hosting the repository (e.g., GitHub, GitLab, Bitbucket).
+*  you can use the git clone command followed by the repository URL to clone the repository. The repository URL can be obtained from the repository's webpage or by copying the URL provided by the version control system hosting the repository (e.g., GitHub, GitLab, Bitbucket).
 
 ## Scenario : A new developer added to a team and he/she want the  total code from the repositry:
 
