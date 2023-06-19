@@ -569,3 +569,80 @@ git push origin -D branch_name
 
 * * * 
 <br/>
+
+
+## Branching strategy :
+![preview](../img/BranchingStarategy.png)
+
+
+<br/>
+
+* * * 
+<br/>
+
+
+## Fork:
+* A fork creates a completely independent copy of Git repository that sits in your github account.
+
+![preview](../images/jenkins87.png)
+
+* Go to the repo  which you want to fork:
+
+![preview](../images/jenkins88.png) 
+
+![preview](../images/jenkins89.png)
+
+
+<br/>
+
+* * * 
+<br/>
+
+## STASH 
+* ```git stash`` is a Git command used to temporarily save changes that are not ready to be committed yet. It allows you to switch to a different branch or work on a different task without committing your current changes. The changes you stash are stored in a stack of stashes, and you can apply or drop them later.
+
+* The basic usage of git stash is as follows:
+
+```
+touch stash.txt
+git stash 
+```
+![preview](../img/git1.png)
+
+* To apply the most recent stash and remove it from the stash stack, you can use ```git stash pop```:
+
+```
+git stash pop
+
+```
+![preview](../img/git2.png)
+
+
+* To apply the stash without removing it from the stash stack, you can use ```git stash apply```:
+
+```
+git stash apply
+```
+![preview](../img/git3.png)
+![preview](../img/git4.png)
+
+
+<br/>
+
+* * * 
+<br/>
+
+## Blame :
+* In Git, the ```blame``` command is used to track the changes made to a file, displaying the author and commit information for each line of the file. It helps you determine who last modified a specific line or section of code, providing valuable insights into the commit history.
+
+    * The basic syntax of git blame is as follows:
+
+    ```
+    git blame <file>
+
+    ```
+
+<br/>
+
+* * * 
+<br/>
