@@ -516,7 +516,7 @@ git rebase master
 <br/>
 
 
-## Delete a Branch in Local/Remote:
+# Delete a Branch in Local/Remote:
 
 ## Delete Local branch 
 
