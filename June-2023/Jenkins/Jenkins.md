@@ -14,8 +14,7 @@
 ## Pipeline flow of devops :
 ![preview](../images/jenkins1.png)
 ![preview](../images/JenkinsBasicPipeline.png)
-![preview](../images/CI_CDPipeline.png)
-
+![preview](../images/CI_CDPipeline1.png)
 
 <br/>
 
@@ -24,8 +23,8 @@
 <br/>
 
 ## Installing Jenkins 
-* prerequisites:
-1. Ubuntu
+### prerequisites:
+1. Ubuntu Server 
 2. Java 
 3. Jenkins
 
@@ -41,12 +40,16 @@
 ### Jenkins master setup :
 * Jenkins installation official document [REFER HERE](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu) 
 * Create a EC2 in AWS and follow below steps to install Jenkins :
+
+#### Java installation:
 ```
 sudo apt-get update
 sudo apt-get install openjdk-11-jdk
 
 java -version
-
+```
+#### jenkins Installation:
+```
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
@@ -57,8 +60,8 @@ sudo apt-get update
 sudo apt-get install jenkins
 ```
 
-* To open jenkins on brower 
-* ***NOTE*** : jenkins runs on port of 8080 . So port 8080 must be opened in EC2 server (or) set inbound rule to All Traffic .
+### To open Jenkins on browser :
+* ___NOTE___: Jenkins runs on port of 8080 . So port 8080 must be opened in EC2 server (or) set inbound rule to All Traffic .
 ```
 http://publicipaddress:8080
 ```
