@@ -13,8 +13,8 @@
 
 ## Pipeline flow of devops :
 ![preview](../images/jenkins1.png)
-![preview](../images/sqpipeline1.png)
-![preview](../images/jenkins3.png)
+![preview](../images/JenkinsBasicPipeline.png)
+![preview](../images/CI_CDPipeline.png)
 
 
 <br/>
