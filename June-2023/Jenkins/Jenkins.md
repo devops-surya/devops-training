@@ -87,3 +87,151 @@ http://publicipaddress:8080
 * * * 
 
 <br/>
+
+
+## Create a *Job* :
+* In Jenkins we do automation by creating jobs :
+![preview](../images/J13.png)
+
+## Multiple ways to create a Job:
+![preview](../images/J14.png)
+
+## Create a Job in Freestyle:
+* Click on the  **New Item**  and follow the below instructions in the screenshots :
+![preview](../images/J13.png)
+![preview](../images/J15.png)
+![preview](../images/J16.png)
+![preview](../images/J17.png)
+![preview](../images/J18.png)
+
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Multiple Sections in Jenkins Freestyle job:
+1. General
+2. Source Code Management
+3. Build Triggers
+4. Build Environment
+5. Build Steps
+6. Post-build Actions
+![preview](../images/J22.png)
+![preview](../images/j23.png)
+
+
+<br/>
+
+<br/>
+
+* * * 
+
+<br/>
+
+<br/>
+
+
+
+# Explore ***Manage Jenkins*** Options : 
+
+## ***Manage jenkins*** is used to configure the Jenkins (settings) :
+![preview](../images/J19.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Jenkins executor :
+* ***Executor*** will define , how many jobs run parallely at a time.
+![preview](../images/J20.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+## Configure System 
+* Go to Manage Jenkins >> Configure System 
+
+![preview](../images/J24.png)
+![preview](../images/J25.png)
+![preview](../images/J26.png)
+![preview](../images/J27.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Configure Global Security 
+* Go to Manage Jenkins >> Configure Global Security 
+
+![preview](../images/J24.png)
+![preview](../images/J28.png)
+![preview](../images/J29.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Manage Plugins :
+* Plugins are a core feature of Jenkins, an open-source automation server used for continuous integration and continuous delivery (CI/CD) of software projects. Plugins allow users to extend the functionality of Jenkins by adding new features and integrations with other tools.
+
+* Go to  Manage jenkins >> Manage Plugins
+![preview](../images/J24.png)
+![preview](../images/J30.png)
+![preview](../images/J31.png)
+
+* In the "Available" tab, you can browse for new plugins to install. You can use the search bar to find plugins by name, or you can browse through the list of available plugins.
+* In the "Installed" tab, you can view all of the plugins that are currently installed on your Jenkins instance. You can also disable or uninstall plugins from this page.
+* In the "Updates" tab, you can see if there are any updates available for the plugins you have installed. To update a plugin, select the checkbox next to the plugin and click on the "Download now and install after restart" button.
+* In the "Advanced" tab, you can upload a plugin from your local machine or specify a custom update center URL.
+***Note*** :  Some plugins may require a Jenkins restart to be fully installed or updated. When you install or update a plugin, Jenkins will 
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Restart the jenkins :
+* Multiple ways to restart 
+  1. From ***cli*** from jenkins server : 
+    ``` 
+    sudo service jenkins restart     -- Restart Jenkins
+    sudo service jenkins status      -- check the status of jenkins
+    ```
+    ![preview](../images/RJ.png)
+
+  2. From ***GUI*** i,e Jenkins dashboard in browser: 
+    ![preview](../images/J32.png)
+
+  3. From  ***Manage Jenkins*** in Jenkins Dashboard
+     ![preview](../images/J33.png)
+
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
