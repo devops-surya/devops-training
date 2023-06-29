@@ -235,3 +235,110 @@ http://publicipaddress:8080
 
 <br/>
 <br/>
+
+
+## Scenario-1: Create a CI Job.
+### Find below requirements :
+```
+Need a Freestyle Job that should automatically detect the changes in github, get the code from SampleMavenProject, build it by using Maven &  Delete the Workspace for every build.
+```
+![preview](../images/SN-1.png)
+
+![preview](../images/J13.png)
+![preview](../images/J34.png)
+![preview](../images/J35.png)
+![preview](../images/J36.png)
+![preview](../images/J37.png)
+
+* Explore ***Console Output*** of **SMP** Job
+![preview](../images/J38.png)
+![preview](../images/J39.png)
+![preview](../images/J40.png)
+![preview](../images/J41.png)
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+
+## Scenario-2: Add Post-build action to the Scenario-1 
+### Find below requirement for Post-build actions:
+```
+Configure Scenario-1 CI job with **Archive the artifacts** & **Publish JUnit test result report** Post-build actions 
+```
+* ***Archive the artifacts*** -- It will provide option to download the artifact from the Jenkins Dashboard
+* ***Publish JUnit test result report*** -- It will publish the test result in the Jenkins Dashboard 
+
+![preview](../images/SN-2.png)
+
+
+![preview](../images/J38.png)
+![preview](../images/J42.png)
+![preview](../images/J43.png)
+![preview](../images/J44.png)
+![preview](../images/J45.png)
+![preview](../images/J46.png)
+![preview](../images/J47.png)
+
+
+
+<br/>
+<br/>
+
+* * * 
+
+<br/>
+<br/>
+
+##  Understand the build process in Jenkins :
+
+  * A ***build*** in Jenkins refers to the process of running a job, which typically involves compiling the source code, running tests, and producing artifacts etc. Each build in Jenkins is assigned a build number, which is incremented with each new build of a job. You can view the build history for a job in Jenkins, including the build number, the date and time of the build, and the status of the build (success or failure). You can also view the console output for a build, which shows the output of the build process, including any errors or warnings that occurred during the build.
+
+  * The ***Jenkins workspace*** directory is typically a subdirectory of the ***Jenkins home directory*** and is unique to each job. When a job is triggered, Jenkins will create a new workspace directory for the job and copy the source code from your source control system into the workspace.
+
+
+
+
+## Jenkins Home Directory Structure  :
+
+  * In Jenkins, the ***home directory*** is the top-level directory where Jenkins stores all its configuration, plugins, and other related files. The location of the Jenkins home directory varies depending on the operating system and the installation method used.
+
+  * When you install Jenkins on a Unix-like system, such as Linux or macOS, the default Jenkins home directory is usually located at /var/jenkins_home. On Windows, the default location is usually C:\Program Files (x86)\Jenkins.
+
+![preview](../images/J48.png)
+![preview](../images/J49.png)
+
+
+
+  * The Jenkins home directory contains several important directories and files, including:
+
+      * config.xml: This file contains the main configuration settings for Jenkins, such as security settings, system properties, and global tool installations.
+
+      * jobs/: This directory contains the configuration and workspace directories for each Jenkins job. Each job is stored in a separate directory within the jobs/ directory.
+      
+      * jobs/**Jobname**/builds/: This directory contains all the build related information like no of builds and build history 
+      
+      * plugins/: This directory contains all the installed plugins for Jenkins. Each plugin is stored in a separate directory within the plugins/ directory.
+
+      * secrets/: This directory contains sensitive information, such as passwords and API keys, that Jenkins uses for authentication and authorization.
+
+    * users/: This directory contains the user accounts and their associated settings, including passwords and permissions.
+
+It's important to back up the Jenkins home directory regularly, as it contains all the important configuration and data for your Jenkins installation. This will allow you to easily restore your Jenkins instance in case of a system failure or other issue.
+
+
+
+## CronTab syntax : 
+* Cronatb Guru -- [REFER HERE](https://crontab.guru/#*_*_*_*_*)
+![preview](../images/CT.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
