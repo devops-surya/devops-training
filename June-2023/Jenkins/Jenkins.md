@@ -342,3 +342,145 @@ It's important to back up the Jenkins home directory regularly, as it contains a
 * * * 
 
 <br/>
+
+## Build with parameters:
+  * In Jenkins, you can create a build job that accepts parameters from the user. This allows you to customize the build process and pass in values that are specific to the build.
+
+      * String Parameter: Allows the user to enter a text value.
+
+      * Boolean Parameter: Allows the user to select a checkbox.
+
+      * Choice Parameter: Allows the user to select a value from a dropdown list.
+
+      * File Parameter: Allows the user to upload a file.
+
+
+### Official Dcoument for Parameters :
+* Git parameter [ReferHere](https://plugins.jenkins.io/git-parameter/)
+* String parameter [ReferHere](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build)
+* Choice Parameter [ReferHere](https://plugins.jenkins.io/extensible-choice-parameter/)
+* Active choice parameter [ReferHere](https://plugins.jenkins.io/uno-choice/#:~:text=The%20Active%20Choices%20plugin%20is,or%20rich%20HTML%20UI%20widgets.)
+
+![preview](../images/J50.png)
+
+
+
+#### Scenario-3 : Install & Configure ***Git Parameter***  to pass the branch paramater while running the Job .
+    
+![preview](../images/SN-3.png)
+
+
+  1. Install ***Git Paramter plugin*** 
+
+![preview](../images/J24.png)
+![preview](../images/J30.png)
+![preview](../images/J31.png)
+![preview](../images/J51.png)
+![preview](../images/J52.png)
+![preview](../images/J53.png)
+
+  2. Configure ***Git Paramter plugin*** in the __SMP__ Jenkins Job
+
+![preview](../images/J38.png)
+![preview](../images/J54.png)
+![preview](../images/J55.png)
+![preview](../images/J56.png)
+![preview](../images/J57.png)
+![preview](../images/J58.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+
+### Scenario-4:  Create a NewJob SMP-2 , it should be copied from the existing SMP Job.
+![preview](../images/SN-4.png)
+
+
+* Copy/Clone the existing Job , will help us in this scenario.
+* when you copy a job, it will inherit the settings and configuration of the original job, including the build history.
+
+
+![preview](../images/J62.png)
+![preview](../images/J63.png)
+![preview](../images/J64.png)
+![preview](../images/J65.png)
+![preview](../images/J66.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Upstream and Downstream projects:
+
+* In Jenkins, "upstream" jobs are those that trigger or initiate the execution of other jobs, while "downstream" jobs are those that are triggered or executed by upstream jobs.
+
+![preview](../images/UD.png)
+
+
+* For example, let's say you have two jobs, Job A and Job B, where Job A triggers Job B when it completes successfully. In this case, Job A is the upstream job and Job B is the downstream job.
+
+  * Here are some examples of upstream and downstream jobs in Jenkins:
+
+   * Upstream job: Build and package an application.
+      * Downstream jobs: Deploy the application to a test environment, run automated tests on the application, deploy the application to a production environment.
+
+   * Upstream job: Pull code changes from a source code repository.
+      * Downstream job: Build and test the code changes, deploy the changes to a staging environment.
+
+   * Upstream job: Run a performance test on an application.
+      * Downstream job: Analyze the performance test results and provide recommendations for optimizing the application.
+
+By defining upstream and downstream jobs in Jenkins, you can create complex workflows and ensure that all the necessary steps are executed in the correct order.
+
+### Install ***Parameterized Trigger*** plugin :
+* Parameterized Trigger is a plugin in Jenkins that allows you to trigger a downstream job with certain parameters from an upstream job. This plugin provides flexibility and customization by enabling you to pass variables and parameters from one job to another.
+  
+  * Go to **Manage Jenkins** >> **Manage Plugin**
+![preview](../images/J59.png)
+![preview](../images/J60.png)
+![preview](../images/J61.png)
+
+
+
+### Scenario-5: Configure the Upstream & Downstream as per below requirement :
+
+```
+1. Upstream Job : Build a ***SMP*** Job from Dev Branch
+2. Downstream Job: Once the **SMP** Job is sucessfull , it has to build the Downstream Job(SMP-2) with Master Branch.
+```
+![preview](../images/SN-5.png)
+
+
+* 1. Configure Upstream Job :
+![preview](../images/J67.png)
+![preview](../images/J68.png)
+![preview](../images/J69.png)
+![preview](../images/J70.png)
+
+* 2. Build UpstreamJob with Dev branch it should trigger Downstream with master branch : 
+![preview](../images/J71.png)
+![preview](../images/J72.png)
+
+    * Go to dashboard and check for the SMP-2 to trigger automatically :
+![preview](../images/J73.png)
+
+    * Go to Job __SMP-2__ >>  __Console Output__ and check for whether the Job triggered from Master branch :
+![preview](../images/J74.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
