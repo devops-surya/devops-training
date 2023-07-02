@@ -509,30 +509,44 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 * Enabling distributed testing: Jenkins nodes can be used to enable distributed testing of applications. By running tests on separate nodes, you can perform tests in parallel and reduce test times.
 
 
-## Understanding Pipeline with Jenkins Node: 
-![preview](../images/sqpipeline1.png)
-![preview](../images/sqpipeline.png)
+<br/>
 
+* * * 
+
+<br/>
+
+
+## Understanding Pipeline with Jenkins Node: 
+![preview](../images/JenkinsBasicPipeline.png)
+![preview](../images/JenkinsNodeBasicPipeline.png)
+
+<br/>
+
+* * * 
+
+<br/>
 
 ## Configure a Jenkins Node and attach it to the Jenkins Master:
 
 ![preview](../images/JA.png)
 
-1. Configure the Jenkins Node :
-    * Install ***Java*** on Jenkins Node :
+### 1. Configure the Jenkins Node :
+  * Install ***Java*** on Jenkins Node :
+    
     ```
     sudo apt-get update
 
     sudo apt-get install openjdk-11-jdk
     ```
-    * Create a user in ***jenkins User*** in Jenkins Node & provide ***admin permissions***
+  * Create a user in ***jenkins User*** in Jenkins Node & provide ***admin permissions***
     ```
     sudo su                  -- Change as root(Admin) user.
     adduser jenkins          -- create user 
     visudo                   -- Opens sudoers file
 
     ```
-    * Enable ***PasswordAuthentication***
+  * Enable ***PasswordAuthentication***
+
     ```
     vi /etc/ssh/sshd_config 
     
@@ -544,8 +558,7 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 
     ```
 
-
-* To add the node to the jenkins as per the above image. Do the ssh-keygen as shown below in jenkins-master:
+### 2. On ___Jenkins-master___ , create the keys for the password;ess authnetication :
 
 ```
 ssh-keygen
@@ -555,29 +568,8 @@ ssh-copy-id username@ipaddress
 ![preview](../images/jenkins62.png)
 
 
-* On node , do the below steps:
 
-```
-
-sudo su 
-
-sudo apt-get update
-
-sudo apt-get install openjdk-8-jdk
-
-vi /etc/ssh/sshd_config 
-
-PasswordAuthentication Yes
-
-sudo service sshd restart
-
-adduser jenkins
-
-visudo -- add jenkins to the sudo group
-
-```
-
-2. Add node/slave to the jenkins.
+### 3. Add node/slave to the jenkins.
 
 * In manage jenkins => mange nodes 
 
@@ -591,6 +583,13 @@ visudo -- add jenkins to the sudo group
 
 
 ![preview](../images/jenkins67.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
 
 
 ## Use node/slave in the jenkins job:
