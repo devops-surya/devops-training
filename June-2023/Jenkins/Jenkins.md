@@ -558,7 +558,7 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 
     ```
 
-### 2. On ___Jenkins-master___ , create the keys for the password;ess authnetication :
+### 2. On ___Jenkins-master___ , create the keys for the passwordless authnetication :
 
 ```
 ssh-keygen
