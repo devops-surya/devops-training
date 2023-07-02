@@ -484,3 +484,123 @@ By defining upstream and downstream jobs in Jenkins, you can create complex work
 * * * 
 
 <br/>
+
+## Jenkins Node/slave/Agent:
+![preview](../images/JMS.png)
+
+* In the context of the Jenkins, a "node" refers to a physical or virtual machine that is set up to perform build and testing tasks as part of a Jenkins job.
+
+* A Jenkins node is also known as a "slave", as it operates as a worker machine that can be controlled by the Jenkins master server. A node can run on a variety of operating systems, including Linux, macOS, and Windows.
+
+* In Jenkins, you can configure multiple nodes to distribute the build and testing workloads across a cluster of machines, which can help to improve performance and reduce the time required for building and testing your code. By setting up nodes, you can also run jobs in parallel, which can help to optimize resource utilization and speed up the overall build process.
+
+* Nodes can be configured to have different sets of tools and plugins installed, which makes it possible to support multiple build environments. Once a node is set up and registered with the Jenkins master, you can assign Jenkins jobs to specific nodes, depending on the requirements of the job.
+
+###  Here are some use cases of Jenkins nodes:
+
+* Distributing build load: One of the primary use cases of Jenkins nodes is to distribute the build load across multiple machines. By running build jobs on separate nodes, Jenkins can perform builds in parallel and reduce build times.
+
+* Supporting different operating systems and environments: Jenkins nodes can be used to support building applications for different operating systems and environments. For example, if you need to build an application that needs to run on both Windows and Linux, you can configure Jenkins nodes to run builds on Windows and Linux machines.
+
+* Isolating builds: Jenkins nodes can be used to isolate builds from the Jenkins master. This can be useful if you want to ensure that builds don't interfere with each other or if you want to enforce security restrictions.
+
+* Scaling Jenkins: Jenkins nodes can be used to scale Jenkins horizontally by adding more nodes as the build load increases. This can help to ensure that builds continue to run smoothly even as the number of build jobs increases.
+
+* Enabling distributed testing: Jenkins nodes can be used to enable distributed testing of applications. By running tests on separate nodes, you can perform tests in parallel and reduce test times.
+
+
+## Understanding Pipeline with Jenkins Node: 
+![preview](../images/sqpipeline1.png)
+![preview](../images/sqpipeline.png)
+
+
+## Configure a Jenkins Node and attach it to the Jenkins Master:
+
+![preview](../images/JA.png)
+
+1. Configure the Jenkins Node :
+    * Install ***Java*** on Jenkins Node :
+    ```
+    sudo apt-get update
+
+    sudo apt-get install openjdk-11-jdk
+    ```
+    * Create a user in ***jenkins User*** in Jenkins Node & provide ***admin permissions***
+    ```
+    sudo su                  -- Change as root(Admin) user.
+    adduser jenkins          -- create user 
+    visudo                   -- Opens sudoers file
+
+    ```
+    * Enable ***PasswordAuthentication***
+    ```
+    vi /etc/ssh/sshd_config 
+    
+    ====
+    PasswordAuthentication Yes
+    ===
+
+    sudo service sshd restart
+
+    ```
+
+
+* To add the node to the jenkins as per the above image. Do the ssh-keygen as shown below in jenkins-master:
+
+```
+ssh-keygen
+ssh-copy-id username@ipaddress
+```
+
+![preview](../images/jenkins62.png)
+
+
+* On node , do the below steps:
+
+```
+
+sudo su 
+
+sudo apt-get update
+
+sudo apt-get install openjdk-8-jdk
+
+vi /etc/ssh/sshd_config 
+
+PasswordAuthentication Yes
+
+sudo service sshd restart
+
+adduser jenkins
+
+visudo -- add jenkins to the sudo group
+
+```
+
+2. Add node/slave to the jenkins.
+
+* In manage jenkins => mange nodes 
+
+![preview](../images/jenkins63.png)
+
+![preview](../images/jenkins64.png)
+
+![preview](../images/jenkins66.png)
+
+![preview](../images/jenkins65.png)
+
+
+![preview](../images/jenkins67.png)
+
+
+## Use node/slave in the jenkins job:
+
+![preview](../images/jenkins68.png)
+
+![preview](../images/jenkins69.png)
+
+<br/>
+
+* * * 
+
+<br/>
