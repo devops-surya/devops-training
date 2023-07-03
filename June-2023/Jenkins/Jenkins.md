@@ -603,3 +603,154 @@ ssh-copy-id username@ipaddress
 * * * 
 
 <br/>
+
+
+## Backup of Jenkins:
+1. Manual    - Take a copy of /var/lib/jenkins/
+![preview](../images/BK1.png)
+
+
+2. Automated - Using ThinBackup plugin
+* ThinBackup plugin or the Backup plugin, which allow you to schedule automatic backups or perform on-demand backups.
+
+* Install and configure ThinBackup plugin: 
+* Go to Manage Jenkins >> Manage Plugins
+![preview](../images/BK2.png)
+![preview](../images/BK3.png)
+![preview](../images/BK4.png)
+![preview](../images/BK5.png)
+
+* __Note__ : Makesure to create the  backup folder before backup and it should have 777 permissions.
+![preview](../images/BK6.png)
+
+* Take a Backup :
+![preview](../images/BK7.png)
+
+
+
+<br/>
+
+<br/>
+
+* * * 
+
+<br/>
+
+<br/>
+
+
+
+
+# Pipeline :
+* A pipeline job in Jenkins is a way to define a CI/CD  using a domain-specific language (DSL) called Groovy. 
+* Getting started with Pipeline script : [REFERHERE](https://www.jenkins.io/doc/book/pipeline/getting-started/)
+
+## Jenkins pipeline :
+* In Jenkins pipeline there are two ways:
+  1. Pipeline script     -- Scripted pipeline 
+  2. Pipeline script from SCM -- Declarative pipeline
+
+* The approach we follow for the Jenkins pipeline and writing the groovy for is called as pipeline-as-code.
+
+
+## Create a Jenkins job in pipeline format:
+![preview](../images/P01.png)
+![preview](../images/P2.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Basic syntax of groovy for pipeline Job:
+
+```
+node('<LABEL>'){
+    stage('git clone'){
+      
+    }
+    stage('build the code){
+
+    }
+    stage('archive the artifacts'){
+
+    }
+    stage('publish the junit reports'){
+
+    }
+    stage('Running the ansible playbook'){
+        
+    }
+}
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## SCENARIO-6:  Create a Scripted Pipeline Job for below requirement  :
+```
+Get the code from Git , build using Maven, archive the artifacts & publish the junit reports 
+```
+![preview](../images/SN-2.png)
+
+* Create a Jenkins Pipeline job named ***SMP_PipelineJob***
+![preview](../images/P1.png)
+
+
+## For groovy script refer below : 
+```
+node('Node-1'){
+    stage('git clone'){
+        git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'
+    }
+    stage('build the code'){
+        sh 'mvn package'
+
+    }
+    stage('archive artifacts'){
+        archive 'target/*.jar'
+
+    }
+    stage('publish Junit test results'){
+        junit 'target/surefire-reports/*.xml'
+        
+    }
+}
+```
+
+## Snippet generator:
+* Snippet generator helps us in creating groovy script.
+![preview](../images/P3.png)
+![preview](../images/P4.png)
+
+* To generate the pipeline script for git:
+![preview](../images/P5.png)
+
+* To generate pipeline script for Maven goal :
+![preview](../images/P8.png)
+
+
+* To generate the pipeline script for archive the artifacts:
+![preview](../images/P6.png)
+
+
+* To generate pipeline script for the publish junit test results:
+![preview](../images/P7.png)
+
+
+* The output of the jenkins scripted pipeline job will be as below:
+![preview](../images/P9.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
