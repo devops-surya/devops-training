@@ -624,6 +624,8 @@ ssh-copy-id username@ipaddress
 
 * Take a Backup :
 ![preview](../images/BK7.png)
+![preview](../images/BK111.png)
+
 
 
 
@@ -750,3 +752,131 @@ node('Node-1'){
 * * * 
 
 <br/>
+
+
+## Tracking the Configuration changes in the Jenkins Job:
+1. ***Job Configuration History*** :
+* Plugin usage [REFERHERE](https://plugins.jenkins.io/jobConfigHistory/)
+* This plugin is used to track the changes made .
+![preview](../images/P10.png)
+![preview](../img/P11.png)
+
+
+
+2. ***Jenkinsfile*** :
+* Jenkinsfile reference [REFERHERE](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/)
+* Using jenkinsfile will be helpful in tracking the changes and the process of using jenkinsfile as __Declarative Pipeline__
+
+## Jenkins declarative pipeline syntax:
+
+* ***Declarative pipeline*** : It is a text file that is stored in the source code repository and defines the steps and logic of the pipeline. 
+* Reference for the __Declarative Pipeline syntax__ [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/)
+
+
+## Scripted pipeline vs declarative pipeline Syntax differences :
+
+*  Scripted pipeline:
+```
+node('Node-1'){
+    stage('git clone'){
+        git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'
+    }
+    stage('build the code'){
+        sh 'mvn package'
+
+    }
+    stage('archive artifacts'){
+        archive 'target/*.jar'
+
+    }
+    stage('publish Junit test results'){
+        junit 'target/surefire-reports/*.xml'
+        
+    }
+}
+```
+
+* Declarative pipeline:
+```
+pipeline {
+   agent any
+   stages{
+       stage('git clone'){
+           steps{
+               git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'  
+           }        
+       }
+       stage('build the code'){
+           steps{
+              sh 'mvn package'
+           }
+       }
+       stage('archive the artifacts'){
+           steps{
+              archive 'target/*.jar'
+           }          
+       }
+       stage('publish the junit reports'){
+           steps{
+              junit 'target/surefire-reports/*.xml'
+           }
+           
+       }
+
+   }
+}
+```
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## SCENARIO-7: Create a  Jenkins Declarative job using Jenkinsfile with below requirement:
+![preview](../images/SN-2.png)
+
+```
+Get the code from Git , build using Maven, archive the artifacts & publish the junit reports 
+```
+![preview](../images/DJ1.png)
+![preview](../images/DJ2.png)
+![preview](../images/DJ3.png)
+
+* The output of the ***Jenkins Declarative pipeline*** job will be as below:
+![preview](../images/DJ4.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Blue ocean plugin :
+* The Blue Ocean plugin is a user interface plugin for the Jenkins continuous integration and continuous delivery (CI/CD) server. It provides a modern and intuitive user interface that allows you to visualize your pipelines and view your build results in a more intuitive way than the traditional Jenkins user interface.
+
+1. Install ***Blue ocean plugin***
+* Go to  Manage Jenkins => Manage Plugins => available => Blue ocean
+![preview](../images/BO1.png)
+
+* After installing you will see below changes:
+![preview](../img/BO1.png)
+![preview](../img/BO2.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## SNAPSHOT vs RELEASE 
+* If you find an artifact with the Snapshot , that means it is still in development.
+* If you find an artifact with the release , that means it is ready for the deployment to the production.
+```
+EX: Game-of-life.war-sanapshot-1.0 
+EX: Game-of-life.war-Release-1.0
