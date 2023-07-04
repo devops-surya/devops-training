@@ -620,8 +620,7 @@ ssh-copy-id username@ipaddress
 ![preview](../images/BK4.png)
 ![preview](../images/BK5.png)
 
-* __Note__ : Makesure to create the  backup folder before backup and it should have 777 permissions.
-![preview](../images/BK6.png)
+
 
 * Take a Backup :
 ![preview](../images/BK7.png)
@@ -680,9 +679,6 @@ node('<LABEL>'){
     }
     stage('publish the junit reports'){
 
-    }
-    stage('Running the ansible playbook'){
-        
     }
 }
 ```
