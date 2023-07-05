@@ -878,8 +878,10 @@ Get the code from Git , build using Maven, archive the artifacts & publish the j
 * If you find an artifact with the Snapshot , that means it is still in development.
 * If you find an artifact with the release , that means it is ready for the deployment to the production.
 ```
-EX: Game-of-life.war-snapshot-1.0 
+EX: Game-of-life.war-sanapshot-1.0 
 EX: Game-of-life.war-Release-1.0
+
+```
 
 <br/>
 
@@ -890,7 +892,7 @@ EX: Game-of-life.war-Release-1.0
 
 
 ## SCENARIO-8: Create a Declarative pipeline job as per below requirement :
-```
+
 Automatically trigger the Jenkins Declarative pipeline Job when there are changes in Code Repo.
 Jenkins job should get the code , Build the code , Archive the artifacts & Publish Junit test results.
 ```
