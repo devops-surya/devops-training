@@ -878,5 +878,221 @@ Get the code from Git , build using Maven, archive the artifacts & publish the j
 * If you find an artifact with the Snapshot , that means it is still in development.
 * If you find an artifact with the release , that means it is ready for the deployment to the production.
 ```
-EX: Game-of-life.war-sanapshot-1.0 
+EX: Game-of-life.war-snapshot-1.0 
 EX: Game-of-life.war-Release-1.0
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+## SCENARIO-8: Create a Declarative pipeline job as per below requirement :
+```
+Automatically trigger the Jenkins Declarative pipeline Job when there are changes in Code Repo.
+Jenkins job should get the code , Build the code , Archive the artifacts & Publish Junit test results.
+```
+
+* Getting started with Pipeline script : [REFERHERE](https://www.jenkins.io/doc/book/pipeline/getting-started/)
+* Official Document for triggers:   [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers)
+
+
+```
+pipeline {
+   agent any
+   triggers{
+      pollSCM('* 8 * * *')
+   }
+   stages{
+       stage('git clone'){
+           steps{
+               git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'
+           }        
+       }
+       stage('build the code'){
+           steps{
+              sh 'mvn package'
+           }
+       }
+       stage('archive the artifacts'){
+           steps{
+              archive 'target/*.jar'
+           }          
+       }
+       stage('publish the junit reports'){
+           steps{
+              junit 'target/surefire-reports/*.xml'
+           }
+           
+       }
+
+   }
+}
+
+
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## SCENARIO-9 :  Create a Jenkins Declarative Pipeline Job as per below requirement :
+
+```
+1. Upstream Job : Build a ***SMP_PipelineJob*** Job 
+2. Downstream Job: Once the **SMP_PipelineJob** Job is sucessfull , it has to build the Downstream Job(SMP_PipelineJob) 
+```
+
+
+__Upstream__ job triggering: [REFERHERE](https://www.jenkins.io/doc/book/pipeline/syntax/#:~:text=4%20*%20*%201%2D5%27)
+
+```
+pipeline {
+   agent any
+   triggers{
+     upstream(upstreamProjects: 'SMP_PipelineJob', threshold: hudson.model.Result.SUCCESS)
+   }
+   stages{
+       stage('git clone'){
+           steps{
+               git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'
+           }        
+       }
+       stage('build the code'){
+           steps{
+              sh 'mvn package'
+           }
+       }
+       stage('archive the artifacts'){
+           steps{
+              archive 'target/*.jar'
+           }          
+       }
+       stage('publish the junit reports'){
+           steps{
+            junit 'target/surefire-reports/*.xml'
+           }
+           
+       }
+
+   }
+}
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+## SCENARIO-10:  Create a pipeline with below script and understand the parameters usage .
+
+* Parameters using in Jenkins Declarative pipeline [REFER HERE](https://www.jenkins.io/doc/book/pipeline/syntax/#parameters)
+```sh
+pipeline {
+    agent any
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
+            }
+        }
+    }
+}
+
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+## SCENARIO-11: Trigger a Jenkins declarative job using git parameter 
+
+* Triggering remote job [REFER HERE](https://plugins.jenkins.io/git-parameter/)
+
+```sh
+pipeline {
+  agent any
+  parameters {
+    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  }
+  stages {
+    stage('Git clone') {
+      steps {
+        git branch: "${params.BRANCH}", url: 'https://github.com/devops-surya/SampleMavenProject.git'
+      }
+    }
+    stage('Build the code') {
+        steps{
+            sh 'mvn package'
+        }
+    }
+    stage('Archive the artifacts') {
+        steps{
+            archive 'target/*.jar'
+        }
+    }
+    stage('publish junit test reports') {
+        steps{
+            junit 'target/surefire-reports/*.xml'
+        }
+    }
+  }
+}
+
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+## JENKINS Built-in environment variables : 
+* Jenkins provides a set of environment variables. You can also define your own. Here is a list of built in environment variables:
+
+```sh
+BUILD_NUMBER - The current build number. For example "153"
+BUILD_ID - The current build id. For example "2018-08-22_23-59-59"
+BUILD_DISPLAY_NAME - The name of the current build. For example "#153".
+JOB_NAME - Name of the project of this build. For example "foo"
+BUILD_TAG - String of "jenkins-${JOB_NAME}-${BUILD_NUMBER}".
+EXECUTOR_NUMBER - The unique number that identifies the current executor.
+NODE_NAME - Name of the "slave" or "master". For example "linux".
+NODE_LABELS - Whitespace-separated list of labels that the node is assigned.
+WORKSPACE - Absolute path of the build as a workspace.
+JENKINS_HOME - Absolute path on the master node for Jenkins to store data.
+JENKINS_URL - URL of Jenkins. For example http://server:port/jenkins/
+BUILD_URL - Full URL of this build. For example http://server:port/jenkins/job/foo/15/
+JOB_URL - Full URL of this job. For example http://server:port/jenkins/job/foo/
+```
+![preview](../images/var1.png)
+![preview](../images/var2.png)
