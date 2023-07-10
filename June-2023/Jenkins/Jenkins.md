@@ -948,7 +948,7 @@ pipeline {
 
 ```
 1. Upstream Job : Build a ***SMP_PipelineJob*** Job 
-2. Downstream Job: Once the **SMP_PipelineJob** Job is sucessfull , it has to build the Downstream Job(SMP_PipelineJob) 
+2. Downstream Job: Once the **SMP_PipelineJob** Job is sucessfull , it has to build the Downstream Job 
 ```
 
 
