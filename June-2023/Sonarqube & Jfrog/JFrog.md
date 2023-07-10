@@ -8,7 +8,6 @@
 <br/>
 
 ## Pipeline integrated with Jfrog  :
-![preview](../img/JfrogBasicPipeline.png)
 ![preview](../img/SQJfrogpipeline.png)
 
 
