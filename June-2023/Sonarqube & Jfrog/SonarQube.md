@@ -267,7 +267,7 @@ pipeline{
     stages{
        stage('GetCode'){
             steps{
-                git credentialsId: '627d81ae-5ed6-471b-afc8-90c69fadd554', url: 'https://github.com/devops-surya/SampleMavenProject.git'
+                git url: 'https://github.com/devops-surya/java-hello-world-with-maven.git'
             }
          }        
        stage('Build'){
