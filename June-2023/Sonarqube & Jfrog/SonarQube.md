@@ -260,6 +260,7 @@ password: admin
 
 
 ##  Create a  Pipeline job with SonarQubr analysis :
+* ___NOTE___: Use https://github.com/devops-surya/java-hello-world-with-maven.git to do the sonar qnalysis , the SampleMavenProject repo has issues with the sonar analysis 
 
 ```
 pipeline{
