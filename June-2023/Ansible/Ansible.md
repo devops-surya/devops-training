@@ -3,7 +3,7 @@
 
 ## Ansible
 * Ansible is one of the configuration management tool.
-* Ansible is an open-source automation tool used for IT tasks such as application deployment, configuration management, and infrastructure orchestration. It uses a simple and easy-to-learn YAML-based language to define tasks and playbooks, making it accessible to a wide range of users.
+* Ansible is used for IT tasks such as application deployment, configuration management, and infrastructure orchestration. It uses a simple and easy-to-learn YAML-based language to define tasks and playbooks, making it accessible to a wide range of users.
 
 <br/>
 
@@ -20,11 +20,8 @@
 
 <br/>
 
-## Ways to install Softwares : 
-### Manual :
-* Administrator will install  all the softwares.
 
-### Configuration Management:
+## Configuration Management:
 * We write the desired state ..i,e(i want a file to be created)
 * It uses declarative syntax.
 * The main usecase of CM tool are idempotency .
