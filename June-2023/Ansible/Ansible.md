@@ -133,3 +133,183 @@ sudo apt install python
 <br/>
 
 
+
+## Inventory :
+* An inventory file is a simple text file that contains information about your hosts or devices, such as their IP addresses, hostnames, and connection details.
+* The default path of inventory is 
+
+```
+/etc/ansible/hosts
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Check the communication b/w ACS and NODE-1:
+
+* Add your NODE-1 public ip to the /etc/ansible/hosts file
+
+```
+ansible -m ping all
+```
+
+![preview](../images/ansible11.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+## Use customized file for inventory: 
+* Add your NODE1 public ip to the /home/devops/hosts file
+
+![preview](../img/ANS1.png)
+
+* Use below command to check communication between ACS & NODE1
+
+```
+ansible -i <path to the file> -m ping all
+```
+* EX : ansible -i /home/devops/hosts -m ping all
+
+![preview](../img/CIA.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## How to write ansible playbooks :
+* list down all the manaul commands for the desired state.
+* Make sure that the commands are working , when doing manaully .
+* Each desired state / each step you are going to do in ansible is considered as task.
+* In Ansible the tasks are executed by using MODULES.
+* Modules are atomic units of ansible which performs execution
+
+## Playbook syntax:
+* Yaml Syntax [REFERHERE(]https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html)
+* Ansible modules Offical Document [REFER HERE](https://docs.ansible.com/ansible/2.8/modules/list_of_all_modules.html)
+
+![preview](../img/PS1.png)
+
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: name of your task1
+      module:
+        par1: val1
+        par2: val2
+    - name: name of your task2
+      module:
+        par1: val1
+        par2: val2
+  ...
+  ..
+  ..
+
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+## SCENARIO-2: Write a playbook to install Tomcat & Java to configure servers:
+
+```
+Java is a development software and it is prequisite for Tomcat.
+Tomcat is one of the appliaction server.
+```
+![preview](../img/ANS1.png)
+
+
+## List down the steps to install tomcat:
+
+```
+sudo apt-get update 
+sudo apt-get install openjdk-11-jdk
+java -version
+
+sudo apt-get update
+sudo apt-get install tomcat9
+
+sudo service tomcat9 restart
+sudo service tomcat9 status
+```
+![preview](../images/nansible14.png)
+
+
+
+## Playbook to install java11 and tomcat9
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing java 11
+      apt:
+        name: openjdk-11-jdk
+        state: present
+        update_cache: yes
+    - name: installing tomcat9
+      apt: 
+        name: tomcat9
+        state: present
+        update_cache: yes
+    - name: restart the tomcat9
+      service:
+         name: tomcat9
+         state: restarted
+    
+```
+* ***NOTE***: Make sure you addd your NODE1 public ip to the /home/devops/hosts file
+![preview](../img/ANS1.png)
+
+
+* To check the playbook syntax is correct : 
+
+```
+ ansible-playbook -i /home/devops/hosts playbook.yml --syntax-check
+```
+![preview](../img/ANS3.png)
+
+
+* To run the playbook use below command : 
+
+```
+ ansible-playbook -i /home/devops/hosts playbook.yml
+```
+![preview](../img/ANS2.png)
+
+
+
+* To run the playbook for the  dryrun 
+
+```
+ ansible-playbook -i inventory playbook.yml --check
+```
+
+![preview](../img/ANS4.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
