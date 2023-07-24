@@ -313,3 +313,130 @@ sudo service tomcat9 status
 * * * 
 
 <br/>
+
+## Playbook vs Adhoc commands :
+* Playbooks and Ad-hoc commands are different ways of using Ansible to achieve the same result
+* In Playbook , We can define all the tasks and modules in a file.
+* In adhoc commands , we can use  only one module at at time.
+
+*  Adhoc commands syntax:
+
+```
+ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <all>
+```
+
+* For the adhoc commands [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html)
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+## SCENARIO -3 : Run the playbook on the specific server in the inventory file.
+
+![preview](../img/AS3.png)
+
+* The  /home/devops/hosts file changes as below :
+![preview](../img/ANS5.png)
+
+* Create a java.yml with below playbook  content : 
+
+```
+sudo su - devops 
+cd /home/devops
+vi java.yml 
+
+Paste the below Playbook content 
+
+```
+
+```
+---
+- hosts: Node1
+  become: yes
+  tasks:
+    - name: installing java 11
+      apt:
+        name: openjdk-11-jdk
+        state: present
+        update_cache: yes
+```
+
+
+* To run the playbook use below command : 
+
+```
+ ansible-playbook -i /home/devops/hosts java.yml
+```
+![preview](../img/ANS6.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Variables in Ansible  :
+* In ansible we had a multiple ways to define variable:
+1. host level
+2. group level 
+3. playbook level 
+4. commandline level
+
+* Create variable name **package_name** as below in playbook :
+```
+---
+- hosts: webserver
+  become: yes
+  tasks:
+    - name: using variables in ansible
+      apt:
+        name: "{{package_name}}"
+        state: present
+        update_cache: yes
+
+```
+
+1. **Host level variable**  :
+
+![preview](../img/ANS8.png)
+
+2. **Group level variable** : 
+
+![preview](../img/ANS9.png)
+
+
+3. **Playbook level variable** :
+
+```
+- hosts: webserver
+  become: yes
+  vars:
+    package_name:
+      - tomcat9
+  tasks:
+    - name: using variables in ansible
+      apt:
+        name: "{{package_name}}"
+        state: present
+        update_cache: yes
+
+```
+
+4 **commandline level variable** :
+
+```
+ ansible-playbook -i <hostspath> -e " package_name=tomcat9" playbook.yml
+```
+
+<br/>
+
+* * * 
+
+<br/>
