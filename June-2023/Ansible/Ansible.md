@@ -440,3 +440,183 @@ Paste the below Playbook content
 * * * 
 
 <br/>
+
+## SCENARIO-4 :  sample deployment of apache and php modules:
+* Reference Sample Link : [Apache_PHP_Installation](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04)
+
+* **Apache** is a popular open-source web server software that is used to serve websites and web applications over the internet. It was developed by the Apache Software Foundation and is available for a variety of operating systems, including Windows, macOS, and Linux.
+
+* Apache is highly customizable and supports a variety of programming languages, including PHP, Python, Perl, and Ruby. It also supports many different modules and plugins, allowing users to add functionality to their web servers as needed.
+
+* Apache is known for its reliability, scalability, and security, and is widely used by businesses and individuals around the world. It is a key component of the LAMP (Linux, Apache, MySQL, PHP) and LEMP (Linux, Nginx, MySQL, PHP) stacks, which are commonly used for web development and hosting.
+
+* **PHP (Hypertext Preprocessor)** is a popular server-side scripting language that is widely used for web development. It was originally created in 1994 by Rasmus Lerdorf, and has since evolved into a powerful language that is used by millions of developers worldwide.
+
+* list down the manual steps :
+
+```
+sudo apt-get update 
+sudo apt-get  install apache2 -y 
+sudo systemctl enable apache2
+sudo apt-get install php libapache2-mod-php php-mysql php-cli -y 
+sudo vi /var/www/html/info.php
+<?php
+phpinfo();
+?>
+sudo systemctl restart apache2
+```
+
+* The playbook looks as below once after convert the manual steps in to tasks :
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+    - name: enable apache2
+      service:
+        name: apache2
+        enabled: yes
+        state: restarted
+    - name: installing php modules
+      apt:
+        name: "{{ item }}"
+        state: present  
+        update_cache: yes
+      loop:
+        - php
+        - libapache2-mod-php
+        - php-mysql
+        - php-cli
+
+    - name: creating the file info.php
+      file:
+        path: /var/www/html/info.php
+        state: touch
+
+    - name: add content to the info.php file
+      blockinfile:
+        path: /var/www/html/info.php
+        block: |
+          <?php
+          phpinfo();
+          ?>
+    - name: restart the apache
+      service:
+         name: apache2
+         state: restarted
+
+```
+
+* Create a file named  apache2php.yml  with above content .
+
+```
+sudo su - devops 
+
+vi apache2php.yml 
+
+Insert mode 
+copy the above playbook content 
+
+ESC:wq                  -- To save the file 
+
+```
+
+
+*  To check the syntactical errors in playbook:
+
+```
+ansible-playbook -i hosts apache2php.yml --syntax-check
+```
+
+*  Trial run  :
+
+```
+ansible-playbook -i hosts apache2php.yml --check
+```
+
+
+* Run the playbook :
+
+```
+ansible-playbook -i hosts apache2php.yml 
+```
+
+![preview](../img/ANS9.png)
+
+*  To see the apache & php modules installed on browser  :
+
+```
+# Apache
+
+http://<publicipaddress> 
+
+# PHP
+
+http://<publicipaddress>/info.php
+
+```
+![preview](../images/ansible17.png)
+![preview](../images/ansible18.png)
+
+
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## SCENARIO-5 :  sample deployment of apache and php modules on redhat/centos 
+
+* Below are the maual steps : 
+
+```
+sudo yum update 
+sudo yum  install httpd -y 
+sudo systemctl enable httpd
+sudo yum install php 
+sudo vi /var/www/html/info.php
+<?php
+phpinfo();
+?>
+sudo systemctl restart httpd
+
+```
+
+* **Exercise-1** : Write a playbook for above manual steps and setup CentOs as a node to ACS.
+
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Mostly used modules in the ansible for install & configure softwares:
+
+* apt         -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.3/apt_module.html)
+* yum         -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.4/yum_module.html)
+* package     -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.3/service_module.html)
+* file        -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/ansible/2.8/modules/list_of_files_modules.html)
+* copy        -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.4/copy_module.html)
+* blockinfile -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/ansible/2.8/modules/blockinfile_module.html#blockinfile-module)
+* lineinfile  -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/ansible/2.8/modules/lineinfile_module.html#lineinfile-module)
+* loop       -- [REFERHERE-For Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.3/playbooks_loops.html#standard-loops)
+
+<br/>
+
+* * * 
+
+<br/>
