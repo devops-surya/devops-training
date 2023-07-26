@@ -235,7 +235,7 @@ ansible -i <path to the file> -m ping all
 ## SCENARIO-2: Write a playbook to install Tomcat & Java to configure servers:
 
 ```
-Java is a developement softwares and it is prequisite for Tomcat.
+Java is a development software and it is prequisite for Tomcat.
 Tomcat is one of the appliaction server.
 ```
 ![preview](../img/ANS1.png)
@@ -317,9 +317,9 @@ sudo service tomcat9 status
 
 <br/>
 
-## Playbook vc Adhoc commands :
-* Playbooks and Ad-hoc commands are different ways of using Ansible to achieve the same result: configure and manage systems.
-* We can define all the tasks and modules in a file (playbook file).
+## Playbook vs Adhoc commands :
+* Playbooks and Ad-hoc commands are different ways of using Ansible to achieve the same result
+* In Playbook , We can define all the tasks and modules in a file.
 * In adhoc commands , we can use  only one module at at time.
 
 *  Adhoc commands syntax:
@@ -335,7 +335,6 @@ ansible -i <host file path> -m <module> "para1=value1 ....paran=valuen" [-b]  <a
 * * * 
 
 <br/>
-
 
 
 
@@ -386,8 +385,8 @@ Paste the below Playbook content
 <br/>
 
 
-## Reuse ansible playbooks by using  variables :
-* In ansible we had a below ways to define variable:
+## Variables in Ansible  :
+* In ansible we had a multiple ways to define variable:
 1. host level
 2. group level 
 3. playbook level 
@@ -847,7 +846,7 @@ ansible-playbook -i /home/devops/hosts handler.yml
 <br/>
 
 
-# Important and main stuff we do in pipeline using ansible:
+# Actual process, we do in pipeline using ansible:
 ## Scenario- 6:  Deployment using ansible playbook:
 * Look at the below pipelins:
 ![preview](../images/BasicdevopsPipeline.png)
