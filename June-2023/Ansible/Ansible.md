@@ -620,3 +620,225 @@ sudo systemctl restart httpd
 * * * 
 
 <br/>
+
+
+## Ansible facts:
+* In Ansible, facts are pieces of information about the remote systems that Ansible collects during a playbook run. Ansible facts are automatically collected by the setup module and stored in a set of variables that you can access in your playbook. These facts provide useful information about the remote system, such as the operating system, the hostname, the network interfaces, and much more.
+
+* Ansible Document: --  [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#id3)
+
+![preview](../img/ANS13.png)
+
+
+## Ansible conditionals:
+
+* In Ansible, conditionals are used to check if certain conditions are true or false before executing a task or a block of tasks. Ansible provides several conditional statements that can be used in playbooks
+
+* Ansible  document here [REFER HERE](https://docs.ansible.com/ansible/latest/user_guide/playbooks_conditionals.html)
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Fail module:
+* In Ansible, the fail module is used to terminate the playbook or task execution with a custom failure message. It can be useful when you need to enforce certain conditions in your playbook or task and stop execution if those conditions are not met.
+
+* Fail Module [REFERHERE - Ansible module Documentation](https://docs.ansible.com/ansible/2.8/modules/fail_module.html)
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: fail if the os is other than the debian
+      fail:
+        msg: the playbook run only for the debian os
+      when: ansible_facts['os_family'] != "Debian"
+    - name: installing apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      when: ansible_facts['os_family'] == "Debian"
+```
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Package module :
+
+* The package module provides a generic interface for package management, which means that it can handle different package managers such as YUM, APT, and DNF on Linux systems, and Windows Package Manager (winget) on Windows systems.
+* Package  Module    -- [REFERHERE - Ansible module Documentation](https://docs.ansible.com/archive/ansible/2.3/service_module.html)
+
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing apache2
+      package:
+        name: apache2/httpd
+        state: present
+        update_cache: yes
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## If you  didnt find any module /  unable to get the exact modules.
+
+* We have modules in ansible , where we can provide the linux command as it is and run the playbook.
+* Examples : shell and command modules
+
+1. SHELL : -  [Ansible Document](https://docs.ansible.com/archive/ansible/2.3/shell_module.html)
+
+SYNTAX:
+
+```
+- name: shell module
+  shell: sudo apt-get update 
+```
+2. COMMAND : [Ansible Document](https://docs.ansible.com/ansible/2.9/modules/command_module.html)
+
+SYNTAX:
+
+```
+- name: Command module 
+  command: sudo apt-get update
+```
+* ***NOTE*** : In Shell and command modules there wont be any idempotency.
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Handler in ansible
+* Handler is  also one of the module in ansible . One of the best use case is to optimise the playbook.
+* In Ansible, a handler is a task that is triggered only when a change has been made on a managed node by a task in a playbook. Handlers are used to ensure that changes made to a system are applied only when necessary, rather than every time a task is executed.
+
+* Look at below example for understanding.
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      notify:
+      - restart apache2
+    - name: installing php modules
+      apt:
+        name: "{{ item }}"
+        state: present  
+        update_cache: yes
+      loop:
+        - php
+        - libapache2-mod-php
+        - php-mysql
+        - php-cli
+
+    - name: creating the file info.php
+      file:
+        path: /var/www/html/info.php
+        state: touch
+
+    - name: add content to the info.php file
+      blockinfile:
+        path: /var/www/html/info.php
+        block: |
+          <?php
+          phpinfo();
+          ?>
+      notify:
+      - restart apache2 
+    handlers:
+      - name: restart apache2 
+        service:
+          name: apache2
+          enabled: yes 
+          state: restarted
+```
+
+* Create a file handler.yml with below playbook content: 
+
+```
+sudo su - devops 
+
+vi handler.yml 
+
+Insert mode 
+copy the below playbook content 
+
+ESC:wq                  -- To save the file 
+
+```
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install apcahe2
+    apt:
+      name: apache2
+      state: present
+      update_cache: yes
+    notify:
+    - restartapache2
+  handlers:
+    - name : restartapache2
+      service:
+        name: apache2
+        state: restarted
+
+```
+
+
+* Run ansible playbook where apache2 is not installed:
+
+```
+ansible-playbook -i /home/devops/hosts handler.yml 
+```
+![preview](../img/ANS11.png)
+
+* Run the playbook again and look at the output: 
+
+![preview](../img/ANS12.png)
+
+<br/>
+
+* * * 
+
+<br/>
