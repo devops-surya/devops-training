@@ -842,3 +842,69 @@ ansible-playbook -i /home/devops/hosts handler.yml
 * * * 
 
 <br/>
+
+
+# Actual process, we do in pipeline using ansible:
+## Scenario- 6:  Deployment using ansible playbook:
+* Look at the below pipelins:
+![preview](../images/BasicdevopsPipeline.png)
+![preview](../img/ANS41.png)
+
+### Steps Involved :
+1. Install Java 
+2. Install Tomcat 
+3. Need war file to copy 
+4. Restart Tomcat
+
+* For war [REFER HERE](https://github.com/AKSarav/SampleWebApp/raw/master/dist/SampleWebApp.war)
+
+
+* Look at the below playbook : 
+
+```
+---
+- hosts: all
+  become: yes 
+  tasks: 
+    - name: installing java 
+      apt:
+        name: openjdk-11-jdk
+        state: present
+        update_cache: yes
+    - name: installing tomcat9
+      apt:
+        name: tomcat9
+        state: present 
+        update_cache: yes
+    - name: copying the war file
+      copy:
+        src: /home/devops/SampleWebApp.war
+        dest: /var/lib/tomcat9/webapps/
+    - name: restart the tomcat9
+      service:
+        name: tomcat9
+        state: restarted
+
+```
+
+
+```
+ansible-playbook -i hosts tomcat1.yml --syntax-check
+
+ansible-playbook -i hosts tomcat1.yml
+```
+![preview](../img/C15.png)
+![preview](../img/C16.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+
+## ANSIBLE:
+1. Mostly used modules are copy, apt , yum , package , service , systemd , file , blockinfile , lineinfile .
+2. Tomcat home path is /var/lib/tomcat9/webapps/ . It runs on the port 8080 . Tomcat logs will be on the folder /var/log/tomcat9/ .
