@@ -908,3 +908,150 @@ ansible-playbook -i hosts tomcat1.yml
 ## ANSIBLE:
 1. Mostly used modules are copy, apt , yum , package , service , systemd , file , blockinfile , lineinfile .
 2. Tomcat home path is /var/lib/tomcat9/webapps/ . It runs on the port 8080 . Tomcat logs will be on the folder /var/log/tomcat9/ .
+
+
+
+## Reusability of ansible playbooks.
+1. VARIABLES
+2. IMPORT/INCLUDE
+3. ANSIBLE ROLES
+
+
+
+## 1. VARIABLES
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing software 
+      apt:
+        name: {{ package_name }}
+        state: present
+        update_cache: yes
+```
+
+
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## 2. Import/Include :
+* In Ansible, you can use the import and include directives to reuse code across different parts of your playbook.
+* Official Ansible Documentation [REFERHERE](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_reuse_includes.html)
+
+* All ***import**** statements are pre-processed at the time playbooks are parsed.
+* All ***include**** statements are processed as they are encountered during the execution of the playbook.
+
+
+## Import playbook :
+
+### java playbook (java.yml) 
+```
+- hosts: all
+  become: yes 
+  tasks: 
+    - name: installing java 
+      apt:
+        name: openjdk-8-jdk
+        state: present
+        update_cache: yes
+```
+
+
+* Using the java playbook in installing tomcat9
+
+### Import playbook (import.yml)
+```
+- import_playbook: java.yml
+- hosts: all
+  become: yes 
+  tasks: 
+    - name: installing tomcat9
+      apt:
+        name: tomcat9
+        state: present 
+        update_cache: yes
+    - name: copying the war file
+      copy:
+        src: /home/devops/SampleWebApp.war
+        dest: /var/lib/tomcat9/webapps/
+    - name: restart the tomcat9
+      service:
+        name: tomcat9
+        state: restarted
+```
+
+![preview](../img/C17.png)
+
+* Run playbook import.yml 
+
+```
+ansible-playbook -i /home/devops/hosts import.yml
+```
+![preview](../img/C18.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Include  
+### tasks playbook (tasks.yml)
+
+
+``` 
+- name: installing java 
+  apt:
+    name: openjdk-11-jdk
+    state: present
+    update_cache: yes
+```
+
+### Include playbook (Include.yml)
+```
+---
+- hosts: all
+  become: yes 
+  tasks: 
+    - include_tasks: tasks.yml
+    - name: installing tomcat9
+      apt:
+        name: tomcat9
+        state: present 
+        update_cache: yes
+    - name: copying the war file
+      copy:
+        src: /home/devops/SampleWebApp.war
+        dest: /var/lib/tomcat9/webapps/
+    - name: restart the tomcat9
+      service:
+        name: tomcat9
+        state: restarted  
+```
+
+![preview](../img/C20.png)
+
+
+* Run Playbook :
+
+```
+ansible-playbook -i /home/devops/hosts include.yml
+```
+
+![preview](../img/C19.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
