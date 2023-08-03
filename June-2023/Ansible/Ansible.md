@@ -1055,3 +1055,300 @@ ansible-playbook -i /home/devops/hosts include.yml
 * * * 
 
 <br/>
+
+
+
+## 3. ANSIBLE ROLES:
+* Ansible roles are the best way of reusing the playbooks .
+* Ansible Roles are a way of organizing and managing Ansible code that allows for better modularity, reusability, and scalability of your infrastructure automation. A role is essentially a collection of tasks, variables, templates, and files that are grouped together to accomplish a specific goal, such as configuring a web server or installing a database.
+
+
+## Structure of Ansible Role :
+![preview](../img/C21.png)
+
+* An Ansible role is a collection of tasks, templates, files, and variables that are grouped together in a structured way to configure a specific part of a system. Ansible Roles are organized into a specific folder structure. The main folders that make up an Ansible role are as follows:
+
+    * defaults: This folder contains default variables that are used by the role. These variables can be overridden by variables set in the playbook.
+
+    * files: This folder contains any files that need to be copied to the remote server as part of the role.
+
+    * handlers: This folder contains any handlers that the role uses. Handlers are tasks that are triggered by another task, typically after a change has been made.
+
+    * meta: This folder contains metadata about the role, such as its author, license, and dependencies on other roles.
+
+    * tasks: This folder contains the main set of tasks that are performed by the role. These tasks are typically defined in a YAML file.
+
+    * templates: This folder contains any templates that the role uses. Templates are files that are processed by the Jinja2 templating engine and copied to the remote server.
+
+    * vars: This folder contains any variables that are specific to the role. These variables can be overridden by variables set in the playbook.
+
+* In addition to these folders, an Ansible role can also contain other files and folders, such as README.md files, tests, and even additional subfolders. The folder structure of an Ansible role is designed to be easily reusable and shareable, making it easy for others to use and contribute to the role.
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Ansible-Galaxy:
+* Ansible Galaxy is a community repository of pre-built Ansible roles, playbooks, and collections. It is a central hub for sharing and discovering Ansible content created by the community, including individual users, organizations, and vendors.
+ 
+* Ansible-Galaxy [REFER HERE](https://galaxy.ansible.com/)
+
+
+## Using Ansible roles from Ansible-galaxy : 
+* Ansible-Galaxy link [REFER HERE](https://galaxy.ansible.com/)
+
+### How to use the role from ansible galaxy:
+```
+ ansible-galaxy install geerlingguy.java
+```
+
+![preview](../images/ansible23.png)
+
+### How to use the ansible role downloaded from the ansible-galaxy:
+
+```
+---
+- hosts: all
+  become: yes 
+  roles: 
+    - role: geerlingguy.java
+```
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Jinja template
+* These are used to create the dynamic files. Dynamic files means the content in the file will not be the static
+* Example:
+* Create a file with extension .j2 
+```
+vi   Testjinja.txt.j2
+
+This is for the os {{ ansible_os_family }}
+This is of distribution {{ ansible_distribution }}
+```
+
+* playbook using jinja template
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: copying jinja file to the node
+      template:
+        src: /home/devops/Readme.txt.j2
+        dest: /home/devops/
+        
+```
+
+
+* Run above playbook by using below command:
+
+```
+ansible-playbook -i hosts jinja.yml
+```
+
+* After running the above playbook the content in the file changes as below:
+
+```
+This is for the os "Debian"
+This is of distribution "Ubuntu"
+
+```
+
+<br/>
+
+* * * 
+
+<br/>
+
+## How to create a ansible role:
+
+```
+ansible-galaxy role init <name of role>
+```
+![preview](../images/ansible24.png)
+
+## Writing Ansible-role to install JAVA 
+
+* Creating a role 
+```
+ansible-galaxy role init javarole
+tree javarole
+```
+![preview](../images/n1.png)
+![preview](../images/n2.png)
+
+*  tasks/main.yml as below :
+```
+---
+- name: installing java
+  apt:
+    name: openjdk-8-jdk
+    state: present
+    update_cache: yes
+
+```
+
+![preview](../images/n3.png)
+
+<br/>
+
+* * * 
+
+<br/>
+
+## use the javarole in your playbook :
+
+![preview](../images/n4.png)
+
+```
+---
+- hosts: all
+  become: yes
+  roles:
+    - javarole
+
+
+```
+* Run the above playbook using below command:
+
+```
+ansible-playbook -i hosts usingjavarole.yml
+```
+
+![preview](../images/n5.png)
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+## Tags in Ansible:
+
+* In Ansible, tags are a way to organize and selectively run certain tasks or plays within a playbook. Tags are applied to individual tasks or entire plays using the tags keyword.
+
+* Tags --  [ReferHere](https://docs.ansible.com/ansible/2.9/user_guide/playbooks_tags.html) 
+
+```
+*  --skip-tags option to skip tasks with certain tags
+*  --tags option to run tasks with certain tags 
+
+```
+
+* Playbook with tags :
+
+```
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name : Install Tree
+      apt:
+        name: tree
+        state: present
+      tags:
+      - tree
+    - name: install java
+      apt: 
+        name: openjdk-11-jdk
+        state: present
+      tags:
+      - java
+```
+1. Run the taks in the playbook which has tag of ```tree```
+ 
+
+```
+ansible-playbook -i hosts tags.yml --tags "tree"
+```
+![preview](../images/n6.png)
+
+2. Now skip the tasks which has tag of ```tree```
+
+```
+ansible-playbook -i hosts tags.yml --skip-tags "tree"
+
+```
+![preview](../images/n7.png)
+
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Ansible fork :
+
+* In Ansible, a fork is a setting that determines how many parallel processes or threads are created to execute a playbook or a task. By default, Ansible runs with a fork value of 5, which means that it will execute the task on five remote machines at a time.
+
+* You can change the fork value in the ansible.cfg file, which is located in the /etc/ansible directory or in the current working directory. If you set the fork value to a higher number, Ansible can execute tasks on more remote machines in parallel, which can speed up the execution of large playbooks.
+
+* However, increasing the fork value can also increase the memory and CPU usage on the Ansible control node, which could cause performance issues if the hardware resources are limited. Therefore, it's important to balance the fork value with the available system resources to avoid overloading the control node.
+
+* Setup fork in ansible.cfg
+```
+ansible.cfg path - /etc/ansible/ansible.cfg
+
+```
+
+```
+vi /etc/ansible/ansible.cfg
+
+## Add below content
+[defaults]
+forks = 30
+
+Esc:wq
+
+```
+
+
+<br/>
+
+* * * 
+
+<br/>
+
+
+## Ansible::
+* Ansible is a configuration management tool , we can do deployment as well as configuration management by using ansible .
+* Ansible is a push type model of CM 
+* Ansible uses yaml syntax to write the playbook . But internally ansible is written in python
+* YAML - Yet Another Markup Language
+* Playbooks -- We write playbooks in ansible to mention our desiredstate/tasks to be done.
+* Inventory/hosts -- Where we will provide the nodes information (ipaddress/hostname)
+* Writing host file in different sections 
+* Modules -- parameters.
+* Examples of modules : apt , yum , service , systemd , file , copy  , package , Lineinfile, blockinfile , tags , fail
+* Looping in ansible 
+* Conditionals in ansible 
+* Different types of defining variables -- host, group , playbook,commandline
+* Resuability of playbooks : 1. variables 2.import/include 3. Ansible roles 
+* APache and php installation -- LAMP installation
+* Installing java , tomcat 
+* Created a devops pipeline by using the samplewarfilefrom opensource.
+* Deployed the application by using ansible
+* ANSIBLE ROLES & Structure of Role 
+* Ansible-Galaxy & usage of ansible galaxy 
+* Jinja template 
+* How to create a Ansible role 
+* Use the Ansible role created 
+* Tags in ansible 
+
+1. List down manual commands.
+2. Check it by running them manually 
+3. try to automate it by using the playbook (exact module)
+4. create a inventory/host file -- Run the playbook 
