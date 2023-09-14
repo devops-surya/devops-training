@@ -251,7 +251,7 @@
       ```
         
 
-  ### Install Docker Engine, containerd, and Docker Compose.
+  ### Install  containerd 
 
    * To install the latest version, run:
 
@@ -261,18 +261,15 @@
       ```
         
 
-  ### Verify that the Docker Engine installation is successful by running the hello-world image.
 
         
-        sudo docker run hello-world
-        
-
 
 ### containerd --  [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd:~:text=change.%20More%20information.-,containerd,io.containerd.grpc.v1.cri%22.containerd.runtimes.runc.options%5D%0A%20%20%20%20SystemdCgroup%20%3D%20true,-The%20systemd%20cgroup):
         
   ### Configuring the systemd cgroup driver  :
 
-   * To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set :
+   * To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set : 
+   * ***NOTE***: Remove all th content in the /etc/containerd/config.toml and paste the bleow data
 
         ```
         [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
