@@ -150,6 +150,13 @@
 * While initializing kubeadm provide  -- kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=<K8sMasterPrivateIP>
 ```
 
+<br/>
+
+* * * 
+
+<br/>
+
+
 1. Take 3 VM's from AWS , having atleat 2 GB RAM 2 VCPUS 
 
   ![preview](../img/K8S9.png)
@@ -158,7 +165,12 @@
 * ___NOTE__ : Before step-2 , disable swap on all the servers :
   ![preview](../img/K8S10.png)
 
-  
+<br/>
+
+* * * 
+
+<br/>
+
 2. Install container runtime  on all the nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 
 ### Install and configure prerequisites : [REFERHERE](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#:~:text=Install%20and%20configure%20prerequisites,ip6tables%20net.ipv4.ip_forward)
@@ -281,7 +293,11 @@
           
           sudo systemctl restart containerd
 
-          
+<br/>
+
+* * * 
+
+<br/>         
 
 
 3. Install kubelet kubeadm kubectl , run the steps in the document on all nodes [REFER HERE](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
@@ -329,6 +345,11 @@
       nc 127.0.0.1 6443
       ```
 
+<br/>
+
+* * * 
+
+<br/>
 
 
 4. Steps to be done on master :
@@ -378,7 +399,11 @@ kubeadm join 172.31.5.211:6443 --token f00e59.1auf8qakfohr4ewx \
 ![preview](../img/K8S2.png)
 ![preview](../img/K8S3.png)
 
+<br/>
 
+* * * 
+
+<br/>
 
 
 
@@ -389,6 +414,11 @@ kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/we
 ```
 ![preview](../img/K8S5.png)
 
+<br/>
+
+* * * 
+
+<br/>
 
 6. Join  worker nodes :
 
@@ -411,6 +441,11 @@ kubectl get nodes
 * [Kubernetes.io-ClickHere](https://discuss.kubernetes.io/t/the-connection-to-the-server-host-6443-was-refused-did-you-specify-the-right-host-or-port/552/5)
 * [Kubernetes.io-ClickHere](https://discuss.kubernetes.io/t/the-connection-to-the-server-host-6443-was-refused-did-you-specify-the-right-host-or-port/552/43?page=3)
 
+<br/>
+
+* * * 
+
+<br/>
 
 ## Check the master components by using below command on Master-node :
 
@@ -425,6 +460,12 @@ kubectl get pods -n kube-system
 ![preview](../img/K8S8.png)
 
 
+
+<br/>
+
+* * * 
+
+<br/>
 
 <br/>
 
