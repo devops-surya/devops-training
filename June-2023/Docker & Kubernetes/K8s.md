@@ -555,6 +555,13 @@ kubectl delete -f pod.yml  -- delete the pod created
  6. Jobs
  7. CronJOb
 
+
+<br/>
+
+* * * 
+
+<br/>
+
 ##  ReplicationController:
 * It make sures that the specified number of pods to be running all the time.
 * Create a yaml/manifest file for the ReplicationController
@@ -594,6 +601,12 @@ kubectl get rc
 
 * ___Note__ : Delete the pod manuallly and see the working of ReplicationController
 
+<br/>
+
+* * * 
+
+<br/>
+
 
 ## Replicaset:
 * It also acts same like  replication controller .
@@ -628,6 +641,11 @@ spec:
 
 ```
 
+<br/>
+
+* * * 
+
+<br/>
 
 ## Imperative vs Declarative way of working with K8s :
 
@@ -652,6 +670,12 @@ You create manifest files that describe the desired state of resources, such as 
 * The benefits of the declarative approach include reproducibility, consistency, and version control of configurations. It simplifies the management of complex deployments, as you can easily track and apply changes to the desired state. It also facilitates collaboration and automation through version control systems and continuous integration/continuous deployment (CI/CD) pipelines.
 
 Overall, the declarative approach is considered the recommended way of working with Kubernetes, as it aligns with the desired state management philosophy of the platform. It provides better control and manageability over resources in the long run, especially for complex applications and infrastructure.
+
+<br/>
+
+* * * 
+
+<br/>
 
 
 ## DaemonSet: 
