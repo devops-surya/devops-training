@@ -901,8 +901,7 @@ kubectl describe pod <podname>
 ![preview](../img/K8S15.png)
 
 
-## StatefulSet: 
-* Similar to ReplicaSet, but designed for stateful applications that require stable network identities and persistent storage. It ensures ordered deployment and scaling of pods, and maintains stable hostnames and volume mounting across pod rescheduling.
+
 
 ## K8S storages:
 * In K8s , when ever the pod is deleted , the data produced by the pod is also deleted.
